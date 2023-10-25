@@ -111,6 +111,7 @@ section{
   }
   .hero-banner{
     min-height: 91vh;
+    background-position: center;
   }
 }
 
