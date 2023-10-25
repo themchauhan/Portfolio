@@ -134,7 +134,7 @@ const Contact = () => {
                />
             </span>
             <span className="pl-4">
-                <h6 className="text-base"><a href="mailto:mani7015066@gmail.com" className="underline text-[#f04e3c] hover:no-underline">Let's Connect in your Inbox</a></h6>
+                <h6 className="text-base"><a href="mailto:mani7015066@gmail.com" className="underline text-[#f04e3c] hover:no-underline">Let&#39;s Connect in your Inbox</a></h6>
                 <h6 className="mt-3 text-base">Feel Free To Reach Out Anythime!</h6>
             </span>
            </div>

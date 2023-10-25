@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import Image from 'next/image';
 
 function MyForm() {
     const [email, setEmail] = useState("");
@@ -59,26 +60,53 @@ function MyForm() {
            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
               <div class="bg-white p-4 rounded-lg shadow-md">
-                  <img src="card1.jpg" alt="Card 1" class="w-full h-40 object-cover rounded mb-4" />
+                   <Image 
+                    src="/design.svg"
+                    alt="person"
+                    width={100}
+                    height={100}
+                    style={{ objectFit: 'cover'}} 
+                    className="w-full h-40 object-cover rounded mb-4" 
+                  />
                   <h2 class="text-xl font-semibold text-black">Socure</h2>
                   <p class="text-gray-600">Technology Used: Html, Scss, Jquery/Jacascript, PHP, Wordpress, Marketo</p>
               </div>
   
               <div class="bg-white p-4 rounded-lg shadow-md">
-                  <img src="card2.jpg" alt="Card 2" class="w-full h-40 object-cover rounded mb-4" />
-                  <h2 class="text-xl font-semibold text-black">Digimarc</h2>
+              <Image 
+                    src="/design.svg"
+                    alt="person"
+                    width={100}
+                    height={100}
+                    style={{ objectFit: 'cover'}} 
+                    className="w-full h-40 object-cover rounded mb-4" 
+                  />                  <h2 class="text-xl font-semibold text-black">Digimarc</h2>
                   <p class="text-gray-600">Technology Used: Html, Scss, Jquery/Javascript, Drupal, Hubspot</p>
               </div>
 
 
               <div class="bg-white p-4 rounded-lg shadow-md">
-                  <img src="card4.jpg" alt="Card 4" class="w-full h-40 object-cover rounded mb-4" />
+              <Image 
+                    src="/design.svg"
+                    alt="person"
+                    width={100}
+                    height={100}
+                    style={{ objectFit: 'cover'}} 
+                    className="w-full h-40 object-cover rounded mb-4" 
+                  />                  
                   <h2 class="text-xl font-semibold text-black">ClearDigital</h2>
                   <p class="text-gray-600">Technology Used: Html, Scss, Jquery/Javascript, PHP, Wordrpress, GravityForm</p>
               </div>
   
               <div class="bg-white p-4 rounded-lg shadow-md">
-                  <img src="card3.jpg" alt="Card 3" class="w-full h-40 object-cover rounded mb-4" />
+              <Image 
+                    src="/design.svg"
+                    alt="person"
+                    width={100}
+                    height={100}
+                    style={{ objectFit: 'cover'}} 
+                    className="w-full h-40 object-cover rounded mb-4" 
+                  />                  
                   <h2 class="text-xl font-semibold text-black">Estimatic</h2>
                   <p class="text-gray-600">Technology Used: ReactJS, MaterialUI, Redux, Firebase</p>
               </div>

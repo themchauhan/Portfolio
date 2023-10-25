@@ -6,7 +6,14 @@ const Footer = () => {
   <div className="container mx-auto flex flex-wrap justify-between gap-4">
     <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4">
       <div className="flex items-center">
-        <img src="/logo.png" alt="Logo" className=" h-10" />
+        <Image 
+                    src="/logo.png"
+                    alt="logo"
+                    width={80}
+                    height={80}
+                    style={{ objectFit: 'contain'}} 
+                    className="h-10" 
+                  />
       </div>
       <p className="mt-2 text-sm">Need a website? I am a local web designer and developer that can help bring your ideas into a reality.</p>
     </div>

@@ -19,7 +19,7 @@ const Dev_process = () => {
                 style={{ objectFit: 'contain'}} 
             />
                <h5 className='pt-6 pb-3 font-bold'>Design</h5>
-               <p className='text-sm'>At this point, our primary focus is to articulate the message you wish to convey. We'll now move on to defining the visual style of your website.</p>
+               <p className='text-sm'>At this point, our primary focus is to articulate the message you wish to convey. We&#39;ll now move on to defining the visual style of your website.</p>
             </div> 
             <div className='w-full sm:w-6/12 md:w-4/12 flex flex-wrap  justify-center text-center px-4'>
                 <Image 
