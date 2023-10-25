@@ -109,6 +109,9 @@ section{
     margin-left: 20px !important;
     transition: 0.3s all linear;
   }
+  .hero-banner{
+    min-height: 91vh;
+  }
 }
 
 h1,h2,h3,h4,h5,h6,p{
