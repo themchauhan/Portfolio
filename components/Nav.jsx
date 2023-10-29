@@ -7,6 +7,15 @@ import Image from 'next/image'
 
 const Nav = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const scrollToSection = (sectionID) =>{
+      const section = document.getElementById(sectionID);
+      if(section){
+        window.scrollTo({
+         top: section.offsetTop,
+         behavior: 'smooth',
+        });
+      }
+    }
   return (
     <nav className="sticky top-0 bg-white py-4 shadow-md z-20">
       <div className="container flex justify-between items-center">
@@ -41,20 +50,11 @@ const Nav = () => {
                 About
               </Link>
             </li>
-            <li>
-              <Link href="/skills" className="text-black hover:text-blue-600">
+            <li className="text-black hover:text-blue-600 cursor-pointer" onClick={()=> scrollToSection('skills')}>
                 Skills
-              </Link>
             </li>
-            <li>
-              <Link href="/projects" className="text-black hover:text-blue-600">
+            <li className="text-black hover:text-blue-600 cursor-pointer" onClick={()=> scrollToSection('featured')}>
                 Projects
-              </Link>
-            </li>
-            <li>
-              <Link href="/learnings" className="text-black hover:text-blue-600">
-                Learnings
-              </Link>
             </li>
             <li>
               <Link href="/academics" className="text-black hover:text-blue-600">
@@ -62,7 +62,7 @@ const Nav = () => {
               </Link>
             </li>
           </ul>
-          <button className="bg-[#5869a5] text-white px-4 py-2 rounded-full hover:bg-black ml-4">
+          <button className="bg-[#5869a5] text-white px-4 py-2 rounded-full hover:bg-black ml-4" onClick={()=> scrollToSection('featured')}>
             Contact Me
           </button>
         </div>

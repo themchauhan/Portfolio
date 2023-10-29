@@ -43,7 +43,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="form_wrap">
+    <section className="form_wrap" id="contact">
       <div className="container">  
        <div className="title-wrap mb-7">
          <h3 className="mb-3 font-bold">GET IN TOUCH</h3>

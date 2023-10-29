@@ -1,6 +1,16 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 const Footer = () => {
+  const scrollToSection = (sectionID) =>{
+    const section = document.getElementById(sectionID);
+    if(section){
+      window.scrollTo({
+       top: section.offsetTop,
+       behavior: 'smooth',
+      });
+    }
+  }
   return (
 <footer className="bg-gray-900 text-white py-8">
   <div className="container mx-auto flex flex-wrap justify-between gap-4">
@@ -15,16 +25,16 @@ const Footer = () => {
                     className="h-10" 
                   />
       </div>
-      <p className="mt-2 text-sm">Need a website? I am a local web designer and developer that can help bring your ideas into a reality.</p>
+      <p className="mt-2 text-sm">Need a website? I am a web designer and developer that can help bring your ideas into a reality.</p>
     </div>
 
     <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4">
       <h2 className="text-lg font-semibold mb-2">Quick Links</h2>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
+        <li className='cursor-pointer' onClick={()=> scrollToSection('about')}>About</li>
+        <li className='cursor-pointer' onClick={()=> scrollToSection('skills')}>Skills</li>
+        <li className='cursor-pointer' onClick={()=> scrollToSection('featured')}>Projects</li>
+        <li className='cursor-pointer' onClick={()=> scrollToSection('contact')}>Contact</li>
       </ul>
     </div>
 

@@ -28,7 +28,7 @@ function MyForm() {
       }
     };
   return (
-    <section className="featured-block bg-[#5869a5]">
+    <section className="featured-block bg-[#5869a5]" id="featured">
     <div className="container">
      <div className="md:flex flex-wrap mb-5 divide-x divide-white">  
       <div className="col-6 w-full md:w-6/12">
