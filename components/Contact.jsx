@@ -43,16 +43,17 @@ const Contact = () => {
   };
 
   return (
-    <section className="form_wrap bg-white" id="contact">
-      <div className="container ">  
-        <div className="form-outer bg-black max-w-[800px] rounded-md mx-auto p-10">
-        <div className="title-wrap mb-7 text-center mx-auto max-w-[950px]">
-         <h3 className="mb-4 font-bold">GET STARTED</h3>
+    <section className="form_wrap" id="contact">
+      <div className="container">  
+       <div className="title-wrap mb-7">
+         <h3 className="mb-3 font-bold">GET IN TOUCH</h3>
+         <p>If you are a business seeking a web presence, you can get in touch with me here.</p>
        </div>
-        <div className="form-wrap md:flex justify-center text-center"> 
-        <div className="flex w-full">
+      <div className="form-wrap md:flex"> 
+        <div className="flex w-full md:w-7/12">
          <form onSubmit={handleSubmit} className="w-full">
-            <div className="mb-6">
+            <div className="mb-4">
+                <label htmlFor="name">Name</label>
                 <input
                 type="text"
                 id="name"
@@ -60,11 +61,11 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full p-2 border text-black"
-                placeholder="Name*"
                 required
                 />
             </div>
-            <div className="mb-6">
+            <div className="mb-4">
+                <label htmlFor="email">Email</label>
                 <input
                 type="email"
                 id="email"
@@ -72,11 +73,11 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full p-2 border text-black"
-                placeholder="Email*"
                 required
                 />
             </div>
-            <div className="mb-6">
+            <div className="mb-4">
+                <label htmlFor="subject">Subject</label>
                 <input
                 type="text"
                 id="subject"
@@ -84,19 +85,18 @@ const Contact = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 className="w-full p-2 border text-black"
-                placeholder="Subject*"
                 required
                 />
             </div>
-            <div className="mb-6">
+            <div className="mb-4">
+                <label htmlFor="message">Message</label>
                 <textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 rows="4"
-                className="w-full p-2 border text-black"
-                placeholder="Message*"
+                className="w-full p-2 border text-black "
                 required
                 />
             </div>
@@ -107,6 +107,37 @@ const Contact = () => {
             </button>
          </form> 
         </div> 
+        <div className="info-wrap flex flex-wrap w-full md:w-5/12 place-content-start md:pl-20 pt-5">
+           <div className="flex contact-info w-full">
+            <span>
+              <Image 
+                 src="/phone-call.svg"
+                 alt="person"
+                 width={24}
+                 height={24}
+                 style={{ objectFit: 'contain'}} 
+               />
+            </span>
+            <span className="pl-4">
+                <h6 className="text-[#f04e3c] text-base">+917015066237</h6>
+                <h6 className="mt-3 text-base">Mon to Fri (10am - 6pm)</h6>
+            </span>
+           </div>
+           <div className="flex contact-info w-full pt-6">
+            <span>
+              <Image 
+                 src="/email.svg"
+                 alt="person"
+                 width={24}
+                 height={24}
+                 style={{ objectFit: 'contain'}} 
+               />
+            </span>
+            <span className="pl-4">
+                <h6 className="text-base"><a href="mailto:mani7015066@gmail.com" className="underline text-[#f04e3c] hover:no-underline">Let&#39;s Connect in your Inbox</a></h6>
+                <h6 className="mt-3 text-base">Feel Free To Reach Out Anythime!</h6>
+            </span>
+           </div>
         </div>
         </div>
       </div>   

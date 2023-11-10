@@ -4,10 +4,10 @@ import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Dev_process from '@/components/Dev_process'
 import Intro_block from '@/components/Intro_block'
+import Skill from '@/components/Skill'
 import Contact from '@/components/Contact'
-import CarouselPage from '@/components/Testimonial'
-import MyTeam from '@/components/Team'
 import Footer from '@/components/Footer'
+import MyForm from '@/components/Featured'
 export default function Home() {
   return (
 
@@ -16,9 +16,10 @@ export default function Home() {
         <Hero/>
         <About />
         <Dev_process/>
-        <CarouselPage/>
-        <MyTeam/>
         <Intro_block/>
+        <Skill/>
+        <MyForm/>
+        <Contact/>
         <Footer/>
     </main>
   )
