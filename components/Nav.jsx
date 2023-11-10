@@ -20,14 +20,14 @@ const Nav = () => {
     <nav className="sticky top-0 bg-white py-4 shadow-md z-20">
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
-          <Image
-            src="/logo.png"
+          <Link href="/"> <Image
+            src="/CA1.svg"
             alt="site Logo"
-            width={85}
-            height={85}
+            width={145}
+            height={145}
             priority
             className="mr-2"
-          />
+          /></Link>
           <span className="text-white text-xl font-semibold">Your Logo</span>
         </div>
         <div className="md:hidden">
@@ -50,8 +50,8 @@ const Nav = () => {
                 About
               </Link>
             </li>
-            <li className="text-black hover:text-blue-600 cursor-pointer" onClick={()=> scrollToSection('skills')}>
-                Skills
+            <li className="text-black hover:text-blue-600 cursor-pointer" onClick={()=> scrollToSection('dev_process')}>
+                Services
             </li>
             <li className="text-black hover:text-blue-600 cursor-pointer" onClick={()=> scrollToSection('featured')}>
                 Projects
@@ -62,8 +62,10 @@ const Nav = () => {
               </Link>
             </li>
           </ul>
-          <button className="bg-[#5869a5] text-white px-4 py-2 rounded-full hover:bg-black ml-4" onClick={()=> scrollToSection('featured')}>
-            Contact Me
+          <button className="bg-[#5869a5] text-white px-4 py-2 rounded-full hover:bg-black ml-4">
+           <Link href="/contact">
+              Contact Me             
+            </Link>
           </button>
         </div>
       </div>

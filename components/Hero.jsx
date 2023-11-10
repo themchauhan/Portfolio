@@ -5,13 +5,12 @@ const Hero = () => {
     <section className="hero-banner">
         <div className="container">
             <div className='flex flex-wrap col-6 z-10 relative'>
-                 <span className={`${styles.span} text-sm md:text-3xl md:mb-4`}>Portfolio</span>
-                <h1>Manish Chauhan</h1>
-                <h5>Web Developer</h5>
+                <h1 className='pb-2'>CA Priyanka Bhatt</h1>
+                <h5>Certified Public Accountant in Patthri Bagh</h5>
             </div>
         </div>
     </section>
   )
 }
 
-export default Hero
+export default Hero;
