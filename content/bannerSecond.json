@@ -1,0 +1,11 @@
+{
+    "section1": {
+      "title": "Project Showcase",
+      "subtitle": "Explore a collection of my latest and greatest projects.",
+      "link": {
+        "text": "View Projects",
+        "url": "/proj"
+      }
+    }
+  }
+  

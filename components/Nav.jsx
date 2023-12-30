@@ -20,6 +20,7 @@ const Nav = () => {
     <nav className="sticky top-0 bg-white py-4 shadow-md z-20">
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
+          <Link href="/" aria-label="homepage">
           <Image
             src="/logo.png"
             alt="site Logo"
@@ -28,6 +29,7 @@ const Nav = () => {
             priority
             className="mr-2"
           />
+          </Link>
           <span className="text-white text-xl font-semibold">Your Logo</span>
         </div>
         <div className="md:hidden">

@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from 'app/style.module.css';
+import styles from '../app/style.css';
 import Link from 'next/link';
 
 const About = () => {
   return (
-    <section className={`${styles.about_bg} about`} id="about">
+    <section className="about bg-white text-black" id="about">
         <div className="container md:flex items-center">
             <div className='sm:flex-none md:flex-1 md:flex-wrap col-6 place-content-center md:pr-4 md:max-w-[650px]'>
                 <h4 className='md:max-w-3xl text-4xl lg:text-5xl font-extrabold uppercase md:leading-tight'>Crafting User Interfaces: My Expertise</h4>

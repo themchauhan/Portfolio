@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from 'app/style.module.css';
+import styles from '../app/style.css';
 
 const Dev_process = () => {
   return (

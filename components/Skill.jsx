@@ -1,10 +1,10 @@
 import React from 'react'
 import Image from 'next/image';
-import styles from 'app/style.module.css';
+import styles from '../app/style.css';
 
 const Skill = () => {
   return (
-    <section className={`${styles.about_bg} technical_skill`} id="skills">
+    <section className="technical_skill bg-white text-black" id="skills">
     <div className="container">
         <div className='w-full text-center justify-center flex flex-wrap mb-12'>
             <h4 className='max-w-5xl mb-3 font-bold'>Skills And Expertise</h4>

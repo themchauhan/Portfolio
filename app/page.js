@@ -8,7 +8,13 @@ import Skill from '@/components/Skill'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import MyForm from '@/components/Featured'
+import MyProjects from '@/components/Featured_project'
 export default function Home() {
+  const section1Props = {
+    title: "Have a brilliant concept or a monumental endeavor on your radar? Join me, and together, we'll accomplish greatness.",
+    linkText: "Contact Me",
+    link: "/",
+  };
   return (
 
     <main>
@@ -16,9 +22,10 @@ export default function Home() {
         <Hero/>
         <About />
         <Dev_process/>
-        <Intro_block/>
+        <Intro_block {...section1Props}/>
         <Skill/>
-        <MyForm/>
+        {/* <MyForm/> */}
+        <MyProjects/>
         <Contact/>
         <Footer/>
     </main>
