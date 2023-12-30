@@ -262,7 +262,7 @@ const Email_temp = () => {
     }
 
     a {
-        color: #62b4e5;
+        color: #5869a5;
         text-decoration: none;
     }
 
@@ -298,7 +298,7 @@ const Email_temp = () => {
    style="position:relative;opacity:1;z-index:0;overflow: hidden;">
 <tr>
     <td>
-        <table align="center" width="720" border="0" cellspacing="0" cellpadding="0" bgcolor="#67b4e4"
+        <table align="center" width="720" border="0" cellspacing="0" cellpadding="0" bgcolor="#5869a5"
                class="full-width"
                style="position:relative;opacity:1;z-index:0;min-width: 100%;">
             <tr>
@@ -326,7 +326,7 @@ const Email_temp = () => {
 <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0" class="">
 <tr>
     <td>
-        <table align="center" width="720" border="0" cellspacing="0" cellpadding="0" bgcolor="#67b4e4"
+        <table align="center" width="720" border="0" cellspacing="0" cellpadding="0" bgcolor="#5869a5"
                class="full-width"
                style="position:relative;opacity:1;z-index:0;max-width: 720px;">
             <tr>
@@ -368,13 +368,7 @@ const Email_temp = () => {
                                             <table class="mobile-center" align="right" border="0" cellpadding="0"
                                                    cellspacing="0">
                                                 <tr>
-                                                    <td>
-                                                        <img class="img-mobile"
-                                                             src="https://webenertia-pm-email-template.netlify.app/images/pm_placeholder.png"
-                                                             width="340"
-                                                             height="406"
-                                                             style="margin-top:-34px;">
-                                                    </td>
+                                                  
                                                 </tr>
                                             </table>
                                         </td>
@@ -443,9 +437,9 @@ const Email_temp = () => {
                                 <img src="https://webenertia-pm-email-template.netlify.app/images/email-icon.png"
                                      width="40">
                             </td>
-                            <td style="font-family:'proxima-nova','arial',sans-serif; color:#62b4e5;font-size:20px; font-weight:400;letter-spacing:-0.5px;line-height:25px;">
+                            <td style="font-family:'proxima-nova','arial',sans-serif; color:#5869a5;font-size:20px; font-weight:400;letter-spacing:-0.5px;line-height:25px;">
                                 <a href="#"
-                                   style="font-family:'proxima-nova','arial',sans-serif; color:#62b4e5;font-size:20px; font-weight:400;letter-spacing:-0.5px;line-height:25px;">mani7015066@gmail.com</a>
+                                   style="font-family:'proxima-nova','arial',sans-serif; color:#5869a5;font-size:20px; font-weight:400;letter-spacing:-0.5px;line-height:25px;">mani7015066@gmail.com</a>
                             </td>
                         </tr>
                         <tr>
@@ -462,9 +456,9 @@ const Email_temp = () => {
                                 <img src="https://webenertia-pm-email-template.netlify.app/images/phone-icon.png"
                                      width="35">
                             </td>
-                            <td style="font-family:'proxima-nova','arial',sans-serif; color:#62b4e5;font-size:20px; font-weight:400;letter-spacing: -0.5px;line-height:25px;">
+                            <td style="font-family:'proxima-nova','arial',sans-serif; color:#5869a5;font-size:20px; font-weight:400;letter-spacing: -0.5px;line-height:25px;">
                                 <a href="#"
-                                   style="font-family:'proxima-nova','arial',sans-serif; color:#62b4e5;font-size:20px; font-weight:400;letter-spacing: -0.5px;line-height:25px;">+917015066237</a>
+                                   style="font-family:'proxima-nova','arial',sans-serif; color:#5869a5;font-size:20px; font-weight:400;letter-spacing: -0.5px;line-height:25px;">+917015066237</a>
                             </td>
                         </tr>
                         <tr>
@@ -516,7 +510,7 @@ const Email_temp = () => {
                                      width="39">
                             </td>
                             <td>
-                                <span style="font-family:'proxima-nova','arial',sans-serif; color: #8e8e8f;font-size:20px;letter-spacing: -0.34px;line-height:23px;">Member of the WebEnertia team since 2018</span>
+                                <span style="font-family:'proxima-nova','arial',sans-serif; color: #8e8e8f;font-size:20px;letter-spacing: -0.34px;line-height:23px;">Member of the Clear Digital team since 2018</span>
                             </td>
                         </tr>
                         <tr>
@@ -588,28 +582,7 @@ const Email_temp = () => {
                             <td align="center">
                                 <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%"
                                        style="border-bottom: 1px solid #d6dede;">
-                                    <!--<tr>-->
-                                    <!--<td height="35"></td>-->
-                                    <!--</tr>-->
-                                    <!--<tr>-->
-                                    <!--<td align="left" class="text-mobile"-->
-                                    <!--style="font-family:'Roboto Slab',sans-serif;color:#000000;font-size: 26px;font-weight:300;letter-spacing:-.45px;opacity: 0.7;display: table;max-width:600px;line-height: 1.2;">-->
-                                    <!--And a glimpse of other team member you’ll be working with ...-->
-                                    <!--</td>-->
-                                    <!--</tr>-->
-                                    <!--<tr>-->
-                                    <!--<td height="20"></td>-->
-                                    <!--</tr>-->
-                                    <tr>
-                                        <td align="center">
-                                            <a href="https://www.instagram.com/p/B0EKLZQASm9/" target="_blank">
-                                                <img src="https://webenertia-pm-email-template.netlify.app/images/collage_image.png"
-                                                     border="0"
-                                                     style="max-width:100%;width:100%;">
-                                                <!--<img src="https://gallery.mailchimp.com/a8d38ef5c200b2dcb3420a834/images/ee4639ea-0aeb-443f-bda8-ffc3123c7517.jpg" border="0" style="max-width:100%">-->
-                                            </a>
-                                        </td>
-                                    </tr>
+                                  
                                     <tr>
                                         <td height="38"></td>
                                     </tr>
@@ -760,7 +733,7 @@ const Email_temp = () => {
                                         <td height="5"></td>
                                     </tr>
                                     <tr>
-                                        <td style="font-family:'proxima-nova','arial',sans-serif;color:#62b4e5;letter-spacing:-0.1px;line-height:25px;text-transform:uppercase;padding-right: 9px;">
+                                        <td style="font-family:'proxima-nova','arial',sans-serif;color:#5869a5;letter-spacing:-0.1px;line-height:25px;text-transform:uppercase;padding-right: 9px;">
                                         </td>
                                     </tr>
                                 </table>
