@@ -34,7 +34,7 @@ const Footer = () => {
       <ul>
         <li className='cursor-pointer' onClick={()=> scrollToSection('about')}>About</li>
         <li className='cursor-pointer' onClick={()=> scrollToSection('skills')}>Skills</li>
-        <li className='cursor-pointer' onClick={()=> scrollToSection('featured')}>Projects</li>
+        <li><Link href="/projects">Projects</Link></li>
         <li className='cursor-pointer' onClick={()=> scrollToSection('contact')}>Contact</li>
       </ul>
     </div>
