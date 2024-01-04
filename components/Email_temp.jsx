@@ -610,9 +610,7 @@ const Email_temp = () => {
                 <td align="left" class="text-mobile"
                     style="font-family:'Roboto Slab',serif;color:#000000;font-size: 26px;font-weight:300;letter-spacing:-.4px;opacity: 0.7;display: table;line-height:1.2;">
                   If you have any other questions regarding project services, feel free to contact
-                      <a href="" style="text-decoration:underline; color:#000000; font-weight:300;">Manish chauhan</a>, Director of Client Services:
-                        <span style="font-weight:400;"> <a href="" style="font-weight:400;">mani7015066@gmail.com</a>
-                        </span>
+                      <a href="" style="text-decoration:underline; color:#000000; font-weight:300;">Manish chauhan</a>.
                     <!--<div style="display: inline">-->
                     <!--<a href=""-->
                     <!--style="font-weight:400;">-->
@@ -688,7 +686,7 @@ const Email_temp = () => {
                                         <td width="35">
                                         </td>
                                         <td>
-                                            <a href="#">
+                                            <a href="https://www.linkedin.com/in/themchauhan">
                                                 <img src="https://webenertia-pm-email-template.netlify.app/images/linkedin.png"
                                                      width="48">
                                             </a>
@@ -725,7 +723,7 @@ const Email_temp = () => {
                                     <tr>
                                         <td style="font-family:'proxima-nova','arial',sans-serif;color:#5d5d5e;font-size:16px; font-weight:400;letter-spacing:-0.2px;line-height:22px;display: inline-block;padding-right:15px;">
                                 <span style="font-family:'proxima-nova','arial',sans-serif;color:#5d5d5e;font-size:16px; font-weight:400;letter-spacing:-0.2px;line-height:22px;display: inline-block;padding-right:15px;">
-                                    Copyright © 2023, All rights reserved
+                                    Copyright © 2024, All rights reserved
                                 </span>
                                         </td>
                                     </tr>

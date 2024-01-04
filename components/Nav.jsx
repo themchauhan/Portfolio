@@ -63,9 +63,9 @@ const Nav = () => {
             ☰
           </button>
         </div>
-        <div className={`md:flex items-center ${ isMenuOpen ? "visible_menu" : "hidden"} md:block ${isHomePage ? 'visible_menu' : 'hidden'}`}>
+        <div className={`md:flex items-center   ${ isMenuOpen ? "visible_menu" : "hidden"} md:block ${isHomePage ? 'visible' : 'hide'}`}>
         {isHomePage ? (
-            <ul className={`flex space-x-4`}>
+            <ul className={`flex space-x-4 border-t border-solid border-black sm:border-none`}>
               <li>
                 <Link href="/about" className="text-black hover:text-blue-600">
                   About
@@ -87,7 +87,7 @@ const Nav = () => {
               </li>
             </ul>
           ) : (
-            <ul className={`flex space-x-4`}>
+            <ul className={`flex space-x-4 border-t border-solid border-black sm:border-none`}>
               <li>
                 <Link href="/about" className="text-black hover:text-blue-600">
                   About
@@ -109,7 +109,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link className="bg-[#5869a5] text-white px-4 py-2 rounded-full hover:bg-black ml-4" href="/contacts">Contact Me</Link>
+                <Link className="bg-[#5869a5] text-white px-4 py-2 rounded-full hover:bg-black md:ml-4" href="/contacts">Contact Me</Link>
               </li>
             </ul>
             )}

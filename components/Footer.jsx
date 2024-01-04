@@ -32,10 +32,10 @@ const Footer = () => {
     <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4">
       <h2 className="text-lg font-semibold mb-2">Quick Links</h2>
       <ul>
-        <li className='cursor-pointer' onClick={()=> scrollToSection('about')}>About</li>
-        <li className='cursor-pointer' onClick={()=> scrollToSection('skills')}>Skills</li>
-        <li><Link href="/projects">Projects</Link></li>
-        <li className='cursor-pointer' onClick={()=> scrollToSection('contact')}>Contact</li>
+        <li><Link href="/about" className='text-[#fff] hover:text-[#5869a5]'>About</Link></li>
+        <li><Link href="/#skills" className='text-[#fff] hover:text-[#5869a5]'>Skills</Link></li>
+        <li><Link href="/projects" className='text-[#fff] hover:text-[#5869a5]'>Projects</Link></li>
+        <li><Link href="/contacts" className='text-[#fff] hover:text-[#5869a5]'>Contact Me</Link></li>
       </ul>
     </div>
 

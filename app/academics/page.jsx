@@ -2,21 +2,21 @@ import React from 'react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import BannerSecond from '@/components/BannerSecond';
-import FeaturedProject from '@/components/AllFeatured';
 import Intro_block from '@/components/Intro_block';
+import Academics from '@/components/Academics';
 export default function Page() {
     const section2Content = {
         title: "Have a brilliant concept or a monumental endeavor on your radar? Join me, and together, we'll accomplish greatness.",
         linkText: "Contact Me",
-        link: "#contact",
-        bgColor: "#000"
+        link: "/contacts",
+        bgColor: ""
       };
     return(
         <main>
             <Nav />
-            <BannerSecond title="Project Showcase" subtitle= "Explore a collection of my latest and greatest projects." showLink='false'/>
-            <FeaturedProject showButton={false} />
-            <Intro_block {...section2Content} showButton={false}/>
+            <BannerSecond title="Academics" subtitle= "Where Laughter Meets Learning and Exams are Epic Battles." showLink='false'/>
+            <Academics/>
+            <Intro_block {...section2Content} showButton={true}/>
             <Footer/>
         </main>
     )
