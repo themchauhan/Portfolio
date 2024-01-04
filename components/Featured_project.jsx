@@ -29,7 +29,7 @@ function MyProjects({ showButton = true }) {
   
               <div className="bg-white p-4 rounded-lg shadow-md">
               <Image 
-                    src="/digimarc-icon.svg"
+                    src="/Digimarc_Logo_Grey-1.svg"
                     alt="Digimarc"
                     width={100}
                     height={100}

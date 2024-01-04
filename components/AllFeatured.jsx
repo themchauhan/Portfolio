@@ -186,18 +186,6 @@ function MyProjects({ showButton = true }) {
 
               <div className="bg-white p-4 rounded-lg shadow-md">
               <Image 
-                    src="/Cohesity_Logo_Grey-1.svg"
-                    alt="Cohesity"
-                    width={100}
-                    height={100}
-                    className="w-full h-40 object-contain rounded mb-8 bg-white border-b-2" 
-                  />                  
-                  <h2 className="text-xl font-semibold text-black mb-4">Cohesity</h2>
-                  <p className="text-gray-600">Technology Used: Wordpress, Html, Scss, JavaScript</p>
-              </div>
-
-              <div className="bg-white p-4 rounded-lg shadow-md">
-              <Image 
                     src="/Carbon-Black-Grey-Logo.svg"
                     alt="Carbonblack"
                     width={100}

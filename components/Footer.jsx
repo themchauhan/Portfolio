@@ -42,10 +42,8 @@ const Footer = () => {
     <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4">
       <h2 className="text-lg font-semibold mb-2">Resources</h2>
       <ul className='text-[#fff]'>
-        <li><Link href="#" className='text-[#fff] hover:text-[#5869a5]'>Blog</Link></li>
-        <li><Link href="#" className='text-[#fff] hover:text-[#5869a5]'>FAQ</Link></li>
-        <li><Link href="#" className='text-[#fff] hover:text-[#5869a5]'>Support</Link></li>
-        <li><Link href="#" className='text-[#fff] hover:text-[#5869a5]' >Privacy Policy</Link></li>
+        <li><Link href="/comingsoon" className='text-[#fff] hover:text-[#5869a5]'>Blog</Link></li>
+        <li><Link href="/comingsoon" className='text-[#fff] hover:text-[#5869a5]'>Resources</Link></li>
       </ul>
     </div>
 
@@ -55,8 +53,9 @@ const Footer = () => {
         <p className='text-sm'>Copyright &copy; {new Date().getFullYear()} All Rights Reserved.</p>
     </div>
     <div className="social links flex flex-wrap m-5">
-    <Link href="#" className="text-2xl mx-4"><Image src="/facebook.svg" width={20} height={20} alt="fb"/></Link>
-    <Link href="#" className="text-2xl mx-4"><Image src="/instagram.svg" width={20} height={20} alt="fb"/></Link>
+    <Link href="https://www.instagram.com/myself_manish_chauhan" className="text-2xl mx-4"><Image src="/instagram.svg" width={20} height={20} alt="fb"/></Link>
+    <Link href="https://www.linkedin.com/in/themchauhan" className="text-2xl mx-4"><Image src="/linkdin.svg" width={20} height={20} alt="linkdin"/></Link>
+    <Link href="https://www.roblox.com/users/4118461447/profile" className="text-2xl mx-4"><Image src="/Roblox_player.svg" width={20} height={20} alt="linkdin"/></Link>
     </div>
   </div>
   </div>
