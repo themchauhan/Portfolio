@@ -191,3 +191,8 @@ p{
   font-size: 16px;
   z-index: 999;
 }
+
+.form_wrap{
+  background-color: #000;
+  color: #fff;
+}

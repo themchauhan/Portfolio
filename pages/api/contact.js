@@ -1,4 +1,6 @@
 import { mailOptions, transporter } from "../../config/nodemailer";
+import dotenv from 'dotenv';
+dotenv.config({ path: '.env.staging' });
 
 const CONTACT_MESSAGE_FIELDS = {
   name: "Name",
