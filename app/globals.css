@@ -178,3 +178,16 @@ p{
     font-size: 16px;
   }
 }
+
+.success-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #4bb543; /* Change the background color as needed */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  z-index: 999;
+}
