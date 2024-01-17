@@ -8,8 +8,8 @@ function MyProjects({ showButton = true }) {
     <div className="container">
      <div className="md:flex flex-wrap mb-5 divide-x divide-white">  
       <div className="col-6 w-full md:w-6/12">
-         <h3>Code Creations</h3>
-         <p className="pt-3">Dive into a showcase of my skills through various projects.</p>
+         <h3 className='text-white'>Code Creations</h3>
+         <p className="pt-3 text-white">Dive into a showcase of my skills through various projects.</p>
       </div>
       </div>
           <div className="mx-auto mt-16">
@@ -24,7 +24,7 @@ function MyProjects({ showButton = true }) {
                     className="w-full h-40 object-contain rounded mb-8 border-b-2" 
                   />
                   <h2 className="text-xl font-semibold text-black mb-4">Socure</h2>
-                  <p className="text-gray-600">Technology Used: Html, Scss, Jquery/Jacascript, PHP, Wordpress, Marketo</p>
+                  <p className="text-gray-600">Technology Used: Html, Scss, Jquery/Javascript, PHP, Wordpress, Marketo</p>
               </div>
   
               <div className="bg-white p-4 rounded-lg shadow-md">

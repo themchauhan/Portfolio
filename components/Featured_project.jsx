@@ -24,7 +24,7 @@ function MyProjects({ showButton = true }) {
                     className="w-full h-40 object-contain rounded mb-8 border-b-2" 
                   />
                   <h2 className="text-xl font-semibold text-black mb-4">Socure</h2>
-                  <p className="text-gray-600">Technology Used: Html, Scss, Jquery/Jacascript, PHP, Wordpress, Marketo</p>
+                  <p className="text-gray-600">Technology Used: Html, Scss, Jquery/Javascript, PHP, Wordpress, Marketo</p>
               </div>
   
               <div className="bg-white p-4 rounded-lg shadow-md">

@@ -10,7 +10,7 @@ const Academics = () => {
     },
     {
       degree: 'Bachelor of Information Technology (Hons.)',
-      institution: 'Kurukshetra Universiry Kurukshetra',
+      institution: 'Kurukshetra University Kurukshetra',
       year: '2013 - 2016',
     },
     {
