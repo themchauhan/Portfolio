@@ -10,7 +10,7 @@ const Hero = () => {
         {/* Left Content */}
         <div className="max-w-xl space-y-6 z-10">
           <span className="text-cyan-300 text-sm md:text-lg font-medium uppercase tracking-wide">
-            Portfolio
+            Professional Web Developer
           </span>
 
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
@@ -18,12 +18,13 @@ const Hero = () => {
           </h1>
 
           <h2 className="text-xl md:text-2xl font-semibold text-cyan-100">
-            Full Stack Developer | Front-End Specialist
+            Full Stack Web Developer | Freelance Web Designer
           </h2>
 
           <p className="text-base md:text-lg text-gray-200">
-            Building seamless, interactive web experiences with 5+ years of
-            expertise.
+            Professional web developer with 7+ years of experience creating custom websites, 
+            web applications, and digital solutions for businesses worldwide. 
+            Specializing in React, Next.js, and modern web technologies.
           </p>
 
           {/* CTA Buttons */}

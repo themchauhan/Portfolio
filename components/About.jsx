@@ -17,7 +17,8 @@ const About = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Passionate full-stack developer with 7+ years of experience creating modern, responsive web applications.
+            Professional freelance web developer with 7+ years of experience creating custom websites, 
+            web applications, and digital solutions for small businesses and enterprises worldwide.
           </p>
         </div>
 
@@ -27,11 +28,11 @@ const About = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-800">
-                Full Stack Developer & Front-End Specialist
+                Freelance Web Developer & Full Stack Specialist
               </h3>
               
               <p className="text-lg text-gray-600 leading-relaxed">
-                I am a dedicated web developer at 
+                I am a professional freelance web developer currently working at 
                 <a 
                   href="https://www.cleardigital.com" 
                   target="_blank" 
@@ -40,18 +41,20 @@ const About = () => {
                 >
                   Clear Digital
                 </a>
-                , where I specialize in creating engaging, user-centric digital solutions that drive business growth.
+                , specializing in creating custom websites, web applications, and digital solutions for businesses worldwide.
               </p>
 
               <p className="text-lg text-gray-600 leading-relaxed">
-                With expertise in modern technologies like React, Next.js, Node.js, and AI integration, I help businesses transform their digital presence through innovative web applications.
+                With expertise in modern web technologies like React, Next.js, Node.js, and AI integration, 
+                I help small businesses and enterprises transform their digital presence through innovative, 
+                responsive web development solutions.
               </p>
             </div>
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-6 pt-6">
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-100">
-                <div className="text-3xl font-extrabold text-blue-600 mb-2">5+</div>
+                <div className="text-3xl font-extrabold text-blue-600 mb-2">7+</div>
                 <div className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Years Experience</div>
               </div>
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-cyan-100">
