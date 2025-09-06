@@ -10,6 +10,8 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
   const formRef = useRef(null);
 
   const handleChange = (e) => {
@@ -19,9 +21,6 @@ const Contact = () => {
       [name]: value,
     });
   };
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
 
   async function handleSubmit(event) {
     event.preventDefault();

@@ -149,7 +149,7 @@ const Academics = () => {
               My academic foundation has equipped me with the knowledge and skills to deliver exceptional web development solutions.
             </p>
             <a 
-              href="#contact" 
+              href="/contacts" 
               className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:from-blue-600 hover:to-cyan-600 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300"
             >
               <span>Let&apos;s Discuss Your Project</span>
