@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -19,13 +20,7 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
 }
 
 section{
@@ -48,14 +43,13 @@ section{
 .hero-banner{
   display: flex;
   align-items: center;
-  background-image: url('/me-with-bg.png');
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover;
   position: relative;
-  min-height: 70vh;
+  min-height: 90vh;
 }
-.hero-banner::after{
+/* .hero-banner::after{
   content:'';
   position: absolute;
   top: 0;
@@ -65,7 +59,7 @@ section{
   background: #000;
   opacity: 0.4;
   z-index: 1;
-}
+} */
 @media screen and (max-width: 768px) {
   nav .hidden{
     height: 0;
@@ -195,4 +189,17 @@ p{
 .form_wrap{
   background-color: #000;
   color: #fff;
+}
+
+
+.about_bg{
+    background-color: #fff;
+    color: #000;
+}
+
+.span{
+   color: #f04e3c;
+   display: block;
+   width: 100%;
+   font-weight: 500;
 }

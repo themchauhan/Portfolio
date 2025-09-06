@@ -11,39 +11,9 @@ const Email_temp = () => {
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
 <meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500&display=swap"
-      rel="stylesheet">
-<link rel="stylesheet" href="https://use.typekit.net/yfg0fch.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style type="text/css">
-    @font-face {
-        font-family: Proxima Nova;
-        src: url('fonts/proxima_nova/proxima_nova_extrabold.otf');
-        font-weight: 600;
-    }
-
-    @font-face {
-        font-family: Proxima Nova;
-        src: url('fonts/proxima_nova/proxima_nova_bold.otf');
-        font-weight: 500;
-    }
-
-    @font-face {
-        font-family: Proxima Nova;
-        src: url('fonts/proxima_nova/proxima_nova_regular.otf');
-        font-weight: 400;
-    }
-
-    @font-face {
-        font-family: Proxima Nova;
-        src: url('fonts/proxima_nova/proxima_nova_thin.otf');
-        font-weight: 300;
-    }
-
-    @font-face {
-        font-family: Proxima Nova;
-        src: url('fonts/proxima_nova/proxima_nova_light.otf');
-        font-weight: 200;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600&display=swap');
 
 
     html {
@@ -298,7 +268,7 @@ const Email_temp = () => {
    style="position:relative;opacity:1;z-index:0;overflow: hidden;">
 <tr>
     <td>
-        <table align="center" width="720" border="0" cellspacing="0" cellpadding="0" bgcolor="#5869a5"
+        <table align="center" width="720" border="0" cellspacing="0" cellpadding="0" bgcolor="#1e293b"
                class="full-width"
                style="position:relative;opacity:1;z-index:0;min-width: 100%;">
             <tr>
@@ -309,9 +279,16 @@ const Email_temp = () => {
                         </tr>
                         <tr>
                             <td>
-                                <img src="https://portfolio-manish-chauhans-projects.vercel.app/_next/image?url=%2Flogo.png&w=256&q=75"
-                                     border="0" alt="WebEnertia" width="116" height="33"/>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #3b82f6, #06b6d4); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                        <span style="color: white; font-weight: bold; font-size: 18px; font-family: 'Inter', sans-serif;">M</span>
+                                    </div>
+                                    <span style="color: white; font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 600;">Manish Chauhan</span>
+                                </div>
                             </td>
+                        </tr>
+                        <tr>
+                            <td height="40"></td>
                         </tr>
                     </table>
                 </td>
@@ -326,7 +303,7 @@ const Email_temp = () => {
 <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0" class="">
 <tr>
     <td>
-        <table align="center" width="720" border="0" cellspacing="0" cellpadding="0" bgcolor="#5869a5"
+        <table align="center" width="720" border="0" cellspacing="0" cellpadding="0" bgcolor="#1e293b"
                class="full-width"
                style="position:relative;opacity:1;z-index:0;max-width: 720px;">
             <tr>
@@ -336,53 +313,37 @@ const Email_temp = () => {
                 <td align="center">
                     <table align="center" class="A-Z-600-no-bg" width="630" border="0" cellspacing="0"
                            cellpadding="0"
-                           style="background-image: url(https://webenertia-pm-email-template.netlify.app/images/rectangle.png);background-repeat: no-repeat;background-size: 80% 89%;background-position-x: center;">
+                           style="background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%); border-radius: 16px; padding: 40px 30px;">
                         <tr>
                             <td>
-                                <table class="A-Z-600" width="270" align="left" border="0" cellpadding="0"
+                                <table class="A-Z-600" width="100%" align="center" border="0" cellpadding="0"
                                        cellspacing="0">
                                     <tr>
-                                        <td height="93" class="mobile-hidden"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-mobile"
-                                            style="font-family:'Roboto Slab',serif;color: #ffffff;font-size: 35px;font-weight: 300;letter-spacing: -.7px;line-height: 42px;padding-top: 3px;">
-                                            <div>
-                                                Meet your Developer:
-                                            </div>
-                                            <div class="text-mobile"
-                                                 style="font-size: 43px;font-weight: 500;line-height: 56px;letter-spacing: -1.1px;">
-                                                M.Chauhan
+                                        <td align="center">
+                                            <div style="text-align: center;">
+                                                <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #3b82f6, #06b6d4); border-radius: 50%; margin: 0 auto 30px; display: flex; align-items: center; justify-content: center;">
+                                                    <span style="color: white; font-weight: bold; font-size: 48px; font-family: 'Inter', sans-serif;">M</span>
+                                                </div>
+                                                <div style="font-family:'Inter',sans-serif;color: #ffffff;font-size: 32px;font-weight: 600;letter-spacing: -0.5px;line-height: 40px;margin-bottom: 8px;">
+                                                    Meet Your Developer
+                                                </div>
+                                                <div style="font-family:'Inter',sans-serif;color: #e2e8f0;font-size: 24px;font-weight: 400;letter-spacing: -0.3px;line-height: 32px;margin-bottom: 20px;">
+                                                    Manish Chauhan
+                                                </div>
+                                                <div style="font-family:'Inter',sans-serif;color: #94a3b8;font-size: 16px;font-weight: 400;line-height: 24px;">
+                                                    Full Stack Developer | Front-End Specialist
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="mobile-hidden" height="135"></td>
-                                    </tr>
                                 </table>
-
-                                <table class="A-Z-600" width="325" align="right" border="0" cellpadding="0"
-                                       cellspacing="0">
-                                    <tr>
-                                        <td>
-                                            <table class="mobile-center" align="right" border="0" cellpadding="0"
-                                                   cellspacing="0">
-                                                <tr>
-                                                  
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">
                             </td>
                         </tr>
                     </table>
                 </td>
+            </tr>
+            <tr>
+                <td height="40"></td>
             </tr>
         </table>
     </td>
@@ -396,19 +357,19 @@ const Email_temp = () => {
     <td align="center">
         <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
             <tr>
-                <td height="37"></td>
+                <td height="30"></td>
             </tr>
             <tr>
-                <td align="left" class="text-mobile"
+                <td align="center" class="text-mobile"
                     style="display: table;max-width:600px;">
-                    <span style="font-family:'Roboto Slab',serif;color:#000000;font-size: 26px;font-weight:300;letter-spacing:-.5px;opacity: 0.7;line-height: 1.2;">
-                    Manish will be reaching out to you shortly, if he hasn’t already! In the meantime, here’s how to
-                    get a hold of him:
+                    <span style="font-family:'Inter',sans-serif;color:#1e293b;font-size: 20px;font-weight:500;letter-spacing:-.3px;line-height: 1.4; text-align: center;">
+                    Manish will be reaching out to you shortly, if he hasn't already! In the meantime, here's how to
+                    get in touch with him:
                         </span>
                 </td>
             </tr>
             <tr>
-                <td height="40"></td>
+                <td height="30"></td>
             </tr>
         </table>
     </td>
@@ -422,53 +383,57 @@ const Email_temp = () => {
 <tr>
     <td align="center">
         <table class="A-Z-600" width="630" align="center" border="0" cellpadding="0" cellspacing="0"
-               style="border-bottom: 1px solid #d6dede;">
-            <!--<tr>-->
-            <!--<td height="8"></td>-->
-            <!--</tr>-->
+               style="background: #f8fafc; border-radius: 12px; padding: 30px;">
             <tr>
                 <td>
                     <table class="A-Z3-3" width="100%" align="left" border="0" cellpadding="0" cellspacing="0">
-                        <!--<tr>-->
-                        <!--<td height="17"></td>-->
-                        <!--</tr>-->
                         <tr>
-                            <td style="padding-right: 6px;width: 65px;">
-                                <img src="https://webenertia-pm-email-template.netlify.app/images/email-icon.png"
-                                     width="40">
+                            <td style="padding-right: 16px;width: 50px; vertical-align: top;">
+                                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #3b82f6, #06b6d4); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: white; font-size: 18px;">✉</span>
+                                </div>
                             </td>
-                            <td style="font-family:'proxima-nova','arial',sans-serif; color:#5869a5;font-size:20px; font-weight:400;letter-spacing:-0.5px;line-height:25px;">
-                                <a href="#"
-                                   style="font-family:'proxima-nova','arial',sans-serif; color:#5869a5;font-size:20px; font-weight:400;letter-spacing:-0.5px;line-height:25px;">mani7015066@gmail.com</a>
+                            <td style="font-family:'Inter',sans-serif; color:#1e293b;font-size:18px; font-weight:500;letter-spacing:-0.3px;line-height:24px; vertical-align: top; padding-top: 8px;">
+                                <a href="mailto:mani7015066@gmail.com"
+                                   style="font-family:'Inter',sans-serif; color:#3b82f6;font-size:18px; font-weight:500;letter-spacing:-0.3px;line-height:24px; text-decoration: none;">mani7015066@gmail.com</a>
                             </td>
                         </tr>
                         <tr>
-                            <td height="10"></td>
+                            <td height="20"></td>
                         </tr>
                     </table>
                     <table class="A-Z3-3-border" width="100%" align="left" border="0" cellpadding="0"
                            cellspacing="0">
                         <tr>
-                            <td height="12"></td>
-                        </tr>
-                        <tr>
-                            <td style="padding-right: 6px;padding-left: 4px;width: 61px;">
-                                <img src="https://webenertia-pm-email-template.netlify.app/images/phone-icon.png"
-                                     width="35">
+                            <td style="padding-right: 16px;width: 50px; vertical-align: top;">
+                                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: white; font-size: 18px;">📞</span>
+                                </div>
                             </td>
-                            <td style="font-family:'proxima-nova','arial',sans-serif; color:#5869a5;font-size:20px; font-weight:400;letter-spacing: -0.5px;line-height:25px;">
-                                <a href="#"
-                                   style="font-family:'proxima-nova','arial',sans-serif; color:#5869a5;font-size:20px; font-weight:400;letter-spacing: -0.5px;line-height:25px;">+917015066237</a>
+                            <td style="font-family:'Inter',sans-serif; color:#1e293b;font-size:18px; font-weight:500;letter-spacing: -0.3px;line-height:24px; vertical-align: top; padding-top: 8px;">
+                                <a href="tel:+917015066237"
+                                   style="font-family:'Inter',sans-serif; color:#10b981;font-size:18px; font-weight:500;letter-spacing: -0.3px;line-height:24px; text-decoration: none;">+91 7015066237</a>
                             </td>
                         </tr>
                         <tr>
-                            <td height="27"></td>
+                            <td height="20"></td>
+                        </tr>
+                    </table>
+                    <table class="A-Z3-3-border" width="100%" align="left" border="0" cellpadding="0"
+                           cellspacing="0">
+                        <tr>
+                            <td style="padding-right: 16px;width: 50px; vertical-align: top;">
+                                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: white; font-size: 18px;">🌐</span>
+                                </div>
+                            </td>
+                            <td style="font-family:'Inter',sans-serif; color:#1e293b;font-size:18px; font-weight:500;letter-spacing: -0.3px;line-height:24px; vertical-align: top; padding-top: 8px;">
+                                <a href="https://portfolio-manish-chauhans-projects.vercel.app"
+                                   style="font-family:'Inter',sans-serif; color:#8b5cf6;font-size:18px; font-weight:500;letter-spacing: -0.3px;line-height:24px; text-decoration: none;">portfolio-manish-chauhans-projects.vercel.app</a>
+                            </td>
                         </tr>
                     </table>
                 </td>
-            </tr>
-            <tr>
-                <td height="13"></td>
             </tr>
         </table>
     </td>
@@ -482,19 +447,18 @@ const Email_temp = () => {
 <tr>
     <td align="center">
         <table class="A-Z-600" width="630" align="center" border="0" cellpadding="0" cellspacing="0"
-               style="border-bottom: 1px solid #d6dede;">
+               style="background: #ffffff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
             <tr>
                 <td>
-
                     <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                         <tr>
-                            <td height="34"></td>
+                            <td height="20"></td>
                         </tr>
                         <tr>
                             <td align="left" class="text-mobile"
-                                style="font-family:'Roboto Slab',serif;color:#000000;font-size: 26px;font-weight:300;letter-spacing:-.5px;opacity: 0.7;display: table;max-width:600px">
-                                More about Manish ...
+                                style="font-family:'Inter',sans-serif;color:#1e293b;font-size: 24px;font-weight:600;letter-spacing:-.3px;display: table;max-width:600px; margin-bottom: 20px;">
+                                More about Manish
                             </td>
                         </tr>
                         </tbody>
@@ -502,41 +466,55 @@ const Email_temp = () => {
 
                     <table class="A-Z3-3" width="100%" align="left" border="0" cellpadding="0" cellspacing="0">
                         <tr>
-                            <td height="39"></td>
+                            <td height="20"></td>
                         </tr>
                         <tr>
-                            <td style="padding-right: 18px;padding-left: 1px;width: 51px;">
-                                <img src="https://webenertia-pm-email-template.netlify.app/images/member_icon.png"
-                                     width="39">
+                            <td style="padding-right: 16px;width: 50px; vertical-align: top;">
+                                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: white; font-size: 18px;">💼</span>
+                                </div>
                             </td>
-                            <td>
-                                <span style="font-family:'proxima-nova','arial',sans-serif; color: #8e8e8f;font-size:20px;letter-spacing: -0.34px;line-height:23px;">Member of the Clear Digital team since 2018</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td height="12"></td>
-                        </tr>
-                        <tr>
-                            <td style="padding-right: 18px;padding-left: 2px;width: 51px;">
-                                <img src="https://webenertia-pm-email-template.netlify.app/images/graduate.png"
-                                     width="38">
-                            </td>
-                            <td>
-                                <span style="font-family:'proxima-nova','arial',sans-serif;font-size: 20px;color: #8e8e8f;letter-spacing: -0.24px;line-height:23px;">Post Graduated from PTU - (M.C.A)</span>
+                            <td style="vertical-align: top; padding-top: 8px;">
+                                <span style="font-family:'Inter',sans-serif; color: #374151;font-size:16px;letter-spacing: -0.2px;line-height:24px; font-weight: 500;">5+ Years of Experience</span>
+                                <br>
+                                <span style="font-family:'Inter',sans-serif; color: #6b7280;font-size:14px;letter-spacing: -0.1px;line-height:20px;">Full Stack Development & Front-End Specialization</span>
                             </td>
                         </tr>
                         <tr>
-                            <td height="14"></td>
+                            <td height="16"></td>
                         </tr>
-                      
                         <tr>
-                            <td height="27"></td>
+                            <td style="padding-right: 16px;width: 50px; vertical-align: top;">
+                                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #06b6d4, #0891b2); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: white; font-size: 18px;">🎓</span>
+                                </div>
+                            </td>
+                            <td style="vertical-align: top; padding-top: 8px;">
+                                <span style="font-family:'Inter',sans-serif;font-size: 16px;color: #374151;letter-spacing: -0.2px;line-height:24px; font-weight: 500;">Post Graduate (M.C.A)</span>
+                                <br>
+                                <span style="font-family:'Inter',sans-serif; color: #6b7280;font-size:14px;letter-spacing: -0.1px;line-height:20px;">Punjab Technical University</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="16"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 16px;width: 50px; vertical-align: top;">
+                                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: white; font-size: 18px;">⚡</span>
+                                </div>
+                            </td>
+                            <td style="vertical-align: top; padding-top: 8px;">
+                                <span style="font-family:'Inter',sans-serif;font-size: 16px;color: #374151;letter-spacing: -0.2px;line-height:24px; font-weight: 500;">Modern Tech Stack</span>
+                                <br>
+                                <span style="font-family:'Inter',sans-serif; color: #6b7280;font-size:14px;letter-spacing: -0.1px;line-height:20px;">React, Next.js, Node.js, AI Integration</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="20"></td>
                         </tr>
                     </table>
                 </td>
-            </tr>
-            <tr>
-                <td height="13"></td>
             </tr>
         </table>
     </td>
@@ -544,59 +522,6 @@ const Email_temp = () => {
 </table>
 <!--feature-details-end-->
 
-<!--PM description-->
-<table align="center" width="630" border="0" cellspacing="0" cellpadding="0" class="A-Z-600">
-<tr>
-    <td align="center">
-        <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
-            <tr>
-                <td height="35"></td>
-            </tr>
-            <tr>
-                <td align="left" class="text-mobile"
-                    style="font-family:'Roboto Slab',serif;color:#000000;font-size: 26px;font-weight:300;letter-spacing:-.45px;opacity: 0.7;display: table;max-width:600px;line-height: 1.2;">
-                    And a glimpse of other team member you’ll be working with ...
-                </td>
-            </tr>
-            <tr>
-                <td height="7"></td>
-            </tr>
-        </table>
-    </td>
-</tr>
-</table>
-
-<!--Collage-->
-<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:rgb(255,255,255);"
-   bgcolor="#ffffff">
-<tr>
-    <td align="center" bgcolor="#ffffff">
-        <table style="background-color:rgb(255,255,255);max-width:900px;position:relative;opacity:1;top:0;left:0;"
-               bgcolor="#FFFFFF" align="center" class="A-Z-600" width="100%" border="0" cellspacing="0"
-               cellpadding="0">
-            <tr>
-                <td>
-                    <table align="center" width="672" border="0" cellspacing="0" cellpadding="0" class="A-Z-600"
-                           style="padding-left: 20px;">
-                        <tr>
-                            <td align="center">
-                                <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%"
-                                       style="border-bottom: 1px solid #d6dede;">
-                                  
-                                    <tr>
-                                        <td height="38"></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </td>
-</tr>
-</table>
-<!--Collage end-->
 
 <!--PM description-->
 <table align="center" width="630" border="0" cellspacing="0" cellpadding="0" class="A-Z-600">
@@ -604,22 +529,17 @@ const Email_temp = () => {
     <td align="center">
         <table border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
-                <td height="35"></td>
+                <td height="30"></td>
             </tr>
             <tr>
-                <td align="left" class="text-mobile"
-                    style="font-family:'Roboto Slab',serif;color:#000000;font-size: 26px;font-weight:300;letter-spacing:-.4px;opacity: 0.7;display: table;line-height:1.2;">
-                  If you have any other questions regarding project services, feel free to contact
-                      <a href="" style="text-decoration:underline; color:#000000; font-weight:300;">Manish chauhan</a>.
-                    <!--<div style="display: inline">-->
-                    <!--<a href=""-->
-                    <!--style="font-weight:400;">-->
-                    <!--mani7015066@gmail.com.com</a>-->
-                    <!--</div>-->
+                <td align="center" class="text-mobile"
+                    style="font-family:'Inter',sans-serif;color:#1e293b;font-size: 18px;font-weight:500;letter-spacing:-.3px;display: table;line-height:1.4; text-align: center; max-width: 500px;">
+                  If you have any questions regarding project services or need assistance with web development, feel free to contact
+                      <a href="mailto:mani7015066@gmail.com" style="text-decoration:none; color:#3b82f6; font-weight:600;">Manish Chauhan</a>.
                 </td>
             </tr>
             <tr>
-                <td height="40"></td>
+                <td height="30"></td>
             </tr>
         </table>
     </td>
@@ -632,22 +552,22 @@ const Email_temp = () => {
    style="position:relative;opacity:1;z-index:0;">
 <tr>
     <td align="center">
-        <table align="center" bgcolor="#d8dfdf" class="full-width" width="720" border="0" cellspacing="0"
+        <table align="center" bgcolor="#f8fafc" class="full-width" width="720" border="0" cellspacing="0"
                cellpadding="0">
             <tr>
                 <td>
                     <table align="center" width="100%" class="A-Z-600" border="0" cellspacing="0"
                            cellpadding="0">
                         <tr>
-                            <td height="35"></td>
+                            <td height="40"></td>
                         </tr>
                         <tr>
                             <td>
                                 <table align="center" border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td>
-                                <span style="font-family:'Roboto Slab',serif;color:#000000;font-size: 18px;font-weight:300;letter-spacing: -.5px;display:inline-block;padding-left:11px">
-                                Follow Us On:
+                                <span style="font-family:'Inter',sans-serif;color:#1e293b;font-size: 18px;font-weight:600;letter-spacing: -.3px;display:inline-block;">
+                                Connect With Me:
                                     </span>
                                         </td>
                                     </tr>
@@ -658,37 +578,32 @@ const Email_temp = () => {
 
                                 <table class="A-Z3-3" align="center" border="0" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td height="18"></td>
+                                        <td height="20"></td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <a href="#">
-                                                <img src="https://webenertia-pm-email-template.netlify.app/images/twitter.png"
-                                                     width="48">
+                                            <a href="https://www.instagram.com/myself_manish_chauhan" style="text-decoration: none;">
+                                                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #e1306c, #fd1d1d); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                                    <span style="color: white; font-size: 20px;">📷</span>
+                                                </div>
                                             </a>
                                         </td>
-                                        <td width="35">
+                                        <td width="20">
                                         </td>
                                         <td>
-                                            <a href="#">
-                                                <img src="https://webenertia-pm-email-template.netlify.app/images/instagram.png"
-                                                     width="48">
+                                            <a href="https://www.linkedin.com/in/themchauhan" style="text-decoration: none;">
+                                                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #0077b5, #005885); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                                    <span style="color: white; font-size: 20px;">💼</span>
+                                                </div>
                                             </a>
                                         </td>
-                                        <td width="35">
+                                        <td width="20">
                                         </td>
                                         <td>
-                                            <a href="#">
-                                                <img src="https://webenertia-pm-email-template.netlify.app/images/facebook.png"
-                                                     width="48">
-                                            </a>
-                                        </td>
-                                        <td width="35">
-                                        </td>
-                                        <td>
-                                            <a href="https://www.linkedin.com/in/themchauhan">
-                                                <img src="https://webenertia-pm-email-template.netlify.app/images/linkedin.png"
-                                                     width="48">
+                                            <a href="https://www.roblox.com/users/4118461447/profile" style="text-decoration: none;">
+                                                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #00a2ed, #0066cc); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                                    <span style="color: white; font-size: 20px;">🎮</span>
+                                                </div>
                                             </a>
                                         </td>
                                     </tr>
@@ -697,48 +612,40 @@ const Email_temp = () => {
                                 <table class="A-Z3-3" align="center" border="0" cellpadding="0" cellspacing="0"
                                        style="text-align: center; width: 80%;">
                                     <tr>
-                                        <td height="35"></td>
+                                        <td height="30"></td>
                                     </tr>
                                     <tr>
-                                        <td  style="font-family:'proxima-nova','arial',sans-serif; color:#5d5d5e;font-size:16px; font-weight:400;letter-spacing:-0.1px;line-height:20px;display: inline-block;max-width: 400px;padding-right: 11px;">
-                                <span style="font-family:'proxima-nova',sans-serif,'Open Sans';color:#5d5d5e;font-size:16px; font-weight:400;letter-spacing:-0.1px;line-height:20px;display: inline-block;max-width: 400px;padding-right: 11px;">
-                                    Made with  <img
-                                        src="https://webenertia-pm-email-template.netlify.app/images/heart.png"
-                                        width="16"
-                                        style="display: inline!important;vertical-align: middle;margin-right: 4px;margin-left: 3px;margin-top: -4px;">in India
+                                        <td style="font-family:'Inter',sans-serif; color:#64748b;font-size:14px; font-weight:400;letter-spacing:-0.1px;line-height:20px;display: inline-block;max-width: 400px;">
+                                <span style="font-family:'Inter',sans-serif;color:#64748b;font-size:14px; font-weight:400;letter-spacing:-0.1px;line-height:20px;">
+                                    Made with ❤️ in India
                                 </span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="font-family:'proxima-nova','arial',sans-serif;color:#5d5d5e;font-size:16px; font-weight:400;letter-spacing:-0.1px;line-height:19px;display: inline-block;max-width: 400px;padding-right: 4px;">
-                                <span style="font-family:'proxima-nova','arial',sans-serif;color:#5d5d5e;font-size:16px; font-weight:400;letter-spacing:-0.1px;line-height:19px;display: inline-block;max-width: 400px;padding-right: 4px;">
-                                   
-                                    <br>Phone: (+91)7015066237
+                                        <td height="8"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family:'Inter',sans-serif;color:#64748b;font-size:14px; font-weight:400;letter-spacing:-0.1px;line-height:20px;display: inline-block;">
+                                <span style="font-family:'Inter',sans-serif;color:#64748b;font-size:14px; font-weight:400;letter-spacing:-0.1px;line-height:20px;">
+                                    Phone: (+91) 7015066237
                                 </span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td height="9"></td>
+                                        <td height="8"></td>
                                     </tr>
                                     <tr>
-                                        <td style="font-family:'proxima-nova','arial',sans-serif;color:#5d5d5e;font-size:16px; font-weight:400;letter-spacing:-0.2px;line-height:22px;display: inline-block;padding-right:15px;">
-                                <span style="font-family:'proxima-nova','arial',sans-serif;color:#5d5d5e;font-size:16px; font-weight:400;letter-spacing:-0.2px;line-height:22px;display: inline-block;padding-right:15px;">
-                                    Copyright © 2024, All rights reserved
+                                        <td style="font-family:'Inter',sans-serif;color:#64748b;font-size:14px; font-weight:400;letter-spacing:-0.1px;line-height:20px;display: inline-block;">
+                                <span style="font-family:'Inter',sans-serif;color:#64748b;font-size:14px; font-weight:400;letter-spacing:-0.1px;line-height:20px;">
+                                    Copyright © 2025 Manish Chauhan. All rights reserved.
                                 </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td height="5"></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="font-family:'proxima-nova','arial',sans-serif;color:#5869a5;letter-spacing:-0.1px;line-height:25px;text-transform:uppercase;padding-right: 9px;">
                                         </td>
                                     </tr>
                                 </table>
                             </td>
                         </tr>
                         <tr>
-                            <td height="20"></td>
+                            <td height="30"></td>
                         </tr>
                     </table>
                 </td>

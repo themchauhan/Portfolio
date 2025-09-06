@@ -12,7 +12,7 @@ import MyProjects from '@/components/Featured_project';
 
 export default function Home() {
   const section1Props = {
-    title: "Have a brilliant concept or a monumental endeavor on your radar? Join me, and together, we'll accomplish greatness.",
+    title: "Have a brilliant concept or an amazing idea on your radar? Join me, and together, we'll accomplish greatness.",
     linkText: "Contact Me",
     link: "/contacts",
   };

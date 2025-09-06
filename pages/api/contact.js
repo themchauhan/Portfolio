@@ -29,7 +29,17 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
     if (!data || !data.name || !data.email || !data.subject || !data.message) {
-      return res.status(400).send({ message: "Bad request" });
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    // Check if email configuration is available
+    if (!process.env.EMAIL || !process.env.EMAIL_PASS) {
+      console.log("Email configuration missing. Form data received:", data);
+      // For development/testing, just log the data and return success
+      return res.status(200).json({ 
+        success: true, 
+        message: "Message received successfully (email service not configured)" 
+      });
     }
 
     try {
@@ -39,13 +49,18 @@ const handler = async (req, res) => {
         subject: data.subject,
       });
 
-      return res.status(200).json({ success: true });
+      return res.status(200).json({ 
+        success: true, 
+        message: "Message sent successfully" 
+      });
     } catch (err) {
-      console.log(err);
-      return res.status(400).json({ message: err.message });
+      console.error("Email sending error:", err);
+      return res.status(500).json({ 
+        message: "Failed to send email. Please try again later." 
+      });
     }
   }
-  return res.status(400).json({ message: "Bad request" });
+  return res.status(405).json({ message: "Method not allowed" });
 };
 
 export default handler;
