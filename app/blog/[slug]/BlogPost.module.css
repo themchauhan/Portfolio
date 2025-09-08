@@ -1,0 +1,64 @@
+.blogArticle {
+}
+
+.blogContent {
+  max-width: 75ch;
+}
+
+.blogContent h1,
+.blogContent h2,
+.blogContent h3,
+.blogContent h4,
+.blogContent h5,
+.blogContent h6 {
+  line-height: 1.3;
+}
+
+.blogContent h2 {
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+
+.blogContent h3 {
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+}
+
+.blogContent p {
+  margin: 0.9em 0;
+  line-height: 1.7;
+}
+
+.blogContent ul,
+.blogContent ol {
+  margin: 1em 0;
+  padding-left: 1.25em;
+}
+
+.blogContent li + li {
+  margin-top: 0.4em;
+}
+
+.blogContent a {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .blogContent {
+    max-width: 100%;
+  }
+  .blogContent p {
+    margin: 0.85em 0;
+    line-height: 1.75;
+  }
+  .blogContent h2 {
+    margin-top: 1.4em;
+    margin-bottom: 0.55em;
+  }
+  .blogContent h3 {
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+  }
+}
+
+

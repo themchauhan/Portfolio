@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './BlogPost.module.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -10,7 +11,7 @@ const blogPosts = {
     id: 'ai-powered-seo-nextjs',
     title: 'AI-Powered SEO: How Next.js and AI Transform Website Performance',
     excerpt: 'Discover how artificial intelligence is revolutionizing SEO strategies in Next.js applications, from automated content optimization to intelligent user experience enhancements.',
-    date: '2024-01-15',
+    date: '2025-03-15',
     readTime: '8 min read',
     category: 'AI & SEO',
     image: '/blog/ai-seo-nextjs.jpg',
@@ -67,7 +68,7 @@ const blogPosts = {
     id: 'nextjs-maintenance-best-practices',
     title: 'Next.js Maintenance Made Easy: Best Practices for Long-term Success',
     excerpt: 'Learn essential maintenance strategies for Next.js applications that ensure optimal performance, security, and scalability over time.',
-    date: '2024-01-10',
+    date: '2025-01-15',
     readTime: '6 min read',
     category: 'Development',
     image: '/blog/nextjs-maintenance.jpg',
@@ -132,7 +133,7 @@ const blogPosts = {
     id: 'ai-content-optimization-websites',
     title: 'AI Content Optimization: Boosting Website Engagement and Rankings',
     excerpt: 'Explore how AI-driven content optimization can dramatically improve your website\'s search rankings and user engagement metrics.',
-    date: '2024-01-05',
+    date: '2024-08-15',
     readTime: '7 min read',
     category: 'AI & Content',
     image: '/blog/ai-content-optimization.jpg',
@@ -197,7 +198,7 @@ const blogPosts = {
     id: 'website-speed-optimization-ai',
     title: 'Lightning Fast Websites: AI-Driven Speed Optimization Techniques',
     excerpt: 'Uncover advanced AI techniques for optimizing website speed and performance, ensuring your Next.js applications load in milliseconds.',
-    date: '2024-01-01',
+    date: '2024-03-15',
     readTime: '9 min read',
     category: 'Performance',
     image: '/blog/website-speed-ai.jpg',
@@ -276,7 +277,7 @@ const blogPosts = {
     id: 'ai-user-experience-personalization',
     title: 'Personalized User Experiences: AI-Powered Website Customization',
     excerpt: 'Learn how AI can create personalized user experiences that adapt to individual visitors, increasing engagement and conversion rates.',
-    date: '2023-12-28',
+    date: '2023-11-25',
     readTime: '10 min read',
     category: 'AI & UX',
     image: '/blog/ai-personalization.jpg',
@@ -389,8 +390,8 @@ export default function BlogPost({ params }) {
       <Nav />
       
       {/* Blog Post Header */}
-      <article className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article className={`py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 ${styles.blogArticle}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back to Blog */}
           <div className="mb-8">
             <Link 
@@ -439,9 +440,9 @@ export default function BlogPost({ params }) {
 
       {/* Blog Post Content */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
-            className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 prose-a:text-blue-600 prose-strong:text-gray-800"
+            className={`prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 prose-a:text-blue-600 prose-strong:text-gray-800 ${styles.blogContent}`}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>
