@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section
       className="hero-banner relative bg-cover bg-center bg-no-repeat text-white py-20"
-      style={{ backgroundImage: "url('/hero-bg.png')" }}
+      style={{ backgroundImage: "url('/hero-bg.webp')" }}
     >
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
         {/* Left Content */}
