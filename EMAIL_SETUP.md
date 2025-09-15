@@ -84,3 +84,17 @@ If Gmail doesn't work, you can use:
 - **Custom SMTP**: Configure with your hosting provider's SMTP settings
 
 The form is now fully functional with proper error handling and user feedback!
+
+## AI Summarization for /resources (Optional)
+
+To enable AI-written summaries on the `/resources` page, add these environment variables:
+
+```
+OPENAI_API_KEY=your_openai_api_key
+# Optional: override model
+OPENAI_MODEL=gpt-4o-mini
+# Optional: set absolute URL for SSR fetches in some environments
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
+```
+
+If `OPENAI_API_KEY` is not set, the page still works and will show trimmed snippets instead of AI-generated summaries.

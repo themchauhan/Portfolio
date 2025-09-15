@@ -30,7 +30,7 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex space-x-4 pt-4">
             <a
-              href="#projects"
+              href="#featured"
               className="px-6 py-3 rounded-xl font-semibold shadow-lg 
                          bg-gradient-to-r from-cyan-400 to-blue-500 text-blue-900 
                          hover:from-cyan-300 hover:to-blue-400 

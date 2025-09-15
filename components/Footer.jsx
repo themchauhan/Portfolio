@@ -97,7 +97,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  href="/comingsoon" 
+                  href="/resources" 
                   className="text-gray-300 hover:text-blue-400 transition-colors duration-200 flex items-center group"
                 >
                   <span className="w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-4 mr-0 group-hover:mr-2"></span>
