@@ -2,8 +2,11 @@
 "use client"
 import React, { useState, useRef } from "react";
 import Image from 'next/image';
+import { getExperienceText } from "../utils/experience";
 
 const Contact = () => {
+  const experience = getExperienceText();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -247,7 +250,7 @@ const Contact = () => {
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                  <span>7+ years of web development experience</span>
+                  <span>{experience} of web development experience</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-purple-400 rounded-full"></div>

@@ -1,6 +1,9 @@
 import React from "react";
+import { getExperienceText } from "../utils/experience";
 
 const About = () => {
+  const experience = getExperienceText();
+
   return (
     <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-20" id="about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,7 +20,7 @@ const About = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Professional freelance web developer with 7+ years of experience creating custom websites, 
+            Professional freelance web developer with {experience} of experience creating custom websites,
             web applications, and digital solutions for small businesses and enterprises worldwide.
           </p>
         </div>
@@ -54,7 +57,7 @@ const About = () => {
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-6 pt-6">
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-100">
-                <div className="text-3xl font-extrabold text-blue-600 mb-2">7+</div>
+                <div className="text-3xl font-extrabold text-blue-600 mb-2">{experience}</div>
                 <div className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Years Experience</div>
               </div>
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-cyan-100">

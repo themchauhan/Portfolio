@@ -127,6 +127,32 @@ function MyProjects({ showButton = true }) {
             </div>
               </div>
 
+          {/* Project Card 5 - LightBeam */}
+          <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl hover:bg-white transition-all duration-300 transform hover:-translate-y-2">
+            <div className="mb-6">
+              <div className="w-full h-32 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center p-4 border border-amber-100 group-hover:from-amber-100 group-hover:to-orange-100 transition-colors duration-300">
+              <Image
+                    src="/LightBeam_Logo.svg"
+                    alt="LightBeam"
+                  width={120}
+                  height={80}
+                  className="object-contain max-h-20 group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-amber-600 transition-colors duration-300">LightBeam</h3>
+            <div className="space-y-2">
+              <div className="text-sm font-semibold text-amber-600 uppercase tracking-wide">Technologies:</div>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">WordPress</span>
+                <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">PHP</span>
+                <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">Tailwind CSS</span>
+                <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">JavaScript</span>
+                <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">Custom Integration</span>
+              </div>
+            </div>
+              </div>
+
           {/* Additional Project Cards */}
           {/* Splunk */}
           <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl hover:bg-white transition-all duration-300 transform hover:-translate-y-2">

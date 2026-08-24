@@ -1,6 +1,9 @@
 import React from "react";
+import { getExperienceText } from "../utils/experience";
 
 const Hero = () => {
+  const experience = getExperienceText();
+
   return (
     <section
       className="hero-banner relative bg-cover bg-center bg-no-repeat text-white py-20"
@@ -22,7 +25,7 @@ const Hero = () => {
           </h2>
 
           <p className="text-base md:text-lg text-gray-200">
-            Professional web developer with 7+ years of experience creating custom websites, 
+            Professional web developer with {experience} of experience creating custom websites,
             web applications, and digital solutions for businesses worldwide. 
             Specializing in React, Next.js, and modern web technologies.
           </p>

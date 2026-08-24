@@ -31,6 +31,13 @@ function MyProjects({ showButton = true }) {
       description: 'Construction estimation platform with real-time calculations',
       technologies: ['ReactJS', 'MaterialUI', 'Redux', 'Firebase'],
       category: 'SaaS'
+    },
+    {
+      name: 'LightBeam',
+      logo: '/LightBeam_Logo.svg',
+      description: 'AI-enabled product experience focused on fast workflows, clean UI, and scalable architecture',
+      technologies: ['Tailwind CSS', 'WordPress', 'JavaScript', 'PHP','Hubspot','Custom Integration'],
+      category: 'Product'
     }
   ];
 
@@ -39,7 +46,8 @@ function MyProjects({ showButton = true }) {
       'Enterprise': 'from-orange-500 to-pink-500',
       'B2B': 'from-pink-500 to-rose-500',
       'Agency': 'from-rose-500 to-orange-500',
-      'SaaS': 'from-orange-600 to-pink-600'
+      'SaaS': 'from-orange-600 to-pink-600',
+      'Product': 'from-amber-500 to-orange-600'
     };
     return colors[category] || 'from-orange-500 to-pink-500';
   };

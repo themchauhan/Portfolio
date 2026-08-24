@@ -1,15 +1,17 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
+import { getExperienceText } from '../utils/experience'
 
 const inter = Inter({ subsets: ['latin'] })
+const experience = getExperienceText()
 
 export const metadata = {
   title: {
     default: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
     template: '%s | Manish Chauhan - Web Developer'
   },
-  description: 'Manish Chauhan is a professional full-stack web developer with 7+ years of experience. Specializing in React, Next.js, Node.js, and modern web technologies. Available for freelance web development projects worldwide.',
+  description: `Manish Chauhan is a professional full-stack web developer with ${experience} of experience. Specializing in React, Next.js, Node.js, and modern web technologies. Available for freelance web development projects worldwide.`,
   keywords: [
     'Manish Chauhan',
     'web developer',
@@ -52,7 +54,7 @@ export const metadata = {
     url: 'https://manishchauhan.dev',
     siteName: 'Manish Chauhan - Web Developer',
     title: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
-    description: 'Professional full-stack web developer with 7+ years of experience. Specializing in React, Next.js, Node.js, and modern web technologies. Available for freelance projects worldwide.',
+    description: `Professional full-stack web developer with ${experience} of experience. Specializing in React, Next.js, Node.js, and modern web technologies. Available for freelance projects worldwide.`,
     images: [
       {
         url: '/manish.png',
@@ -65,7 +67,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
-    description: 'Professional full-stack web developer with 7+ years of experience. Specializing in React, Next.js, Node.js, and modern web technologies.',
+    description: `Professional full-stack web developer with ${experience} of experience. Specializing in React, Next.js, Node.js, and modern web technologies.`,
     images: ['/manish.png'],
     creator: '@manishchauhan',
   },
@@ -84,7 +86,7 @@ export default function RootLayout({ children }) {
     "@type": "Person",
     "name": "Manish Chauhan",
     "jobTitle": "Full Stack Web Developer",
-    "description": "Professional full-stack web developer with 7+ years of experience in React, Next.js, Node.js, and modern web technologies.",
+    "description": `Professional full-stack web developer with ${experience} of experience in React, Next.js, Node.js, and modern web technologies.`,
     "url": "https://manishchauhan.dev",
     "image": "https://manishchauhan.dev/manish.png",
     "sameAs": [
