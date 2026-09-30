@@ -85,6 +85,10 @@ const Nav = () => {
                   Blog
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 transition-all duration-200 group-hover:w-full"></span>
                 </Link>
+                <Link href="/srijanx" className="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-200 relative group">
+                  SriJanX
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 transition-all duration-200 group-hover:w-full"></span>
+                </Link>
                 <Link 
                   className="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-orange-600 hover:to-pink-600 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5" 
                   href="/contacts"
@@ -112,6 +116,10 @@ const Nav = () => {
                 </Link>
                 <Link href="/blog" className="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-200 relative group">
                   Blog
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 transition-all duration-200 group-hover:w-full"></span>
+                </Link>
+                <Link href="/srijanx" className="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-200 relative group">
+                  SriJanX
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 transition-all duration-200 group-hover:w-full"></span>
                 </Link>
                 <Link 
@@ -188,6 +196,13 @@ const Nav = () => {
                     Blog
                   </Link>
                   <Link 
+                    href="/srijanx" 
+                    className="block text-gray-700 hover:text-orange-600 font-medium transition-colors duration-200 py-2"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    SriJanX
+                  </Link>
+                  <Link 
                     className="block bg-gradient-to-r from-orange-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-orange-600 hover:to-pink-600 transition-all duration-200 font-medium text-center mt-4" 
                     href="/contacts"
                     onClick={() => setMenuOpen(false)}
@@ -231,6 +246,13 @@ const Nav = () => {
                     onClick={() => setMenuOpen(false)}
                   >
                     Blog
+                  </Link>
+                  <Link 
+                    href="/srijanx" 
+                    className="block text-gray-700 hover:text-orange-600 font-medium transition-colors duration-200 py-2"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    SriJanX
                   </Link>
                   <Link 
                     className="block bg-gradient-to-r from-orange-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-orange-600 hover:to-pink-600 transition-all duration-200 font-medium text-center mt-4" 

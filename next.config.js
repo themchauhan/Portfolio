@@ -55,6 +55,16 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/sri\\:janX',
+        destination: '/srijanx',
+        permanent: false,
+      },
+      {
+        source: '/sri-janx',
+        destination: '/srijanx',
+        permanent: false,
+      },
     ]
   },
 }
