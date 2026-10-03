@@ -62,3 +62,19 @@
 }
 
 
+
+.blogContent p,
+.blogContent li {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.blogContent h2 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.blogContent h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}

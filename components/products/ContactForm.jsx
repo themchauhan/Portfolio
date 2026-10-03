@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const empty = { name: "", email: "", company: "", message: "" };
 
-export default function ContactForm() {
+export default function ContactForm({ product = "Product" }) {
   const [form, setForm] = useState(empty);
   const [status, setStatus] = useState(null); // 'sending' | 'success' | 'error'
 
@@ -19,7 +19,7 @@ export default function ContactForm() {
         body: JSON.stringify({
           name: form.name,
           email: form.email,
-          subject: `SriJanX enquiry${form.company ? ` - ${form.company}` : ""}`,
+          subject: `${product} enquiry${form.company ? ` - ${form.company}` : ""}`,
           message: `Company: ${form.company || "-"}\n\n${form.message}`,
         }),
       });
@@ -32,7 +32,7 @@ export default function ContactForm() {
   }
 
   const field =
-    "w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20";
+    "w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition focus:border-[#ff5a1f] focus:ring-2 focus:ring-[#ff5a1f]/20";
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
@@ -51,22 +51,22 @@ export default function ContactForm() {
         <input className={`${field} mt-1.5`} name="company" value={form.company} onChange={onChange} placeholder="Sri:janX" />
       </label>
       <label className="block text-sm text-slate-700">
-        What paperwork is slowing you down?
+        Tell us about your business
         <textarea
           className={`${field} mt-1.5 min-h-[130px] resize-y`}
           name="message"
           value={form.message}
           onChange={onChange}
           required
-          placeholder="e.g. We type 200 supplier invoices into Excel every week..."
+          placeholder="How many staff or locations do you have, and what are you using today?"
         />
       </label>
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full rounded-md bg-blue-700 px-6 py-3.5 font-semibold text-white transition hover:bg-blue-800 disabled:opacity-60"
+        className="w-full rounded-md bg-[#111] px-6 py-3.5 font-semibold text-white transition hover:bg-[#ff5a1f] disabled:opacity-60"
       >
-        {status === "sending" ? "Sending..." : "Get my free automation plan"}
+        {status === "sending" ? "Sending..." : "Request a demo"}
       </button>
       <div aria-live="polite" className="min-h-[1.5rem] text-sm">
         {status === "success" && <p className="text-emerald-600">Thanks! I&apos;ll reply within one working day.</p>}

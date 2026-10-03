@@ -1,9 +1,10 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter, Bricolage_Grotesque } from 'next/font/google'
 import Script from 'next/script'
 import { getExperienceText } from '../utils/experience'
 
 const inter = Inter({ subsets: ['latin'] })
+const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display', display: 'swap' })
 const experience = getExperienceText()
 
 export const metadata = {
@@ -130,7 +131,7 @@ export default function RootLayout({ children }) {
   }
 
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={`${inter.className} ${display.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://manishchauhan.dev" />

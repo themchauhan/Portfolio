@@ -203,8 +203,8 @@ p{
    width: 100%;
    font-weight: 500;
 }
-/* SriJanX page: neutralise global heading/paragraph sizing so Tailwind utilities apply */
-:where(.sjx) h1, :where(.sjx) h2, :where(.sjx) h3, :where(.sjx) h4, :where(.sjx) h5, :where(.sjx) h6, :where(.sjx) p {
+/* product pages: neutralise global heading/paragraph sizing so Tailwind utilities apply */
+:where(.prod) h1, :where(.prod) h2, :where(.prod) h3, :where(.prod) h4, :where(.prod) h5, :where(.prod) h6, :where(.prod) p {
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;

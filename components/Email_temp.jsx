@@ -81,9 +81,6 @@ const Email_temp = () => {
                   <a className="rounded-lg bg-slate-100 px-3 py-2 text-slate-700 hover:bg-slate-200" href="https://www.linkedin.com/in/themchauhan">
                     LinkedIn
                   </a>
-                  <a className="rounded-lg bg-slate-100 px-3 py-2 text-slate-700 hover:bg-slate-200" href="https://www.instagram.com/myself_manish_chauhan">
-                    Instagram
-                  </a>
                 </div>
               </div>
             </aside>

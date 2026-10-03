@@ -386,103 +386,47 @@ export default function BlogPost({ params }) {
   }
 
   return (
-    <main>
+    <main className="bg-[#f4f1ec] text-[#111] antialiased">
       <Nav />
-      
-      {/* Blog Post Header */}
-      <article className={`py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 ${styles.blogArticle}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Back to Blog */}
-          <div className="mb-8">
-            <Link 
-              href="/blog"
-              className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              <span>Back to Blog</span>
-            </Link>
-          </div>
 
-          {/* Post Meta */}
-          <div className="flex items-center justify-between mb-6">
-            <span className="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full">
-              {post.category}
-            </span>
-            <div className="flex items-center space-x-4 text-sm text-gray-600">
-              <span>{post.date}</span>
-              <span>•</span>
-              <span>{post.readTime}</span>
-            </div>
-          </div>
-
-          {/* Post Title */}
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-6">
-            {post.title}
-          </h1>
-
-          {/* Post Excerpt */}
-          <p className="text-xl text-gray-600 leading-relaxed mb-8">
-            {post.excerpt}
+      {/* Header */}
+      <article className={`prod py-14 md:py-20 ${styles.blogArticle}`}>
+        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+          <Link href="/blog" className="text-sm font-semibold text-[#ff5a1f] hover:underline">← Back to blog</Link>
+          <p className="mt-8 text-sm font-medium text-[#777]">
+            <span className="font-semibold text-[#ff5a1f]">{post.category}</span> · {post.date} · {post.readTime}
           </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {post.tags.map((tag) => (
-              <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
-                {tag}
-              </span>
-            ))}
-          </div>
+          <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">{post.title}</h1>
+          <p className="mt-6 text-xl leading-relaxed text-[#444]">{post.excerpt}</p>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {post.tags.map((tag) => <li key={tag} className="rounded-full border border-black/20 px-3 py-1 text-sm font-medium">{tag}</li>)}
+          </ul>
         </div>
       </article>
 
-      {/* Blog Post Content */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
-            className={`prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 prose-a:text-blue-600 prose-strong:text-gray-800 ${styles.blogContent}`}
+      {/* Content */}
+      <section className="bg-white py-14">
+        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+          <div
+            className={`max-w-none text-[#333] ${styles.blogContent}`}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>
       </section>
 
-      {/* Related Posts */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Related Articles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Related */}
+      <section className="prod py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <h2 className="font-display text-3xl font-extrabold md:text-4xl">Keep reading</h2>
+          <div className="mt-10 grid gap-px overflow-hidden border border-black/15 bg-black/15 md:grid-cols-3">
             {Object.values(blogPosts)
               .filter(p => p.id !== post.id)
               .slice(0, 3)
-              .map((relatedPost) => (
-                <Link key={relatedPost.id} href={`/blog/${relatedPost.id}`}>
-                  <div className="group bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div className="relative h-32 bg-gradient-to-br from-blue-100 to-cyan-100">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-4xl opacity-20">
-                          {relatedPost.category === 'AI & SEO' && '🤖'}
-                          {relatedPost.category === 'Development' && '⚡'}
-                          {relatedPost.category === 'AI & Content' && '📝'}
-                          {relatedPost.category === 'Performance' && '🚀'}
-                          {relatedPost.category === 'AI & UX' && '🎯'}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full mb-3 inline-block">
-                        {relatedPost.category}
-                      </span>
-                      <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
-                        {relatedPost.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm line-clamp-2">
-                        {relatedPost.excerpt}
-                      </p>
-                    </div>
-                  </div>
+              .map((r) => (
+                <Link key={r.id} href={`/blog/${r.id}`} className="group bg-[#f4f1ec] p-6 hover:bg-white">
+                  <p className="text-sm font-semibold text-[#ff5a1f]">{r.category}</p>
+                  <h3 className="mt-2 font-display text-xl font-extrabold leading-snug group-hover:text-[#ff5a1f]">{r.title}</h3>
+                  <p className="mt-2 line-clamp-2 text-[#555]">{r.excerpt}</p>
                 </Link>
               ))}
           </div>

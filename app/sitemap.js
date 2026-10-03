@@ -68,12 +68,12 @@ export default function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
-    {
-      url: `${baseUrl}/srijanx`,
+    ...['products', 'clinicos', 'rentcorp', 'cafecorp'].map((slug) => ({
+      url: `${baseUrl}/${slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
-    },
+    })),
     {
       url: `${baseUrl}/resources`,
       lastModified: new Date(),

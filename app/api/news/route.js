@@ -1,7 +1,10 @@
 import Parser from 'rss-parser';
 import pLimit from 'p-limit';
 import { NextResponse } from 'next/server';
-import { techNewsFeeds } from '@/config/newsSources';
+import { newsFeeds, topics } from '@/config/newsSources';
+
+// Always run on request (otherwise Next prerenders this at build time and the news never refreshes)
+export const dynamic = 'force-dynamic';
 
 // Simple in-memory cache for API responses
 let cachedResponse = { timestamp: 0, data: null };
@@ -29,9 +32,9 @@ async function getOpenAIClient() {
 
 async function fetchAllFeeds() {
 	const results = await Promise.allSettled(
-		techNewsFeeds.map(async (feed) => {
+		newsFeeds.map(async (feed) => {
 			const parsed = await parser.parseURL(feed.url);
-			return { feed: feed.name, items: parsed.items || [] };
+			return { feed: feed.name, topic: feed.topic, items: parsed.items || [] };
 		})
 	);
 
@@ -41,6 +44,7 @@ async function fetchAllFeeds() {
 			for (const item of res.value.items) {
 				items.push({
 					source: res.value.feed,
+					topic: res.value.topic,
 					title: item.title || 'Untitled',
 					link: item.link || item.guid || '',
 					isoDate: item.isoDate || item.pubDate || null,
@@ -57,21 +61,35 @@ async function fetchAllFeeds() {
 function dedupeAndFilter(items) {
 	const seen = new Set();
 	const now = Date.now();
-	const threeDaysMs = 3 * 24 * 60 * 60 * 1000;
-	const cleaned = [];
+	const byTopic = {};
 	for (const it of items) {
 		const key = it.link || it.title;
 		if (!key || seen.has(key)) continue;
 		seen.add(key);
+		const cfg = topics[it.topic];
+		if (!cfg) continue;
 		if (it.isoDate) {
 			const ts = Date.parse(it.isoDate);
-			if (!Number.isNaN(ts) && now - ts > threeDaysMs) continue; // older than 3 days
+			if (!Number.isNaN(ts) && now - ts > cfg.maxAgeDays * 24 * 60 * 60 * 1000) continue;
 		}
-		cleaned.push(it);
+		(byTopic[it.topic] ||= []).push(it);
 	}
-	// prioritize by recency, then by title as tiebreaker
-	cleaned.sort((a, b) => (Date.parse(b.isoDate || 0) || 0) - (Date.parse(a.isoDate || 0) || 0) || a.title.localeCompare(b.title));
-	return cleaned.slice(0, 25);
+	const byDate = (a, b) => (Date.parse(b.isoDate || 0) || 0) - (Date.parse(a.isoDate || 0) || 0) || a.title.localeCompare(b.title);
+	const out = [];
+	for (const [topic, list] of Object.entries(byTopic)) {
+		list.sort(byDate);
+		// Spread across publishers so one outlet does not take every slot
+		const perSource = {};
+		const picked = [];
+		for (const it of list) {
+			perSource[it.source] = (perSource[it.source] || 0) + 1;
+			if (perSource[it.source] > 3) continue;
+			picked.push(it);
+			if (picked.length >= topics[topic].limit) break;
+		}
+		out.push(...picked);
+	}
+	return out.sort(byDate);
 }
 
 async function summarizeItems(items) {
@@ -81,6 +99,7 @@ async function summarizeItems(items) {
 		return items.map((it) => ({
 			...it,
 			summary: (it.snippet || it.title || '').split(/(?<=[.!?])\s+/).slice(0, 3).join(' '),
+			summarizedBy: null,
 		}));
 	}
 
@@ -88,7 +107,7 @@ async function summarizeItems(items) {
 	const model = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 	const tasks = items.map((it) =>
 		limit(async () => {
-			const prompt = `Write a crisp, neutral 2-3 paragraph summary (120-220 words total) of the following tech news. Avoid marketing fluff. Include essential facts, context, and why it matters. Do not invent details. Return only the paragraphs without title.
+			const prompt = `Write a crisp, neutral 2-3 paragraph summary (120-220 words total) of the following news story. Keep a calm, factual tone and avoid sensationalism and marketing fluff. Include essential facts, context, and why it matters. Do not invent details. Return only the paragraphs without title.
 
 Title: ${it.title}
 Source: ${it.source}
@@ -99,16 +118,16 @@ Snippet: ${it.snippet ?? ''}`;
 				const completion = await client.chat.completions.create({
 					model,
 					messages: [
-						{ role: 'system', content: 'You are a concise tech news editor.' },
+						{ role: 'system', content: 'You are a concise, neutral news editor.' },
 						{ role: 'user', content: prompt },
 					],
 					temperature: 0.5,
 					max_tokens: 350,
 				});
 				const summary = completion.choices?.[0]?.message?.content?.trim();
-				return { ...it, summary: summary || it.snippet || it.title };
+				return { ...it, summary: summary || it.snippet || it.title, summarizedBy: summary ? model : null };
 			} catch (err) {
-				return { ...it, summary: it.snippet || it.title };
+				return { ...it, summary: it.snippet || it.title, summarizedBy: null };
 			}
 		})
 	);
@@ -156,6 +175,8 @@ export async function GET() {
 		const summarized = await summarizeItems(curated);
 		const payload = summarized.map((it) => ({
 			source: it.source,
+			topic: it.topic,
+			summarizedBy: it.summarizedBy,
 			title: it.title,
 			link: it.link,
 			publishedAt: it.isoDate,
