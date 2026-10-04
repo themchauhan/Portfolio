@@ -4,7 +4,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
-import { SITE, cities, cityList, serviceList, pathFor } from '@/lib/seo'
+import { SITE, cities, cityList, serviceList, pathFor, stateOf, placeName } from '@/lib/seo'
 
 export const dynamicParams = false
 
@@ -17,7 +17,7 @@ export function generateMetadata({ params }) {
   if (!c) return {}
   return {
     title: `Business Automation & Software in ${c.name}`,
-    description: `Cafe POS, clinic software, rent, hostel and PG management, hotel software and business automation for businesses in ${c.name}${c.alt ? ` (${c.alt})` : ''}, Haryana.`,
+    description: `Cafe POS, clinic software, rent, hostel and PG management, hotel software and business automation for businesses in ${c.name}${c.alt ? ` (${c.alt})` : ''}${stateOf(c) ? `, ${stateOf(c)}` : ''}.`,
     alternates: { canonical: `${SITE}/locations/${c.slug}` },
   }
 }
@@ -30,7 +30,7 @@ export default function Page({ params }) {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
       <Nav />
-      <PageHero eyebrow={`${c.name}, Haryana`} title={`Business automation and software in ${c.name}.`}>
+      <PageHero eyebrow={placeName(c)} title={`Business automation and software in ${c.name}.`}>
         {c.context} Pick a service below to see what I can set up for your business.
       </PageHero>
 

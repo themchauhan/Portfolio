@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 import JsonLd from '@/components/JsonLd'
 import ContactForm from '@/components/products/ContactForm'
 import { products } from '@/lib/products'
-import { SITE, services, cities, serviceList, cityList, pathFor } from '@/lib/seo'
+import { SITE, services, cities, serviceList, cityList, pathFor, stateOf, placeName } from '@/lib/seo'
 
 export const dynamicParams = false
 
@@ -18,7 +18,7 @@ export function generateMetadata({ params }) {
   const c = cities[params.city]
   if (!s || !c) return {}
   const title = `${s.name} in ${c.name}`
-  const description = `${s.name} for ${s.businesses} in ${c.name}${c.alt ? ` (${c.alt})` : ''}, Haryana. Replace ${s.pain} with simple software. Free demo and fixed-price quote.`
+  const description = `${s.name} for ${s.businesses} in ${c.name}${c.alt ? ` (${c.alt})` : ''}${stateOf(c) ? `, ${stateOf(c)}` : ''}. Replace ${s.pain} with simple software. Free demo and fixed-price quote.`
   const url = `${SITE}${pathFor(s.slug, c.slug)}`
   return {
     title,
@@ -52,9 +52,9 @@ export default function Page({ params }) {
       '@type': 'Service',
       name: `${s.name} in ${c.name}`,
       serviceType: s.name,
-      description: `${s.name} for ${s.businesses} in ${c.name}, Haryana.`,
+      description: `${s.name} for ${s.businesses} in ${placeName(c)}.`,
       url,
-      areaServed: { '@type': 'City', name: c.name, containedInPlace: { '@type': 'AdministrativeArea', name: 'Haryana, India' } },
+      areaServed: { '@type': 'City', name: c.name, containedInPlace: { '@type': 'AdministrativeArea', name: `${stateOf(c) || 'Chandigarh'}, India` } },
       provider: { '@type': 'Person', name: 'Manish Chauhan', url: SITE },
     },
     {

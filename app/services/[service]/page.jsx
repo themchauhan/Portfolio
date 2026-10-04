@@ -16,7 +16,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const s = services[params.service]
   if (!s) return {}
-  const description = `${s.name} for ${s.businesses} across Haryana: Rewari, Narnaul, Mahendergarh, Gurgaon, Pataudi, Bhiwani and nearby towns.`
+  const description = `${s.name} for ${s.businesses} across Haryana, Rajasthan, Chandigarh and Punjab: Rewari, Narnaul, Gurgaon, Bhiwani, Jaipur, Neemrana, Bhiwadi, Ambala, Chandigarh, Mohali and nearby towns.`
   return { title: s.name, description, alternates: { canonical: `${SITE}/services/${s.slug}` } }
 }
 

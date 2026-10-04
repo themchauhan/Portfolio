@@ -141,7 +141,7 @@ export default function Home() {
             <Heading>Automation for local businesses.</Heading>
             <Link href="/services" className="shrink-0 font-semibold underline decoration-[#ff5a1f] decoration-2 underline-offset-8 hover:text-[#ff5a1f]">All services →</Link>
           </div>
-          <p className="mt-5 max-w-2xl text-xl text-[#444]">Cafés, clinics, rentals, hostels, hotels and offices in Rewari, Narnaul, Mahendergarh, Gurgaon, Pataudi, Bhiwani and nearby towns.</p>
+          <p className="mt-5 max-w-2xl text-xl text-[#444]">Cafés, clinics, rentals, hostels, hotels and offices in Rewari, Narnaul, Mahendergarh, Gurgaon, Pataudi, Bhiwani, Jaipur, Ambala, Chandigarh, Mohali and nearby towns.</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {serviceList.map((sv) => (
               <Link key={sv.slug} href={`/services/${sv.slug}`} className="border-l-4 border-[#ff5a1f] bg-[#f4f1ec] p-5 hover:bg-[#ebe7df]">

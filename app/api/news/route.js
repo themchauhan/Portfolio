@@ -5,13 +5,14 @@ import { newsFeeds, topics } from '@/config/newsSources';
 
 // Always run on request (otherwise Next prerenders this at build time and the news never refreshes)
 export const dynamic = 'force-dynamic';
+export const maxDuration = 30;
 
 // Simple in-memory cache for API responses
 let cachedResponse = { timestamp: 0, data: null };
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
 const parser = new Parser({
-	timeout: 15000,
+	timeout: 8000, // skip slow feeds rather than time out the whole request
 	customFields: {
  		item: [
  			['media:content', 'media:content', { keepArray: true }],

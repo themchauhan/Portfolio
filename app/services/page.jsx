@@ -6,8 +6,8 @@ import CtaBand from '@/components/CtaBand'
 import { SITE, serviceList, cityList } from '@/lib/seo'
 
 export const metadata = {
-  title: 'Automation & Software Services in Haryana',
-  description: 'Cafe POS, clinic management, rent, hostel and PG, hotel software and business automation for Rewari, Narnaul, Mahendergarh, Gurgaon, Pataudi, Bhiwani and nearby towns.',
+  title: 'Automation & Software Services in Haryana, Jaipur, Chandigarh & Mohali',
+  description: 'Cafe POS, clinic management, rent, hostel and PG, hotel software and business automation for Rewari, Narnaul, Mahendergarh, Gurgaon, Pataudi, Bhiwani, Jaipur, Neemrana, Bhiwadi, Ambala, Chandigarh, Mohali and nearby towns.',
   alternates: { canonical: `${SITE}/services` },
 }
 
@@ -16,7 +16,7 @@ export default function Page() {
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
       <Nav />
       <PageHero eyebrow="Services" title="Software and automation for local businesses.">
-        Cafés, clinics, rentals, hostels, hotels and offices across Haryana: replace paperwork with software that is set up and supported for you.
+        Cafés, clinics, rentals, hostels, hotels and offices across Haryana, Rajasthan, Chandigarh and Mohali: replace paperwork with software that is set up and supported for you.
       </PageHero>
 
       <section className="!py-0 pb-16">

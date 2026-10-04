@@ -145,7 +145,7 @@ export default function ProductPage({ product }) {
 
       {/* Local availability */}
       {serviceList.filter((sv) => sv.product === product.slug).map((sv) => (
-        <Blade key={sv.slug} bg="bg-white" title={`${sv.name} near you`} sub="Set up and supported for businesses across Haryana.">
+        <Blade key={sv.slug} bg="bg-white" title={`${sv.name} near you`} sub="Set up and supported for businesses across Haryana, Rajasthan, Chandigarh and Mohali.">
           <ul className="flex flex-wrap gap-3">
             {cityList.map((c) => (
               <li key={c.slug}>

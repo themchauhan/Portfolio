@@ -7,7 +7,7 @@ const cols = [
   ["Products", [["ClinicOs", "/clinicos"], ["RentCorp", "/rentcorp"], ["CafeCorp", "/cafecorp"]]],
 ];
 
-const areas = ["rewari", "narnaul", "mahendergarh", "gurgaon", "pataudi", "bhiwani"].map((slug) => cityList.find((c) => c.slug === slug));
+const areas = ["rewari", "narnaul", "mahendergarh", "gurgaon", "pataudi", "bhiwani", "jaipur", "ambala", "chandigarh", "mohali"].map((slug) => cityList.find((c) => c.slug === slug));
 
 const Footer = () => (
   <footer className="prod bg-[#111] text-white">
