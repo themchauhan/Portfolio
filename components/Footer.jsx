@@ -1,10 +1,13 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
+import { serviceList, cityList, pathFor } from "@/lib/seo";
 
 const cols = [
   ["Explore", [["About", "/about"], ["Work", "/projects"], ["Academics", "/academics"], ["Blog", "/blog"], ["Resources", "/resources"]]],
   ["Products", [["ClinicOs", "/clinicos"], ["RentCorp", "/rentcorp"], ["CafeCorp", "/cafecorp"]]],
 ];
+
+const areas = ["rewari", "narnaul", "mahendergarh", "gurgaon", "pataudi", "bhiwani"].map((slug) => cityList.find((c) => c.slug === slug));
 
 const Footer = () => (
   <footer className="prod bg-[#111] text-white">
@@ -30,7 +33,22 @@ const Footer = () => (
           </div>
         ))}
       </div>
-      <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-6 text-sm text-[#8d8982] sm:flex-row sm:items-center">
+      <div className="mt-14 grid gap-10 border-t border-white/10 pt-10 md:grid-cols-2">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Services</p>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            {serviceList.map((s) => <li key={s.slug}><Link href={`/services/${s.slug}`} className="text-[#d8d4cc] hover:text-white">{s.name}</Link></li>)}
+          </ul>
+        </div>
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Areas</p>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-3">
+            {areas.map((c) => <li key={c.slug}><Link href={`/locations/${c.slug}`} className="text-[#d8d4cc] hover:text-white">{c.name}</Link></li>)}
+            <li><Link href="/services" className="font-semibold text-white underline decoration-[#ff5a1f] underline-offset-4">All areas →</Link></li>
+          </ul>
+        </div>
+      </div>
+      <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-6 text-sm text-[#8d8982] sm:flex-row sm:items-center">
         <p>&copy; {new Date().getFullYear()} Manish Chauhan. All rights reserved.</p>
         <div className="flex gap-6">
           <a href="https://www.linkedin.com/in/themchauhan" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a>

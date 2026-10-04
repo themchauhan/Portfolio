@@ -1,84 +1,31 @@
+import { SITE, serviceList, cityList, pathFor } from '@/lib/seo'
+
+const blogSlugs = [
+  'ai-powered-seo-nextjs',
+  'nextjs-maintenance-best-practices',
+  'ai-content-optimization-websites',
+  'website-speed-optimization-ai',
+  'ai-user-experience-personalization',
+]
+
 export default function sitemap() {
-  const baseUrl = 'https://themanishchauhan.in/'
-  
+  const now = new Date()
+  const entry = (path, changeFrequency, priority) => ({ url: `${SITE}${path}`, lastModified: now, changeFrequency, priority })
+
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/academics`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog/ai-websites-seo-benefits`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/nextjs-performance-seo`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/ai-content-optimization`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/ai-user-experience`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/ai-maintenance-automation`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contacts`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    ...['products', 'clinicos', 'rentcorp', 'cafecorp'].map((slug) => ({
-      url: `${baseUrl}/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    })),
-    {
-      url: `${baseUrl}/resources`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
+    entry('', 'weekly', 1),
+    entry('/about', 'monthly', 0.8),
+    entry('/projects', 'monthly', 0.8),
+    entry('/products', 'monthly', 0.9),
+    ...['clinicos', 'rentcorp', 'cafecorp'].map((p) => entry(`/${p}`, 'monthly', 0.9)),
+    entry('/services', 'monthly', 0.9),
+    ...serviceList.map((s) => entry(`/services/${s.slug}`, 'monthly', 0.8)),
+    ...serviceList.flatMap((s) => cityList.map((c) => entry(pathFor(s.slug, c.slug), 'monthly', 0.7))),
+    ...cityList.map((c) => entry(`/locations/${c.slug}`, 'monthly', 0.7)),
+    entry('/academics', 'yearly', 0.5),
+    entry('/blog', 'weekly', 0.7),
+    ...blogSlugs.map((s) => entry(`/blog/${s}`, 'monthly', 0.6)),
+    entry('/resources', 'daily', 0.5),
+    entry('/contacts', 'monthly', 0.7),
   ]
 }

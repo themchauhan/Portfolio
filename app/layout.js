@@ -8,6 +8,7 @@ const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-disp
 const experience = getExperienceText()
 
 export const metadata = {
+  metadataBase: new URL('https://themanishchauhan.in'),
   title: {
     default: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
     template: '%s | Manish Chauhan - Web Developer'
@@ -52,7 +53,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://manishchauhan.dev',
+    url: 'https://themanishchauhan.in',
     siteName: 'Manish Chauhan - Web Developer',
     title: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
     description: `Professional full-stack web developer with ${experience} of experience. Specializing in React, Next.js, Node.js, and modern web technologies. Available for freelance projects worldwide.`,
@@ -72,12 +73,6 @@ export const metadata = {
     images: ['/manish.png'],
     creator: '@manishchauhan',
   },
-  verification: {
-    google: 'your-google-verification-code', // Add your Google Search Console verification code
-  },
-  alternates: {
-    canonical: 'https://manishchauhan.dev',
-  },
   category: 'technology',
 }
 
@@ -88,8 +83,8 @@ export default function RootLayout({ children }) {
     "name": "Manish Chauhan",
     "jobTitle": "Full Stack Web Developer",
     "description": `Professional full-stack web developer with ${experience} of experience in React, Next.js, Node.js, and modern web technologies.`,
-    "url": "https://manishchauhan.dev",
-    "image": "https://manishchauhan.dev/manish.png",
+    "url": "https://themanishchauhan.in",
+    "image": "https://themanishchauhan.in/manish.png",
     "sameAs": [
       "https://linkedin.com/in/manishchauhan",
       "https://github.com/manishchauhan"
@@ -134,7 +129,6 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.className} ${display.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="canonical" href="https://manishchauhan.dev" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#1e40af" />
         <meta name="msapplication-TileColor" content="#1e40af" />

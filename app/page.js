@@ -4,7 +4,12 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ContactForm from '@/components/products/ContactForm'
 import { productList } from '@/lib/products'
+import { serviceList, cityList, pathFor } from '@/lib/seo'
 import { getExperienceText } from '@/utils/experience'
+
+export const metadata = {
+  alternates: { canonical: 'https://themanishchauhan.in' },
+}
 
 const clients = [
   ['Splunk', '/Splunk_Logo_Grey-1.svg'],
@@ -126,6 +131,30 @@ export default function Home() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Local services */}
+      <section className="!py-16 md:!py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <Heading>Automation for local businesses.</Heading>
+            <Link href="/services" className="shrink-0 font-semibold underline decoration-[#ff5a1f] decoration-2 underline-offset-8 hover:text-[#ff5a1f]">All services →</Link>
+          </div>
+          <p className="mt-5 max-w-2xl text-xl text-[#444]">Cafés, clinics, rentals, hostels, hotels and offices in Rewari, Narnaul, Mahendergarh, Gurgaon, Pataudi, Bhiwani and nearby towns.</p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {serviceList.map((sv) => (
+              <Link key={sv.slug} href={`/services/${sv.slug}`} className="border-l-4 border-[#ff5a1f] bg-[#f4f1ec] p-5 hover:bg-[#ebe7df]">
+                <h3 className="font-display text-lg font-extrabold">{sv.name}</h3>
+                <p className="mt-1 text-sm text-[#555]">For {sv.businesses}</p>
+              </Link>
+            ))}
+          </div>
+          <ul className="mt-8 flex flex-wrap gap-2.5">
+            {cityList.map((c) => (
+              <li key={c.slug}><Link href={`/locations/${c.slug}`} className="inline-block rounded-full border border-black/20 px-4 py-1.5 text-sm font-medium hover:border-[#ff5a1f] hover:text-[#ff5a1f]">{c.name}</Link></li>
+            ))}
+          </ul>
         </div>
       </section>
 
