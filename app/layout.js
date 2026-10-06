@@ -119,7 +119,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.className} ${display.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#1e40af" />
         <meta name="msapplication-TileColor" content="#1e40af" />
