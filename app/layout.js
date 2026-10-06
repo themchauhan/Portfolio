@@ -1,7 +1,11 @@
 import './globals.css'
 import { Inter, Bricolage_Grotesque } from 'next/font/google'
 import { getExperienceText } from '../utils/experience'
+import Script from 'next/script'
 import { OG_IMAGE } from '@/lib/seo'
+
+// Google Analytics 4 (property: themanishchauhan.in, stream: portfolio-web)
+const GA_ID = 'G-C73CLLFRK8'
 
 const inter = Inter({ subsets: ['latin'] })
 const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display', display: 'swap' })
@@ -138,6 +142,15 @@ export default function RootLayout({ children }) {
       </head>
       <body className={inter.className}>
         {children}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
       </body>
     </html>
   )
