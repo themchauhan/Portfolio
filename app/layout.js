@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter, Bricolage_Grotesque } from 'next/font/google'
-import Script from 'next/script'
 import { getExperienceText } from '../utils/experience'
+import { OG_IMAGE } from '@/lib/seo'
 
 const inter = Inter({ subsets: ['latin'] })
 const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display', display: 'swap' })
@@ -11,9 +11,9 @@ export const metadata = {
   metadataBase: new URL('https://themanishchauhan.in'),
   title: {
     default: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
-    template: '%s | Manish Chauhan - Web Developer'
+    template: '%s | Manish Chauhan'
   },
-  description: `Manish Chauhan is a professional full-stack web developer with ${experience} of experience. Specializing in React, Next.js, Node.js, and modern web technologies. Available for freelance web development projects worldwide.`,
+  description: `Full stack developer with ${experience} of experience building websites, web apps and business software. Now building ClinicOs, RentCorp and CafeCorp.`,
   keywords: [
     'Manish Chauhan',
     'web developer',
@@ -52,26 +52,18 @@ export const metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'en_IN',
     url: 'https://themanishchauhan.in',
-    siteName: 'Manish Chauhan - Web Developer',
+    siteName: 'Manish Chauhan',
     title: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
-    description: `Professional full-stack web developer with ${experience} of experience. Specializing in React, Next.js, Node.js, and modern web technologies. Available for freelance projects worldwide.`,
-    images: [
-      {
-        url: '/manish.png',
-        width: 1200,
-        height: 630,
-        alt: 'Manish Chauhan - Full Stack Web Developer',
-      },
-    ],
+    description: `Full stack developer with ${experience} of experience building websites, web apps and business software.`,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
-    description: `Professional full-stack web developer with ${experience} of experience. Specializing in React, Next.js, Node.js, and modern web technologies.`,
-    images: ['/manish.png'],
-    creator: '@manishchauhan',
+    description: `Full stack developer with ${experience} of experience building websites, web apps and business software.`,
+    images: [OG_IMAGE.url],
   },
   category: 'technology',
 }
@@ -84,10 +76,9 @@ export default function RootLayout({ children }) {
     "jobTitle": "Full Stack Web Developer",
     "description": `Professional full-stack web developer with ${experience} of experience in React, Next.js, Node.js, and modern web technologies.`,
     "url": "https://themanishchauhan.in",
-    "image": "https://themanishchauhan.in/manish.png",
+    "image": "https://themanishchauhan.in/manish-portrait.jpg",
     "sameAs": [
-      "https://linkedin.com/in/manishchauhan",
-      "https://github.com/manishchauhan"
+      "https://www.linkedin.com/in/themchauhan"
     ],
     "address": {
       "@type": "PostalAddress",
@@ -141,20 +132,10 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-          strategy="afterInteractive"
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: "Manish Chauhan", url: "https://themanishchauhan.in" }) }}
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'GA_MEASUREMENT_ID');
-          `}
-        </Script>
       </head>
       <body className={inter.className}>
         {children}

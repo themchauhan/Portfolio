@@ -3,13 +3,13 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
-import { SITE, serviceList, cityList } from '@/lib/seo'
+import { SITE, serviceList, cityList, pageMeta } from '@/lib/seo'
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Automation & Software Services in Haryana, Jaipur, Chandigarh & Mohali',
   description: 'Cafe POS, clinic management, rent, hostel and PG, hotel software and business automation for Rewari, Narnaul, Mahendergarh, Gurgaon, Pataudi, Bhiwani, Jaipur, Neemrana, Bhiwadi, Ambala, Chandigarh, Mohali and nearby towns.',
   alternates: { canonical: `${SITE}/services` },
-}
+})
 
 export default function Page() {
   return (

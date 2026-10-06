@@ -2,12 +2,13 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
+import { pageMeta } from '@/lib/seo'
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Academics',
   description: "Manish Chauhan's education: MCA from Punjab Technical University, B.Sc. IT (Hons.) from Kurukshetra University.",
   alternates: { canonical: 'https://themanishchauhan.in/academics' },
-}
+})
 
 const items = [
   ['2016 – 2018', 'Master of Computer Application', 'Punjab Technical University', 'Post graduate'],

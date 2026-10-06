@@ -3,12 +3,13 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
+import { pageMeta } from '@/lib/seo'
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Work',
   description: 'Websites and web platforms built for Splunk, Cohesity, Socure, Digimarc and more.',
   alternates: { canonical: 'https://themanishchauhan.in/projects' },
-}
+})
 
 // [name, logo, dark logo?, tech]
 const projects = [

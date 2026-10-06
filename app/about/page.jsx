@@ -3,12 +3,13 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { getExperienceText } from '@/utils/experience'
+import { pageMeta } from '@/lib/seo'
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'About',
-  description: 'Manish Chauhan is a full stack developer building websites, web apps and business software. Currently at Clear Digital, freelancing and building ClinicOs, RentCorp and CafeCorp.',
+  description: 'Manish Chauhan is a full stack developer at Clear Digital, freelancing and building ClinicOs, RentCorp and CafeCorp: software for real businesses.',
   alternates: { canonical: 'https://themanishchauhan.in/about' },
-}
+})
 
 const values = [
   ['Plain language', 'No jargon. You always know what is being built, why, and what it costs.'],

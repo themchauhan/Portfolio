@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 import JsonLd from '@/components/JsonLd'
 import ContactForm from '@/components/products/ContactForm'
 import { products } from '@/lib/products'
-import { SITE, services, cities, serviceList, cityList, pathFor, stateOf, placeName } from '@/lib/seo'
+import { SITE, services, cities, serviceList, cityList, pathFor, stateOf, placeName, pageMeta } from '@/lib/seo'
 
 export const dynamicParams = false
 
@@ -18,14 +18,14 @@ export function generateMetadata({ params }) {
   const c = cities[params.city]
   if (!s || !c) return {}
   const title = `${s.name} in ${c.name}`
-  const description = `${s.name} for ${s.businesses} in ${c.name}${c.alt ? ` (${c.alt})` : ''}${stateOf(c) ? `, ${stateOf(c)}` : ''}. Replace ${s.pain} with simple software. Free demo and fixed-price quote.`
+  const description = `${s.name} for ${s.businesses} in ${placeName(c)}. Free demo and fixed-price quote.`
   const url = `${SITE}${pathFor(s.slug, c.slug)}`
-  return {
+  return pageMeta({
     title,
     description,
     alternates: { canonical: url },
     openGraph: { title, description, url, type: 'website' },
-  }
+  })
 }
 
 const steps = [

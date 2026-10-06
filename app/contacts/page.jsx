@@ -2,12 +2,13 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import ContactForm from '@/components/products/ContactForm'
+import { pageMeta } from '@/lib/seo'
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Contact',
   description: 'Get in touch with Manish Chauhan for websites, web apps and automation projects.',
   alternates: { canonical: 'https://themanishchauhan.in/contacts' },
-}
+})
 
 export default function Page() {
   return (

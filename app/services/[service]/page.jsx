@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
 import { products } from '@/lib/products'
-import { SITE, services, serviceList, cityList, pathFor } from '@/lib/seo'
+import { SITE, services, serviceList, cityList, pathFor, pageMeta } from '@/lib/seo'
 
 export const dynamicParams = false
 
@@ -16,8 +16,8 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const s = services[params.service]
   if (!s) return {}
-  const description = `${s.name} for ${s.businesses} across Haryana, Rajasthan, Chandigarh and Punjab: Rewari, Narnaul, Gurgaon, Bhiwani, Jaipur, Neemrana, Bhiwadi, Ambala, Chandigarh, Mohali and nearby towns.`
-  return { title: s.name, description, alternates: { canonical: `${SITE}/services/${s.slug}` } }
+  const description = `${s.name} for ${s.businesses} in Rewari, Gurgaon, Jaipur, Chandigarh and nearby. Free demo.`
+  return pageMeta({ title: s.name, description, alternates: { canonical: `${SITE}/services/${s.slug}` } })
 }
 
 export default function Page({ params }) {

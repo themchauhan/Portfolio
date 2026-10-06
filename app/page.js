@@ -6,10 +6,13 @@ import ContactForm from '@/components/products/ContactForm'
 import { productList } from '@/lib/products'
 import { serviceList, cityList, pathFor } from '@/lib/seo'
 import { getExperienceText } from '@/utils/experience'
+import { pageMeta } from '@/lib/seo'
 
-export const metadata = {
+export const metadata = pageMeta({
+  title: { absolute: 'Manish Chauhan - Full Stack Web Developer & Freelancer' },
+  description: 'Full stack developer with 8+ years building websites and web apps for Splunk, Cohesity and Socure. Now building ClinicOs, RentCorp and CafeCorp.',
   alternates: { canonical: 'https://themanishchauhan.in' },
-}
+})
 
 const clients = [
   ['Splunk', '/Splunk_Logo_Grey-1.svg'],
@@ -63,7 +66,7 @@ export default function Home() {
           <div>
             <p className="text-[15px] font-semibold text-[#ff5a1f]">Manish Chauhan · Full stack developer</p>
             <h1 className="mt-5 font-display text-5xl font-extrabold leading-[1.02] tracking-tight md:text-6xl xl:text-7xl">
-              I build websites and software that businesses{' '}
+              I build software that businesses{' '}
               <span className="underline decoration-[#ff5a1f] decoration-[6px] underline-offset-[10px]">actually use.</span>
             </h1>
             <p className="mt-8 max-w-xl text-xl leading-relaxed text-[#444]">

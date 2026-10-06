@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import CtaBand from '@/components/CtaBand';
+import { pageMeta } from '@/lib/seo';
 
 // Blog data
 const blogPosts = [
@@ -59,11 +60,11 @@ const blogPosts = [
   }
 ];
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Blog',
   description: 'Notes on AI, Next.js, SEO and web performance.',
   alternates: { canonical: 'https://themanishchauhan.in/blog' },
-};
+});
 
 export default function BlogPage() {
   return (

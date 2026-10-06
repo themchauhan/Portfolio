@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './BlogPost.module.css';
+import { pageMeta } from '@/lib/seo';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -376,6 +377,17 @@ export async function generateStaticParams() {
   return Object.keys(blogPosts).map((slug) => ({
     slug: slug,
   }));
+}
+
+export function generateMetadata({ params }) {
+  const post = blogPosts[params.slug];
+  if (!post) return {};
+  return pageMeta({
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `https://themanishchauhan.in/blog/${params.slug}` },
+    openGraph: { type: 'article', publishedTime: post.date },
+  });
 }
 
 export default function BlogPost({ params }) {

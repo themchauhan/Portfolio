@@ -4,7 +4,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
-import { SITE, cities, cityList, serviceList, pathFor, stateOf, placeName } from '@/lib/seo'
+import { SITE, cities, cityList, serviceList, pathFor, stateOf, placeName, pageMeta } from '@/lib/seo'
 
 export const dynamicParams = false
 
@@ -15,11 +15,11 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const c = cities[params.city]
   if (!c) return {}
-  return {
+  return pageMeta({
     title: `Business Automation & Software in ${c.name}`,
-    description: `Cafe POS, clinic software, rent, hostel and PG management, hotel software and business automation for businesses in ${c.name}${c.alt ? ` (${c.alt})` : ''}${stateOf(c) ? `, ${stateOf(c)}` : ''}.`,
+    description: `Cafe POS, clinic, rent, hostel/PG and hotel software, plus business automation for businesses in ${placeName(c)}. Free demo.`,
     alternates: { canonical: `${SITE}/locations/${c.slug}` },
-  }
+  })
 }
 
 export default function Page({ params }) {

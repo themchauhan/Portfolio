@@ -5,12 +5,13 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
 import { newsFeeds, topics } from '@/config/newsSources';
+import { pageMeta } from '@/lib/seo';
 
-export const metadata = {
+export const metadata = pageMeta({
 	title: 'News',
 	description: 'Indian and international news, with a focus on good news. Headlines from publishers Indians read most, summarised and credited.',
 	alternates: { canonical: 'https://themanishchauhan.in/resources' },
-};
+});
 
 async function getNews(baseUrl) {
 	try {

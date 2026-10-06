@@ -3,12 +3,13 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { productList } from "@/lib/products";
 import { getExperienceText } from "@/utils/experience";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "Products - ClinicOs, RentCorp, CafeCorp",
   description: "Business software built to replace paperwork: clinic management, rental management and café POS.",
   alternates: { canonical: "https://themanishchauhan.in/products" },
-};
+});
 
 export default function Page() {
   return (
