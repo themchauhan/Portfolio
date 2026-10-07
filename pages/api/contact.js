@@ -9,6 +9,16 @@ const CONTACT_MESSAGE_FIELDS = {
   message: "Message",
 };
 
+// User input goes into an HTML email, so escape it.
+const escapeHtml = (value) =>
+  String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/\n/g, "<br/>");
+
 const generateEmailContent = (data) => {
   const stringData = Object.entries(data).reduce(
     (str, [key, val]) =>
@@ -16,7 +26,7 @@ const generateEmailContent = (data) => {
     ""
   );
   const htmlData = Object.entries(data).reduce((str, [key, val]) => {
-    return (str += `<h3 class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h3><p class="form-answer" align="left">${val}</p>`);
+    return (str += `<h3 class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h3><p class="form-answer" align="left">${escapeHtml(val)}</p>`);
   }, "");
 
   return {
@@ -27,18 +37,18 @@ const generateEmailContent = (data) => {
 
 const handler = async (req, res) => {
   if (req.method === "POST") {
-    const data = req.body;
-    if (!data || !data.name || !data.email || !data.subject || !data.message) {
+    const body = req.body || {};
+    const data = { name: body.name, email: body.email, subject: body.subject, message: body.message };
+    if (!data.name || !data.email || !data.subject || !data.message) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
     // Check if email configuration is available
     if (!process.env.EMAIL || !process.env.EMAIL_PASS) {
-      console.log("Email configuration missing. Form data received:", data);
-      // For development/testing, just log the data and return success
-      return res.status(200).json({ 
-        success: true, 
-        message: "Message received successfully (email service not configured)" 
+      // Fail loudly so messages are never silently lost.
+      console.error("Contact form: EMAIL / EMAIL_PASS environment variables are not set.", data);
+      return res.status(500).json({
+        message: "Email service is not configured. Please email me directly.",
       });
     }
 
@@ -47,6 +57,7 @@ const handler = async (req, res) => {
         ...mailOptions,
         ...generateEmailContent(data),
         subject: data.subject,
+        replyTo: `${data.name} <${data.email}>`, // hit Reply to answer the visitor
       });
 
       return res.status(200).json({ 
@@ -54,7 +65,8 @@ const handler = async (req, res) => {
         message: "Message sent successfully" 
       });
     } catch (err) {
-      console.error("Email sending error:", err);
+      // EAUTH = Gmail rejected EMAIL / EMAIL_PASS (needs a Gmail App Password).
+      console.error("Contact form: email sending failed", err?.code, err?.response || err?.message);
       return res.status(500).json({ 
         message: "Failed to send email. Please try again later." 
       });
