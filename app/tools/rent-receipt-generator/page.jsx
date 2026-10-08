@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import JsonLd from '@/components/JsonLd'
+import FreeBadges from '@/components/tools/FreeBadges'
 import RentReceiptGenerator from '@/components/tools/RentReceiptGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
 
@@ -9,12 +10,12 @@ const URL = `${SITE}/tools/rent-receipt-generator`
 
 export const metadata = pageMeta({
   title: 'Free Rent Receipt Generator for HRA (Print or PDF)',
-  description: 'Create monthly rent receipts for HRA claims in seconds. Free, no sign-up, nothing stored. Add landlord PAN, print or save as PDF.',
+  description: 'Create monthly rent receipts for HRA claims in seconds. Free, no sign-in or sign-up. Add landlord PAN, print or save as PDF.',
   alternates: { canonical: URL },
 })
 
 const faqs = [
-  ['Is this rent receipt generator free?', 'Yes. It is completely free, needs no sign-up, and everything you type stays in your browser.'],
+  ['Is this rent receipt generator free?', 'Yes. It is completely free with no limits. You don’t need to sign in, sign up or create an account, and everything you type stays in your browser.'],
   ['When is the landlord PAN required?', 'If the annual rent you pay is more than ₹1,00,000, your employer will usually ask for the landlord’s PAN to accept your HRA claim.'],
   ['Do rent receipts need a revenue stamp?', 'Receipts for cash payments above ₹5,000 usually need a revenue stamp signed by the landlord. Bank, UPI and cheque payments generally do not.'],
   ['How do I save the receipts as a PDF?', 'Click “Print / Save as PDF” and choose “Save as PDF” as the printer. Then get the receipts signed by your landlord.'],
@@ -35,7 +36,8 @@ export default function Page() {
           <div className="print:hidden">
             <p className="text-[15px] font-semibold text-[#ff5a1f]">Free tool</p>
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">Rent Receipt Generator</h1>
-            <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make monthly rent receipts for your HRA claim in under a minute. Free, no sign-up, and nothing is stored.</p>
+            <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make rent receipts for your HRA claim in under a minute. Completely free: no sign-in, no sign-up, no limits. Just fill in the details and print.</p>
+            <FreeBadges className="mt-6" />
           </div>
           <div className="mt-10 print:mt-0">
             <RentReceiptGenerator />

@@ -2,11 +2,12 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
+import FreeBadges from '@/components/tools/FreeBadges'
 import { SITE, pageMeta } from '@/lib/seo'
 
 export const metadata = pageMeta({
   title: 'Free Business Tools: Rent Receipts, GST Invoices',
-  description: 'Free online tools for Indian businesses and employees: rent receipt generator for HRA and GST invoice generator. No sign-up, nothing stored.',
+  description: 'Free online tools for Indian businesses and employees: rent receipt generator for HRA and GST invoice generator. No sign-in or sign-up needed.',
   alternates: { canonical: `${SITE}/tools` },
 })
 
@@ -20,8 +21,9 @@ export default function Page() {
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
       <Nav />
       <PageHero eyebrow="Free tools" title="Small tools that save real time.">
-        Free, no sign-up, and everything stays in your browser.
+        Completely free to use. No sign-in, no sign-up, no limits, and everything stays in your browser.
       </PageHero>
+      <div className="mx-auto -mt-6 mb-12 max-w-7xl px-5 sm:px-8 md:-mt-12"><FreeBadges /></div>
       <section className="!py-0 pb-20">
         <div className="mx-auto grid max-w-7xl gap-6 px-5 sm:px-8 md:grid-cols-2">
           {tools.map(([href, name, desc, who]) => (

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import JsonLd from '@/components/JsonLd'
+import FreeBadges from '@/components/tools/FreeBadges'
 import GstInvoiceGenerator from '@/components/tools/GstInvoiceGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
 
@@ -9,12 +10,12 @@ const URL = `${SITE}/tools/gst-invoice-generator`
 
 export const metadata = pageMeta({
   title: 'Free GST Invoice Generator (CGST, SGST, IGST) – Print or PDF',
-  description: 'Create a GST tax invoice in a minute. Auto CGST/SGST or IGST, HSN codes, amount in words. Free, no sign-up, nothing stored.',
+  description: 'Create a GST tax invoice in a minute. Auto CGST/SGST or IGST, HSN codes, amount in words. Free, no sign-in or sign-up.',
   alternates: { canonical: URL },
 })
 
 const faqs = [
-  ['Is this GST invoice generator free?', 'Yes. It is completely free, needs no sign-up, and everything you type stays in your browser.'],
+  ['Is this GST invoice generator free?', 'Yes. It is completely free with no limits. You don’t need to sign in, sign up or create an account, and everything you type stays in your browser.'],
   ['When is CGST + SGST charged and when is IGST charged?', 'If the seller and the place of supply (buyer’s state) are in the same state, CGST and SGST are charged, each at half the GST rate. If they are in different states, IGST is charged at the full rate. The tool picks this automatically.'],
   ['What are the current GST rates?', 'Since 22 September 2025, the main GST rates are 0%, 5%, 18% and 40%. Restaurant food is usually 5%. Always confirm the rate for your specific item or service.'],
   ['What must a GST tax invoice include?', 'Typically the supplier’s name, address and GSTIN, invoice number and date, buyer details, HSN/SAC codes, taxable value, GST rate and amount, place of supply and a signature.'],
@@ -35,7 +36,8 @@ export default function Page() {
           <div className="print:hidden">
             <p className="text-[15px] font-semibold text-[#ff5a1f]">Free tool</p>
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">GST Invoice Generator</h1>
-            <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make a proper GST tax invoice in a minute. CGST/SGST or IGST is worked out for you. Free, no sign-up, and nothing is stored.</p>
+            <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make a proper GST tax invoice in a minute. CGST/SGST or IGST is worked out for you. Completely free: no sign-in, no sign-up, no limits.</p>
+            <FreeBadges className="mt-6" />
           </div>
           <div className="mt-10 print:mt-0"><GstInvoiceGenerator /></div>
         </div>
