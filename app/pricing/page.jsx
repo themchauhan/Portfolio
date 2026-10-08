@@ -3,7 +3,9 @@ import PageHero from '@/components/PageHero'
 import PlanCards from '@/components/PlanCards'
 import { products } from '@/lib/products'
 import QuoteEstimator from '@/components/QuoteEstimator'
-import { productPlans, PRICING_NOTE, waLink } from '@/lib/pricing'
+import IncludedStrip from '@/components/IncludedStrip'
+import ComparisonTable from '@/components/ComparisonTable'
+import { productPlans, PRICING_NOTE, waLink, setupFees, priceUnit } from '@/lib/pricing'
 import { SITE, pageMeta } from '@/lib/seo'
 
 export const metadata = pageMeta({
@@ -15,8 +17,10 @@ export const metadata = pageMeta({
 const faqs = [
   ['Is there a free demo?', 'Yes. Every plan starts with a free 20-minute demo so you can see the software working for your business before paying.'],
   ['Are prices fixed?', 'Monthly product plans are fixed. For websites and custom work, the estimator gives a range; after reviewing your requirements I send a fixed quotation, with no surprise bills.'],
+  ['What is the one-time setup fee for?', 'It covers onboarding: setting up your account, importing your existing data (patients, tenants or menu) and training your staff, so you are ready to use the software from day one.'],
+  ['Is there a discount for paying yearly?', 'Yes. Pay yearly and you get 2 months free, so you pay for 10 months instead of 12.'],
   ['Can I change plans later?', 'Yes. You can move up or down a plan as your business grows.'],
-  ['How do I pay?', 'UPI, bank transfer or card. GST invoices are provided.'],
+  ['How do I pay?', 'UPI, bank transfer or card. You get a proper invoice for every payment.'],
 ]
 
 export default function Page() {
@@ -34,6 +38,8 @@ export default function Page() {
         <a href="#freelance" className="rounded-full border border-black/25 bg-white px-5 py-2 text-sm font-semibold hover:border-[#111]">Websites &amp; custom work</a>
       </nav>
 
+      <div className="mx-auto mb-4 mt-8 max-w-7xl px-5 sm:px-8"><IncludedStrip /></div>
+
       {['clinicos', 'rentcorp', 'cafecorp'].map((k, i) => (
         <section key={k} id={k} className={`!py-14 md:!py-20 scroll-mt-20 ${i % 2 ? 'bg-white' : ''}`}>
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -44,10 +50,19 @@ export default function Page() {
               </div>
               <Link href={`/${k}`} className="shrink-0 font-semibold underline decoration-[#ff5a1f] decoration-2 underline-offset-8 hover:text-[#ff5a1f]">See all features →</Link>
             </div>
-            <PlanCards plans={productPlans[k]} productName={products[k].name} />
+            <PlanCards plans={productPlans[k]} productName={products[k].name} setupFee={setupFees[k]} unitNote={priceUnit[k]} />
           </div>
         </section>
       ))}
+
+      <section className="!py-14 md:!py-20">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Why choose us</p>
+          <h2 className="mt-2 max-w-3xl font-display text-4xl font-extrabold tracking-tight">Simple, fast and easy to manage. Not complicated.</h2>
+          <p className="mb-10 mt-4 max-w-2xl text-lg text-[#555]">Built for busy owners who want the work done, not another system to learn.</p>
+          <ComparisonTable name="ClinicOs · RentCorp · CafeCorp" />
+        </div>
+      </section>
 
       <section id="freelance" className="!py-14 md:!py-20 scroll-mt-20 bg-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">

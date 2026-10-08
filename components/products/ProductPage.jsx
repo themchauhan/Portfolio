@@ -2,7 +2,9 @@ import Link from "next/link";
 import ContactForm from "@/components/products/ContactForm";
 import TrackedLink from "@/components/TrackedLink";
 import PlanCards from "@/components/PlanCards";
-import { productPlans, PRICING_NOTE } from "@/lib/pricing";
+import IncludedStrip from "@/components/IncludedStrip";
+import ComparisonTable from "@/components/ComparisonTable";
+import { productPlans, PRICING_NOTE, setupFees, priceUnit } from "@/lib/pricing";
 import { getExperienceText } from "@/utils/experience";
 import { serviceList, cityList, pathFor } from "@/lib/seo";
 
@@ -146,10 +148,16 @@ export default function ProductPage({ product }) {
       {/* Plans */}
       {productPlans[product.slug] && (
         <Blade id="pricing" bg="bg-slate-50" title={`${product.name} pricing`} sub={PRICING_NOTE}>
-          <PlanCards plans={productPlans[product.slug]} productName={product.name} />
+          <PlanCards plans={productPlans[product.slug]} productName={product.name} setupFee={setupFees[product.slug]} unitNote={priceUnit[product.slug]} />
+          <IncludedStrip className="mt-8" />
           <Link href="/pricing" className="mt-8 inline-block font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900">Compare all plans →</Link>
         </Blade>
       )}
+
+      {/* Comparison */}
+      <Blade title={`Why ${product.name}?`} sub="Simple, fast and easy to manage. Built for busy owners, not IT teams.">
+        <ComparisonTable name={product.name} />
+      </Blade>
 
       {/* Local availability */}
       {serviceList.filter((sv) => sv.product === product.slug).map((sv) => (
