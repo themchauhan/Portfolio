@@ -1,7 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import ContactForm from '@/components/products/ContactForm'
 import { productList } from '@/lib/products'
 import { serviceList, cityList, pathFor } from '@/lib/seo'
@@ -58,7 +56,6 @@ export default function Home() {
 
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
 
       {/* Hero */}
       <section className="!py-14 md:!py-24">
@@ -235,7 +232,6 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer />
     </main>
   )
 }

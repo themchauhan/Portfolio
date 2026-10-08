@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 
 const empty = { name: "", email: "", company: "", message: "" };
 
@@ -26,6 +27,7 @@ export default function ContactForm({ product = "Product" }) {
       if (!res.ok) throw new Error("failed");
       setForm(empty);
       setStatus("success");
+      track("contact_submit", { form: product, page: window.location.pathname });
     } catch {
       setStatus("error");
     }

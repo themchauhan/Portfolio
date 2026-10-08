@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
 import { products } from '@/lib/products'
@@ -27,7 +25,6 @@ export default function Page({ params }) {
 
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
       <PageHero eyebrow="Services" title={s.name}>
         For {s.businesses}. Replace {s.pain} with simple software, set up and supported by me.
       </PageHero>
@@ -64,7 +61,6 @@ export default function Page({ params }) {
       </section>
 
       <CtaBand title={`Need ${s.keyword}? Let's talk.`} />
-      <Footer />
     </main>
   )
 }

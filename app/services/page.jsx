@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
 import { SITE, serviceList, cityList, pageMeta } from '@/lib/seo'
@@ -14,7 +12,6 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
       <PageHero eyebrow="Services" title="Software and automation for local businesses.">
         Cafés, clinics, rentals, hostels, hotels and offices across Haryana, Rajasthan, Chandigarh and Mohali: replace paperwork with software that is set up and supported for you.
       </PageHero>
@@ -45,7 +42,6 @@ export default function Page() {
       </section>
 
       <CtaBand title="Not sure what you need? Let's talk." />
-      <Footer />
     </main>
   )
 }

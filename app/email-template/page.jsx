@@ -1,12 +1,9 @@
 import React from 'react';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 import Email_temp from '@/components/Email_temp';
 
 export default function EmailTemplatePage() {
   return (
     <main>
-      <Nav />
       
       {/* Page Header */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
@@ -79,7 +76,6 @@ export default function EmailTemplatePage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

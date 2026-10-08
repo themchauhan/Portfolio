@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import JsonLd from '@/components/JsonLd'
 import FreeBadges from '@/components/tools/FreeBadges'
 import GstInvoiceGenerator from '@/components/tools/GstInvoiceGenerator'
@@ -25,7 +23,6 @@ const faqs = [
 export default function Page() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <div className="print:hidden"><Nav /></div>
       <JsonLd data={[
         { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'GST Invoice Generator', url: URL, applicationCategory: 'BusinessApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' }, author: { '@type': 'Person', name: 'Manish Chauhan', url: SITE } },
         { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
@@ -69,7 +66,6 @@ export default function Page() {
         </div>
       </section>
 
-      <div className="print:hidden"><Footer /></div>
     </main>
   )
 }

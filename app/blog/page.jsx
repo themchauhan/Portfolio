@@ -1,6 +1,4 @@
 import React from 'react';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import CtaBand from '@/components/CtaBand';
@@ -69,7 +67,6 @@ export const metadata = pageMeta({
 export default function BlogPage() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
       <PageHero eyebrow="Blog" title="Notes on the web.">
         Short, practical articles on AI, Next.js, SEO and performance.
       </PageHero>
@@ -95,7 +92,6 @@ export default function BlogPage() {
         </div>
       </section>
       <CtaBand title="Need help with your website?" />
-      <Footer />
     </main>
   );
 }

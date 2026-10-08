@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
 import { SITE, cities, cityList, serviceList, pathFor, stateOf, placeName, pageMeta } from '@/lib/seo'
@@ -29,7 +27,6 @@ export default function Page({ params }) {
 
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
       <PageHero eyebrow={placeName(c)} title={`Business automation and software in ${c.name}.`}>
         {c.context} Pick a service below to see what I can set up for your business.
       </PageHero>
@@ -58,7 +55,6 @@ export default function Page({ params }) {
       </section>
 
       <CtaBand title={`Run a business in ${c.name}? Let's talk.`} />
-      <Footer />
     </main>
   )
 }

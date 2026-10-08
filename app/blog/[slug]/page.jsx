@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './BlogPost.module.css';
 import { pageMeta } from '@/lib/seo';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -399,7 +397,6 @@ export default function BlogPost({ params }) {
 
   return (
     <main className="bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
 
       {/* Header */}
       <article className={`prod py-14 md:py-20 ${styles.blogArticle}`}>
@@ -445,7 +442,6 @@ export default function BlogPost({ params }) {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

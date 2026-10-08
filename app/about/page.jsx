@@ -1,7 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import { getExperienceText } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
 
@@ -37,7 +35,6 @@ export default function Page() {
 
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
 
       {/* Hero */}
       <section className="!py-14 md:!py-24">
@@ -176,7 +173,6 @@ export default function Page() {
         </div>
       </section>
 
-      <Footer />
     </main>
   )
 }

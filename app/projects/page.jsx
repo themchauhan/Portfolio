@@ -1,6 +1,4 @@
 import Image from 'next/image'
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
 import { pageMeta } from '@/lib/seo'
@@ -34,7 +32,6 @@ const projects = [
 export default function Page() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
       <PageHero eyebrow="Work" title="Sites and platforms I've built.">
         A selection of websites and web platforms for software and industrial companies, built mostly at Clear Digital.
       </PageHero>
@@ -58,7 +55,6 @@ export default function Page() {
       </section>
 
       <CtaBand title="Have a project in mind? Let's talk." />
-      <Footer />
     </main>
   )
 }

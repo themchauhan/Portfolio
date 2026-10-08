@@ -1,5 +1,3 @@
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import ContactForm from '@/components/products/ContactForm'
 import { pageMeta } from '@/lib/seo'
@@ -13,7 +11,6 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
       <PageHero eyebrow="Contact" title="Tell me what you want to build.">
         Share a few details and I&apos;ll reply within one working day.
       </PageHero>
@@ -38,7 +35,6 @@ export default function Page() {
           <div className="rounded-2xl bg-white p-6 shadow-xl md:p-8"><ContactForm product="Website" /></div>
         </div>
       </section>
-      <Footer />
     </main>
   )
 }

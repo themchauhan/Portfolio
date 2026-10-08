@@ -16,7 +16,7 @@ const Nav = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f4f1ec]/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f4f1ec]/95 backdrop-blur print:hidden">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8">
         <Link href="/" aria-label="Manish Chauhan - home" onClick={() => setOpen(false)}>
           <Logo />

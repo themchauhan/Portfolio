@@ -11,7 +11,7 @@ const cols = [
 const areas = ["rewari", "narnaul", "mahendergarh", "gurgaon", "pataudi", "bhiwani", "jaipur", "ambala", "chandigarh", "mohali"].map((slug) => cityList.find((c) => c.slug === slug));
 
 const Footer = () => (
-  <footer className="prod bg-[#111] text-white">
+  <footer className="prod bg-[#111] text-white print:hidden">
     <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
       <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-5">
         <div className="md:col-span-2">

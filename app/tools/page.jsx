@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import FreeBadges from '@/components/tools/FreeBadges'
 import { SITE, pageMeta } from '@/lib/seo'
@@ -19,7 +17,6 @@ const tools = [
 export default function Page() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
       <PageHero eyebrow="Free tools" title="Small tools that save real time.">
         Completely free to use. No sign-in, no sign-up, no limits, and everything stays in your browser.
       </PageHero>
@@ -36,7 +33,6 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <Footer />
     </main>
   )
 }

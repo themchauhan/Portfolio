@@ -1,6 +1,7 @@
 "use client"
 import { useMemo, useState } from "react";
 import { amountInWords } from "@/lib/amountInWords";
+import { track } from "@/lib/analytics";
 
 // GST state codes (first two digits of a GSTIN).
 const STATES = [
@@ -75,7 +76,7 @@ export default function GstInvoiceGenerator() {
   return (
     <div>
       <form
-        onSubmit={(e) => { e.preventDefault(); setShown(true); setTimeout(() => document.getElementById("invoice")?.scrollIntoView({ behavior: "smooth" }), 50); }}
+        onSubmit={(e) => { e.preventDefault(); setShown(true); if (ready) track("generate_gst_invoice", { item_count: calc.lines.filter((l) => l.taxable > 0).length, tax_type: interState ? "IGST" : "CGST_SGST" }); setTimeout(() => document.getElementById("invoice")?.scrollIntoView({ behavior: "smooth" }), 50); }}
         className="space-y-8 rounded-2xl bg-white p-6 shadow-sm md:p-8 print:hidden"
       >
         <div className="grid gap-8 md:grid-cols-2">
@@ -119,7 +120,7 @@ export default function GstInvoiceGenerator() {
       {shown && ready && (
         <section id="invoice" className="!py-0 mt-10">
           <div className="mb-6 flex justify-end print:hidden">
-            <button onClick={() => window.print()} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
+            <button onClick={() => { track("print_gst_invoice", { tax_type: interState ? "IGST" : "CGST_SGST" }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
           </div>
           <div className="rounded-lg border border-black/20 bg-white p-6 text-sm text-[#111] md:p-10 print:rounded-none print:border-0 print:p-0">
             <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-[#111] pb-4">

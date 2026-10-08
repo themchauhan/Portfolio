@@ -1,5 +1,3 @@
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
 import { pageMeta } from '@/lib/seo'
@@ -20,7 +18,6 @@ const items = [
 export default function Page() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
       <PageHero eyebrow="Academics" title="Where I learned the basics.">
         A computer science foundation that I&apos;ve been building on in the real world since 2018.
       </PageHero>
@@ -41,7 +38,6 @@ export default function Page() {
         </div>
       </section>
       <CtaBand title="Want to work together?" />
-      <Footer />
     </main>
   )
 }

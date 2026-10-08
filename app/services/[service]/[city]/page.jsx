@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
 import JsonLd from '@/components/JsonLd'
+import TrackedLink from '@/components/TrackedLink'
 import ContactForm from '@/components/products/ContactForm'
 import { products } from '@/lib/products'
 import { SITE, services, cities, serviceList, cityList, pathFor, stateOf, placeName, pageMeta } from '@/lib/seo'
@@ -76,7 +75,6 @@ export default function Page({ params }) {
 
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-      <Nav />
       <JsonLd data={jsonLd} />
 
       {/* Hero */}
@@ -93,7 +91,7 @@ export default function Page({ params }) {
             {c.context} If your {s.businesses} still run on {s.pain}, simple software can save hours every week and cut mistakes. I set it up for businesses in {c.name}{c.alt ? ` (${c.alt})` : ''} and nearby towns.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
-            <a href="#contact" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Get a free demo</a>
+            <TrackedLink event="product_demo_click" params={{ service: s.slug, city: c.slug, position: "landing_hero" }} href="#contact" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Get a free demo</TrackedLink>
             {product && <Link href={`/${product.slug}`} className="rounded-full border-2 border-[#111] px-7 py-3 font-semibold hover:bg-[#111] hover:text-white">See {product.name}</Link>}
           </div>
         </div>
@@ -197,7 +195,6 @@ export default function Page({ params }) {
         </div>
       </section>
 
-      <Footer />
     </main>
   )
 }

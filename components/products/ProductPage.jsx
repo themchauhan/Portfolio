@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import ContactForm from "@/components/products/ContactForm";
+import TrackedLink from "@/components/TrackedLink";
 import { getExperienceText } from "@/utils/experience";
 import { serviceList, cityList, pathFor } from "@/lib/seo";
 
@@ -67,7 +66,6 @@ export default function ProductPage({ product }) {
   const experience = getExperienceText();
   return (
     <main className="prod bg-white text-slate-800 antialiased">
-      <Nav />
 
       {/* Sub-header */}
       <div className="border-b border-slate-200 bg-white">
@@ -78,8 +76,8 @@ export default function ProductPage({ product }) {
             <span className={`text-lg font-extrabold ${a.text}`}>{product.name}</span>
           </div>
           <div className="flex items-center gap-3">
-            <a href="#contact" className="hidden text-sm font-medium text-slate-700 hover:text-slate-900 sm:block">Request demo</a>
-            <a href={product.appUrl} className={`rounded-md ${a.bg} ${a.hover} px-5 py-2 text-sm font-semibold text-white`}>Login</a>
+            <TrackedLink event="product_demo_click" params={{ product: product.name, position: "header" }} href="#contact" className="hidden text-sm font-medium text-slate-700 hover:text-slate-900 sm:block">Request demo</TrackedLink>
+            <TrackedLink event="product_login_click" params={{ product: product.name, position: "header" }} href={product.appUrl} className={`rounded-md ${a.bg} ${a.hover} px-5 py-2 text-sm font-semibold text-white`}>Login</TrackedLink>
           </div>
         </div>
       </div>
@@ -93,8 +91,8 @@ export default function ProductPage({ product }) {
             <p className="mt-5 text-lg text-slate-600">{product.summary}</p>
             <p className="mt-3 text-sm text-slate-500">Built for: {product.audience}</p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <a href="#contact" className={`rounded-md ${a.bg} ${a.hover} px-7 py-3 font-semibold text-white`}>Request a demo</a>
-              <a href={product.appUrl} className="rounded-md border border-slate-300 bg-white px-7 py-3 font-semibold text-slate-800 hover:bg-slate-50">Login to {product.name}</a>
+              <TrackedLink event="product_demo_click" params={{ product: product.name, position: "hero" }} href="#contact" className={`rounded-md ${a.bg} ${a.hover} px-7 py-3 font-semibold text-white`}>Request a demo</TrackedLink>
+              <TrackedLink event="product_login_click" params={{ product: product.name, position: "hero" }} href={product.appUrl} className="rounded-md border border-slate-300 bg-white px-7 py-3 font-semibold text-slate-800 hover:bg-slate-50">Login to {product.name}</TrackedLink>
             </div>
           </div>
           <AppMockup product={product} />
@@ -187,7 +185,6 @@ export default function ProductPage({ product }) {
         </div>
       </Blade>
 
-      <Footer />
     </main>
   );
 }

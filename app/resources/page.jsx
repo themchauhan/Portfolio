@@ -1,8 +1,6 @@
 export const revalidate = 300; // ISR: 5 minutes
 import Link from 'next/link';
 import { headers } from 'next/headers';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
 import { newsFeeds, topics } from '@/config/newsSources';
 import { pageMeta } from '@/lib/seo';
@@ -48,7 +46,6 @@ export default async function ResourcesPage({ searchParams }) {
 
 	return (
 		<main className="prod bg-[#f4f1ec] text-[#111] antialiased">
-			<Nav />
 			<PageHero eyebrow="News" title="India and the world, with good news first.">
 				Headlines from the publishers Indians read the most, plus positive stories from around the world. Refreshed every few minutes.
 			</PageHero>
@@ -143,7 +140,6 @@ export default async function ResourcesPage({ searchParams }) {
 				</div>
 			</section>
 
-			<Footer />
 		</main>
 	);
 }

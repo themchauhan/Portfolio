@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import { productList } from "@/lib/products";
 import { getExperienceText } from "@/utils/experience";
 import { pageMeta } from "@/lib/seo";
@@ -14,7 +12,6 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <main className="prod bg-white text-slate-800 antialiased">
-      <Nav />
       <div className="bg-slate-900">
         <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
           <p className="text-sm font-semibold uppercase tracking-widest text-orange-400">Products</p>
@@ -42,7 +39,6 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <Footer />
     </main>
   );
 }

@@ -2,6 +2,8 @@ import './globals.css'
 import { Inter, Bricolage_Grotesque } from 'next/font/google'
 import { getExperienceText } from '../utils/experience'
 import Script from 'next/script'
+import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
 import { OG_IMAGE } from '@/lib/seo'
 
 // Google Analytics 4 (property: themanishchauhan.in, stream: portfolio-web)
@@ -141,7 +143,10 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={inter.className}>
+        {/* Site-wide header and footer: pages only render their own content */}
+        <Nav />
         {children}
+        <Footer />
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`

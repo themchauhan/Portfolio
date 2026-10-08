@@ -1,6 +1,7 @@
 "use client"
 import { useMemo, useState } from "react";
 import { amountInWords } from "@/lib/amountInWords";
+import { track } from "@/lib/analytics";
 
 const inr = (n) => new Intl.NumberFormat("en-IN").format(Number(n) || 0);
 const dateLabel = (d) => d.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
@@ -94,7 +95,7 @@ export default function RentReceiptGenerator() {
   return (
     <div>
       <form
-        onSubmit={(e) => { e.preventDefault(); setShown(true); setTimeout(() => document.getElementById("receipts")?.scrollIntoView({ behavior: "smooth" }), 50); }}
+        onSubmit={(e) => { e.preventDefault(); setShown(true); if (ready) track("generate_rent_receipt", { receipt_count: receipts.length, receipt_type: f.split, payment_mode: f.mode }); setTimeout(() => document.getElementById("receipts")?.scrollIntoView({ behavior: "smooth" }), 50); }}
         className="space-y-8 rounded-2xl bg-white p-6 shadow-sm md:p-8 print:hidden"
       >
         <fieldset className="grid gap-5 md:grid-cols-2">
@@ -148,7 +149,7 @@ export default function RentReceiptGenerator() {
         <section id="receipts" className="!py-0 mt-10">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4 print:hidden">
             <p className="text-lg"><strong>{receipts.length}</strong> receipt{receipts.length > 1 ? "s" : ""} · one per A4 page when printed</p>
-            <button onClick={() => window.print()} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
+            <button onClick={() => { track("print_rent_receipt", { receipt_count: receipts.length, receipt_type: f.split }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
           </div>
           {f.mode === "Cash" && receipts.some((r) => r.amount > 5000) && (
             <p className="mb-6 border-l-4 border-[#ff5a1f] bg-white p-4 text-sm print:hidden">Cash receipts above ₹5,000 need a revenue stamp, signed by the owner across the stamp. A box is printed for it.</p>
