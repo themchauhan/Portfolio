@@ -1,0 +1,40 @@
+import Link from 'next/link'
+import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
+import PageHero from '@/components/PageHero'
+import { SITE, pageMeta } from '@/lib/seo'
+
+export const metadata = pageMeta({
+  title: 'Free Business Tools: Rent Receipts, GST Invoices',
+  description: 'Free online tools for Indian businesses and employees: rent receipt generator for HRA and GST invoice generator. No sign-up, nothing stored.',
+  alternates: { canonical: `${SITE}/tools` },
+})
+
+const tools = [
+  ['/tools/rent-receipt-generator', 'Rent Receipt Generator', 'Monthly rent receipts for your HRA claim, with landlord PAN and amount in words.', 'For employees, landlords and PG owners'],
+  ['/tools/gst-invoice-generator', 'GST Invoice Generator', 'A GST tax invoice with automatic CGST/SGST or IGST, HSN codes and totals.', 'For cafés, shops and freelancers'],
+]
+
+export default function Page() {
+  return (
+    <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
+      <Nav />
+      <PageHero eyebrow="Free tools" title="Small tools that save real time.">
+        Free, no sign-up, and everything stays in your browser.
+      </PageHero>
+      <section className="!py-0 pb-20">
+        <div className="mx-auto grid max-w-7xl gap-6 px-5 sm:px-8 md:grid-cols-2">
+          {tools.map(([href, name, desc, who]) => (
+            <Link key={href} href={href} className="group border-t-4 border-[#111] bg-white p-8 hover:border-[#ff5a1f]">
+              <p className="text-sm font-semibold text-[#ff5a1f]">{who}</p>
+              <h2 className="mt-2 font-display text-3xl font-extrabold group-hover:text-[#ff5a1f]">{name}</h2>
+              <p className="mt-3 text-lg text-[#555]">{desc}</p>
+              <p className="mt-6 font-semibold text-[#ff5a1f]">Open tool →</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+      <Footer />
+    </main>
+  )
+}

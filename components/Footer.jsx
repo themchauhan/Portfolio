@@ -5,6 +5,7 @@ import { serviceList, cityList, pathFor } from "@/lib/seo";
 const cols = [
   ["Explore", [["About", "/about"], ["Work", "/projects"], ["Academics", "/academics"], ["Blog", "/blog"], ["Resources", "/resources"]]],
   ["Products", [["ClinicOs", "/clinicos"], ["RentCorp", "/rentcorp"], ["CafeCorp", "/cafecorp"]]],
+  ["Free tools", [["All free tools", "/tools"], ["Rent Receipt Generator", "/tools/rent-receipt-generator"], ["GST Invoice Generator", "/tools/gst-invoice-generator"]]],
 ];
 
 const areas = ["rewari", "narnaul", "mahendergarh", "gurgaon", "pataudi", "bhiwani", "jaipur", "ambala", "chandigarh", "mohali"].map((slug) => cityList.find((c) => c.slug === slug));
@@ -12,7 +13,7 @@ const areas = ["rewari", "narnaul", "mahendergarh", "gurgaon", "pataudi", "bhiwa
 const Footer = () => (
   <footer className="prod bg-[#111] text-white">
     <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-      <div className="grid gap-12 md:grid-cols-4">
+      <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-5">
         <div className="md:col-span-2">
           <Logo dark />
           <p className="mt-5 max-w-sm text-[#b9b5ad]">
