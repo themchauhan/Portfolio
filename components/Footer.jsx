@@ -4,8 +4,8 @@ import { serviceList, cityList, pathFor } from "@/lib/seo";
 
 const cols = [
   ["Explore", [["About", "/about"], ["Work", "/projects"], ["Academics", "/academics"], ["Blog", "/blog"], ["Resources", "/resources"]]],
-  ["Products", [["ClinicOs", "/clinicos"], ["RentCorp", "/rentcorp"], ["CafeCorp", "/cafecorp"]]],
-  ["Free tools", [["All free tools", "/tools"], ["Rent Receipt Generator", "/tools/rent-receipt-generator"], ["GST Invoice Generator", "/tools/gst-invoice-generator"]]],
+  ["Products", [["ClinicOs", "/clinicos"], ["RentCorp", "/rentcorp"], ["CafeCorp", "/cafecorp"], ["Pricing", "/pricing"]]],
+  ["Free tools", [["All free tools", "/tools"], ["Rent Receipt Generator", "/tools/rent-receipt-generator"], ["GST Invoice Generator", "/tools/gst-invoice-generator"], ["Website Cost Calculator", "/tools/website-cost-calculator"]]],
 ];
 
 const areas = ["rewari", "narnaul", "mahendergarh", "gurgaon", "pataudi", "bhiwani", "jaipur", "ambala", "chandigarh", "mohali"].map((slug) => cityList.find((c) => c.slug === slug));

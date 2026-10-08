@@ -4,6 +4,7 @@ import { getExperienceText } from '../utils/experience'
 import Script from 'next/script'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import WhatsAppButton from '@/components/WhatsAppButton'
 import { OG_IMAGE } from '@/lib/seo'
 
 // Google Analytics 4 (property: themanishchauhan.in, stream: portfolio-web)
@@ -147,6 +148,7 @@ export default function RootLayout({ children }) {
         <Nav />
         {children}
         <Footer />
+        <WhatsAppButton />
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`

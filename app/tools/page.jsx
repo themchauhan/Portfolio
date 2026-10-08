@@ -5,13 +5,14 @@ import { SITE, pageMeta } from '@/lib/seo'
 
 export const metadata = pageMeta({
   title: 'Free Business Tools: Rent Receipts, GST Invoices',
-  description: 'Free online tools for Indian businesses and employees: rent receipt generator for HRA and GST invoice generator. No sign-in or sign-up needed.',
+  description: 'Free tools for Indian businesses: rent receipt generator for HRA, GST invoice generator and website cost calculator. No sign-in or sign-up.',
   alternates: { canonical: `${SITE}/tools` },
 })
 
 const tools = [
   ['/tools/rent-receipt-generator', 'Rent Receipt Generator', 'Monthly rent receipts for your HRA claim, with landlord PAN and amount in words.', 'For employees, landlords and PG owners'],
   ['/tools/gst-invoice-generator', 'GST Invoice Generator', 'A GST tax invoice with automatic CGST/SGST or IGST, HSN codes and totals.', 'For cafés, shops and freelancers'],
+  ['/tools/website-cost-calculator', 'Website Cost Calculator', 'Pick pages and features to get an instant estimate for a website, online store or web app.', 'For businesses planning a website'],
 ]
 
 export default function Page() {
@@ -22,7 +23,7 @@ export default function Page() {
       </PageHero>
       <div className="mx-auto -mt-6 mb-12 max-w-7xl px-5 sm:px-8 md:-mt-12"><FreeBadges /></div>
       <section className="!py-0 pb-20">
-        <div className="mx-auto grid max-w-7xl gap-6 px-5 sm:px-8 md:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl gap-6 px-5 sm:px-8 md:grid-cols-2 lg:grid-cols-3">
           {tools.map(([href, name, desc, who]) => (
             <Link key={href} href={href} className="group border-t-4 border-[#111] bg-white p-8 hover:border-[#ff5a1f]">
               <p className="text-sm font-semibold text-[#ff5a1f]">{who}</p>

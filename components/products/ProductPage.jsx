@@ -1,6 +1,8 @@
 import Link from "next/link";
 import ContactForm from "@/components/products/ContactForm";
 import TrackedLink from "@/components/TrackedLink";
+import PlanCards from "@/components/PlanCards";
+import { productPlans, PRICING_NOTE } from "@/lib/pricing";
 import { getExperienceText } from "@/utils/experience";
 import { serviceList, cityList, pathFor } from "@/lib/seo";
 
@@ -140,6 +142,14 @@ export default function ProductPage({ product }) {
           </div>
         </div>
       </div>
+
+      {/* Plans */}
+      {productPlans[product.slug] && (
+        <Blade id="pricing" bg="bg-slate-50" title={`${product.name} pricing`} sub={PRICING_NOTE}>
+          <PlanCards plans={productPlans[product.slug]} productName={product.name} />
+          <Link href="/pricing" className="mt-8 inline-block font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900">Compare all plans →</Link>
+        </Blade>
+      )}
 
       {/* Local availability */}
       {serviceList.filter((sv) => sv.product === product.slug).map((sv) => (
