@@ -10,15 +10,17 @@ const row = (label, amount = "") => ({ id: uid(), label, amount });
 
 const now = new Date();
 const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+const nice = (v) => (v ? new Date(v).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "");
 const monthValue = `${lastMonth.getFullYear()}-${String(lastMonth.getMonth() + 1).padStart(2, "0")}`;
 
 // EPF: 12% of Basic, on a wage ceiling of ₹15,000 (max ₹1,800). ESI: 0.75% if gross ≤ ₹21,000.
 const PF_RATE = 0.12, PF_CEILING = 15000, ESI_RATE = 0.0075, ESI_LIMIT = 21000;
 
 export default function SalarySlipGenerator() {
-  const [company, setCompany] = useState({ name: "", address: "" });
+  const [company, setCompany] = useState({ name: "", address: "", logo: "" });
   const [emp, setEmp] = useState({ name: "", id: "", designation: "", department: "", pan: "", uan: "", bank: "", doj: "" });
   const [month, setMonth] = useState(monthValue);
+  const [payDate, setPayDate] = useState(new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0, 10));
   const [days, setDays] = useState({ working: "30", paid: "30" });
   const [earnings, setEarnings] = useState([row("Basic Salary"), row("House Rent Allowance (HRA)"), row("Conveyance Allowance"), row("Special Allowance")]);
   const [deductions, setDeductions] = useState([row("Provident Fund (PF)"), row("Professional Tax"), row("Income Tax (TDS)")]);
@@ -44,6 +46,15 @@ export default function SalarySlipGenerator() {
   };
   const autoPF = () => upsertDeduction(/provident|\bpf\b/i, "Provident Fund (PF)", Math.round(Math.min(basicEarned, PF_CEILING) * PF_RATE));
   const autoESI = () => upsertDeduction(/\besi\b|state insurance/i, "ESI", calc.gross <= ESI_LIMIT ? Math.ceil(calc.gross * ESI_RATE) : 0);
+
+  const onLogo = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) { alert("Please choose a logo under 2 MB."); return; }
+    const reader = new FileReader();
+    reader.onload = () => setCompany((c) => ({ ...c, logo: String(reader.result) }));
+    reader.readAsDataURL(file);
+  };
 
   const monthLabel = (() => { const [y, m] = month.split("-").map(Number); return y ? new Date(y, m - 1, 1).toLocaleDateString("en-IN", { month: "long", year: "numeric" }) : ""; })();
   const ready = company.name && emp.name && calc.gross > 0 && working > 0;
@@ -81,10 +92,21 @@ export default function SalarySlipGenerator() {
           <fieldset className="space-y-3">
             <legend className="font-display text-lg font-extrabold">Company</legend>
             <label className={label}>Company name<input value={company.name} onChange={(e) => setCompany({ ...company, name: e.target.value })} required className={field} placeholder="Acme Traders Pvt Ltd" /></label>
+            <div>
+              <p className={label}>Company logo <span className="font-normal text-[#777]">(optional, stays on your device)</span></p>
+              <div className="mt-1.5 flex items-center gap-3">
+                {company.logo && <img src={company.logo} alt="" className="h-12 w-12 rounded border border-black/10 object-contain" />}
+                <label className="cursor-pointer rounded-full border border-black/20 px-4 py-2 text-sm font-semibold hover:border-[#111]">
+                  {company.logo ? "Change logo" : "Upload logo"}
+                  <input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" onChange={onLogo} className="sr-only" />
+                </label>
+                {company.logo && <button type="button" onClick={() => setCompany({ ...company, logo: "" })} className="text-sm text-[#777] hover:text-rose-600">Remove</button>}
+              </div>
+            </div>
             <label className={label}>Address<textarea rows={2} value={company.address} onChange={(e) => setCompany({ ...company, address: e.target.value })} className={field} placeholder="Sector 4, Rewari, Haryana" /></label>
             <div className="grid grid-cols-2 gap-3">
               <label className={label}>Pay month<input type="month" value={month} onChange={(e) => setMonth(e.target.value)} className={field} /></label>
-              <div />
+              <label className={label}>Pay date<input type="date" value={payDate} onChange={(e) => setPayDate(e.target.value)} className={field} /></label>
               <label className={label}>Working days<input type="number" min="1" max="31" value={days.working} onChange={(e) => setDays({ ...days, working: e.target.value })} className={field} /></label>
               <label className={label}>Paid days<input type="number" min="0" max="31" value={days.paid} onChange={(e) => setDays({ ...days, paid: e.target.value })} className={field} /></label>
             </div>
@@ -128,46 +150,78 @@ export default function SalarySlipGenerator() {
       {shown && ready && (
         <section id="payslip" className="!py-0 mt-10">
           <div className="mb-6 flex justify-end print:hidden">
-            <button onClick={() => { track("print_salary_slip", { has_lop: paid < working }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
+            <button onClick={() => { track("print_salary_slip", { has_lop: paid < working, has_logo: !!company.logo }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
           </div>
-          <article className="mx-auto max-w-[820px] border border-black/20 bg-white p-6 text-sm text-black md:p-10 print:max-w-none print:border-0 print:p-0">
-            <header className="border-b-2 border-black pb-4 text-center">
-              <p className="font-display text-2xl font-extrabold">{company.name}</p>
-              {company.address && <p className="mt-1 whitespace-pre-line text-[#444]">{company.address}</p>}
-              <p className="mt-3 font-semibold uppercase tracking-wide">Salary slip for {monthLabel}</p>
+          <article className="mx-auto max-w-[860px] rounded-xl border border-black/15 bg-white p-6 text-sm text-[#222] md:p-10 print:max-w-none print:rounded-none print:border-0 print:p-0">
+            {/* Header */}
+            <header className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-[#111] pb-5">
+              <div className="flex items-center gap-4">
+                {company.logo && <img src={company.logo} alt={`${company.name} logo`} className="h-14 max-w-[140px] object-contain" />}
+                <div>
+                  <p className="font-display text-2xl font-extrabold text-[#111]">{company.name}</p>
+                  {company.address && <p className="mt-0.5 whitespace-pre-line text-[#555]">{company.address}</p>}
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="font-display text-xl font-extrabold uppercase tracking-wide text-[#111]">Salary Slip</p>
+                <p className="mt-0.5 font-semibold text-[#ff5a1f]">{monthLabel}</p>
+              </div>
             </header>
 
-            <dl className="mt-5 grid grid-cols-2 gap-x-8 gap-y-1.5">
-              {[["Employee name", emp.name], ["Employee ID", emp.id], ["Designation", emp.designation], ["Department", emp.department],
-                ["Date of joining", emp.doj && new Date(emp.doj).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })],
-                ["PAN", emp.pan], ["UAN", emp.uan], ["Bank account", emp.bank], ["Working days", working], ["Paid days", paid]]
-                .filter(([, v]) => v !== "" && v !== undefined && v !== null)
-                .map(([k, v]) => <div key={k} className="flex gap-2"><dt className="w-32 shrink-0 text-[#555]">{k}</dt><dd className="font-semibold">{v}</dd></div>)}
-            </dl>
-
-            <div className="mt-6 grid grid-cols-2 border border-black/30">
-              <table className="w-full border-r border-black/30">
-                <thead><tr className="border-b border-black/30 bg-black/5"><th className="p-2 text-left">Earnings</th><th className="p-2 text-right">Amount (₹)</th></tr></thead>
-                <tbody>{calc.e.filter((x) => x.label || x.earned).map((x) => <tr key={x.id}><td className="p-2">{x.label}</td><td className="p-2 text-right">{money(x.earned)}</td></tr>)}</tbody>
-              </table>
-              <table className="w-full">
-                <thead><tr className="border-b border-black/30 bg-black/5"><th className="p-2 text-left">Deductions</th><th className="p-2 text-right">Amount (₹)</th></tr></thead>
-                <tbody>{calc.d.filter((x) => x.label || x.value).map((x) => <tr key={x.id}><td className="p-2">{x.label}</td><td className="p-2 text-right">{money(x.value)}</td></tr>)}</tbody>
-              </table>
-              <div className="flex justify-between border-r border-t border-black/30 p-2 font-bold"><span>Gross earnings</span><span>{money(calc.gross)}</span></div>
-              <div className="flex justify-between border-t border-black/30 p-2 font-bold"><span>Total deductions</span><span>{money(calc.totalDed)}</span></div>
+            {/* Employee summary + net pay card */}
+            <div className="mt-6 grid gap-6 md:grid-cols-[1.4fr_1fr] print:grid-cols-[1.4fr_1fr]">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-[#ff5a1f]">Employee details</p>
+                <dl className="mt-3 space-y-1.5">
+                  {[["Employee name", emp.name], ["Employee ID", emp.id], ["Designation", emp.designation], ["Department", emp.department],
+                    ["Date of joining", nice(emp.doj)], ["Pay period", monthLabel], ["Pay date", nice(payDate)], ["PAN", emp.pan], ["UAN", emp.uan], ["Bank account", emp.bank]]
+                    .filter(([, v]) => v)
+                    .map(([k, v]) => <div key={k} className="grid grid-cols-[130px_1fr] gap-2"><dt className="text-[#666]">{k}</dt><dd className="font-semibold text-[#111]">{v}</dd></div>)}
+                </dl>
+              </div>
+              <div className="h-fit overflow-hidden rounded-xl bg-[#111] text-white print:border-2 print:border-black print:bg-white print:text-black">
+                <div className="p-5">
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#ff5a1f]">Net pay</p>
+                  <p className="mt-1 font-display text-3xl font-extrabold">₹{money(calc.net)}</p>
+                </div>
+                <dl className="space-y-2 border-t border-white/15 p-5 text-[#d8d4cc] print:border-black/30 print:text-[#444]">
+                  <div className="flex justify-between"><dt>Working days</dt><dd className="font-semibold text-white print:text-black">{working}</dd></div>
+                  <div className="flex justify-between"><dt>Paid days</dt><dd className="font-semibold text-white print:text-black">{paid}</dd></div>
+                  <div className="flex justify-between"><dt>Loss of pay (LOP) days</dt><dd className="font-semibold text-white print:text-black">{r2(working - paid)}</dd></div>
+                </dl>
+              </div>
             </div>
 
-            <div className="mt-5 flex flex-wrap items-baseline justify-between gap-2 rounded bg-black/5 p-4">
-              <p className="text-base font-bold">Net pay: ₹{money(calc.net)}</p>
-              <p className="text-[#444]">Rupees {amountInWords(calc.net)} only</p>
+            {/* Earnings / deductions */}
+            <div className="mt-8 grid overflow-hidden rounded-xl border border-black/15 md:grid-cols-2 print:grid-cols-2">
+              {[["Earnings", calc.e.filter((x) => x.label || x.earned).map((x) => [x.id, x.label, x.earned]), "Gross Earnings", calc.gross],
+                ["Deductions", calc.d.filter((x) => x.label || x.value).map((x) => [x.id, x.label, x.value]), "Total Deductions", calc.totalDed]]
+                .map(([title, rows, totalLabel, total], idx) => (
+                  <div key={title} className={`flex flex-col ${idx === 0 ? "md:border-r md:border-white/20 print:border-r print:border-black/15" : "border-t border-black/10 md:border-t-0 print:border-t-0"}`}>
+                    <div className="flex justify-between bg-[#111] px-5 py-3 text-xs font-bold uppercase tracking-wider text-white print:border-b-2 print:border-black print:bg-white print:text-black"><span>{title}</span><span>Amount</span></div>
+                    <div className="flex-1 px-5 py-2">
+                      {rows.map(([id, l, v]) => <div key={id} className="flex justify-between py-1.5"><span>{l}</span><span className="font-semibold">₹{money(v)}</span></div>)}
+                    </div>
+                    <div className="flex justify-between border-t border-black/15 bg-black/[0.04] px-5 py-3 font-bold text-[#111]"><span>{totalLabel}</span><span>₹{money(total)}</span></div>
+                  </div>
+                ))}
             </div>
 
-            <div className="mt-14 flex justify-between text-[#555]">
+            {/* Net payable */}
+            <div className="mt-6 flex items-center justify-between rounded-xl border-2 border-[#ff5a1f] px-5 py-4">
+              <div>
+                <p className="font-bold uppercase tracking-wide text-[#111]">Net pay</p>
+                <p className="text-[#666]">Gross earnings − total deductions</p>
+              </div>
+              <p className="font-display text-2xl font-extrabold text-[#111]">₹{money(calc.net)}</p>
+            </div>
+            <p className="mt-5 text-right text-[#555]">Amount in words: <span className="font-semibold text-[#111]">Rupees {amountInWords(calc.net)} only</span></p>
+
+            <div className="mt-12 flex justify-between border-t border-black/10 pt-10 text-[#555]">
               <p className="border-t border-black/40 px-6 pt-1">Employee signature</p>
               <p className="border-t border-black/40 px-6 pt-1">Authorised signatory</p>
             </div>
-            <p className="mt-6 text-center text-xs text-[#888]">This is a computer-generated salary slip.</p>
+            <p className="mt-6 text-center text-xs text-[#888]">This is a computer-generated payslip.</p>
           </article>
         </section>
       )}

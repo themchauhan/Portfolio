@@ -7,8 +7,8 @@ import { SITE, pageMeta } from '@/lib/seo'
 const URL = `${SITE}/tools/salary-slip-generator`
 
 export const metadata = pageMeta({
-  title: 'Free Salary Slip Generator (Payslip Format India) – PDF',
-  description: 'Create a salary slip in a minute: earnings, PF, ESI, TDS, loss of pay and net pay in words. Free, no sign-in or sign-up. Print or save as PDF.',
+  title: 'Free Payslip / Salary Slip Generator India (PF, ESI) – PDF',
+  description: 'Free payslip generator for India: add your logo, earnings, PF, ESI, TDS and loss of pay. Net pay in words. No sign-in or sign-up. Print or PDF.',
   alternates: { canonical: URL },
 })
 
@@ -32,8 +32,8 @@ export default function Page() {
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="print:hidden">
             <p className="text-[15px] font-semibold text-[#ff5a1f]">Free tool</p>
-            <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">Salary Slip Generator</h1>
-            <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make a professional salary slip in a minute, with PF, ESI, TDS and loss of pay worked out. Completely free: no sign-in, no sign-up, no limits.</p>
+            <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">Salary Slip Generator <span className="block text-2xl text-[#555] md:text-3xl">Free payslip maker with PF &amp; ESI</span></h1>
+            <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make a professional payslip with your company logo in a minute, with PF, ESI, TDS and loss of pay worked out. Completely free: no sign-in, no sign-up, no limits.</p>
             <FreeBadges className="mt-6" />
           </div>
           <div className="mt-10 print:mt-0"><SalarySlipGenerator /></div>
@@ -48,6 +48,27 @@ export default function Page() {
             <p className="mt-3 max-w-xl text-lg text-[#b9b5ad]">I can set up payroll automation: attendance in, salary slips out, emailed to staff automatically.</p>
           </div>
           <Link href="/services/business-automation" className="shrink-0 rounded-full bg-[#ff5a1f] px-7 py-3.5 font-semibold text-white hover:bg-white hover:text-[#111]">Automate payroll</Link>
+        </div>
+      </section>
+
+      <section className="!py-14 md:!py-20 bg-white print:hidden">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">How to make a salary slip (payslip) online</h2>
+          <ol className="mt-8 grid gap-6 md:grid-cols-4">
+            {[
+              ['Add company details', 'Company name, address and logo. The logo stays on your device.'],
+              ['Add employee details', 'Name, ID, designation, PAN, UAN and bank account (last 4 digits is enough).'],
+              ['Enter salary', 'Basic, HRA and allowances, then use Auto PF and Auto ESI for deductions. Set paid days for leave without pay.'],
+              ['Print or save as PDF', 'Check the payslip, then print it or save it as a PDF to share on WhatsApp or email.'],
+            ].map(([t, d], i) => (
+              <li key={t} className="border-t-4 border-[#111] pt-4">
+                <p className="font-display text-sm font-bold text-[#ff5a1f]">Step {i + 1}</p>
+                <h3 className="mt-2 font-display text-lg font-extrabold">{t}</h3>
+                <p className="mt-1 text-[#555]">{d}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-8 max-w-3xl text-[#555]">A salary slip, also called a payslip or pay stub, is a monthly document an employer gives to each employee. It shows gross earnings, every deduction and the final net pay, and employees often need it for loans, credit cards, visas and job changes.</p>
         </div>
       </section>
 
