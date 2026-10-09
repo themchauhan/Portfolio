@@ -5,7 +5,7 @@ import { SITE, pageMeta } from '@/lib/seo'
 
 export const metadata = pageMeta({
   title: 'Free Business Tools: Rent Receipts, GST Invoices',
-  description: 'Free tools for Indian businesses: rent receipt, GST invoice and salary slip generators, plus a website cost calculator. No sign-in or sign-up.',
+  description: 'Free tools for Indian businesses: rent receipts, GST invoices, salary slips, quotations and a website cost calculator. No sign-in or sign-up.',
   alternates: { canonical: `${SITE}/tools` },
 })
 
@@ -13,6 +13,7 @@ const tools = [
   ['/tools/rent-receipt-generator', 'Rent Receipt Generator', 'Monthly rent receipts for your HRA claim, with landlord PAN and amount in words.', 'For employees, landlords and PG owners'],
   ['/tools/gst-invoice-generator', 'GST Invoice Generator', 'A GST tax invoice with automatic CGST/SGST or IGST, HSN codes and totals.', 'For cafés, shops and freelancers'],
   ['/tools/salary-slip-generator', 'Salary Slip Generator', 'A professional payslip with PF, ESI, TDS, loss of pay and net pay in words.', 'For employers and small businesses'],
+  ['/tools/quotation-maker', 'Quotation Maker', 'A professional quotation with items, GST, discount, validity and terms.', 'For shops, contractors and freelancers'],
   ['/tools/website-cost-calculator', 'Website Cost Calculator', 'Pick pages and features to get an instant estimate for a website, online store or web app.', 'For businesses planning a website'],
 ]
 

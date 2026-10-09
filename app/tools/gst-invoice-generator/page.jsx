@@ -37,6 +37,7 @@ export default function Page() {
             <FreeBadges className="mt-6" />
           </div>
           <div className="mt-10 print:mt-0"><GstInvoiceGenerator /></div>
+          <p className="mt-8 text-[#555] print:hidden">Need to send a price first? Make one with the free <Link href="/tools/quotation-maker" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">Quotation Maker</Link>.</p>
         </div>
       </section>
 
