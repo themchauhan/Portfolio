@@ -26,6 +26,7 @@ export default function sitemap() {
     entry('/tools', 'monthly', 0.8),
     entry('/tools/rent-receipt-generator', 'monthly', 0.9),
     entry('/tools/gst-invoice-generator', 'monthly', 0.9),
+    entry('/tools/salary-slip-generator', 'monthly', 0.9),
     entry('/tools/website-cost-calculator', 'monthly', 0.8),
     entry('/academics', 'yearly', 0.5),
     entry('/blog', 'weekly', 0.7),

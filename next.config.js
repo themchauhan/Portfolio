@@ -55,6 +55,11 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/comingsoon',
+        destination: '/about',
+        permanent: true,
+      },
     ]
   },
 }
