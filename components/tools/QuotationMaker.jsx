@@ -2,6 +2,7 @@
 import { useMemo, useState } from "react";
 import { amountInWords } from "@/lib/amountInWords";
 import { track } from "@/lib/analytics";
+import LogoUpload from "@/components/tools/LogoUpload";
 
 const money = (n) => new Intl.NumberFormat("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n || 0);
 const r2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
@@ -14,7 +15,7 @@ const today = new Date();
 const DEFAULT_TERMS = "1. Prices are valid until the date mentioned above.\n2. 50% advance to confirm the order, balance on delivery.\n3. Delivery timeline as discussed after confirmation.";
 
 export default function QuotationMaker() {
-  const [from, setFrom] = useState({ name: "", address: "", phone: "", email: "", gstin: "" });
+  const [from, setFrom] = useState({ name: "", address: "", phone: "", email: "", gstin: "", logo: "" });
   const [to, setTo] = useState({ name: "", address: "", phone: "" });
   const [meta, setMeta] = useState({ number: "QT-001", date: isoDate(today), valid: isoDate(new Date(today.getTime() + 15 * 864e5)) });
   const [items, setItems] = useState([newItem()]);
@@ -55,6 +56,7 @@ export default function QuotationMaker() {
         <div className="grid gap-8 md:grid-cols-2">
           <fieldset className="space-y-3">
             <legend className="font-display text-lg font-extrabold">From (your business)</legend>
+            <LogoUpload label="Business logo" value={from.logo} onChange={(logo) => setFrom((f) => ({ ...f, logo }))} />
             <label className={label}>Business name<input value={from.name} onChange={(e) => setFrom({ ...from, name: e.target.value })} required className={field} placeholder="Sharma Interiors" /></label>
             <label className={label}>Address<textarea rows={2} value={from.address} onChange={(e) => setFrom({ ...from, address: e.target.value })} className={field} /></label>
             <div className="grid grid-cols-2 gap-3">
@@ -123,15 +125,18 @@ export default function QuotationMaker() {
       {shown && ready && (
         <section id="quotation" className="!py-0 mt-10">
           <div className="mb-6 flex justify-end print:hidden">
-            <button onClick={() => { track("print_quotation", { gst: gstOn }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
+            <button onClick={() => { track("print_quotation", { gst: gstOn, has_logo: !!from.logo }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
           </div>
           <article className="mx-auto max-w-[860px] border border-black/20 bg-white p-6 text-sm text-black md:p-10 print:max-w-none print:border-0 print:p-0">
             <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-black pb-4">
-              <div>
+              <div className="flex items-start gap-4">
+                {from.logo && <img src={from.logo} alt={`${from.name} logo`} className="h-14 max-w-[140px] object-contain" />}
+                <div>
                 <p className="font-display text-2xl font-extrabold">{from.name}</p>
                 {from.address && <p className="mt-1 whitespace-pre-line text-[#444]">{from.address}</p>}
                 <p className="text-[#444]">{[from.phone, from.email].filter(Boolean).join(" · ")}</p>
                 {from.gstin && <p>GSTIN: <strong>{from.gstin}</strong></p>}
+                </div>
               </div>
               <div className="text-right">
                 <p className="font-display text-2xl font-extrabold">QUOTATION</p>

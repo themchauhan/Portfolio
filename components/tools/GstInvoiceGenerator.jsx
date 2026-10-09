@@ -2,6 +2,7 @@
 import { useMemo, useState } from "react";
 import { amountInWords } from "@/lib/amountInWords";
 import { track } from "@/lib/analytics";
+import LogoUpload from "@/components/tools/LogoUpload";
 
 // GST state codes (first two digits of a GSTIN).
 const STATES = [
@@ -21,7 +22,7 @@ const today = new Date().toISOString().slice(0, 10);
 const newItem = () => ({ id: Math.random().toString(36).slice(2), desc: "", hsn: "", qty: "1", rate: "", gst: "18" });
 
 export default function GstInvoiceGenerator() {
-  const [seller, setSeller] = useState({ name: "", address: "", gstin: "", state: "06" });
+  const [seller, setSeller] = useState({ name: "", address: "", gstin: "", state: "06", logo: "" });
   const [buyer, setBuyer] = useState({ name: "", address: "", gstin: "", state: "06" });
   const [meta, setMeta] = useState({ number: "INV-001", date: today });
   const [items, setItems] = useState([newItem()]);
@@ -80,7 +81,10 @@ export default function GstInvoiceGenerator() {
         className="space-y-8 rounded-2xl bg-white p-6 shadow-sm md:p-8 print:hidden"
       >
         <div className="grid gap-8 md:grid-cols-2">
-          {Party({ title: "Your business (seller)", v: seller, set: setSeller })}
+          <div className="space-y-3">
+            {Party({ title: "Your business (seller)", v: seller, set: setSeller })}
+            <LogoUpload label="Business logo" value={seller.logo} onChange={(logo) => setSeller((v) => ({ ...v, logo }))} />
+          </div>
           {Party({ title: "Bill to (buyer)", v: buyer, set: setBuyer })}
         </div>
 
@@ -120,15 +124,18 @@ export default function GstInvoiceGenerator() {
       {shown && ready && (
         <section id="invoice" className="!py-0 mt-10">
           <div className="mb-6 flex justify-end print:hidden">
-            <button onClick={() => { track("print_gst_invoice", { tax_type: interState ? "IGST" : "CGST_SGST" }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
+            <button onClick={() => { track("print_gst_invoice", { tax_type: interState ? "IGST" : "CGST_SGST", has_logo: !!seller.logo }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
           </div>
           <div className="rounded-lg border border-black/20 bg-white p-6 text-sm text-[#111] md:p-10 print:rounded-none print:border-0 print:p-0">
             <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-[#111] pb-4">
-              <div>
+              <div className="flex items-start gap-4">
+                {seller.logo && <img src={seller.logo} alt={`${seller.name} logo`} className="h-14 max-w-[140px] object-contain" />}
+                <div>
                 <p className="font-display text-2xl font-extrabold">{seller.name}</p>
                 {seller.address && <p className="mt-1 whitespace-pre-line text-[#444]">{seller.address}</p>}
                 {seller.gstin && <p className="mt-1">GSTIN: <strong>{seller.gstin}</strong></p>}
                 <p className="text-[#444]">State: {stateName(seller.state)} ({seller.state})</p>
+                </div>
               </div>
               <div className="text-right">
                 <p className="font-display text-2xl font-extrabold">TAX INVOICE</p>

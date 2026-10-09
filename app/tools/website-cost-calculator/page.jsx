@@ -1,5 +1,6 @@
 import JsonLd from '@/components/JsonLd'
 import FreeBadges from '@/components/tools/FreeBadges'
+import ShareTool from '@/components/tools/ShareTool'
 import QuoteEstimator from '@/components/QuoteEstimator'
 import { SITE, pageMeta } from '@/lib/seo'
 
@@ -31,6 +32,7 @@ export default function Page() {
           <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">Website Cost Calculator</h1>
           <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">How much will your website cost? Pick what you need and get an instant estimate in rupees. No sign-in, no sign-up.</p>
           <FreeBadges className="mt-6" />
+            <ShareTool className="mt-5" url={URL} title="Website Cost Calculator" message="How much does a website cost in India? Free calculator, instant estimate." />
           <div className="mt-10"><QuoteEstimator /></div>
         </div>
       </section>

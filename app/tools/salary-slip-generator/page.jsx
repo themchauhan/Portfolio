@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import JsonLd from '@/components/JsonLd'
 import FreeBadges from '@/components/tools/FreeBadges'
+import ShareTool from '@/components/tools/ShareTool'
 import SalarySlipGenerator from '@/components/tools/SalarySlipGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
 
@@ -35,6 +36,7 @@ export default function Page() {
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">Salary Slip Generator <span className="block text-2xl text-[#555] md:text-3xl">Free payslip maker with PF &amp; ESI</span></h1>
             <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make a professional payslip with your company logo in a minute, with PF, ESI, TDS and loss of pay worked out. Completely free: no sign-in, no sign-up, no limits.</p>
             <FreeBadges className="mt-6" />
+            <ShareTool className="mt-5" url={URL} title="Free Salary Slip Generator" message="Free salary slip / payslip generator with PF, ESI and your logo, no sign-up." />
           </div>
           <div className="mt-10 print:mt-0"><SalarySlipGenerator /></div>
         </div>

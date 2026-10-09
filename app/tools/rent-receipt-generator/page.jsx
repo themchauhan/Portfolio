@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import JsonLd from '@/components/JsonLd'
 import FreeBadges from '@/components/tools/FreeBadges'
+import ShareTool from '@/components/tools/ShareTool'
 import RentReceiptGenerator from '@/components/tools/RentReceiptGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
 
@@ -35,6 +36,7 @@ export default function Page() {
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">Rent Receipt Generator</h1>
             <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make rent receipts for your HRA claim in under a minute. Completely free: no sign-in, no sign-up, no limits. Just fill in the details and print.</p>
             <FreeBadges className="mt-6" />
+            <ShareTool className="mt-5" url={URL} title="Free Rent Receipt Generator" message="Free rent receipt generator for HRA: make all 12 receipts in a minute, no sign-up." />
           </div>
           <div className="mt-10 print:mt-0">
             <RentReceiptGenerator />

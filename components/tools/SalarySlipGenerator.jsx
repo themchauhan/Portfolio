@@ -2,6 +2,7 @@
 import { useMemo, useState } from "react";
 import { amountInWords } from "@/lib/amountInWords";
 import { track } from "@/lib/analytics";
+import LogoUpload from "@/components/tools/LogoUpload";
 
 const money = (n) => new Intl.NumberFormat("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n || 0);
 const r2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
@@ -47,15 +48,6 @@ export default function SalarySlipGenerator() {
   const autoPF = () => upsertDeduction(/provident|\bpf\b/i, "Provident Fund (PF)", Math.round(Math.min(basicEarned, PF_CEILING) * PF_RATE));
   const autoESI = () => upsertDeduction(/\besi\b|state insurance/i, "ESI", calc.gross <= ESI_LIMIT ? Math.ceil(calc.gross * ESI_RATE) : 0);
 
-  const onLogo = (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    if (file.size > 2 * 1024 * 1024) { alert("Please choose a logo under 2 MB."); return; }
-    const reader = new FileReader();
-    reader.onload = () => setCompany((c) => ({ ...c, logo: String(reader.result) }));
-    reader.readAsDataURL(file);
-  };
-
   const monthLabel = (() => { const [y, m] = month.split("-").map(Number); return y ? new Date(y, m - 1, 1).toLocaleDateString("en-IN", { month: "long", year: "numeric" }) : ""; })();
   const ready = company.name && emp.name && calc.gross > 0 && working > 0;
 
@@ -92,17 +84,7 @@ export default function SalarySlipGenerator() {
           <fieldset className="space-y-3">
             <legend className="font-display text-lg font-extrabold">Company</legend>
             <label className={label}>Company name<input value={company.name} onChange={(e) => setCompany({ ...company, name: e.target.value })} required className={field} placeholder="Acme Traders Pvt Ltd" /></label>
-            <div>
-              <p className={label}>Company logo <span className="font-normal text-[#777]">(optional, stays on your device)</span></p>
-              <div className="mt-1.5 flex items-center gap-3">
-                {company.logo && <img src={company.logo} alt="" className="h-12 w-12 rounded border border-black/10 object-contain" />}
-                <label className="cursor-pointer rounded-full border border-black/20 px-4 py-2 text-sm font-semibold hover:border-[#111]">
-                  {company.logo ? "Change logo" : "Upload logo"}
-                  <input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" onChange={onLogo} className="sr-only" />
-                </label>
-                {company.logo && <button type="button" onClick={() => setCompany({ ...company, logo: "" })} className="text-sm text-[#777] hover:text-rose-600">Remove</button>}
-              </div>
-            </div>
+            <LogoUpload label="Company logo" value={company.logo} onChange={(logo) => setCompany((c) => ({ ...c, logo }))} />
             <label className={label}>Address<textarea rows={2} value={company.address} onChange={(e) => setCompany({ ...company, address: e.target.value })} className={field} placeholder="Sector 4, Rewari, Haryana" /></label>
             <div className="grid grid-cols-2 gap-3">
               <label className={label}>Pay month<input type="month" value={month} onChange={(e) => setMonth(e.target.value)} className={field} /></label>

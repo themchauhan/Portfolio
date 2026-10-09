@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import JsonLd from '@/components/JsonLd'
 import FreeBadges from '@/components/tools/FreeBadges'
+import ShareTool from '@/components/tools/ShareTool'
 import GstInvoiceGenerator from '@/components/tools/GstInvoiceGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
 
@@ -35,6 +36,7 @@ export default function Page() {
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">GST Invoice Generator</h1>
             <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make a proper GST tax invoice in a minute. CGST/SGST or IGST is worked out for you. Completely free: no sign-in, no sign-up, no limits.</p>
             <FreeBadges className="mt-6" />
+            <ShareTool className="mt-5" url={URL} title="Free GST Invoice Generator" message="Free GST invoice generator: CGST/SGST or IGST worked out for you, no sign-up." />
           </div>
           <div className="mt-10 print:mt-0"><GstInvoiceGenerator /></div>
           <p className="mt-8 text-[#555] print:hidden">Need to send a price first? Make one with the free <Link href="/tools/quotation-maker" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">Quotation Maker</Link>.</p>
