@@ -1,4 +1,5 @@
 import { SITE, serviceList, cityList, pathFor } from '@/lib/seo'
+import { newBlogPosts } from '@/lib/blogPosts'
 
 const blogSlugs = [
   'ai-powered-seo-nextjs',
@@ -33,6 +34,7 @@ export default function sitemap() {
     entry('/tools/website-cost-calculator', 'monthly', 0.8),
     entry('/academics', 'yearly', 0.5),
     entry('/blog', 'weekly', 0.7),
+    ...newBlogPosts.map((p) => entry(`/blog/${p.id}`, 'monthly', 0.8)),
     ...blogSlugs.map((s) => entry(`/blog/${s}`, 'monthly', 0.6)),
     entry('/resources', 'daily', 0.5),
     entry('/contacts', 'monthly', 0.7),

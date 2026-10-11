@@ -3,6 +3,8 @@ import styles from './BlogPost.module.css';
 import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import JsonLd from '@/components/JsonLd';
+import { newBlogPosts } from '@/lib/blogPosts';
 
 // Blog data
 const blogPosts = {
@@ -370,6 +372,7 @@ const blogPosts = {
     `
   }
 };
+for (const p of newBlogPosts) blogPosts[p.id] = p;
 
 export async function generateStaticParams() {
   return Object.keys(blogPosts).map((slug) => ({
@@ -397,6 +400,12 @@ export default function BlogPost({ params }) {
 
   return (
     <main className="bg-[#f4f1ec] text-[#111] antialiased">
+      <JsonLd data={{
+        '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title, description: post.excerpt,
+        datePublished: post.date, dateModified: post.date, inLanguage: 'en-IN',
+        author: { '@type': 'Person', name: 'Manish Chauhan', url: 'https://themanishchauhan.in' },
+        mainEntityOfPage: `https://themanishchauhan.in/blog/${post.id}`, image: 'https://themanishchauhan.in/og-image.png',
+      }} />
 
       {/* Header */}
       <article className={`prod py-14 md:py-20 ${styles.blogArticle}`}>

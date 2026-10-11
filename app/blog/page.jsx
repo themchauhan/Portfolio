@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import CtaBand from '@/components/CtaBand';
 import { pageMeta } from '@/lib/seo';
+import { newBlogPosts } from '@/lib/blogPosts';
 
 // Blog data
 const blogPosts = [
@@ -57,10 +58,11 @@ const blogPosts = [
     tags: ['AI', 'UX', 'Personalization', 'Engagement']
   }
 ];
+const allPosts = [...newBlogPosts, ...blogPosts].sort((a, b) => b.date.localeCompare(a.date));
 
 export const metadata = pageMeta({
   title: 'Blog',
-  description: 'Notes on AI, Next.js, SEO and web performance.',
+  description: 'Practical guides on rent receipts, salary slips, GST invoices, website costs, PG management and web development.',
   alternates: { canonical: 'https://themanishchauhan.in/blog' },
 });
 
@@ -68,12 +70,12 @@ export default function BlogPage() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
       <PageHero eyebrow="Blog" title="Notes on the web.">
-        Short, practical articles on AI, Next.js, SEO and performance.
+        Practical guides for small businesses and employees: rent receipts, salary slips, GST invoices, websites and more.
       </PageHero>
       <section className="!py-0 pb-16 md:pb-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <ul className="border-t border-black/20">
-            {blogPosts.map((post) => (
+            {allPosts.map((post) => (
               <li key={post.id} className="border-b border-black/20">
                 <Link href={`/blog/${post.id}`} className="group grid gap-3 py-8 md:grid-cols-[160px_1fr_auto] md:items-start md:gap-10">
                   <div className="text-sm font-medium text-[#777]">
