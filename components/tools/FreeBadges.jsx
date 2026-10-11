@@ -1,7 +1,11 @@
 // "Free / no account" reassurance shown at the top of every free tool.
-const badges = ["100% free", "No sign-in or sign-up", "Unlimited use", "Nothing stored"];
+const BADGES = {
+  en: ["100% free", "No sign-in or sign-up", "Unlimited use", "Nothing stored"],
+  hi: ["100% फ़्री", "कोई लॉगिन या साइन-अप नहीं", "जितना चाहें इस्तेमाल करें", "कुछ भी सेव नहीं होता"],
+};
 
-export default function FreeBadges({ className = "" }) {
+export default function FreeBadges({ className = "", lang = "en" }) {
+  const badges = BADGES[lang] || BADGES.en;
   return (
     <ul className={`flex flex-wrap gap-2.5 ${className}`} aria-label="Tool features">
       {badges.map((b) => (

@@ -10,7 +10,7 @@ const URL = `${SITE}/tools/salary-slip-generator`
 export const metadata = pageMeta({
   title: 'Free Payslip / Salary Slip Generator India (PF, ESI) – PDF',
   description: 'Free payslip generator for India: add your logo, earnings, PF, ESI, TDS and loss of pay. Net pay in words. No sign-in or sign-up. Print or PDF.',
-  alternates: { canonical: URL },
+  alternates: { canonical: URL, languages: { 'en-IN': URL, 'hi-IN': `${SITE}/hi/tools/salary-slip-generator` } },
 })
 
 const faqs = [
@@ -32,7 +32,10 @@ export default function Page() {
       <section className="!py-12 md:!py-20 print:!py-0">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="print:hidden">
-            <p className="text-[15px] font-semibold text-[#ff5a1f]">Free tool</p>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="text-[15px] font-semibold text-[#ff5a1f]">Free tool</p>
+              <Link href="/hi/tools/salary-slip-generator" hrefLang="hi" className="text-sm font-semibold underline decoration-[#ff5a1f] underline-offset-4">हिंदी में देखें</Link>
+            </div>
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">Salary Slip Generator <span className="block text-2xl text-[#555] md:text-3xl">Free payslip maker with PF &amp; ESI</span></h1>
             <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make a professional payslip with your company logo in a minute, with PF, ESI, TDS and loss of pay worked out. Completely free: no sign-in, no sign-up, no limits.</p>
             <FreeBadges className="mt-6" />

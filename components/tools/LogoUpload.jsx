@@ -2,12 +2,18 @@
 
 // Logo picker for the free tools. The image is read in the browser as a data URL
 // and never uploaded anywhere.
-export default function LogoUpload({ value, onChange, label = "Logo", className = "" }) {
+const TEXT = {
+  en: { hint: "(optional, stays on your device)", upload: "Upload logo", change: "Change logo", remove: "Remove", tooBig: "Please choose a logo under 2 MB." },
+  hi: { hint: "(अगर चाहें, आपके डिवाइस में ही रहेगा)", upload: "लोगो लगाएँ", change: "लोगो बदलें", remove: "हटाएँ", tooBig: "कृपया 2 MB से छोटा लोगो चुनें।" },
+};
+
+export default function LogoUpload({ value, onChange, label = "Logo", className = "", lang = "en" }) {
+  const t = TEXT[lang] || TEXT.en;
   const pick = (e) => {
     const file = e.target.files?.[0];
     e.target.value = ""; // allow picking the same file again
     if (!file) return;
-    if (file.size > 2 * 1024 * 1024) { alert("Please choose a logo under 2 MB."); return; }
+    if (file.size > 2 * 1024 * 1024) { alert(t.tooBig); return; }
     const reader = new FileReader();
     reader.onload = () => onChange(String(reader.result));
     reader.readAsDataURL(file);
@@ -15,14 +21,14 @@ export default function LogoUpload({ value, onChange, label = "Logo", className 
 
   return (
     <div className={className}>
-      <p className="block text-sm font-medium">{label} <span className="font-normal text-[#777]">(optional, stays on your device)</span></p>
+      <p className="block text-sm font-medium">{label} <span className="font-normal text-[#777]">{t.hint}</span></p>
       <div className="mt-1.5 flex items-center gap-3">
         {value && <img src={value} alt="" className="h-12 w-12 rounded border border-black/10 object-contain" />}
         <label className="cursor-pointer rounded-full border border-black/20 px-4 py-2 text-sm font-semibold hover:border-[#111]">
-          {value ? "Change logo" : "Upload logo"}
+          {value ? t.change : t.upload}
           <input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" onChange={pick} className="sr-only" />
         </label>
-        {value && <button type="button" onClick={() => onChange("")} className="text-sm text-[#777] hover:text-rose-600">Remove</button>}
+        {value && <button type="button" onClick={() => onChange("")} className="text-sm text-[#777] hover:text-rose-600">{t.remove}</button>}
       </div>
     </div>
   );

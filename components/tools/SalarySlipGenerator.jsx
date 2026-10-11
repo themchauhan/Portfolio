@@ -17,7 +17,36 @@ const monthValue = `${lastMonth.getFullYear()}-${String(lastMonth.getMonth() + 1
 // EPF: 12% of Basic, on a wage ceiling of ₹15,000 (max ₹1,800). ESI: 0.75% if gross ≤ ₹21,000.
 const PF_RATE = 0.12, PF_CEILING = 15000, ESI_RATE = 0.0075, ESI_LIMIT = 21000;
 
-export default function SalarySlipGenerator() {
+// Form text in English and simple Hindi. The payslip itself stays in English (standard for HR, banks and loans).
+const TEXT = {
+  en: {
+    company: "Company", companyName: "Company name", logo: "Company logo", address: "Address", payMonth: "Pay month", payDate: "Pay date",
+    working: "Working days", paidDays: "Paid days", lop: (d) => `${d} day(s) loss of pay: earnings are reduced proportionally.`,
+    employee: "Employee", empName: "Employee name", empId: "Employee ID", designation: "Designation", department: "Department", doj: "Date of joining",
+    optional: "(optional)", bank: "Bank account", bankHint: "(optional, last 4 digits is enough)",
+    earnings: "Earnings", deductions: "Deductions", monthly: "(monthly amounts)", addEarning: "Add earning", addDeduction: "Add deduction",
+    autoPF: "Auto PF (12% of Basic)", autoESI: "Auto ESI (0.75%)",
+    rules: "PF uses Basic up to ₹15,000 (max ₹1,800). ESI applies only if gross is ₹21,000 or less. Professional tax varies by state.",
+    summary: (g, d, n) => <>Gross ₹{g} − Deductions ₹{d} = <strong className="text-[#111]">Net ₹{n}</strong></>,
+    create: "Create salary slip", privacy: "Everything stays in your browser. Nothing you type is sent or saved.",
+    missing: "Add the company name, employee name, working days and at least one earning.", print: "Print / Save as PDF",
+  },
+  hi: {
+    company: "कंपनी", companyName: "कंपनी का नाम", logo: "कंपनी का लोगो", address: "पता", payMonth: "सैलरी का महीना", payDate: "सैलरी की तारीख",
+    working: "कुल वर्किंग दिन", paidDays: "जितने दिन की सैलरी", lop: (d) => `${d} दिन की छुट्टी बिना सैलरी (LOP): सैलरी उसी हिसाब से कम होगी।`,
+    employee: "कर्मचारी", empName: "कर्मचारी का नाम", empId: "कर्मचारी ID", designation: "पद (Designation)", department: "विभाग (Department)", doj: "जॉइनिंग की तारीख",
+    optional: "(अगर हो तो)", bank: "बैंक अकाउंट", bankHint: "(अगर चाहें, आख़िरी 4 अंक काफ़ी हैं)",
+    earnings: "कमाई (Earnings)", deductions: "कटौती (Deductions)", monthly: "(महीने की रकम)", addEarning: "कमाई जोड़ें", addDeduction: "कटौती जोड़ें",
+    autoPF: "PF अपने-आप (Basic का 12%)", autoESI: "ESI अपने-आप (0.75%)",
+    rules: "PF: Basic ₹15,000 तक पर (ज़्यादा से ज़्यादा ₹1,800)। ESI: तभी कटता है जब कुल सैलरी ₹21,000 या कम हो। प्रोफ़ेशनल टैक्स हर राज्य में अलग है।",
+    summary: (g, d, n) => <>कुल सैलरी ₹{g} − कटौती ₹{d} = <strong className="text-[#111]">हाथ में ₹{n}</strong></>,
+    create: "सैलरी स्लिप बनाएँ", privacy: "आप जो भी लिखेंगे, वो आपके फ़ोन या कंप्यूटर में ही रहेगा। कहीं भेजा या सेव नहीं होता।",
+    missing: "कंपनी का नाम, कर्मचारी का नाम, वर्किंग दिन और कम से कम एक कमाई भरें।", print: "प्रिंट करें / PDF सेव करें",
+  },
+};
+
+export default function SalarySlipGenerator({ lang = "en" }) {
+  const t = TEXT[lang] || TEXT.en;
   const [company, setCompany] = useState({ name: "", address: "", logo: "" });
   const [emp, setEmp] = useState({ name: "", id: "", designation: "", department: "", pan: "", uan: "", bank: "", doj: "" });
   const [month, setMonth] = useState(monthValue);
@@ -56,7 +85,7 @@ export default function SalarySlipGenerator() {
 
   const Rows = ({ title, list, setList, addLabel }) => (
     <fieldset>
-      <legend className="font-display text-lg font-extrabold">{title} <span className="font-sans text-sm font-normal text-[#777]">(monthly amounts)</span></legend>
+      <legend className="font-display text-lg font-extrabold">{title} <span className="font-sans text-sm font-normal text-[#777]">{t.monthly}</span></legend>
       <div className="mt-3 space-y-2">
         {list.map((x) => (
           <div key={x.id} className="flex gap-2">
@@ -75,64 +104,64 @@ export default function SalarySlipGenerator() {
       <form
         onSubmit={(e) => {
           e.preventDefault(); setShown(true);
-          if (ready) track("generate_salary_slip", { earning_rows: calc.e.filter((x) => x.earned > 0).length, deduction_rows: calc.d.filter((x) => x.value > 0).length, has_lop: paid < working });
+          if (ready) track("generate_salary_slip", { lang, earning_rows: calc.e.filter((x) => x.earned > 0).length, deduction_rows: calc.d.filter((x) => x.value > 0).length, has_lop: paid < working });
           setTimeout(() => document.getElementById("payslip")?.scrollIntoView({ behavior: "smooth" }), 50);
         }}
         className="space-y-8 rounded-2xl bg-white p-6 shadow-sm md:p-8 print:hidden"
       >
         <div className="grid gap-8 md:grid-cols-2">
           <fieldset className="space-y-3">
-            <legend className="font-display text-lg font-extrabold">Company</legend>
-            <label className={label}>Company name<input value={company.name} onChange={(e) => setCompany({ ...company, name: e.target.value })} required className={field} placeholder="Acme Traders Pvt Ltd" /></label>
-            <LogoUpload label="Company logo" value={company.logo} onChange={(logo) => setCompany((c) => ({ ...c, logo }))} />
-            <label className={label}>Address<textarea rows={2} value={company.address} onChange={(e) => setCompany({ ...company, address: e.target.value })} className={field} placeholder="Sector 4, Rewari, Haryana" /></label>
+            <legend className="font-display text-lg font-extrabold">{t.company}</legend>
+            <label className={label}>{t.companyName}<input value={company.name} onChange={(e) => setCompany({ ...company, name: e.target.value })} required className={field} placeholder="Acme Traders Pvt Ltd" /></label>
+            <LogoUpload lang={lang} label={t.logo} value={company.logo} onChange={(logo) => setCompany((c) => ({ ...c, logo }))} />
+            <label className={label}>{t.address}<textarea rows={2} value={company.address} onChange={(e) => setCompany({ ...company, address: e.target.value })} className={field} placeholder="Sector 4, Rewari, Haryana" /></label>
             <div className="grid grid-cols-2 gap-3">
-              <label className={label}>Pay month<input type="month" value={month} onChange={(e) => setMonth(e.target.value)} className={field} /></label>
-              <label className={label}>Pay date<input type="date" value={payDate} onChange={(e) => setPayDate(e.target.value)} className={field} /></label>
-              <label className={label}>Working days<input type="number" min="1" max="31" value={days.working} onChange={(e) => setDays({ ...days, working: e.target.value })} className={field} /></label>
-              <label className={label}>Paid days<input type="number" min="0" max="31" value={days.paid} onChange={(e) => setDays({ ...days, paid: e.target.value })} className={field} /></label>
+              <label className={label}>{t.payMonth}<input type="month" value={month} onChange={(e) => setMonth(e.target.value)} className={field} /></label>
+              <label className={label}>{t.payDate}<input type="date" value={payDate} onChange={(e) => setPayDate(e.target.value)} className={field} /></label>
+              <label className={label}>{t.working}<input type="number" min="1" max="31" value={days.working} onChange={(e) => setDays({ ...days, working: e.target.value })} className={field} /></label>
+              <label className={label}>{t.paidDays}<input type="number" min="0" max="31" value={days.paid} onChange={(e) => setDays({ ...days, paid: e.target.value })} className={field} /></label>
             </div>
-            {paid < working && <p className="text-sm text-[#c2410c]">{r2(working - paid)} day(s) loss of pay: earnings are reduced proportionally.</p>}
+            {paid < working && <p className="text-sm text-[#c2410c]">{t.lop(r2(working - paid))}</p>}
           </fieldset>
 
           <fieldset className="grid grid-cols-2 gap-3">
-            <legend className="mb-1 font-display text-lg font-extrabold">Employee</legend>
-            <label className={`${label} col-span-2`}>Employee name<input value={emp.name} onChange={(e) => setEmp({ ...emp, name: e.target.value })} required className={field} placeholder="Priya Sharma" /></label>
-            <label className={label}>Employee ID<input value={emp.id} onChange={(e) => setEmp({ ...emp, id: e.target.value })} className={field} /></label>
-            <label className={label}>Designation<input value={emp.designation} onChange={(e) => setEmp({ ...emp, designation: e.target.value })} className={field} /></label>
-            <label className={label}>Department<input value={emp.department} onChange={(e) => setEmp({ ...emp, department: e.target.value })} className={field} /></label>
-            <label className={label}>Date of joining<input type="date" value={emp.doj} onChange={(e) => setEmp({ ...emp, doj: e.target.value })} className={field} /></label>
-            <label className={label}>PAN <span className="font-normal text-[#777]">(optional)</span><input value={emp.pan} maxLength={10} onChange={(e) => setEmp({ ...emp, pan: e.target.value.toUpperCase() })} className={field} /></label>
-            <label className={label}>UAN <span className="font-normal text-[#777]">(optional)</span><input value={emp.uan} onChange={(e) => setEmp({ ...emp, uan: e.target.value })} className={field} /></label>
-            <label className={`${label} col-span-2`}>Bank account <span className="font-normal text-[#777]">(optional, last 4 digits is enough)</span><input value={emp.bank} onChange={(e) => setEmp({ ...emp, bank: e.target.value })} className={field} placeholder="XXXX1234" /></label>
+            <legend className="mb-1 font-display text-lg font-extrabold">{t.employee}</legend>
+            <label className={`${label} col-span-2`}>{t.empName}<input value={emp.name} onChange={(e) => setEmp({ ...emp, name: e.target.value })} required className={field} placeholder="Priya Sharma" /></label>
+            <label className={label}>{t.empId}<input value={emp.id} onChange={(e) => setEmp({ ...emp, id: e.target.value })} className={field} /></label>
+            <label className={label}>{t.designation}<input value={emp.designation} onChange={(e) => setEmp({ ...emp, designation: e.target.value })} className={field} /></label>
+            <label className={label}>{t.department}<input value={emp.department} onChange={(e) => setEmp({ ...emp, department: e.target.value })} className={field} /></label>
+            <label className={label}>{t.doj}<input type="date" value={emp.doj} onChange={(e) => setEmp({ ...emp, doj: e.target.value })} className={field} /></label>
+            <label className={label}>PAN <span className="font-normal text-[#777]">{t.optional}</span><input value={emp.pan} maxLength={10} onChange={(e) => setEmp({ ...emp, pan: e.target.value.toUpperCase() })} className={field} /></label>
+            <label className={label}>UAN <span className="font-normal text-[#777]">{t.optional}</span><input value={emp.uan} onChange={(e) => setEmp({ ...emp, uan: e.target.value })} className={field} /></label>
+            <label className={`${label} col-span-2`}>{t.bank} <span className="font-normal text-[#777]">{t.bankHint}</span><input value={emp.bank} onChange={(e) => setEmp({ ...emp, bank: e.target.value })} className={field} placeholder="XXXX1234" /></label>
           </fieldset>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
-          {Rows({ title: "Earnings", list: earnings, setList: setEarnings, addLabel: "Add earning" })}
+          {Rows({ title: t.earnings, list: earnings, setList: setEarnings, addLabel: t.addEarning })}
           <div>
-            {Rows({ title: "Deductions", list: deductions, setList: setDeductions, addLabel: "Add deduction" })}
+            {Rows({ title: t.deductions, list: deductions, setList: setDeductions, addLabel: t.addDeduction })}
             <div className="mt-4 flex flex-wrap gap-2">
-              <button type="button" onClick={autoPF} className="rounded-full border border-black/20 px-4 py-2 text-sm font-semibold hover:border-[#111]">Auto PF (12% of Basic)</button>
-              <button type="button" onClick={autoESI} className="rounded-full border border-black/20 px-4 py-2 text-sm font-semibold hover:border-[#111]">Auto ESI (0.75%)</button>
+              <button type="button" onClick={autoPF} className="rounded-full border border-black/20 px-4 py-2 text-sm font-semibold hover:border-[#111]">{t.autoPF}</button>
+              <button type="button" onClick={autoESI} className="rounded-full border border-black/20 px-4 py-2 text-sm font-semibold hover:border-[#111]">{t.autoESI}</button>
             </div>
-            <p className="mt-2 text-xs text-[#777]">PF uses Basic up to ₹15,000 (max ₹1,800). ESI applies only if gross is ₹21,000 or less. Professional tax varies by state.</p>
+            <p className="mt-2 text-xs text-[#777]">{t.rules}</p>
           </div>
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-black/10 pt-6">
-          <p className="text-sm text-[#555]">Gross ₹{money(calc.gross)} − Deductions ₹{money(calc.totalDed)} = <strong className="text-[#111]">Net ₹{money(calc.net)}</strong></p>
-          <button type="submit" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Create salary slip</button>
+          <p className="text-sm text-[#555]">{t.summary(money(calc.gross), money(calc.totalDed), money(calc.net))}</p>
+          <button type="submit" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">{t.create}</button>
         </div>
-        <p className="text-sm text-[#777]">Everything stays in your browser. Nothing you type is sent or saved.</p>
+        <p className="text-sm text-[#777]">{t.privacy}</p>
       </form>
 
-      {shown && !ready && <p className="mt-6 text-rose-600 print:hidden">Add the company name, employee name, working days and at least one earning.</p>}
+      {shown && !ready && <p className="mt-6 text-rose-600 print:hidden">{t.missing}</p>}
 
       {shown && ready && (
         <section id="payslip" className="!py-0 mt-10">
           <div className="mb-6 flex justify-end print:hidden">
-            <button onClick={() => { track("print_salary_slip", { has_lop: paid < working, has_logo: !!company.logo }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
+            <button onClick={() => { track("print_salary_slip", { has_lop: paid < working, has_logo: !!company.logo, lang }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">{t.print}</button>
           </div>
           <article className="mx-auto max-w-[860px] rounded-xl border border-black/15 bg-white p-6 text-sm text-[#222] md:p-10 print:max-w-none print:rounded-none print:border-0 print:p-0">
             {/* Header */}

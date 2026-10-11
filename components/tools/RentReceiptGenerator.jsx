@@ -69,7 +69,34 @@ function Receipt({ no, f, amount, start, end, date }) {
   );
 }
 
-export default function RentReceiptGenerator() {
+// Form text in English and simple Hindi. The receipt itself stays in English (accepted by every employer).
+const TEXT = {
+  en: {
+    tenantProperty: "Tenant & property", tenant: "Tenant name", houseNo: "House / flat no.", address: "Property address (situated at)",
+    rent: "Rent", monthlyRent: "Monthly rent (₹)", mode: "Payment mode", modes: { "Bank transfer": "Bank transfer", UPI: "UPI", Cheque: "Cheque", Cash: "Cash" },
+    from: "From month", to: "To month", receipts: "Receipts", perMonth: (n) => `One per month (${n})`, single: "One for the whole period",
+    owner: "House owner (landlord)", ownerName: "Name of owner", ownerPan: "PAN of owner", panReq: "(required: rent over ₹1 lakh/year)", optional: "(optional)", ownerAddress: "Address of owner",
+    summary: (n, total) => <>{n} months · total rent <strong className="text-[#111]">₹{total}</strong></>,
+    generate: (n) => `Generate receipt${n > 1 ? "s" : ""}`, privacy: "Everything stays in your browser. Nothing you type is sent or saved.",
+    missing: (pan) => `Please fill in all required fields${pan ? ", including a valid owner PAN" : ""}.`,
+    count: (n) => <><strong>{n}</strong> receipt{n > 1 ? "s" : ""} · one per A4 page when printed</>, print: "Print / Save as PDF",
+    stamp: "Cash receipts above ₹5,000 need a revenue stamp, signed by the owner across the stamp. A box is printed for it.",
+  },
+  hi: {
+    tenantProperty: "किरायेदार और प्रॉपर्टी", tenant: "किरायेदार का नाम", houseNo: "मकान / फ्लैट नंबर", address: "प्रॉपर्टी का पता",
+    rent: "किराया", monthlyRent: "महीने का किराया (₹)", mode: "पेमेंट कैसे किया", modes: { "Bank transfer": "बैंक ट्रांसफ़र", UPI: "UPI", Cheque: "चेक", Cash: "कैश" },
+    from: "किस महीने से", to: "किस महीने तक", receipts: "रसीदें", perMonth: (n) => `हर महीने की अलग (${n})`, single: "पूरे समय की एक रसीद",
+    owner: "मकान मालिक", ownerName: "मकान मालिक का नाम", ownerPan: "मकान मालिक का PAN", panReq: "(ज़रूरी: साल का किराया ₹1 लाख से ज़्यादा)", optional: "(अगर हो तो)", ownerAddress: "मकान मालिक का पता",
+    summary: (n, total) => <>{n} महीने · कुल किराया <strong className="text-[#111]">₹{total}</strong></>,
+    generate: () => "रसीद बनाएँ", privacy: "आप जो भी लिखेंगे, वो आपके फ़ोन या कंप्यूटर में ही रहेगा। कहीं भेजा या सेव नहीं होता।",
+    missing: (pan) => `सभी ज़रूरी जानकारी भरें${pan ? ", मकान मालिक का सही PAN भी" : ""}।`,
+    count: (n) => <><strong>{n}</strong> रसीद · प्रिंट करने पर हर रसीद अलग A4 पेज पर</>, print: "प्रिंट करें / PDF सेव करें",
+    stamp: "कैश में ₹5,000 से ज़्यादा की रसीद पर रेवेन्यू स्टैम्प लगाकर मकान मालिक उस पर साइन करें। इसके लिए जगह छोड़ी गई है।",
+  },
+};
+
+export default function RentReceiptGenerator({ lang = "en" }) {
+  const t = TEXT[lang] || TEXT.en;
   const [f, setF] = useState(initial);
   const [shown, setShown] = useState(false);
   const set = (e) => setF({ ...f, [e.target.name]: e.target.value });
@@ -95,32 +122,32 @@ export default function RentReceiptGenerator() {
   return (
     <div>
       <form
-        onSubmit={(e) => { e.preventDefault(); setShown(true); if (ready) track("generate_rent_receipt", { receipt_count: receipts.length, receipt_type: f.split, payment_mode: f.mode }); setTimeout(() => document.getElementById("receipts")?.scrollIntoView({ behavior: "smooth" }), 50); }}
+        onSubmit={(e) => { e.preventDefault(); setShown(true); if (ready) track("generate_rent_receipt", { receipt_count: receipts.length, receipt_type: f.split, payment_mode: f.mode, lang }); setTimeout(() => document.getElementById("receipts")?.scrollIntoView({ behavior: "smooth" }), 50); }}
         className="space-y-8 rounded-2xl bg-white p-6 shadow-sm md:p-8 print:hidden"
       >
         <fieldset className="grid gap-5 md:grid-cols-2">
-          <legend className="mb-1 font-display text-lg font-extrabold">Tenant &amp; property</legend>
-          <label className={label}>Tenant name<input name="tenant" value={f.tenant} onChange={set} required className={field} placeholder="Rahul Sharma" /></label>
-          <label className={label}>House / flat no.<input name="houseNo" value={f.houseNo} onChange={set} className={field} placeholder="B-204" /></label>
-          <label className={`${label} md:col-span-2`}>Property address (situated at)<input name="address" value={f.address} onChange={set} required className={field} placeholder="Model Town, Rewari, Haryana 123401" /></label>
+          <legend className="mb-1 font-display text-lg font-extrabold">{t.tenantProperty}</legend>
+          <label className={label}>{t.tenant}<input name="tenant" value={f.tenant} onChange={set} required className={field} placeholder="Rahul Sharma" /></label>
+          <label className={label}>{t.houseNo}<input name="houseNo" value={f.houseNo} onChange={set} className={field} placeholder="B-204" /></label>
+          <label className={`${label} md:col-span-2`}>{t.address}<input name="address" value={f.address} onChange={set} required className={field} placeholder="Model Town, Rewari, Haryana 123401" /></label>
         </fieldset>
 
         <fieldset className="grid gap-5 md:grid-cols-2">
-          <legend className="mb-1 font-display text-lg font-extrabold">Rent</legend>
-          <label className={label}>Monthly rent (₹)<input name="rent" type="number" min="1" value={f.rent} onChange={set} required className={field} placeholder="12000" /></label>
-          <label className={label}>Payment mode
+          <legend className="mb-1 font-display text-lg font-extrabold">{t.rent}</legend>
+          <label className={label}>{t.monthlyRent}<input name="rent" type="number" min="1" value={f.rent} onChange={set} required className={field} placeholder="12000" /></label>
+          <label className={label}>{t.mode}
             <select name="mode" value={f.mode} onChange={set} className={field}>
-              <option>Bank transfer</option><option>UPI</option><option>Cheque</option><option>Cash</option>
+              {Object.entries(t.modes).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
             </select>
           </label>
-          <label className={label}>From month<input name="from" type="month" value={f.from} onChange={set} required className={field} /></label>
-          <label className={label}>To month<input name="to" type="month" value={f.to} onChange={set} required className={field} /></label>
+          <label className={label}>{t.from}<input name="from" type="month" value={f.from} onChange={set} required className={field} /></label>
+          <label className={label}>{t.to}<input name="to" type="month" value={f.to} onChange={set} required className={field} /></label>
           <div className="md:col-span-2">
-            <p className="text-sm font-medium">Receipts</p>
+            <p className="text-sm font-medium">{t.receipts}</p>
             <div className="mt-2 flex flex-wrap gap-3">
-              {[["monthly", `One per month (${months.length})`], ["single", "One for the whole period"]].map(([v, t]) => (
+              {[["monthly", t.perMonth(months.length)], ["single", t.single]].map(([v, txt]) => (
                 <label key={v} className={`cursor-pointer rounded-full border px-4 py-2 text-sm font-semibold ${f.split === v ? "border-[#111] bg-[#111] text-white" : "border-black/25"}`}>
-                  <input type="radio" name="split" value={v} checked={f.split === v} onChange={set} className="sr-only" />{t}
+                  <input type="radio" name="split" value={v} checked={f.split === v} onChange={set} className="sr-only" />{txt}
                 </label>
               ))}
             </div>
@@ -128,31 +155,31 @@ export default function RentReceiptGenerator() {
         </fieldset>
 
         <fieldset className="grid gap-5 md:grid-cols-2">
-          <legend className="mb-1 font-display text-lg font-extrabold">House owner (landlord)</legend>
-          <label className={label}>Name of owner<input name="landlord" value={f.landlord} onChange={set} required className={field} placeholder="Suresh Yadav" /></label>
-          <label className={label}>PAN of owner <span className="font-normal text-[#777]">{needsPan ? "(required: rent over ₹1 lakh/year)" : "(optional)"}</span>
+          <legend className="mb-1 font-display text-lg font-extrabold">{t.owner}</legend>
+          <label className={label}>{t.ownerName}<input name="landlord" value={f.landlord} onChange={set} required className={field} placeholder="Suresh Yadav" /></label>
+          <label className={label}>{t.ownerPan} <span className="font-normal text-[#777]">{needsPan ? t.panReq : t.optional}</span>
             <input name="landlordPan" value={f.landlordPan} onChange={(e) => setF({ ...f, landlordPan: e.target.value.toUpperCase().replace(/\s/g, "") })} required={needsPan} minLength={needsPan ? 10 : undefined} maxLength={10} pattern="[A-Z]{5}[0-9]{4}[A-Z]" title="PAN format: ABCDE1234F" className={field} placeholder="ABCDE1234F" />
           </label>
-          <label className={`${label} md:col-span-2`}>Address of owner<input name="landlordAddress" value={f.landlordAddress} onChange={set} className={field} placeholder="House 5, Civil Lines, Rewari" /></label>
+          <label className={`${label} md:col-span-2`}>{t.ownerAddress}<input name="landlordAddress" value={f.landlordAddress} onChange={set} className={field} placeholder="House 5, Civil Lines, Rewari" /></label>
         </fieldset>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-black/10 pt-6">
-          <p className="text-sm text-[#555]">{months.length} months · total rent <strong className="text-[#111]">₹{inr(total)}</strong></p>
-          <button type="submit" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Generate receipt{receipts.length > 1 ? "s" : ""}</button>
+          <p className="text-sm text-[#555]">{t.summary(months.length, inr(total))}</p>
+          <button type="submit" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">{t.generate(receipts.length)}</button>
         </div>
-        <p className="text-sm text-[#777]">Everything stays in your browser. Nothing you type is sent or saved.</p>
+        <p className="text-sm text-[#777]">{t.privacy}</p>
       </form>
 
-      {shown && !ready && <p className="mt-6 text-rose-600 print:hidden">Please fill in all required fields{needsPan ? ", including a valid owner PAN" : ""}.</p>}
+      {shown && !ready && <p className="mt-6 text-rose-600 print:hidden">{t.missing(needsPan)}</p>}
 
       {shown && ready && (
         <section id="receipts" className="!py-0 mt-10">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4 print:hidden">
-            <p className="text-lg"><strong>{receipts.length}</strong> receipt{receipts.length > 1 ? "s" : ""} · one per A4 page when printed</p>
-            <button onClick={() => { track("print_rent_receipt", { receipt_count: receipts.length, receipt_type: f.split }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
+            <p className="text-lg">{t.count(receipts.length)}</p>
+            <button onClick={() => { track("print_rent_receipt", { receipt_count: receipts.length, receipt_type: f.split, lang }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">{t.print}</button>
           </div>
           {f.mode === "Cash" && receipts.some((r) => r.amount > 5000) && (
-            <p className="mb-6 border-l-4 border-[#ff5a1f] bg-white p-4 text-sm print:hidden">Cash receipts above ₹5,000 need a revenue stamp, signed by the owner across the stamp. A box is printed for it.</p>
+            <p className="mb-6 border-l-4 border-[#ff5a1f] bg-white p-4 text-sm print:hidden">{t.stamp}</p>
           )}
           <div className="space-y-6 print:space-y-0">
             {receipts.map((r, i) => (

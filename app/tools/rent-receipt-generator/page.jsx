@@ -10,7 +10,7 @@ const URL = `${SITE}/tools/rent-receipt-generator`
 export const metadata = pageMeta({
   title: 'Free Rent Receipt Generator for HRA (Print or PDF)',
   description: 'Create monthly rent receipts for HRA claims in seconds. Free, no sign-in or sign-up. Add landlord PAN, print or save as PDF.',
-  alternates: { canonical: URL },
+  alternates: { canonical: URL, languages: { 'en-IN': URL, 'hi-IN': `${SITE}/hi/tools/rent-receipt-generator` } },
 })
 
 const faqs = [
@@ -32,7 +32,10 @@ export default function Page() {
       <section className="!py-12 md:!py-20 print:!py-0">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <div className="print:hidden">
-            <p className="text-[15px] font-semibold text-[#ff5a1f]">Free tool</p>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="text-[15px] font-semibold text-[#ff5a1f]">Free tool</p>
+              <Link href="/hi/tools/rent-receipt-generator" hrefLang="hi" className="text-sm font-semibold underline decoration-[#ff5a1f] underline-offset-4">हिंदी में देखें</Link>
+            </div>
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">Rent Receipt Generator</h1>
             <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Make rent receipts for your HRA claim in under a minute. Completely free: no sign-in, no sign-up, no limits. Just fill in the details and print.</p>
             <FreeBadges className="mt-6" />

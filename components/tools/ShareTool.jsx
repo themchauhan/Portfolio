@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
 
 // Share a free tool: WhatsApp, LinkedIn, copy link, and the phone's share menu.
-export default function ShareTool({ url, title, message, className = "" }) {
+export default function ShareTool({ url, title, message, className = "", lang = "en" }) {
+  const hi = lang === "hi";
   const [copied, setCopied] = useState(false);
   const [canShare, setCanShare] = useState(false);
   useEffect(() => setCanShare(typeof navigator !== "undefined" && !!navigator.share), []);
@@ -14,7 +15,7 @@ export default function ShareTool({ url, title, message, className = "" }) {
 
   return (
     <div className={`flex flex-wrap items-center gap-2.5 print:hidden ${className}`}>
-      <span className="text-sm font-semibold text-[#555]">Share this free tool:</span>
+      <span className="text-sm font-semibold text-[#555]">{hi ? "इस फ़्री टूल को शेयर करें:" : "Share this free tool:"}</span>
       <a className={btn} href={`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`} target="_blank" rel="noopener noreferrer" onClick={() => send("whatsapp")}>
         <span className="text-[#25D366]" aria-hidden="true">●</span>WhatsApp
       </a>
@@ -24,13 +25,13 @@ export default function ShareTool({ url, title, message, className = "" }) {
       <button type="button" className={btn} onClick={async () => {
         try { await navigator.clipboard.writeText(url); setCopied(true); setTimeout(() => setCopied(false), 2000); send("copy"); } catch {}
       }}>
-        {copied ? "✓ Link copied" : "Copy link"}
+        {copied ? (hi ? "✓ लिंक कॉपी हो गया" : "✓ Link copied") : (hi ? "लिंक कॉपी करें" : "Copy link")}
       </button>
       {canShare && (
         <button type="button" className={btn} onClick={async () => {
           try { await navigator.share({ title, text, url }); send("native"); } catch {}
         }}>
-          More…
+          {hi ? "और…" : "More…"}
         </button>
       )}
     </div>
