@@ -8,8 +8,8 @@ import { SITE, pageMeta } from '@/lib/seo'
 const URL = `${SITE}/tools/salary-slip-generator`
 
 export const metadata = pageMeta({
-  title: 'Free Payslip / Salary Slip Generator India (PF, ESI) – PDF',
-  description: 'Free payslip generator for India: add your logo, earnings, PF, ESI, TDS and loss of pay. Net pay in words. No sign-in or sign-up. Print or PDF.',
+  title: 'Free Payslip Generator & Salary Slip Software India (PDF)',
+  description: 'Free online payslip generator and salary slip software for India. Generate payslips with your logo, PF, ESI, TDS and LOP. No sign-up. Print or PDF.',
   alternates: { canonical: URL, languages: { 'en-IN': URL, 'hi-IN': `${SITE}/hi/tools/salary-slip-generator` } },
 })
 
@@ -18,6 +18,8 @@ const faqs = [
   ['What should a salary slip include?', 'Typically the company name, employee details, pay month, working and paid days, each earning (Basic, HRA, allowances), each deduction (PF, professional tax, TDS, ESI), gross earnings, total deductions and net pay.'],
   ['How is PF calculated?', 'Employee PF is usually 12% of Basic (plus DA). Many employers calculate it on a wage ceiling of ₹15,000, which makes the maximum ₹1,800 a month. Use the “Auto PF” button for this.'],
   ['When does ESI apply?', 'Employee ESI of 0.75% generally applies when gross monthly wages are ₹21,000 or less. The “Auto ESI” button applies this rule.'],
+  ['Is this salary slip software I need to install?', 'No. It is free online salary slip software that runs in your browser on a phone or computer, so there is nothing to install or pay for. If you need payslips generated and sent automatically for many employees every month, ask about payroll automation.'],
+  ['Can I generate payslips for multiple employees?', 'Yes, one at a time. Fill in the first employee, print or save the PDF, then change the employee details and generate the next payslip. The company details and logo stay filled in.'],
   ['How is loss of pay (LOP) handled?', 'Enter working days and paid days. If paid days are fewer, each earning is reduced in proportion, and the slip shows both figures.'],
 ]
 
@@ -73,7 +75,9 @@ export default function Page() {
               </li>
             ))}
           </ol>
-          <p className="mt-8 max-w-3xl text-[#555]">A salary slip, also called a payslip or pay stub, is a monthly document an employer gives to each employee. It shows gross earnings, every deduction and the final net pay, and employees often need it for loans, credit cards, visas and job changes.</p>
+          <h2 className="mt-14 font-display text-2xl font-extrabold tracking-tight md:text-3xl">Free online salary slip software, nothing to install</h2>
+          <p className="mt-4 max-w-3xl text-[#555]">Most salary slip software needs an account, a subscription or an installation. This online payslip generator works straight in your browser: generate a payslip, print it or save it as PDF, and share it on WhatsApp or email. It suits small businesses, shops, clinics, schools and startups that pay a few employees and just need correct, professional payslips every month.</p>
+          <p className="mt-4 max-w-3xl text-[#555]">A salary slip, also called a payslip or pay stub, is a monthly document an employer gives to each employee. It shows gross earnings, every deduction and the final net pay, and employees often need it for loans, credit cards, visas and job changes.</p>
         </div>
       </section>
 

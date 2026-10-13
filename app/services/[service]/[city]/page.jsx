@@ -4,7 +4,7 @@ import JsonLd from '@/components/JsonLd'
 import TrackedLink from '@/components/TrackedLink'
 import ContactForm from '@/components/products/ContactForm'
 import { products } from '@/lib/products'
-import { SITE, services, cities, serviceList, cityList, pathFor, stateOf, placeName, pageMeta } from '@/lib/seo'
+import { SITE, services, cities, serviceList, cityList, pathFor, stateOf, placeName, pageMeta, localNotes } from '@/lib/seo'
 
 export const dynamicParams = false
 
@@ -40,6 +40,7 @@ export default function Page({ params }) {
   if (!s || !c) notFound()
 
   const product = s.product ? products[s.product] : null
+  const note = localNotes[`${s.slug}/${c.slug}`]
   const url = `${SITE}${pathFor(s.slug, c.slug)}`
   const faqs = s.faqs(c.name)
   const otherServices = serviceList.filter((x) => x.slug !== s.slug)
@@ -112,6 +113,19 @@ export default function Page({ params }) {
           </div>
         </div>
       </section>
+
+      {/* Town-specific content (only for some pages) */}
+      {note && (
+        <section className="!py-14 md:!py-20">
+          <div className="mx-auto max-w-4xl px-5 sm:px-8">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">{note.title}</h2>
+            {note.paras.map((t) => <p key={t.slice(0, 24)} className="mt-5 text-lg leading-relaxed text-[#444]">{t}</p>)}
+            <ul className="mt-6 flex flex-wrap gap-3">
+              {note.links.map(([l, h]) => <li key={h}><Link href={h} className="inline-block rounded-full border border-black/25 px-5 py-2 font-semibold hover:border-[#ff5a1f] hover:text-[#ff5a1f]">{l}</Link></li>)}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* Product callout */}
       <section className="!py-14 md:!py-20 bg-[#111]">
