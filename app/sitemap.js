@@ -36,7 +36,6 @@ export default function sitemap() {
     entry('/blog', 'weekly', 0.7),
     ...newBlogPosts.map((p) => entry(`/blog/${p.id}`, 'monthly', 0.8)),
     ...blogSlugs.map((s) => entry(`/blog/${s}`, 'monthly', 0.6)),
-    entry('/resources', 'daily', 0.5),
     entry('/contacts', 'monthly', 0.7),
   ]
 }

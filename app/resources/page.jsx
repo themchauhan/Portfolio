@@ -9,6 +9,8 @@ export const metadata = pageMeta({
 	title: 'News',
 	description: 'Indian and international news, with a focus on good news. Headlines from publishers Indians read most, summarised and credited.',
 	alternates: { canonical: 'https://themanishchauhan.in/resources' },
+	// Headlines from other publishers: useful for visitors, but not original content for Google.
+	robots: { index: false, follow: true },
 });
 
 async function getNews(baseUrl) {

@@ -2,7 +2,6 @@ import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import PlanCards from '@/components/PlanCards'
 import { products } from '@/lib/products'
-import QuoteEstimator from '@/components/QuoteEstimator'
 import IncludedStrip from '@/components/IncludedStrip'
 import ComparisonTable from '@/components/ComparisonTable'
 import { productPlans, PRICING_NOTE, waLink, setupFees, priceUnit } from '@/lib/pricing'
@@ -68,8 +67,16 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Websites &amp; custom work</p>
           <h2 className="mt-2 font-display text-4xl font-extrabold tracking-tight">Estimate your project</h2>
-          <p className="mb-10 mt-4 max-w-2xl text-lg text-[#555]">Every website is different, so pick what you need and see an estimate. Send it to me and I&apos;ll review it and reply with a fixed quotation.</p>
-          <QuoteEstimator />
+          <p className="mt-4 max-w-2xl text-lg text-[#555]">Every website is different, so pick what you need and see an estimate. Send it to me and I&apos;ll review it and reply with a fixed quotation.</p>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {[['Business website', 'Home, about, services and contact, with Google and WhatsApp setup.'], ['Online store', 'Products, cart and online payments (UPI, cards).'], ['Custom web app or automation', 'Dashboards, portals, or an Excel/paper process automated.']].map(([t, d]) => (
+              <div key={t} className="rounded-xl border border-black/10 bg-[#f4f1ec] p-5">
+                <h3 className="font-display text-lg font-extrabold">{t}</h3>
+                <p className="mt-1 text-[#555]">{d}</p>
+              </div>
+            ))}
+          </div>
+          <Link href="/tools/website-cost-calculator" className="mt-8 inline-block rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Open the website cost calculator →</Link>
         </div>
       </section>
 
