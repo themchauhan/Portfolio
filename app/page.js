@@ -43,6 +43,14 @@ const steps = [
   ['Test & launch', 'Speed, cross-browser and mobile checks before go-live, then support after.'],
 ]
 
+const freeTools = [
+  ['/tools/salary-slip-generator', 'Salary Slip Generator', 'Payslips with PF, ESI, TDS and your logo.'],
+  ['/tools/rent-receipt-generator', 'Rent Receipt Generator', 'Monthly rent receipts for your HRA claim.'],
+  ['/tools/gst-invoice-generator', 'GST Invoice Generator', 'GST invoices with CGST/SGST or IGST worked out.'],
+  ['/tools/quotation-maker', 'Quotation Maker', 'Professional quotations with GST and terms.'],
+  ['/tools/website-cost-calculator', 'Website Cost Calculator', 'An instant estimate for your website.'],
+]
+
 const skills = ['Next.js', 'React', 'Node.js', 'JavaScript', 'Tailwind CSS', 'SCSS', 'WordPress', 'Drupal', 'PHP', 'HubSpot', 'Marketo', 'Firebase', 'PostgreSQL', 'Supabase', 'Docker', 'Git']
 
 const Heading = ({ children, light = false }) => (
@@ -218,6 +226,29 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* Free tools */}
+      <section className="!py-14 md:!py-20 bg-white">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-[15px] font-semibold text-[#ff5a1f]">Free tools</p>
+              <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight md:text-4xl">Free tools for small businesses</h2>
+              <p className="mt-3 max-w-2xl text-lg text-[#555]">Make salary slips, rent receipts, GST invoices and quotations in a minute. No sign-up, and everything stays in your browser.</p>
+            </div>
+            <Link href="/tools" className="font-semibold text-[#ff5a1f] hover:underline">All free tools →</Link>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {freeTools.map(([href, name, desc]) => (
+              <Link key={href} href={href} className="group flex flex-col border-t-4 border-[#111] bg-[#f4f1ec] p-6 hover:border-[#ff5a1f]">
+                <h3 className="font-display text-xl font-extrabold group-hover:text-[#ff5a1f]">{name}</h3>
+                <p className="mt-2 text-[15px] text-[#555]">{desc}</p>
+                <p className="mt-auto pt-5 text-sm font-semibold text-[#ff5a1f]">Open tool →</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Manish Chauhan, Freelance Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --ink: #111; --muted: #555; --soft: #888; --bg: #f4f1ec; --line: rgba(0,0,0,.14); --accent: #ff5a1f; }
+  html, body { font-family: Inter, Arial, sans-serif; color: var(--ink); font-size: 10pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; padding: 16mm 16mm 14mm; position: relative; overflow: hidden; page-break-after: always; background: var(--bg); display: flex; flex-direction: column; }
+  .page:last-child { page-break-after: auto; }
+  .display { font-family: "Bricolage Grotesque", Arial, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.02; }
+  .eyebrow { color: var(--accent); font-weight: 600; font-size: 9pt; }
+  .top { display: flex; justify-content: space-between; align-items: center; font-size: 8.5pt; color: var(--muted); }
+  .logo { display: flex; align-items: center; gap: 7px; font-family: "Bricolage Grotesque", Arial, sans-serif; font-weight: 800; font-size: 13pt; color: var(--ink); }
+  .logo b { width: 22px; height: 22px; border-radius: 6px; background: var(--ink); color: #fff; display: grid; place-items: center; font-size: 11pt; position: relative; }
+  .logo b::after { content: ""; position: absolute; right: 3px; bottom: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+  .logo span::after { content: "."; color: var(--accent); }
+  .foot { margin-top: auto; padding-top: 6mm; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 8pt; color: var(--soft); }
+  h2.display { font-size: 24pt; margin-top: 2mm; }
+  .chip { display: inline-block; border: 1px solid rgba(0,0,0,.22); border-radius: 99px; padding: 1px 8px; font-size: 7.5pt; color: #444; margin: 0 3px 3px 0; background: #fff; }
+
+  /* cover */
+  .hero { display: grid; grid-template-columns: 1fr 52mm; gap: 10mm; margin-top: 10mm; align-items: end; }
+  .hero h1 { font-size: 40pt; }
+  .hero p.lead { font-size: 12pt; color: #444; margin-top: 6mm; max-width: 118mm; }
+  .portrait { width: 52mm; height: 64mm; border-radius: 12px; object-fit: cover; object-position: top; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 10mm; }
+  .stats div { background: #fff; padding: 5mm 4mm; }
+  .stats strong { display: block; font-family: "Bricolage Grotesque", Arial, sans-serif; font-weight: 800; font-size: 17pt; }
+  .stats span { font-size: 8pt; color: var(--muted); }
+  .builds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 6mm; }
+  .builds div { border-top: 3px solid var(--ink); background: #fff; padding: 4mm; }
+  .builds h3 { font-family: "Bricolage Grotesque", Arial, sans-serif; font-weight: 800; font-size: 11pt; }
+  .builds p { font-size: 8.5pt; color: var(--muted); margin-top: 1.5mm; }
+
+  /* work */
+  .work { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4mm; margin-top: 6mm; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 4.5mm 5mm; }
+  .card .kind { font-size: 7.5pt; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-weight: 600; }
+  .card h3 { font-family: "Bricolage Grotesque", Arial, sans-serif; font-weight: 800; font-size: 12pt; margin: 1mm 0 1.5mm; }
+  .card p { font-size: 8.5pt; color: var(--muted); margin-bottom: 2.5mm; }
+  .note { font-size: 8.5pt; color: var(--muted); margin-top: 5mm; }
+
+  /* products + process */
+  .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 6mm; }
+  .products .card h3 { font-size: 13pt; }
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3mm; margin-top: 6mm; position: relative; }
+  .steps::before { content: ""; position: absolute; left: 0; right: 0; top: 5mm; height: 1px; background: var(--line); }
+  .steps div { position: relative; }
+  .steps b { display: grid; place-items: center; width: 10mm; height: 10mm; border-radius: 50%; background: var(--ink); color: #fff; font-family: "Bricolage Grotesque", Arial, sans-serif; font-size: 9pt; box-shadow: 0 0 0 2mm var(--bg); }
+  .steps h4 { font-family: "Bricolage Grotesque", Arial, sans-serif; font-weight: 800; font-size: 10pt; margin-top: 3mm; }
+  .steps p { font-size: 8pt; color: var(--muted); margin-top: 1mm; }
+  .contact { margin-top: 8mm; background: var(--ink); color: #fff; border-radius: 14px; padding: 7mm 8mm; display: grid; grid-template-columns: 1.2fr 1fr; gap: 8mm; align-items: center; }
+  .contact h3 { font-size: 20pt; }
+  .contact p { color: #cfcac2; font-size: 9pt; margin-top: 2mm; }
+  .contact dl { font-size: 9pt; }
+  .contact dt { color: var(--accent); font-weight: 600; font-size: 7.5pt; text-transform: uppercase; letter-spacing: .08em; margin-top: 2.5mm; }
+  .contact dt:first-child { margin-top: 0; }
+  .contact dd { color: #fff; }
+  .skills { margin-top: 6mm; }
+</style>
+</head>
+<body>
+
+<!-- Page 1: cover -->
+<section class="page">
+  <div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>themanishchauhan.in/agencies</div></div>
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Freelance development partner for agencies</p>
+      <h1 class="display" style="margin-top:3mm">I build the websites your agency designs.</h1>
+      <p class="lead">You design and manage the client. I turn your designs into fast, accessible, SEO-ready websites in Next.js, React or custom WordPress, under your brand and to your deadlines.</p>
+    </div>
+    <img class="portrait" src="manish-portrait.jpg" alt="Manish Chauhan">
+  </div>
+
+  <div class="stats">
+    <div><strong>8+ years</strong><span>building B2B marketing websites</span></div>
+    <div><strong>16+</strong><span>company websites built and maintained</span></div>
+    <div><strong>3</strong><span>SaaS products of my own, live</span></div>
+    <div><strong>100%</strong><span>white-label, your brand only</span></div>
+  </div>
+
+  <p class="eyebrow" style="margin-top:10mm">What I build</p>
+  <div class="builds">
+    <div><h3>Next.js &amp; React sites</h3><p>Marketing sites and web apps in JavaScript or TypeScript, on Vercel or your hosting.</p></div>
+    <div><h3>Custom WordPress</h3><p>Bespoke themes, Gutenberg blocks and ACF setups clients can edit safely. No page builders.</p></div>
+    <div><h3>Headless WordPress</h3><p>WordPress as the CMS with a Next.js front end, for editing comfort and speed.</p></div>
+    <div><h3>Landing &amp; campaign pages</h3><p>Launch and rebrand pages built quickly from Figma, with motion and responsive detail.</p></div>
+    <div><h3>Speed &amp; technical SEO</h3><p>Core Web Vitals, image and script optimisation, structured data, clean markup.</p></div>
+    <div><h3>Integrations</h3><p>HubSpot and Marketo forms, analytics, third-party APIs, plus Drupal and WordPress upkeep.</p></div>
+  </div>
+
+  <div class="skills">
+    <p class="eyebrow">Stack</p>
+    <div style="margin-top:2mm">
+      <span class="chip">Next.js</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Node.js</span><span class="chip">WordPress</span><span class="chip">PHP</span><span class="chip">ACF &amp; Gutenberg</span><span class="chip">Drupal</span><span class="chip">Tailwind CSS</span><span class="chip">SCSS</span><span class="chip">HubSpot</span><span class="chip">Marketo</span><span class="chip">Supabase / PostgreSQL</span><span class="chip">Firebase</span><span class="chip">Git</span>
+    </div>
+  </div>
+
+  <div class="foot"><span>Manish Chauhan · Freelance Full Stack Developer</span><span>1 / 3</span></div>
+</section>
+
+<!-- Page 2: work -->
+<section class="page">
+  <div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>Selected work</div></div>
+  <p class="eyebrow" style="margin-top:10mm">Selected work</p>
+  <h2 class="display">Marketing websites for software and industrial companies.</h2>
+  <p class="note" style="margin-top:3mm;font-size:9.5pt;max-width:150mm">Built as part of agency teams, from design hand-off to launch and ongoing updates. Client names and examples are available on request.</p>
+
+  <div class="work">
+    <div class="card"><p class="kind">Identity verification SaaS · US</p><h3>Corporate marketing website</h3><p>Custom WordPress theme and page templates, with Marketo forms for lead capture.</p><span class="chip">WordPress</span><span class="chip">PHP</span><span class="chip">SCSS</span><span class="chip">JavaScript</span><span class="chip">Marketo</span></div>
+    <div class="card"><p class="kind">Data security platform · US</p><h3>Enterprise B2B website</h3><p>Template development and regular page builds for a large marketing team.</p><span class="chip">WordPress</span><span class="chip">SCSS</span><span class="chip">JavaScript</span></div>
+    <div class="card"><p class="kind">Digital watermarking tech · US</p><h3>Product and company site</h3><p>Drupal build with HubSpot integration for forms and marketing tracking.</p><span class="chip">Drupal</span><span class="chip">SCSS</span><span class="chip">JavaScript</span><span class="chip">HubSpot</span></div>
+    <div class="card"><p class="kind">Data privacy SaaS · US</p><h3>Marketing site with custom integration</h3><p>WordPress build styled with Tailwind CSS, connected to a third-party system.</p><span class="chip">WordPress</span><span class="chip">PHP</span><span class="chip">Tailwind CSS</span><span class="chip">Integration</span></div>
+    <div class="card"><p class="kind">Fraud prevention SaaS · US</p><h3>Corporate website</h3><p>WordPress templates and ongoing development for product and campaign pages.</p><span class="chip">WordPress</span><span class="chip">SCSS</span><span class="chip">JavaScript</span></div>
+    <div class="card"><p class="kind">Observability software · US</p><h3>Enterprise web pages</h3><p>Front-end components built inside an Adobe Experience Manager setup.</p><span class="chip">AEM</span><span class="chip">SCSS</span><span class="chip">JavaScript</span></div>
+    <div class="card"><p class="kind">Construction estimating app</p><h3>Web application front end</h3><p>React app with Redux state and a Firebase back end, built with Material UI.</p><span class="chip">React</span><span class="chip">Redux</span><span class="chip">Material UI</span><span class="chip">Firebase</span></div>
+    <div class="card"><p class="kind">Industrial manufacturers · US</p><h3>Product catalogue websites</h3><p>Drupal sites for equipment makers and rental companies with large product ranges.</p><span class="chip">Drupal</span><span class="chip">SCSS</span><span class="chip">JavaScript</span></div>
+  </div>
+
+  <div class="foot"><span>Full list: themanishchauhan.in/projects</span><span>2 / 3</span></div>
+</section>
+
+<!-- Page 3: products, process, contact -->
+<section class="page">
+  <div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>Products &amp; process</div></div>
+  <p class="eyebrow" style="margin-top:10mm">Products I built and run</p>
+  <h2 class="display">Full products, from database to dashboard.</h2>
+  <p class="note" style="margin-top:3mm;font-size:9.5pt;max-width:150mm">Alongside agency work I design, build and support my own software for small businesses in India. Proof I can own a project end to end, not just a page.</p>
+
+  <div class="products">
+    <div class="card"><p class="kind">Clinic management</p><h3>ClinicOs</h3><p>Appointments, patient records, prescriptions and billing for clinics, with a login per clinic.</p><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Supabase</span></div>
+    <div class="card"><p class="kind">Rental management</p><h3>RentCorp</h3><p>Tenants, rent collection, dues and reminders for PG, hostel and property owners.</p><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Supabase</span></div>
+    <div class="card"><p class="kind">Café &amp; restaurant POS</p><h3>CafeCorp</h3><p>Orders, billing, tables and daily sales reports for cafés and restaurants.</p><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Firebase</span></div>
+  </div>
+  <p class="note">Plus five free online tools (rent receipt, GST invoice, salary slip, quotation maker, website cost calculator) at themanishchauhan.in/tools.</p>
+
+  <p class="eyebrow" style="margin-top:9mm">How we work together</p>
+  <div class="steps">
+    <div><b>01</b><h4>Brief</h4><p>You send the designs, page list and deadline.</p></div>
+    <div><b>02</b><h4>Estimate</h4><p>Scope, timeline and a fixed price within 1–2 working days.</p></div>
+    <div><b>03</b><h4>Build</h4><p>Progress on a staging link as each template is ready.</p></div>
+    <div><b>04</b><h4>Review &amp; QA</h4><p>Browsers, devices, accessibility basics and speed.</p></div>
+    <div><b>05</b><h4>Handover</h4><p>Code in your repo, notes for your team, support after launch.</p></div>
+  </div>
+
+  <div class="contact">
+    <div>
+      <h3 class="display">Need an extra developer?</h3>
+      <p>Remote from India, with good overlap with UK and European hours. Pricing on request, and happy to start with a small paid trial task.</p>
+    </div>
+    <dl>
+      <dt>Email</dt><dd>mani7015066@gmail.com</dd>
+      <dt>For agencies</dt><dd>themanishchauhan.in/agencies</dd>
+      <dt>LinkedIn</dt><dd>linkedin.com/in/themchauhan</dd>
+    </dl>
+  </div>
+
+  <div class="foot"><span>Manish Chauhan · Freelance Full Stack Developer</span><span>3 / 3</span></div>
+</section>
+</body>
+</html>
