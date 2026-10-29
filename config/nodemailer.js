@@ -19,5 +19,6 @@ export const transporter = nodemailer.createTransport({
 
 export const mailOptions = {
   from: email,
-  to: email,
+  // Sent through the Gmail account above; delivered to CONTACT_TO (e.g. the Zoho inbox) when it is set.
+  to: process.env.CONTACT_TO || email,
 };
