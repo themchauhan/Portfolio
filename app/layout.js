@@ -5,7 +5,10 @@ import Script from 'next/script'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import { OG_IMAGE } from '@/lib/seo'
+import { OG_IMAGE, SITE, serviceList } from '@/lib/seo'
+import { productList } from '@/lib/products'
+import { productPlans, starterPack, quoteRates } from '@/lib/pricing'
+import { aiFees } from '@/lib/aiCourses'
 
 // Google Analytics 4 (property: themanishchauhan.in, stream: portfolio-web)
 const GA_ID = 'G-C73CLLFRK8'
@@ -75,6 +78,42 @@ export const metadata = {
   category: 'technology',
 }
 
+// Services and products for the Person structured data, built from the same data as the pages.
+const inrOffer = (price) => ({ "price": String(price), "priceCurrency": "INR" })
+const minWebsitePrice = Math.min(...quoteRates.types.map((t) => t.base))
+const makesOffer = [
+  {
+    "@type": "Offer", ...inrOffer(starterPack.price), "url": `${SITE}/pricing`,
+    "itemOffered": { "@type": "Service", "name": starterPack.name, "description": `${starterPack.tagline} ${starterPack.includes.join(", ")}.`, "areaServed": "IN" },
+  },
+  {
+    "@type": "Offer", "url": `${SITE}/tools/website-cost-calculator`,
+    "priceSpecification": { "@type": "PriceSpecification", "minPrice": String(minWebsitePrice), "priceCurrency": "INR" },
+    "itemOffered": { "@type": "Service", "name": "Website development", "description": "Business websites, landing pages, online stores and custom web apps built with Next.js, React or WordPress.", "areaServed": "IN" },
+  },
+  {
+    "@type": "Offer", "url": `${SITE}/agencies`,
+    "itemOffered": { "@type": "Service", "name": "Freelance development for agencies", "description": "White-label Next.js, React and custom WordPress development for design and marketing agencies.", "areaServed": ["United States", "United Kingdom", "Europe"] },
+  },
+  {
+    "@type": "Offer", "url": `${SITE}/ai-courses`,
+    "priceSpecification": { "@type": "PriceSpecification", "minPrice": String(Math.min(...aiFees.junior)), "maxPrice": String(Math.max(...aiFees.senior)), "priceCurrency": "INR" },
+    "itemOffered": { "@type": "Service", "name": "AI classes for school students (Classes 6–12)", "description": "Weekend AI classes from basics to advanced, offline in Rewari and online.", "areaServed": "IN" },
+  },
+  ...serviceList.map((sv) => ({
+    "@type": "Offer", "url": `${SITE}/services/${sv.slug}`,
+    "itemOffered": { "@type": "Service", "name": sv.name, "description": `Software and setup for ${sv.businesses}.`, "areaServed": "IN" },
+  })),
+  ...productList.map((pr) => {
+    const prices = productPlans[pr.slug].map((p) => p.price)
+    return {
+      "@type": "Offer", "url": `${SITE}/${pr.slug}`,
+      "priceSpecification": { "@type": "UnitPriceSpecification", "price": String(Math.min(...prices)), "priceCurrency": "INR", "unitText": "MONTH" },
+      "itemOffered": { "@type": "SoftwareApplication", "name": pr.name, "applicationCategory": "BusinessApplication", "operatingSystem": "Web browser", "description": pr.tag, "url": `${SITE}/${pr.slug}` },
+    }
+  }),
+]
+
 export default function RootLayout({ children }) {
   const structuredData = {
     "@context": "https://schema.org",
@@ -103,24 +142,23 @@ export default function RootLayout({ children }) {
     },
     "knowsAbout": [
       "Web Development",
-      "React",
       "Next.js",
-      "Node.js",
+      "React",
+      "TypeScript",
       "JavaScript",
-      "Full Stack Development",
-      "Frontend Development",
-      "Backend Development",
-      "Web Design",
-      "Responsive Design"
+      "Node.js",
+      "WordPress",
+      "Headless WordPress",
+      "PHP",
+      "Tailwind CSS",
+      "Technical SEO",
+      "Core Web Vitals",
+      "HubSpot",
+      "Business Automation",
+      "Artificial Intelligence in Education"
     ],
-    "offers": {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Web Development Services",
-        "description": "Professional web development services including custom websites, web applications, and digital solutions for businesses worldwide."
-      }
-    }
+    // Person can't have `offers` in schema.org; `makesOffer` is the valid property.
+    "makesOffer": makesOffer
   }
 
   return (
