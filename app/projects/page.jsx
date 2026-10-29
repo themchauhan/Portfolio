@@ -36,7 +36,7 @@ export default function Page() {
         A selection of websites and web platforms for software and industrial companies, built mostly at Clear Digital.
       </PageHero>
 
-      <section className="!py-0 pb-16 md:pb-28">
+      <section className="!pt-0 !pb-16 md:!pb-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-px overflow-hidden border border-black/15 bg-black/15 sm:grid-cols-2 lg:grid-cols-4">
             {projects.map(([name, logo, dark, tech]) => (

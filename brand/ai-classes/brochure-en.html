@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>AI Classes, Manish Chauhan</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"><style>:root{--body:"Inter"} body{font-family:var(--body),Arial,sans-serif} 
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --ink:#111; --muted:#555; --bg:#f4f1ec; --line:rgba(0,0,0,.14); --accent:#ff5a1f; }
+html, body { color: var(--ink); font-size: 10pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; padding: 15mm 15mm 12mm; background: var(--bg); display: flex; flex-direction: column; page-break-after: always; overflow: hidden; position: relative; }
+.page:last-child { page-break-after: auto; }
+.d { font-family: "Bricolage Grotesque", var(--body), sans-serif; font-weight: 800; letter-spacing: -0.015em; line-height: 1.08; }
+.hi .d { font-family: var(--body), sans-serif; letter-spacing: 0; line-height: 1.25; }
+.eyebrow { color: var(--accent); font-weight: 600; font-size: 9.5pt; }
+.top { display:flex; justify-content:space-between; align-items:center; font-size:8.5pt; color:var(--muted); }
+.logo { display:flex; align-items:center; gap:7px; font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:13pt; color:var(--ink); }
+.logo b { width:22px; height:22px; border-radius:6px; background:var(--ink); color:#fff; display:grid; place-items:center; font-size:11pt; position:relative; }
+.logo b::after { content:""; position:absolute; right:3px; bottom:3px; width:5px; height:5px; border-radius:50%; background:var(--accent); }
+.logo span::after { content:"."; color:var(--accent); }
+.foot { margin-top:auto; padding-top:5mm; border-top:1px solid var(--line); display:flex; justify-content:space-between; font-size:8pt; color:#888; }
+h2.d { font-size: 22pt; margin-top: 2mm; }
+.card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:4.5mm 5mm; }
+.offer { display:inline-block; background:var(--accent); color:#fff; font-weight:600; border-radius:99px; padding:2mm 5mm; font-size:10pt; }
+/* cover */
+.cover h1 { font-size: 40pt; margin-top: 4mm; }
+.cover .intro { font-size: 12.5pt; color:#444; margin-top: 6mm; max-width: 150mm; }
+.tracks { display:grid; grid-template-columns:1fr 1fr; gap:5mm; margin-top:9mm; }
+.tracks .card { border-top:4px solid var(--ink); border-radius:0; padding:6mm; }
+.tracks .card:last-child { background:var(--ink); color:#fff; border-color:var(--ink); }
+.tracks .lvl { color:var(--accent); font-weight:600; font-size:9pt; text-transform:uppercase; letter-spacing:.06em; }
+.hi .tracks .lvl { text-transform:none; letter-spacing:0; }
+.tracks h3 { font-size:18pt; margin:2mm 0; }
+.tracks p { color:var(--muted); }
+.tracks .card:last-child p { color:#cfcac2; }
+.levelsRow { display:flex; gap:3mm; margin-top:7mm; }
+.levelsRow div { flex:1; text-align:center; padding:4mm 2mm; border-radius:10px; background:#fff; border:1px solid var(--line); }
+.levelsRow div:nth-child(2) { background:#ffe6dc; }
+.levelsRow div:nth-child(3) { background:var(--accent); color:#fff; border-color:var(--accent); }
+.levelsRow strong { display:block; font-size:12pt; }
+.levelsRow span { font-size:8.5pt; }
+.qrbox { display:flex; align-items:center; gap:6mm; margin-top:auto; background:#fff; border-radius:14px; padding:6mm; border:1px solid var(--line); }
+.qrbox img { width:30mm; height:30mm; }
+.qrbox strong { font-size:13pt; display:block; }
+/* how + fees */
+.how { display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin-top:5mm; }
+.how h3 { font-size:11.5pt; }
+.how p { color:var(--muted); font-size:9pt; margin-top:1mm; }
+table { width:100%; border-collapse:collapse; margin-top:4mm; background:#fff; border-radius:10px; overflow:hidden; }
+th { background:var(--ink); color:#fff; text-align:left; font-size:9pt; padding:3mm 4mm; white-space:nowrap; }
+td { padding:3.2mm 4mm; border-top:1px solid var(--line); font-size:9.5pt; vertical-align:top; }
+td.fee { font-weight:800; font-size:12.5pt; white-space:nowrap; }
+td.lv { font-weight:700; white-space:nowrap; }
+.note { font-size:8.8pt; color:var(--muted); margin-top:3mm; }
+.two { display:grid; grid-template-columns:1.3fr 1fr; gap:4mm; margin-top:6mm; }
+.two h3 { font-size:12pt; }
+.two p { color:var(--muted); font-size:9pt; margin-top:1.5mm; }
+/* syllabus */
+.levels { display:grid; gap:4mm; margin-top:5mm; }
+.lvlcard { background:#fff; border:1px solid var(--line); border-radius:12px; padding:4.5mm 5mm; }
+.lvlhead { display:flex; justify-content:space-between; align-items:baseline; gap:4mm; border-bottom:1px solid var(--line); padding-bottom:2mm; margin-bottom:2mm; }
+.lvlhead .t { font-size:13pt; }
+.lvlhead .t small { color:var(--accent); font-size:9pt; font-weight:700; margin-right:2mm; font-family: var(--body), sans-serif; letter-spacing:0; }
+.lvlhead .p { font-weight:800; font-size:12pt; white-space:nowrap; }
+.lvlhead .p span { font-weight:400; font-size:8pt; color:var(--muted); }
+ol.weeks { list-style:none; display:grid; grid-template-columns:1fr 1fr; column-gap:6mm; row-gap:1.2mm; }
+ol.weeks li { display:flex; gap:2.5mm; font-size:8.8pt; color:#333; line-height:1.4; }
+ol.weeks b { color:var(--accent); min-width:13mm; white-space:nowrap; font-size:8pt; padding-top:.3mm; }
+.hi ol.weeks b { min-width:15mm; }
+.lvlcard:nth-child(3) { border:2px solid var(--accent); }
+/* schools */
+.schools { display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin-top:5mm; }
+.schools .card { border-top:4px solid var(--accent); border-radius:0; }
+.schools h3 { font-size:12pt; }
+.schools p { color:var(--muted); font-size:9pt; margin-top:1.5mm; }
+ul.safety { list-style:none; margin-top:3mm; display:grid; gap:2mm; }
+ul.safety li { display:flex; gap:3mm; font-size:9.5pt; color:#333; }
+ul.safety li::before { content:"✓"; color:var(--accent); font-weight:800; }
+.contact { margin-top:auto; background:var(--ink); color:#fff; border-radius:14px; padding:7mm 8mm; display:grid; grid-template-columns:1.2fr 1fr auto; gap:6mm; align-items:center; }
+.contact h3 { font-size:18pt; }
+.contact p { color:#cfcac2; font-size:9pt; margin-top:2mm; }
+.contact dt { color:var(--accent); font-weight:600; font-size:7.5pt; text-transform:uppercase; letter-spacing:.08em; margin-top:2.5mm; }
+.hi .contact dt { text-transform:none; letter-spacing:0; font-size:8.5pt; }
+.contact dt:first-child { margin-top:0; }
+.contact dd { font-size:9.5pt; }
+.contact img { width:26mm; height:26mm; background:#fff; padding:2mm; border-radius:6px; }
+</style></head>
+<body class="en"><section class="page cover"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>themanishchauhan.in/ai-courses</div></div>
+      <p class="eyebrow" style="margin-top:12mm">AI classes for school students · Classes 6–12</p>
+      <h1 class="d">Learn AI by building real things.</h1>
+      <p class="intro">Weekend classes where students make games, apps, websites and chatbots with AI, understand how AI really works, and learn to use it the right way for studies. From basics to advanced, in three levels.</p>
+      <p style="margin-top:6mm"><span class="offer">First batch: free admission and a free demo class for the first 20 students.</span></p>
+      <div class="tracks"><div class="card"><p class="lvl">Classes 6–8</p><h3 class="d">Make with AI</h3><p>Games, chatbots and first steps in coding</p></div><div class="card"><p class="lvl">Classes 9–12</p><h3 class="d">Build and Study with AI</h3><p>Smarter studying, websites, Python and AI projects</p></div></div>
+      <div class="levelsRow"><div><strong>Level 1 · Basics</strong><span>Understand AI, use it safely, first projects</span></div><div><strong>Level 2 · Builder</strong><span>Build games, chatbots, websites and apps</span></div><div><strong>Level 3 · Advanced</strong><span>Real coding with Python and AI projects</span></div></div>
+      <p class="note" style="margin-top:4mm;font-size:10pt">Offline in Rewari · Live online · Small batches of 10–15</p>
+      <div class="qrbox" style="margin-top:8mm"><img src="qr-en.svg" alt="QR"><div><strong class="d">Book a free demo class</strong><p class="note" style="margin-top:1mm">Scan to see the courses and book a free demo</p><p style="margin-top:2mm;font-weight:600">WhatsApp: +91 70150 66237</p></div></div>
+      <div class="foot"><span>Manish Chauhan · themanishchauhan.in/ai-courses</span><span>Page 1 / 5</span></div></section><section class="page"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>How the program works</div></div>
+      <h2 class="d" style="margin-top:8mm">How the program works</h2>
+      <div class="how"><div class="card"><h3 class="d">3 levels, step by step</h3><p>Every student starts at Level 1 (Basics) and moves to Level 2 (Builder) and Level 3 (Advanced). Students with prior experience can start higher after the demo.</p></div><div class="card"><h3 class="d">8 weeks per level</h3><p>One 2-hour class every weekend (16 hours per level), with a short fun task between classes.</p></div><div class="card"><h3 class="d">A project every level</h3><p>Each level ends with a showcase where students present what they built to parents.</p></div><div class="card"><h3 class="d">Certificate</h3><p>Students receive a certificate of completion for every level they finish.</p></div></div>
+      <h2 class="d" style="margin-top:8mm">Levels and fees</h2>
+      <table><thead><tr><th>Level</th><th>What students do</th><th>Duration</th><th>Classes 6–8</th><th>Classes 9–12</th></tr></thead><tbody><tr><td class="lv">Level 1 · Basics</td><td>Understand AI, use it safely, first projects</td><td>8 weeks · 16 hours</td><td class="fee">₹2,000</td><td class="fee">₹4,000</td></tr><tr><td class="lv">Level 2 · Builder</td><td>Build games, chatbots, websites and apps</td><td>8 weeks · 16 hours</td><td class="fee">₹2,500</td><td class="fee">₹4,500</td></tr><tr><td class="lv">Level 3 · Advanced</td><td>Real coding with Python and AI projects</td><td>8 weeks · 16 hours</td><td class="fee">₹3,000</td><td class="fee">₹5,000</td></tr></tbody></table>
+      <p class="note">Fees are per student for the full 8-week level. Free demo class before joining. Free admission for the first 20 students.</p>
+      <div class="two"><div class="card"><h3 class="d">Who teaches</h3><p>Manish Chauhan is a full stack software developer with 8+ years of experience building websites and apps, including for large US technology companies. He builds with AI every day and runs his own software products. Students learn from someone who does this work for real.</p></div><div class="card"><h3 class="d">What students need</h3><p>Level 1 works with a phone or computer. A laptop or computer is needed for Levels 2 and 3 and for online classes. No coding knowledge is needed to start.</p></div></div>
+      <div class="foot"><span>Manish Chauhan · themanishchauhan.in/ai-courses</span><span>Page 2 / 5</span></div></section><section class="page"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>Classes 6–8 · Make with AI</div></div>
+      <p class="eyebrow" style="margin-top:6mm">Classes 6–8</p><h2 class="d">Make with AI</h2>
+      <div class="levels"><div class="lvlcard"><div class="lvlhead"><div class="t d"><small>Level 1 · Basics</small>Discover AI</div><div class="p">₹2,000 <span>/ 8 weeks</span></div></div><ol class="weeks"><li><b>Week 1</b><span>What is AI? Spotting AI around us: maps, YouTube, voice assistants</span></li><li><b>Week 2</b><span>How computers learn from examples: train a model to recognise pictures</span></li><li><b>Week 3</b><span>Talking to AI: asking clear questions and checking the answers</span></li><li><b>Week 4</b><span>Scratch basics: characters, movement and loops</span></li><li><b>Week 5</b><span>Make your first game in Scratch</span></li><li><b>Week 6</b><span>AI for studies: flashcards and quizzes the right way</span></li><li><b>Week 7</b><span>Online safety: privacy, deepfakes and fake news</span></li><li><b>Week 8</b><span>Mini project and showcase for parents</span></li></ol></div><div class="lvlcard"><div class="lvlhead"><div class="t d"><small>Level 2 · Builder</small>Make with AI</div><div class="p">₹2,500 <span>/ 8 weeks</span></div></div><ol class="weeks"><li><b>Week 1</b><span>Game design: plan a game with goals, scores and levels</span></li><li><b>Week 2</b><span>Build a bigger Scratch game with levels and a score</span></li><li><b>Week 3</b><span>Train an AI model to recognise drawings or hand gestures</span></li><li><b>Week 4</b><span>Use your AI model inside your Scratch game</span></li><li><b>Week 5</b><span>Build a chatbot about a favourite school subject</span></li><li><b>Week 6</b><span>AI images and stories: creativity, honesty and copyright</span></li><li><b>Week 7</b><span>Make a personal study planner with AI</span></li><li><b>Week 8</b><span>Project week and showcase</span></li></ol></div><div class="lvlcard"><div class="lvlhead"><div class="t d"><small>Level 3 · Advanced</small>Code with AI</div><div class="p">₹3,000 <span>/ 8 weeks</span></div></div><ol class="weeks"><li><b>Week 1</b><span>Start Python: drawing shapes and patterns with code</span></li><li><b>Week 2</b><span>Variables, loops and conditions through mini games</span></li><li><b>Week 3</b><span>Build a quiz game in Python</span></li><li><b>Week 4</b><span>How chatbots work: build a simple chatbot in Python</span></li><li><b>Week 5</b><span>Data and charts: run a class survey and chart the results</span></li><li><b>Week 6</b><span>Build a web page about yourself with HTML</span></li><li><b>Week 7</b><span>Final project build with teacher support</span></li><li><b>Week 8</b><span>Showcase and certificate</span></li></ol></div></div>
+      <div class="foot"><span>Manish Chauhan · themanishchauhan.in/ai-courses</span><span>Page 3 / 5</span></div></section><section class="page"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>Classes 9–12 · Build and Study with AI</div></div>
+      <p class="eyebrow" style="margin-top:6mm">Classes 9–12</p><h2 class="d">Build and Study with AI</h2>
+      <div class="levels"><div class="lvlcard"><div class="lvlhead"><div class="t d"><small>Level 1 · Basics</small>AI for Study and Life</div><div class="p">₹4,000 <span>/ 8 weeks</span></div></div><ol class="weeks"><li><b>Week 1</b><span>How AI and chatbots really work, and why they make mistakes</span></li><li><b>Week 2</b><span>Asking AI good questions: clear prompts that get useful answers</span></li><li><b>Week 3</b><span>AI for board exams: revision plans and practice questions</span></li><li><b>Week 4</b><span>AI for JEE and NEET concepts: explain, then verify with NCERT</span></li><li><b>Week 5</b><span>Research and fact-checking: sources and academic honesty</span></li><li><b>Week 6</b><span>Notes, summaries and flashcards that help you remember</span></li><li><b>Week 7</b><span>Safety: privacy, deepfakes and scams</span></li><li><b>Week 8</b><span>Project: your personal AI study system, plus showcase</span></li></ol></div><div class="lvlcard"><div class="lvlhead"><div class="t d"><small>Level 2 · Builder</small>Build with AI</div><div class="p">₹4,500 <span>/ 8 weeks</span></div></div><ol class="weeks"><li><b>Week 1</b><span>How websites work: HTML and CSS basics</span></li><li><b>Week 2</b><span>Build your personal portfolio website</span></li><li><b>Week 3</b><span>Using AI as a coding assistant, and checking its code</span></li><li><b>Week 4</b><span>JavaScript basics: make pages interactive</span></li><li><b>Week 5</b><span>Build a web app: a quiz, planner or to-do app</span></li><li><b>Week 6</b><span>Publish your website online for free</span></li><li><b>Week 7</b><span>Project week with teacher reviews</span></li><li><b>Week 8</b><span>Showcase: a live website you can share</span></li></ol></div><div class="lvlcard"><div class="lvlhead"><div class="t d"><small>Level 3 · Advanced</small>Python and AI Projects</div><div class="p">₹5,000 <span>/ 8 weeks</span></div></div><ol class="weeks"><li><b>Week 1</b><span>Python basics for real projects</span></li><li><b>Week 2</b><span>Working with data: lists, files and spreadsheets</span></li><li><b>Week 3</b><span>Charts and analysis with Python</span></li><li><b>Week 4</b><span>How machine learning works: train your first model</span></li><li><b>Week 5</b><span>Connect a Python app to an AI model</span></li><li><b>Week 6</b><span>Build a project: a study helper or an image recogniser</span></li><li><b>Week 7</b><span>Portfolio and GitHub for college applications</span></li><li><b>Week 8</b><span>Showcase, certificate and careers in AI</span></li></ol></div></div>
+      <div class="foot"><span>Manish Chauhan · themanishchauhan.in/ai-courses</span><span>Page 4 / 5</span></div></section><section class="page"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>For schools and institutes</div></div>
+      <h2 class="d" style="margin-top:8mm">For schools and institutes</h2>
+      <p style="color:#444;font-size:11pt;margin-top:2mm">Bring practical AI learning to your students without extra load on your teachers.</p>
+      <div class="schools"><div class="card"><h3 class="d">Free AI workshop</h3><p>A 2-hour hands-on session for one class group. Students build something small and learn to use AI safely. Free of cost.</p></div><div class="card"><h3 class="d">AI club in school</h3><p>The same 3-level program run weekly at your school, in your computer lab or classroom, for interested students.</p></div><div class="card"><h3 class="d">Session for teachers</h3><p>A practical session on using AI for lesson planning, question papers and saving time, with clear rules on responsible use.</p></div></div>
+      <p class="note">School programs are planned with you; pricing on request.</p>
+      <h2 class="d" style="margin-top:9mm;font-size:17pt">Our approach to safe and honest use</h2>
+      <ul class="safety"><li>Students learn to use AI for practice and understanding, never for copying homework or exams.</li><li>Every level teaches privacy, deepfakes and checking facts.</li><li>Students use AI tools with the teacher&#x27;s guidance during class.</li><li>Parents see what their child built at every showcase.</li></ul>
+      <div class="contact" style="margin-top:9mm"><div><h3 class="d">Book a free demo class</h3><p>Message on WhatsApp to book a demo, ask about batch timings or plan a school workshop.</p></div>
+        <dl><dt>WhatsApp / Call</dt><dd>+91 70150 66237</dd><dt>Email</dt><dd>mani7015066@gmail.com</dd><dt>Website</dt><dd>themanishchauhan.in/ai-courses</dd></dl>
+        <img src="qr-en.svg" alt="QR"></div>
+      <div class="foot"><span>Manish Chauhan · themanishchauhan.in/ai-courses</span><span>Page 5 / 5</span></div></section></body></html>

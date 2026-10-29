@@ -72,7 +72,7 @@ export default function BlogPage() {
       <PageHero eyebrow="Blog" title="Notes on the web.">
         Practical guides for small businesses and employees: rent receipts, salary slips, GST invoices, websites and more.
       </PageHero>
-      <section className="!py-0 pb-16 md:pb-28">
+      <section className="!pt-0 !pb-16 md:!pb-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <ul className="border-t border-black/20">
             {allPosts.map((post) => (

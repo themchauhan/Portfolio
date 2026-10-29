@@ -176,7 +176,7 @@ export default function ProductPage({ product }) {
       <Blade id="faq" title="Frequently asked questions">
         <div className="max-w-3xl divide-y divide-slate-200 border-y border-slate-200">
           {product.faqs.map(([q, ans]) => (
-            <details key={q} className="group py-5">
+            <details key={q} name="faq" className="group py-5">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-slate-900">
                 {q}<span className="text-2xl text-orange-500 transition group-open:rotate-45">+</span>
               </summary>

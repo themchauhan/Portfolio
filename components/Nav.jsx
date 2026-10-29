@@ -4,13 +4,13 @@ import { useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 
+// Main sections. Work, Pricing, Blog and Academics live in the footer.
 const links = [
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Work" },
   { href: "/products", label: "Products" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/academics", label: "Academics" },
-  { href: "/blog", label: "Blog" },
+  { href: "/tools", label: "Free Tools" },
+  { href: "/ai-courses", label: "AI Classes" },
+  { href: "/agencies", label: "For Agencies" },
+  { href: "/about", label: "About" },
 ];
 
 const Nav = () => {
@@ -23,7 +23,7 @@ const Nav = () => {
           <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
+        <nav className="hidden items-center gap-5 md:flex lg:gap-8" aria-label="Main">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="text-[15px] font-medium text-[#111] hover:text-[#ff5a1f]">
               {l.label}

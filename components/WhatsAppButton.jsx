@@ -9,6 +9,8 @@ const titleCase = (slug) => slug.split("-").map((w) => w[0].toUpperCase() + w.sl
 // Pre-filled message depends on the page the visitor is on.
 function messageFor(path) {
   const parts = path.split("/").filter(Boolean);
+  if (parts[0] === "ai-courses") return "Hi Manish, I'd like to book a free AI demo class for my child (Class __).";
+  if (parts[0] === "hi" && parts[1] === "ai-courses") return "नमस्ते मनीष जी, मैं अपने बच्चे (कक्षा __) के लिए फ़्री AI डेमो क्लास बुक करना चाहता/चाहती हूँ।";
   if (PRODUCTS[parts[0]]) return `Hi Manish, I saw ${PRODUCTS[parts[0]]} on your website and would like a demo.`;
   if (parts[0] === "services" && parts[2]) return `Hi Manish, I'm interested in ${titleCase(parts[1])} for my business in ${titleCase(parts[2])}.`;
   if (parts[0] === "services" && parts[1]) return `Hi Manish, I'm interested in ${titleCase(parts[1])}.`;

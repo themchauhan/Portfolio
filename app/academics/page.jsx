@@ -21,7 +21,7 @@ export default function Page() {
       <PageHero eyebrow="Academics" title="Where I learned the basics.">
         A computer science foundation that I&apos;ve been building on in the real world since 2018.
       </PageHero>
-      <section className="!py-0 pb-16 md:pb-28">
+      <section className="!pt-0 !pb-16 md:!pb-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <ul className="border-t border-black/20">
             {items.map(([yr, deg, inst, level]) => (

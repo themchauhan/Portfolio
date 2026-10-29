@@ -177,8 +177,8 @@ export default function Page() {
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Questions agencies ask</h2>
           <div className="mt-8 divide-y divide-black/15 border-y border-black/15">
             {faqs.map(([q, a]) => (
-              <details key={q} className="group py-5">
-                <summary className="cursor-pointer list-none font-display text-xl font-extrabold group-open:text-[#ff5a1f]">{q}</summary>
+              <details key={q} name="faq" className="group py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-extrabold group-open:text-[#ff5a1f]">{q}<span className="shrink-0 text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
                 <p className="mt-3 text-[#555]">{a}</p>
               </details>
             ))}

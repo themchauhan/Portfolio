@@ -59,7 +59,7 @@ export default function Page() {
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">GST invoices: common questions</h2>
           <div className="mt-8 max-w-4xl divide-y divide-black/15 border-y border-black/15">
             {faqs.map(([q, a]) => (
-              <details key={q} className="group py-5">
+              <details key={q} name="faq" className="group py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">{q}<span className="text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
                 <p className="mt-3 text-[#555]">{a}</p>
               </details>

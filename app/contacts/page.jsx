@@ -14,7 +14,7 @@ export default function Page() {
       <PageHero eyebrow="Contact" title="Tell me what you want to build.">
         Share a few details and I&apos;ll reply within one working day.
       </PageHero>
-      <section className="!py-0 pb-16 md:pb-28">
+      <section className="!pt-0 !pb-16 md:!pb-28">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.2fr]">
           <div className="space-y-8">
             <div>

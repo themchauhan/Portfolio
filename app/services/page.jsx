@@ -16,7 +16,7 @@ export default function Page() {
         Cafés, clinics, rentals, hostels, hotels and offices across Haryana, Rajasthan, Chandigarh and Mohali: replace paperwork with software that is set up and supported for you.
       </PageHero>
 
-      <section className="!py-0 pb-16">
+      <section className="!pt-0 !pb-16">
         <div className="mx-auto grid max-w-7xl gap-6 px-5 sm:px-8 md:grid-cols-2 lg:grid-cols-3">
           {serviceList.map((s) => (
             <Link key={s.slug} href={`/services/${s.slug}`} className="group flex flex-col justify-between border-t-4 border-[#111] bg-white p-7 hover:border-[#ff5a1f]">

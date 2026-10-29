@@ -18,6 +18,8 @@ export default function sitemap() {
     entry('/about', 'monthly', 0.8),
     entry('/projects', 'monthly', 0.8),
     entry('/agencies', 'monthly', 0.8),
+    entry('/ai-courses', 'weekly', 0.9),
+    entry('/hi/ai-courses', 'weekly', 0.8),
     entry('/products', 'monthly', 0.9),
     ...['clinicos', 'rentcorp', 'cafecorp'].map((p) => entry(`/${p}`, 'monthly', 0.9)),
     entry('/pricing', 'monthly', 0.9),

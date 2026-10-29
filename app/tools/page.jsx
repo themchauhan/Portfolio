@@ -24,7 +24,7 @@ export default function Page() {
         Completely free to use. No sign-in, no sign-up, no limits, and everything stays in your browser.
       </PageHero>
       <div className="mx-auto -mt-6 mb-12 max-w-7xl px-5 sm:px-8 md:-mt-12"><FreeBadges /></div>
-      <section className="!py-0 pb-20">
+      <section className="!pt-0 !pb-20 md:!pb-28">
         <div className="mx-auto grid max-w-7xl gap-6 px-5 sm:px-8 md:grid-cols-2 lg:grid-cols-3">
           {tools.map(([href, name, desc, who]) => (
             <Link key={href} href={href} className="group border-t-4 border-[#111] bg-white p-8 hover:border-[#ff5a1f]">

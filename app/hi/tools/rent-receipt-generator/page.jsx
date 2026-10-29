@@ -83,7 +83,7 @@ export default function Page() {
           <h2 className="text-3xl font-extrabold md:text-4xl">अक्सर पूछे जाने वाले सवाल</h2>
           <div className="mt-8 divide-y divide-black/15 border-y border-black/15">
             {faqs.map(([q, a]) => (
-              <details key={q} className="group py-5">
+              <details key={q} name="faq" className="group py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">{q}<span className="text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
                 <p className="mt-3 text-[#555]">{a}</p>
               </details>

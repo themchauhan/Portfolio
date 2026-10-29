@@ -52,7 +52,7 @@ export default async function ResourcesPage({ searchParams }) {
 				Headlines from the publishers Indians read the most, plus positive stories from around the world. Refreshed every few minutes.
 			</PageHero>
 
-			<section className="!py-0 pb-16 md:pb-24">
+			<section className="!pt-0 !pb-16 md:!pb-24">
 				<div className="mx-auto max-w-7xl px-5 sm:px-8">
 					<div className="max-w-4xl">
 					<nav aria-label="News topics" className="mb-10 flex flex-wrap gap-2">

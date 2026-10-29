@@ -29,7 +29,7 @@ export default function Page({ params }) {
         For {s.businesses}. Replace {s.pain} with simple software, set up and supported by me.
       </PageHero>
 
-      <section className="!py-0 pb-12">
+      <section className="!pt-0 !pb-12">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {s.benefits.map(([t, d]) => (

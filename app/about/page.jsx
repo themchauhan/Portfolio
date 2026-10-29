@@ -97,6 +97,16 @@ export default function Page() {
         </div>
       </section>
 
+      {/* Desk photo */}
+      <section className="!pt-0 !pb-16 md:!pb-28">
+        <figure className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="relative aspect-[3/2] overflow-hidden rounded-3xl">
+            <Image src="/manish-desk.jpg" alt="Manish's desk with an iMac, a MacBook Pro and books like Rich Dad Poor Dad and Atomic Habits" fill sizes="(min-width:1280px) 1216px, 92vw" className="object-cover" />
+          </div>
+          <figcaption className="mt-4 text-[#777]">My desk, where the websites, products and AI classes get built.</figcaption>
+        </figure>
+      </section>
+
       {/* Values (black blade) */}
       <section className="!py-16 md:!py-28 bg-[#111]">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
