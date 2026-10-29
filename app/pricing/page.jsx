@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import StarterPack from '@/components/StarterPack'
 import PageHero from '@/components/PageHero'
 import PlanCards from '@/components/PlanCards'
 import { products } from '@/lib/products'
@@ -68,6 +69,7 @@ export default function Page() {
           <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Websites &amp; custom work</p>
           <h2 className="mt-2 font-display text-4xl font-extrabold tracking-tight">Estimate your project</h2>
           <p className="mt-4 max-w-2xl text-lg text-[#555]">Every website is different, so pick what you need and see an estimate. Send it to me and I&apos;ll review it and reply with a fixed quotation.</p>
+          <div className="mt-8"><StarterPack page="pricing" /></div>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[['Business website', 'Home, about, services and contact, with Google and WhatsApp setup.'], ['Online store', 'Products, cart and online payments (UPI, cards).'], ['Custom web app or automation', 'Dashboards, portals, or an Excel/paper process automated.']].map(([t, d]) => (
               <div key={t} className="rounded-xl border border-black/10 bg-[#f4f1ec] p-5">

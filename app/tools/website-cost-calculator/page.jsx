@@ -2,6 +2,7 @@ import JsonLd from '@/components/JsonLd'
 import FreeBadges from '@/components/tools/FreeBadges'
 import ShareTool from '@/components/tools/ShareTool'
 import QuoteEstimator from '@/components/QuoteEstimator'
+import StarterPack from '@/components/StarterPack'
 import { SITE, pageMeta } from '@/lib/seo'
 
 const URL = `${SITE}/tools/website-cost-calculator`
@@ -13,7 +14,7 @@ export const metadata = pageMeta({
 })
 
 const faqs = [
-  ['How much does a business website cost in India?', 'A simple 5-page business website typically starts around ₹15,000. The final cost depends on pages, features like booking or payments, content writing and how fast you need it.'],
+  ['How much does a business website cost in India?', 'A simple starter website for a shop (up to 3 pages, WhatsApp button and Google listing) starts at ₹5,999. A 5-page business website with WhatsApp chat and basic SEO included starts around ₹15,000. The final cost depends on pages, features like booking or payments, content writing and how fast you need it.'],
   ['Is the estimate a final price?', 'No. It is an estimate to help you plan. Send your selection and you will get a fixed quotation after a quick review of your requirements.'],
   ['What affects website cost the most?', 'The type of site (landing page, business site, online store or web app), the number of pages, and features such as payments, user logins, booking systems and integrations.'],
   ['Do I need monthly maintenance?', 'It is optional. Maintenance covers updates, backups, small changes and support, so your site stays secure and up to date.'],
@@ -33,7 +34,9 @@ export default function Page() {
           <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">How much will your website cost? Pick what you need and get an instant estimate in rupees. No sign-in, no sign-up.</p>
           <FreeBadges className="mt-6" />
             <ShareTool className="mt-5" url={URL} title="Website Cost Calculator" message="How much does a website cost in India? Free calculator, instant estimate." />
-          <div className="mt-10"><QuoteEstimator /></div>
+          <div className="mt-10"><StarterPack page="website-cost-calculator" /></div>
+          <h2 className="mt-14 font-display text-2xl font-extrabold tracking-tight md:text-3xl">Need something else? Build your own estimate</h2>
+          <div className="mt-6"><QuoteEstimator /></div>
         </div>
       </section>
       <section className="!py-14 md:!py-20 bg-white">

@@ -6,27 +6,36 @@ import { track } from "@/lib/analytics";
 const round = (n) => Math.round(n / 500) * 500; // friendly numbers
 
 export default function QuoteEstimator({ compact = false }) {
-  const [type, setType] = useState("business");
-  const [pages, setPages] = useState(5);
-  const [features, setFeatures] = useState(["whatsapp", "seo"]);
+  const [type, setTypeId] = useState("starter");
+  const [pages, setPages] = useState(3);
+  const [features, setFeatures] = useState([]);
   const [rush, setRush] = useState(false);
   const [maintenance, setMaintenance] = useState(false);
 
   const t = R.types.find((x) => x.id === type);
   const showPages = type !== "automation";
+  const included = t.included || []; // features that are part of this type at no extra cost
+  const setType = (id) => {
+    const next = R.types.find((x) => x.id === id);
+    setTypeId(id);
+    setPages(Math.max(1, next.includedPages));
+  };
   const toggle = (id) => setFeatures(features.includes(id) ? features.filter((f) => f !== id) : [...features, id]);
+  const chosen = R.features.filter((f) => features.includes(f.id) && !included.includes(f.id));
 
   const est = useMemo(() => {
     let total = t.base + (showPages ? Math.max(0, pages - t.includedPages) * R.extraPage : 0);
-    for (const f of R.features) if (features.includes(f.id)) total += f.perPage ? f.price * (showPages ? pages : 1) : f.price;
+    for (const f of chosen) total += f.perPage ? f.price * (showPages ? pages : 1) : f.price;
     if (rush) total *= R.rushMultiplier;
-    return { low: round(total * R.rangeLow), high: round(total * R.rangeHigh) };
-  }, [t, pages, features, rush, showPages]);
+    // never show a "from" price below the package price
+    return { low: Math.max(round(total * R.rangeLow), t.base), high: round(total * R.rangeHigh) };
+  }, [t, pages, chosen, rush, showPages]);
 
   const summary = [
     `Project: ${t.name}`,
     showPages ? `Pages: ${pages}` : null,
-    features.length ? `Features: ${R.features.filter((f) => features.includes(f.id)).map((f) => f.name).join(", ")}` : null,
+    included.length ? `Included: ${R.features.filter((f) => included.includes(f.id)).map((f) => f.name).join(", ")}` : null,
+    chosen.length ? `Extra features: ${chosen.map((f) => f.name).join(", ")}` : null,
     rush ? "Delivery: rush" : "Delivery: standard",
     maintenance ? `Monthly maintenance: yes (${inr(R.maintenancePerMonth)}/month)` : null,
     `Estimate: ${inr(est.low)} – ${inr(est.high)}`,
@@ -43,7 +52,7 @@ export default function QuoteEstimator({ compact = false }) {
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             {R.types.map((x) => (
               <button type="button" key={x.id} onClick={() => setType(x.id)} className={chip(type === x.id)} aria-pressed={type === x.id}>
-                <span className="block font-semibold">{x.name}</span>
+                <span className="flex flex-wrap items-center gap-2 font-semibold">{x.name}{x.badge && <span className="rounded-full bg-[#ff5a1f] px-2 py-0.5 text-xs font-semibold text-white">{x.badge}</span>}</span>
                 <span className="mt-0.5 block text-sm text-[#666]">{x.desc}</span>
               </button>
             ))}
@@ -61,12 +70,17 @@ export default function QuoteEstimator({ compact = false }) {
         <div>
           <p className="font-display text-lg font-extrabold">{showPages ? "3" : "2"}. Features</p>
           <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
-            {R.features.map((f) => (
-              <label key={f.id} className={`flex items-center gap-3 ${chip(features.includes(f.id))} py-3`}>
-                <input type="checkbox" checked={features.includes(f.id)} onChange={() => toggle(f.id)} className="h-4 w-4 accent-[#ff5a1f]" />
-                <span className="text-[15px] font-medium">{f.name}</span>
-              </label>
-            ))}
+            {R.features.map((f) => {
+              const inc = included.includes(f.id)
+              const on = inc || features.includes(f.id)
+              return (
+                <label key={f.id} className={`flex items-center gap-3 ${chip(on)} py-3 ${inc ? "cursor-default" : ""}`}>
+                  <input type="checkbox" checked={on} disabled={inc} onChange={() => toggle(f.id)} className="h-4 w-4 accent-[#ff5a1f]" />
+                  <span className="text-[15px] font-medium">{f.name}</span>
+                  {inc && <span className="ml-auto rounded-full bg-[#111] px-2 py-0.5 text-xs font-semibold text-white">Included</span>}
+                </label>
+              )
+            })}
           </div>
         </div>
 
@@ -93,7 +107,7 @@ export default function QuoteEstimator({ compact = false }) {
           href={waLink(message)}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => track("quote_request", { project_type: type, pages: showPages ? pages : 0, feature_count: features.length, rush, estimate_low: est.low })}
+          onClick={() => track("quote_request", { project_type: type, pages: showPages ? pages : 0, feature_count: chosen.length, rush, estimate_low: est.low })}
           className="mt-7 block rounded-full bg-[#25D366] px-5 py-3.5 text-center font-semibold text-white hover:bg-[#1ebe5b]"
         >
           Send for a final quote on WhatsApp
