@@ -192,7 +192,7 @@ export default function Page() {
             <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Have a project that needs a developer?</h2>
             <p className="mt-4 text-lg text-[#555]">Tell me about the project, the timeline and your stack. I&apos;ll reply within 1–2 working days.</p>
             <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-[#777]">Email</p>
-            <a href="mailto:mani7015066@gmail.com" className="mt-2 block font-display text-2xl font-extrabold underline decoration-[#ff5a1f] decoration-2 underline-offset-4">mani7015066@gmail.com</a>
+            <a href="mailto:manish@themanishchauhan.in" className="mt-2 block font-display text-2xl font-extrabold underline decoration-[#ff5a1f] decoration-2 underline-offset-4">manish@themanishchauhan.in</a>
           </div>
           <div className="rounded-2xl bg-white p-6 shadow-xl md:p-8">
             <ContactForm

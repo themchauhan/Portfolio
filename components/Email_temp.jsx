@@ -43,8 +43,8 @@ const Email_temp = () => {
                 <div className="mt-3 space-y-2 text-sm text-slate-700">
                   <p>
                     Email:{' '}
-                    <a className="font-medium text-blue-600 hover:text-blue-700" href="mailto:mani7015066@gmail.com">
-                      mani7015066@gmail.com
+                    <a className="font-medium text-blue-600 hover:text-blue-700" href="mailto:manish@themanishchauhan.in">
+                      manish@themanishchauhan.in
                     </a>
                   </p>
                   <p>

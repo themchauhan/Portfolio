@@ -174,7 +174,7 @@ export default function Page() {
           <div>
             <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#111] md:text-5xl">Let&apos;s build something.</h2>
             <p className="mt-4 text-xl text-[#111]/80">
-              <a href="mailto:mani7015066@gmail.com" className="font-semibold underline underline-offset-4">mani7015066@gmail.com</a>
+              <a href="mailto:manish@themanishchauhan.in" className="font-semibold underline underline-offset-4">manish@themanishchauhan.in</a>
               {' · '}
               <a href="https://www.linkedin.com/in/themchauhan" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">LinkedIn</a>
             </p>

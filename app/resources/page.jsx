@@ -136,7 +136,7 @@ export default async function ResourcesPage({ searchParams }) {
 							</li>
 						</ul>
 						<p className="mt-6 text-sm text-[#8d8982]">
-							AI summaries can contain mistakes. For anything important, rely on the original article. If you&apos;re a publisher and want a source removed, email <a className="underline" href="mailto:mani7015066@gmail.com">mani7015066@gmail.com</a>.
+							AI summaries can contain mistakes. For anything important, rely on the original article. If you&apos;re a publisher and want a source removed, email <a className="underline" href="mailto:manish@themanishchauhan.in">manish@themanishchauhan.in</a>.
 						</p>
 					</div>
 				</div>

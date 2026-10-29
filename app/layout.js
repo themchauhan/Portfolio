@@ -130,7 +130,7 @@ export default function RootLayout({ children }) {
       "@type": "PostalAddress",
       "addressCountry": "IN"
     },
-    "email": "mani7015066@gmail.com",
+    "email": "manish@themanishchauhan.in",
     "telephone": "+91-7015066237",
     "worksFor": {
       "@type": "Organization",

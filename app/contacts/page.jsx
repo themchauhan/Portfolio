@@ -19,7 +19,7 @@ export default function Page() {
           <div className="space-y-8">
             <div>
               <p className="text-sm font-semibold uppercase tracking-widest text-[#777]">Email</p>
-              <a href="mailto:mani7015066@gmail.com" className="mt-2 block font-display text-2xl font-extrabold underline decoration-[#ff5a1f] decoration-2 underline-offset-4">mani7015066@gmail.com</a>
+              <a href="mailto:manish@themanishchauhan.in" className="mt-2 block font-display text-2xl font-extrabold underline decoration-[#ff5a1f] decoration-2 underline-offset-4">manish@themanishchauhan.in</a>
             </div>
             <div>
               <p className="text-sm font-semibold uppercase tracking-widest text-[#777]">Phone</p>

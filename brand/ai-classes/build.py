@@ -5,7 +5,7 @@ HERE = pathlib.Path(__file__).parent
 FEES_JR = ["₹2,000", "₹2,500", "₹3,000"]  # Classes 6–8: Basics, Builder, Advanced
 FEES_SR = ["₹4,000", "₹4,500", "₹5,000"]  # Classes 9–12
 PHONE = "+91 70150 66237"
-EMAIL = "mani7015066@gmail.com"
+EMAIL = "manish@themanishchauhan.in"
 
 T = {
 "en": {

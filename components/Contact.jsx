@@ -233,10 +233,10 @@ const Contact = () => {
                   <div>
                     <h4 className="text-lg font-semibold text-white mb-1">Email</h4>
                     <a 
-                      href="mailto:mani7015066@gmail.com" 
+                      href="mailto:manish@themanishchauhan.in" 
                       className="text-blue-400 hover:text-purple-400 transition-colors duration-200 font-medium"
                     >
-                      mani7015066@gmail.com
+                      manish@themanishchauhan.in
                     </a>
                     <p className="text-gray-400 text-sm">Feel free to reach out anytime!</p>
                   </div>
