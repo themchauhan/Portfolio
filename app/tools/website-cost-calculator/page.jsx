@@ -4,6 +4,7 @@ import ShareTool from '@/components/tools/ShareTool'
 import QuoteEstimator from '@/components/QuoteEstimator'
 import StarterPack from '@/components/StarterPack'
 import { SITE, pageMeta } from '@/lib/seo'
+import { starterPriceText } from '@/lib/pricing'
 
 const URL = `${SITE}/tools/website-cost-calculator`
 
@@ -14,7 +15,7 @@ export const metadata = pageMeta({
 })
 
 const faqs = [
-  ['How much does a business website cost in India?', 'A simple starter website for a shop (up to 3 pages, WhatsApp button and Google listing) starts at ₹5,999. A 5-page business website with WhatsApp chat and basic SEO included starts around ₹15,000. The final cost depends on pages, features like booking or payments, content writing and how fast you need it.'],
+  ['How much does a business website cost in India?', `A simple starter website for a shop (up to 3 pages, WhatsApp button and Google listing) is ${starterPriceText()}. A 5-page business website with WhatsApp chat and basic SEO included starts around ₹15,000. The final cost depends on pages, features like booking or payments, content writing and how fast you need it.`],
   ['Is the estimate a final price?', 'No. It is an estimate to help you plan. Send your selection and you will get a fixed quotation after a quick review of your requirements.'],
   ['What affects website cost the most?', 'The type of site (landing page, business site, online store or web app), the number of pages, and features such as payments, user logins, booking systems and integrations.'],
   ['Do I need monthly maintenance?', 'It is optional. Maintenance covers updates, backups, small changes and support, so your site stays secure and up to date.'],

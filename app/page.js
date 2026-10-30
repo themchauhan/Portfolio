@@ -5,6 +5,7 @@ import { productList } from '@/lib/products'
 import { serviceList, cityList, pathFor } from '@/lib/seo'
 import { getExperienceText } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
+import { starterPriceText } from '@/lib/pricing'
 
 export const metadata = pageMeta({
   title: { absolute: 'Manish Chauhan - Full Stack Web Developer & Freelancer' },
@@ -21,6 +22,13 @@ const clients = [
   ['McGrath', '/McGrath_Logo_Grey.svg'],
   ['Weka', '/Weka-Grey-Logo-1.svg', 'scale-110'],
   ['Agari', '/Agari_Logo-1.svg'],
+]
+
+const audiences = [
+  ['/agencies', 'Agencies', 'Design and marketing agencies that need a reliable developer for their website projects, white-label.', 'For agencies'],
+  ['/pricing', 'Shops & small businesses', `A professional website with WhatsApp and Google listing. Starter Pack at ${starterPriceText()}.`, 'See the Starter Pack'],
+  ['/ai-courses', 'Students & schools', 'Weekend AI classes for Classes 6–12, and free AI workshops for schools.', 'AI classes'],
+  ['/products', 'Clinics, landlords & cafés', 'Ready-made software that replaces registers and paperwork: ClinicOs, RentCorp and CafeCorp.', 'See products'],
 ]
 
 const services = [
@@ -92,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* Clients */}
-      <section className="!py-10 border-y border-black/10 bg-white">
+      <section className="!py-10 overflow-hidden border-y border-black/10 bg-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <p className="text-center text-sm font-semibold uppercase tracking-widest text-[#777]">Worked with teams at</p>
           <div className="mt-7 grid grid-cols-2 items-center gap-x-10 gap-y-10 sm:grid-cols-4">
@@ -103,13 +111,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Who I help */}
+      <section className="!py-16 md:!py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <Heading>Who I help</Heading>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {audiences.map(([href, title, desc, cta]) => (
+              <Link key={href} href={href} className="group flex flex-col border-t-4 border-[#111] bg-white p-7 hover:border-[#ff5a1f]">
+                <h3 className="font-display text-2xl font-extrabold group-hover:text-[#ff5a1f]">{title}</h3>
+                <p className="mt-3 text-[#555]">{desc}</p>
+                <p className="mt-auto pt-6 font-semibold text-[#ff5a1f]">{cta} →</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services */}
-      <section id="services" className="!py-16 md:!py-28">
+      <section id="services" className="!py-16 md:!py-28 bg-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Heading>What I do</Heading>
           <div className="mt-14 grid gap-px overflow-hidden bg-black/15 md:grid-cols-3">
             {services.map(([n, t, d]) => (
-              <div key={t} className="bg-[#f4f1ec] p-8 md:p-10">
+              <div key={t} className="bg-white p-8 md:p-10">
                 <p className="font-display text-sm font-bold text-[#ff5a1f]">{n}</p>
                 <h3 className="mt-6 font-display text-3xl font-extrabold">{t}</h3>
                 <p className="mt-4 text-lg leading-relaxed text-[#444]">{d}</p>

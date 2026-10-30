@@ -17,7 +17,7 @@ export function generateMetadata({ params }) {
   const c = cities[params.city]
   if (!s || !c) return {}
   const title = `${s.name} in ${c.name}`
-  const description = `${s.name} for ${s.businesses} in ${placeName(c)}. Free demo and fixed-price quote.`
+  const description = `${s.name} for ${s.businesses} in ${placeName(c)}. ${s.metaTail || 'Free demo and fixed-price quote.'}`
   const url = `${SITE}${pathFor(s.slug, c.slug)}`
   return pageMeta({
     title,
@@ -89,10 +89,10 @@ export default function Page({ params }) {
             {s.name} in <span className="underline decoration-[#ff5a1f] decoration-[6px] underline-offset-[10px]">{c.name}</span>
           </h1>
           <p className="mt-8 max-w-3xl text-xl leading-relaxed text-[#444]">
-            {c.context} If your {s.businesses} still run on {s.pain}, simple software can save hours every week and cut mistakes. I set it up for businesses in {c.name}{c.alt ? ` (${c.alt})` : ''} and nearby towns.
+            {s.intro ? s.intro(c) : <>{c.context} If your {s.businesses} still run on {s.pain}, simple software can save hours every week and cut mistakes. I set it up for businesses in {c.name}{c.alt ? ` (${c.alt})` : ''} and nearby towns.</>}
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
-            <TrackedLink event="product_demo_click" params={{ service: s.slug, city: c.slug, position: "landing_hero" }} href="#contact" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Get a free demo</TrackedLink>
+            <TrackedLink event="product_demo_click" params={{ service: s.slug, city: c.slug, position: "landing_hero" }} href="#contact" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">{s.cta || "Get a free demo"}</TrackedLink>
             {product && <Link href={`/${product.slug}`} className="rounded-full border-2 border-[#111] px-7 py-3 font-semibold hover:bg-[#111] hover:text-white">See {product.name}</Link>}
           </div>
         </div>
@@ -131,16 +131,16 @@ export default function Page({ params }) {
       <section className="!py-14 md:!py-20 bg-[#111]">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-5 sm:px-8 md:flex-row md:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">{product ? 'Ready-made product' : 'Built for you'}</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">{product ? 'Ready-made product' : s.callout?.eyebrow || 'Built for you'}</p>
             <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold text-white md:text-4xl">
-              {product ? `${product.name}: ${product.headline}` : `${s.short} built around how your business works.`}
+              {product ? `${product.name}: ${product.headline}` : s.callout?.title || `${s.short} built around how your business works.`}
             </h2>
             <p className="mt-3 max-w-2xl text-lg text-[#b9b5ad]">
-              {product ? product.summary : 'Tell me how you work today and I will build a focused first version, with a fixed price agreed upfront.'}
+              {product ? product.summary : s.callout?.text || 'Tell me how you work today and I will build a focused first version, with a fixed price agreed upfront.'}
             </p>
           </div>
-          <Link href={product ? `/${product.slug}` : '/contacts'} className="shrink-0 rounded-full bg-[#ff5a1f] px-7 py-3.5 font-semibold text-white hover:bg-white hover:text-[#111]">
-            {product ? `Explore ${product.name}` : 'Talk to me'}
+          <Link href={product ? `/${product.slug}` : s.callout?.href || '/contacts'} className="shrink-0 rounded-full bg-[#ff5a1f] px-7 py-3.5 font-semibold text-white hover:bg-white hover:text-[#111]">
+            {product ? `Explore ${product.name}` : s.callout?.label || 'Talk to me'}
           </Link>
         </div>
       </section>

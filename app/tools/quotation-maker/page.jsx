@@ -10,7 +10,7 @@ const URL = `${SITE}/tools/quotation-maker`
 export const metadata = pageMeta({
   title: 'Free Quotation Maker – Create a Quotation Format Online (PDF)',
   description: 'Make a professional quotation or estimate in a minute: items, GST, discount, validity and terms. Free, no sign-in or sign-up. Print or save as PDF.',
-  alternates: { canonical: URL },
+  alternates: { canonical: URL, languages: { 'en-IN': URL, 'hi-IN': `${SITE}/hi/tools/quotation-maker` } },
 })
 
 const faqs = [
@@ -32,14 +32,17 @@ export default function Page() {
       <section className="!py-12 md:!py-20 print:!py-0">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="print:hidden">
-            <p className="text-[15px] font-semibold text-[#ff5a1f]">Free tool</p>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="text-[15px] font-semibold text-[#ff5a1f]">Free tool</p>
+              <Link href="/hi/tools/quotation-maker" hrefLang="hi" className="text-sm font-semibold underline decoration-[#ff5a1f] underline-offset-4">हिंदी में देखें</Link>
+            </div>
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">Quotation Maker</h1>
             <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#444]">Send a professional quotation in a minute, with items, GST, discount, validity and terms. Completely free: no sign-in, no sign-up, no limits.</p>
             <FreeBadges className="mt-6" />
             <ShareTool className="mt-5" url={URL} title="Free Quotation Maker" message="Free quotation maker: items, GST, discount and terms in a minute, no sign-up." />
           </div>
           <div className="mt-10 print:mt-0"><QuotationMaker /></div>
-          <p className="mt-8 text-[#555] print:hidden">Quote accepted? Create the bill with the free <Link href="/tools/gst-invoice-generator" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">GST Invoice Generator</Link>.</p>
+          <p className="mt-8 text-[#555] print:hidden">Quote accepted? Create the bill with the free <Link href="/tools/gst-invoice-generator" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">GST Invoice Generator</Link>. New to quotations? Read <Link href="/blog/how-to-make-a-quotation" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">how to make a quotation</Link>.</p>
         </div>
       </section>
 

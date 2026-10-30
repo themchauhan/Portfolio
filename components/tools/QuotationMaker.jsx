@@ -14,7 +14,29 @@ const nice = (s) => (s ? new Date(s).toLocaleDateString("en-IN", { day: "2-digit
 const today = new Date();
 const DEFAULT_TERMS = "1. Prices are valid until the date mentioned above.\n2. 50% advance to confirm the order, balance on delivery.\n3. Delivery timeline as discussed after confirmation.";
 
-export default function QuotationMaker() {
+
+// Form text in English and simple Hindi. The quotation itself stays in English (what most customers expect).
+const TEXT = {
+  en: {
+    from: "From (your business)", logo: "Business logo", bizName: "Business name", bizPh: "Sharma Interiors", address: "Address", phone: "Phone", email: "Email", optional: "(optional)",
+    to: "Quotation for (customer)", custName: "Customer name", custPh: "Mr. Rakesh Gupta", quoteNo: "Quote no.", date: "Date", valid: "Valid until",
+    items: "Items", addGst: "Add GST", igst: "Customer in another state (IGST)", item: "Item / work", itemPh: "Modular kitchen cabinets", qty: "Qty", unit: "Unit", unitPh: "pcs, sq ft", rate: "Rate (₹)", gst: "GST %", remove: "Remove", addItem: "+ Add item",
+    discount: "Discount", terms: "Terms & conditions", total: "Total", inclGst: " incl. GST", create: "Create quotation",
+    privacy: "Everything stays in your browser. Nothing you type is sent or saved.",
+    missing: "Add your business name, the customer name and at least one item with a rate.", print: "Print / Save as PDF",
+  },
+  hi: {
+    from: "आपका बिज़नेस", logo: "बिज़नेस का लोगो", bizName: "बिज़नेस का नाम", bizPh: "शर्मा इंटीरियर्स", address: "पता", phone: "फ़ोन", email: "ईमेल", optional: "(अगर हो तो)",
+    to: "कोटेशन किसके लिए (ग्राहक)", custName: "ग्राहक का नाम", custPh: "श्री राकेश गुप्ता", quoteNo: "कोटेशन नंबर", date: "तारीख", valid: "कब तक मान्य",
+    items: "सामान / काम", addGst: "GST जोड़ें", igst: "ग्राहक दूसरे राज्य में है (IGST)", item: "सामान / काम", itemPh: "मॉड्यूलर किचन कैबिनेट", qty: "मात्रा", unit: "यूनिट", unitPh: "पीस, sq ft", rate: "रेट (₹)", gst: "GST %", remove: "हटाएँ", addItem: "+ और जोड़ें",
+    discount: "छूट", terms: "शर्तें", total: "कुल", inclGst: " GST सहित", create: "कोटेशन बनाएँ",
+    privacy: "आप जो भी लिखेंगे, वो आपके फ़ोन या कंप्यूटर में ही रहेगा। कहीं भेजा या सेव नहीं होता।",
+    missing: "अपने बिज़नेस का नाम, ग्राहक का नाम और कम से कम एक सामान रेट के साथ भरें।", print: "प्रिंट करें / PDF सेव करें",
+  },
+};
+
+export default function QuotationMaker({ lang = "en" }) {
+  const t = TEXT[lang] || TEXT.en;
   const [from, setFrom] = useState({ name: "", address: "", phone: "", email: "", gstin: "", logo: "" });
   const [to, setTo] = useState({ name: "", address: "", phone: "" });
   const [meta, setMeta] = useState({ number: "QT-001", date: isoDate(today), valid: isoDate(new Date(today.getTime() + 15 * 864e5)) });
@@ -55,77 +77,77 @@ export default function QuotationMaker() {
       >
         <div className="grid gap-8 md:grid-cols-2">
           <fieldset className="space-y-3">
-            <legend className="font-display text-lg font-extrabold">From (your business)</legend>
-            <LogoUpload label="Business logo" value={from.logo} onChange={(logo) => setFrom((f) => ({ ...f, logo }))} />
-            <label className={label}>Business name<input value={from.name} onChange={(e) => setFrom({ ...from, name: e.target.value })} required className={field} placeholder="Sharma Interiors" /></label>
-            <label className={label}>Address<textarea rows={2} value={from.address} onChange={(e) => setFrom({ ...from, address: e.target.value })} className={field} /></label>
+            <legend className="font-display text-lg font-extrabold">{t.from}</legend>
+            <LogoUpload lang={lang} label={t.logo} value={from.logo} onChange={(logo) => setFrom((f) => ({ ...f, logo }))} />
+            <label className={label}>{t.bizName}<input value={from.name} onChange={(e) => setFrom({ ...from, name: e.target.value })} required className={field} placeholder={t.bizPh} /></label>
+            <label className={label}>{t.address}<textarea rows={2} value={from.address} onChange={(e) => setFrom({ ...from, address: e.target.value })} className={field} /></label>
             <div className="grid grid-cols-2 gap-3">
-              <label className={label}>Phone<input value={from.phone} onChange={(e) => setFrom({ ...from, phone: e.target.value })} className={field} /></label>
-              <label className={label}>Email<input type="email" value={from.email} onChange={(e) => setFrom({ ...from, email: e.target.value })} className={field} /></label>
+              <label className={label}>{t.phone}<input value={from.phone} onChange={(e) => setFrom({ ...from, phone: e.target.value })} className={field} /></label>
+              <label className={label}>{t.email}<input type="email" value={from.email} onChange={(e) => setFrom({ ...from, email: e.target.value })} className={field} /></label>
             </div>
-            <label className={label}>GSTIN <span className="font-normal text-[#777]">(optional)</span><input value={from.gstin} maxLength={15} onChange={(e) => setFrom({ ...from, gstin: e.target.value.toUpperCase().replace(/\s/g, "") })} className={field} /></label>
+            <label className={label}>GSTIN <span className="font-normal text-[#777]">{t.optional}</span><input value={from.gstin} maxLength={15} onChange={(e) => setFrom({ ...from, gstin: e.target.value.toUpperCase().replace(/\s/g, "") })} className={field} /></label>
           </fieldset>
           <fieldset className="space-y-3">
-            <legend className="font-display text-lg font-extrabold">Quotation for (customer)</legend>
-            <label className={label}>Customer name<input value={to.name} onChange={(e) => setTo({ ...to, name: e.target.value })} required className={field} placeholder="Mr. Rakesh Gupta" /></label>
-            <label className={label}>Address<textarea rows={2} value={to.address} onChange={(e) => setTo({ ...to, address: e.target.value })} className={field} /></label>
-            <label className={label}>Phone<input value={to.phone} onChange={(e) => setTo({ ...to, phone: e.target.value })} className={field} /></label>
+            <legend className="font-display text-lg font-extrabold">{t.to}</legend>
+            <label className={label}>{t.custName}<input value={to.name} onChange={(e) => setTo({ ...to, name: e.target.value })} required className={field} placeholder={t.custPh} /></label>
+            <label className={label}>{t.address}<textarea rows={2} value={to.address} onChange={(e) => setTo({ ...to, address: e.target.value })} className={field} /></label>
+            <label className={label}>{t.phone}<input value={to.phone} onChange={(e) => setTo({ ...to, phone: e.target.value })} className={field} /></label>
             <div className="grid grid-cols-3 gap-3">
-              <label className={label}>Quote no.<input value={meta.number} onChange={(e) => setMeta({ ...meta, number: e.target.value })} className={field} /></label>
-              <label className={label}>Date<input type="date" value={meta.date} onChange={(e) => setMeta({ ...meta, date: e.target.value })} className={field} /></label>
-              <label className={label}>Valid until<input type="date" value={meta.valid} onChange={(e) => setMeta({ ...meta, valid: e.target.value })} className={field} /></label>
+              <label className={label}>{t.quoteNo}<input value={meta.number} onChange={(e) => setMeta({ ...meta, number: e.target.value })} className={field} /></label>
+              <label className={label}>{t.date}<input type="date" value={meta.date} onChange={(e) => setMeta({ ...meta, date: e.target.value })} className={field} /></label>
+              <label className={label}>{t.valid}<input type="date" value={meta.valid} onChange={(e) => setMeta({ ...meta, valid: e.target.value })} className={field} /></label>
             </div>
           </fieldset>
         </div>
 
         <div>
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="font-display text-lg font-extrabold">Items</p>
+            <p className="font-display text-lg font-extrabold">{t.items}</p>
             <div className="flex flex-wrap gap-5 text-sm font-medium">
-              <label className="flex items-center gap-2"><input type="checkbox" checked={gstOn} onChange={(e) => setGstOn(e.target.checked)} className="h-4 w-4 accent-[#ff5a1f]" />Add GST</label>
-              {gstOn && <label className="flex items-center gap-2"><input type="checkbox" checked={interState} onChange={(e) => setInterState(e.target.checked)} className="h-4 w-4 accent-[#ff5a1f]" />Customer in another state (IGST)</label>}
+              <label className="flex items-center gap-2"><input type="checkbox" checked={gstOn} onChange={(e) => setGstOn(e.target.checked)} className="h-4 w-4 accent-[#ff5a1f]" />{t.addGst}</label>
+              {gstOn && <label className="flex items-center gap-2"><input type="checkbox" checked={interState} onChange={(e) => setInterState(e.target.checked)} className="h-4 w-4 accent-[#ff5a1f]" />{t.igst}</label>}
             </div>
           </div>
           <div className="mt-3 space-y-3">
             {items.map((it, i) => (
               <div key={it.id} className={`grid grid-cols-2 gap-2 rounded-lg border border-black/10 p-3 sm:items-end ${gstOn ? "sm:grid-cols-[2.2fr_0.7fr_0.8fr_1fr_0.7fr_auto]" : "sm:grid-cols-[2.2fr_0.7fr_0.8fr_1fr_auto]"}`}>
-                <label className="col-span-2 block text-xs font-medium sm:col-span-1">Item / work<input value={it.desc} onChange={(e) => setItem(it.id, "desc", e.target.value)} className={field} placeholder={i === 0 ? "Modular kitchen cabinets" : ""} /></label>
-                <label className="block text-xs font-medium">Qty<input type="number" min="0" step="any" value={it.qty} onChange={(e) => setItem(it.id, "qty", e.target.value)} className={field} /></label>
-                <label className="block text-xs font-medium">Unit<input value={it.unit} onChange={(e) => setItem(it.id, "unit", e.target.value)} className={field} placeholder="pcs, sq ft" /></label>
-                <label className="block text-xs font-medium">Rate (₹)<input type="number" min="0" step="any" value={it.rate} onChange={(e) => setItem(it.id, "rate", e.target.value)} className={field} /></label>
-                {gstOn && <label className="block text-xs font-medium">GST %<input type="number" min="0" step="any" list="quote-gst" value={it.gst} onChange={(e) => setItem(it.id, "gst", e.target.value)} className={field} /></label>}
-                <button type="button" onClick={() => setItems(items.length > 1 ? items.filter((x) => x.id !== it.id) : items)} className="col-span-2 rounded-md px-3 py-2.5 text-sm text-[#777] hover:text-rose-600 sm:col-span-1" aria-label="Remove item">Remove</button>
+                <label className="col-span-2 block text-xs font-medium sm:col-span-1">{t.item}<input value={it.desc} onChange={(e) => setItem(it.id, "desc", e.target.value)} className={field} placeholder={i === 0 ? t.itemPh : ""} /></label>
+                <label className="block text-xs font-medium">{t.qty}<input type="number" min="0" step="any" value={it.qty} onChange={(e) => setItem(it.id, "qty", e.target.value)} className={field} /></label>
+                <label className="block text-xs font-medium">{t.unit}<input value={it.unit} onChange={(e) => setItem(it.id, "unit", e.target.value)} className={field} placeholder={t.unitPh} /></label>
+                <label className="block text-xs font-medium">{t.rate}<input type="number" min="0" step="any" value={it.rate} onChange={(e) => setItem(it.id, "rate", e.target.value)} className={field} /></label>
+                {gstOn && <label className="block text-xs font-medium">{t.gst}<input type="number" min="0" step="any" list="quote-gst" value={it.gst} onChange={(e) => setItem(it.id, "gst", e.target.value)} className={field} /></label>}
+                <button type="button" onClick={() => setItems(items.length > 1 ? items.filter((x) => x.id !== it.id) : items)} className="col-span-2 rounded-md px-3 py-2.5 text-sm text-[#777] hover:text-rose-600 sm:col-span-1" aria-label="Remove item">{t.remove}</button>
               </div>
             ))}
           </div>
           <datalist id="quote-gst"><option value="0" /><option value="5" /><option value="18" /><option value="40" /></datalist>
-          <button type="button" onClick={() => setItems([...items, newItem()])} className="mt-3 text-sm font-semibold text-[#ff5a1f] hover:underline">+ Add item</button>
+          <button type="button" onClick={() => setItems([...items, newItem()])} className="mt-3 text-sm font-semibold text-[#ff5a1f] hover:underline">{t.addItem}</button>
         </div>
 
         <div className="grid gap-6 md:grid-cols-[1fr_2fr]">
           <div>
-            <p className="text-sm font-medium">Discount <span className="font-normal text-[#777]">(optional)</span></p>
+            <p className="text-sm font-medium">{t.discount} <span className="font-normal text-[#777]">{t.optional}</span></p>
             <div className="mt-1.5 flex gap-2">
               <input type="number" min="0" step="any" value={discount.value} onChange={(e) => setDiscount({ ...discount, value: e.target.value })} className={`${field} mt-0`} aria-label="Discount" />
               <select value={discount.type} onChange={(e) => setDiscount({ ...discount, type: e.target.value })} className={`${field} mt-0 w-24`} aria-label="Discount type"><option value="%">%</option><option value="₹">₹</option></select>
             </div>
           </div>
-          <label className={label}>Terms &amp; conditions<textarea rows={3} value={terms} onChange={(e) => setTerms(e.target.value)} className={field} /></label>
+          <label className={label}>{t.terms}<textarea rows={3} value={terms} onChange={(e) => setTerms(e.target.value)} className={field} /></label>
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-black/10 pt-6">
-          <p className="text-sm text-[#555]">Total <strong className="text-[#111]">₹{money(calc.total)}</strong>{gstOn ? " incl. GST" : ""}</p>
-          <button type="submit" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Create quotation</button>
+          <p className="text-sm text-[#555]">{t.total} <strong className="text-[#111]">₹{money(calc.total)}</strong>{gstOn ? t.inclGst : ""}</p>
+          <button type="submit" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">{t.create}</button>
         </div>
-        <p className="text-sm text-[#777]">Everything stays in your browser. Nothing you type is sent or saved.</p>
+        <p className="text-sm text-[#777]">{t.privacy}</p>
       </form>
 
-      {shown && !ready && <p className="mt-6 text-rose-600 print:hidden">Add your business name, the customer name and at least one item with a rate.</p>}
+      {shown && !ready && <p className="mt-6 text-rose-600 print:hidden">{t.missing}</p>}
 
       {shown && ready && (
         <section id="quotation" className="!py-0 mt-10">
           <div className="mb-6 flex justify-end print:hidden">
-            <button onClick={() => { track("print_quotation", { gst: gstOn, has_logo: !!from.logo }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">Print / Save as PDF</button>
+            <button onClick={() => { track("print_quotation", { gst: gstOn, has_logo: !!from.logo }); window.print(); }} className="rounded-full bg-[#ff5a1f] px-6 py-3 font-semibold text-white hover:bg-[#111]">{t.print}</button>
           </div>
           <article className="mx-auto max-w-[860px] border border-black/20 bg-white p-6 text-sm text-black md:p-10 print:max-w-none print:border-0 print:p-0">
             <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-black pb-4">

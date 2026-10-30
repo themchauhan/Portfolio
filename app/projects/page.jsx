@@ -1,56 +1,58 @@
-import Image from 'next/image'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
 import { pageMeta } from '@/lib/seo'
+import { featuredClients, clientGroups, clientCount } from '@/lib/clients'
 
 export const metadata = pageMeta({
   title: 'Work',
-  description: 'Websites and web platforms built for Splunk, Cohesity, Socure, Digimarc and more.',
+  description: `Websites and web platforms built for ${clientCount}+ companies, including Splunk, Cohesity, Socure, Sift, Digimarc, Bitdefender and Thales.`,
   alternates: { canonical: 'https://themanishchauhan.in/projects' },
 })
-
-// [name, logo, dark logo?, tech]
-const projects = [
-  ['Socure', '/Socure.svg', false, ['WordPress', 'PHP', 'SCSS', 'JavaScript', 'Marketo']],
-  ['Digimarc', '/Digimarc_Logo_Grey-1.svg', false, ['Drupal', 'SCSS', 'JavaScript', 'HubSpot']],
-  ['Clear Digital', '/clear_logo.svg', false, ['WordPress', 'PHP', 'SCSS', 'JavaScript']],
-  ['Estimatic', '/Estimatic_Logo.svg', false, ['React', 'Material UI', 'Redux', 'Firebase']],
-  ['LightBeam', '/LightBeam_Logo.svg', false, ['WordPress', 'PHP', 'Tailwind CSS', 'Custom integration']],
-  ['Splunk', '/Splunk_Logo_Grey-1.svg', false, ['AEM', 'SCSS', 'JavaScript']],
-  ['Aternity', '/Aternity_Logo_Grey.svg', false, ['WordPress', 'SCSS', 'JavaScript']],
-  ['Hoover', '/Hoover_Logo_White.svg', false, ['Drupal', 'SCSS', 'JavaScript']],
-  ['TRS Rentelco', '/McGrath_Logo_Grey.svg', false, ['Drupal', 'SCSS', 'JavaScript']],
-  ['Heat and Control', '/Heat-Control-white-Logo.svg', false, ['Drupal', 'SCSS', 'JavaScript']],
-  ['Kount', '/Kount_Logo.svg', false, ['WordPress', 'SCSS', 'JavaScript']],
-  ['Cohesity', '/Cohesity_Logo_Grey-1.svg', false, ['WordPress', 'SCSS', 'JavaScript']],
-  ['Agari', '/Agari_Logo-1.svg', false, ['WordPress', 'SCSS', 'JavaScript']],
-  ['Hippo', '/Hippo_Logo_Grey.svg', false, ['Drupal', 'SCSS', 'JavaScript']],
-  ['Weka', '/Weka-Grey-Logo-1.svg', false, ['WordPress', 'SCSS', 'JavaScript']],
-  ['Carbon Black', '/Carbon-Black-Grey-Logo.svg', false, ['WordPress', 'SCSS', 'JavaScript']],
-]
 
 export default function Page() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
       <PageHero eyebrow="Work" title="Sites and platforms I've built.">
-        A selection of websites and web platforms for software and industrial companies, built mostly at Clear Digital.
+        Marketing websites and web platforms for {clientCount}+ companies in cybersecurity, data, healthcare, fintech and industry, built mostly as part of the Clear Digital team.
       </PageHero>
 
-      <section className="!pt-0 !pb-16 md:!pb-28">
+      <section className="!py-16 md:!py-24 bg-[#111] text-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-px overflow-hidden border border-black/15 bg-black/15 sm:grid-cols-2 lg:grid-cols-4">
-            {projects.map(([name, logo, dark, tech]) => (
-              <div key={name} className="flex flex-col bg-[#f4f1ec] p-6">
-                <div className={`flex h-28 items-center justify-center rounded-lg p-5 ${dark ? 'bg-[#111]' : 'bg-white'}`}>
-                  <Image src={logo} alt={name} width={140} height={60} className="max-h-14 w-auto object-contain" />
+          {/* Featured: one line of big names */}
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Featured</p>
+          <ul className="mt-6 grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
+            {featuredClients.map((c, n) => (
+              <li key={c.name} className={`flex min-h-[10rem] flex-col justify-between rounded-2xl border border-white/15 p-5 transition-colors hover:border-[#ff5a1f] md:min-h-[13rem] md:p-7 ${n === 0 ? 'col-span-2 bg-[#ff5a1f] border-[#ff5a1f] hover:border-white' : 'bg-white/[0.04]'}`}>
+                <span className={`font-display text-sm font-bold ${n === 0 ? 'text-white/80' : 'text-white/40'}`}>{String(n + 1).padStart(2, '0')}</span>
+                <div>
+                  <p className="font-display text-2xl font-extrabold leading-tight tracking-tight md:text-4xl">{c.name}</p>
+                  <p className={`mt-2 text-sm md:text-base ${n === 0 ? 'text-white/90' : 'text-white/55'}`}>{c.industry}</p>
+                  {n === 0 && <p className="mt-3 max-w-md text-sm text-white/90 md:text-[15px]">The agency where I&apos;ve built most of this work, from design hand-off to launch.</p>}
                 </div>
-                <h2 className="mt-5 font-display text-2xl font-extrabold">{name}</h2>
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {tech.map((t) => <li key={t} className="rounded-full border border-black/20 px-3 py-1 text-xs font-medium text-[#444]">{t}</li>)}
+              </li>
+            ))}
+          </ul>
+
+          {/* Index by industry */}
+          <div className="mt-14 border-t border-white">
+            {clientGroups.map((g) => (
+              <div key={g.title} className="grid gap-6 border-b border-white/15 py-8 lg:grid-cols-[16rem_1fr] lg:gap-10">
+                <div>
+                  <h2 className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">{g.title}</h2>
+                  <p className="mt-1 text-sm text-white/40">{g.clients.length} companies</p>
+                </div>
+                <ul className="grid grid-cols-2 gap-x-6 gap-y-5 md:gap-x-8 xl:grid-cols-3">
+                  {g.clients.map((c) => (
+                    <li key={c.name}>
+                      <p className="font-display text-xl font-extrabold leading-tight tracking-tight md:text-2xl">{c.name}</p>
+                      {c.industry && <p className="mt-1 text-[13px] leading-snug text-white/50 md:text-sm">{c.industry}</p>}
+                    </li>
+                  ))}
                 </ul>
               </div>
             ))}
           </div>
+          <p className="mt-8 text-sm text-white/40">Company names are shown to describe past work. All trademarks belong to their owners.</p>
         </div>
       </section>
 

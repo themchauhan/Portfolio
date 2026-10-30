@@ -14,7 +14,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const s = services[params.service]
   if (!s) return {}
-  const description = `${s.name} for ${s.businesses} in Rewari, Gurgaon, Jaipur, Chandigarh and nearby. Free demo.`
+  const description = `${s.name} for ${s.businesses} in Rewari, Gurgaon, Jaipur, Chandigarh and nearby. ${s.metaTail || 'Free demo.'}`
   return pageMeta({ title: s.name, description, alternates: { canonical: `${SITE}/services/${s.slug}` } })
 }
 
@@ -26,7 +26,7 @@ export default function Page({ params }) {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
       <PageHero eyebrow="Services" title={s.name}>
-        For {s.businesses}. Replace {s.pain} with simple software, set up and supported by me.
+        {s.heroText || <>For {s.businesses}. Replace {s.pain} with simple software, set up and supported by me.</>}
       </PageHero>
 
       <section className="!pt-0 !pb-12">

@@ -102,7 +102,7 @@ const makesOffer = [
   },
   ...serviceList.map((sv) => ({
     "@type": "Offer", "url": `${SITE}/services/${sv.slug}`,
-    "itemOffered": { "@type": "Service", "name": sv.name, "description": `Software and setup for ${sv.businesses}.`, "areaServed": "IN" },
+    "itemOffered": { "@type": "Service", "name": sv.name, "description": `${sv.name} for ${sv.businesses}.`, "areaServed": "IN" },
   })),
   ...productList.map((pr) => {
     const prices = productPlans[pr.slug].map((p) => p.price)
