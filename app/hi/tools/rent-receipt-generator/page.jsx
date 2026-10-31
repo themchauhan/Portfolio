@@ -4,6 +4,7 @@ import FreeBadges from '@/components/tools/FreeBadges'
 import ShareTool from '@/components/tools/ShareTool'
 import RentReceiptGenerator from '@/components/tools/RentReceiptGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
+import ToolOfferActions from '@/components/tools/ToolOfferActions'
 
 const URL = `${SITE}/hi/tools/rent-receipt-generator`
 const EN_URL = `${SITE}/tools/rent-receipt-generator`
@@ -74,7 +75,7 @@ export default function Page() {
             <h2 className="mt-3 max-w-xl text-3xl font-extrabold text-white md:text-4xl">कई किरायेदारों का हिसाब रखते हैं? अपने-आप करवाइए।</h2>
             <p className="mt-3 max-w-xl text-lg text-[#b9b5ad]">RentCorp में हर किरायेदार, हर महीने का किराया, रसीद और रिमाइंडर एक जगह। किसका किराया बाकी है, तुरंत दिख जाता है।</p>
           </div>
-          <Link href="/rentcorp" className="shrink-0 rounded-full bg-[#ff5a1f] px-7 py-3.5 font-semibold text-white hover:bg-white hover:text-[#111]">RentCorp देखें</Link>
+          <ToolOfferActions tool="rent" lang="hi" href="/rentcorp" label="RentCorp देखें" />
         </div>
       </section>
 

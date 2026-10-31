@@ -4,6 +4,7 @@ import FreeBadges from '@/components/tools/FreeBadges'
 import ShareTool from '@/components/tools/ShareTool'
 import SalarySlipGenerator from '@/components/tools/SalarySlipGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
+import ToolOfferActions from '@/components/tools/ToolOfferActions'
 
 const URL = `${SITE}/tools/salary-slip-generator`
 
@@ -54,7 +55,7 @@ export default function Page() {
             <h2 className="mt-3 max-w-xl font-display text-3xl font-extrabold text-white md:text-4xl">Making slips for every employee, every month? Automate it.</h2>
             <p className="mt-3 max-w-xl text-lg text-[#b9b5ad]">I can set up payroll automation: attendance in, salary slips out, emailed to staff automatically.</p>
           </div>
-          <Link href="/services/business-automation" className="shrink-0 rounded-full bg-[#ff5a1f] px-7 py-3.5 font-semibold text-white hover:bg-white hover:text-[#111]">Automate payroll</Link>
+          <ToolOfferActions tool="salary" href="/services/business-automation" label="How payroll automation works" />
         </div>
       </section>
 

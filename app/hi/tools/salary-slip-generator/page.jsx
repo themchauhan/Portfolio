@@ -4,6 +4,7 @@ import FreeBadges from '@/components/tools/FreeBadges'
 import ShareTool from '@/components/tools/ShareTool'
 import SalarySlipGenerator from '@/components/tools/SalarySlipGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
+import ToolOfferActions from '@/components/tools/ToolOfferActions'
 
 const URL = `${SITE}/hi/tools/salary-slip-generator`
 const EN_URL = `${SITE}/tools/salary-slip-generator`
@@ -74,7 +75,7 @@ export default function Page() {
             <h2 className="mt-3 max-w-xl text-3xl font-extrabold text-white md:text-4xl">हर महीने सबकी सैलरी स्लिप बनाते हैं? अपने-आप करवाइए।</h2>
             <p className="mt-3 max-w-xl text-lg text-[#b9b5ad]">हाज़िरी डालिए, सबकी सैलरी स्लिप अपने-आप बने और WhatsApp या ईमेल पर पहुँच जाए। मैं ये सेटअप करके दे सकता हूँ।</p>
           </div>
-          <Link href="/services/business-automation" className="shrink-0 rounded-full bg-[#ff5a1f] px-7 py-3.5 font-semibold text-white hover:bg-white hover:text-[#111]">ऑटोमेशन के बारे में जानें</Link>
+          <ToolOfferActions tool="salary" lang="hi" href="/services/business-automation" label="ऑटोमेशन के बारे में जानें" />
         </div>
       </section>
 

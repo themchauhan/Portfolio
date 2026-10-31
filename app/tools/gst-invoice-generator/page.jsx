@@ -4,6 +4,7 @@ import FreeBadges from '@/components/tools/FreeBadges'
 import ShareTool from '@/components/tools/ShareTool'
 import GstInvoiceGenerator from '@/components/tools/GstInvoiceGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
+import ToolOfferActions from '@/components/tools/ToolOfferActions'
 
 const URL = `${SITE}/tools/gst-invoice-generator`
 
@@ -50,7 +51,7 @@ export default function Page() {
             <h2 className="mt-3 max-w-xl font-display text-3xl font-extrabold text-white md:text-4xl">Billing customers all day? Automate it.</h2>
             <p className="mt-3 max-w-xl text-lg text-[#b9b5ad]">CafeCorp does GST billing, table orders, kitchen display and daily sales reports in one simple POS.</p>
           </div>
-          <Link href="/cafecorp" className="shrink-0 rounded-full bg-[#ff5a1f] px-7 py-3.5 font-semibold text-white hover:bg-white hover:text-[#111]">See CafeCorp</Link>
+          <ToolOfferActions tool="gst" href="/cafecorp" label="See CafeCorp" />
         </div>
       </section>
 

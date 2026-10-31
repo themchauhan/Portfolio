@@ -4,6 +4,7 @@ import FreeBadges from '@/components/tools/FreeBadges'
 import ShareTool from '@/components/tools/ShareTool'
 import QuotationMaker from '@/components/tools/QuotationMaker'
 import { SITE, pageMeta } from '@/lib/seo'
+import ToolOfferActions from '@/components/tools/ToolOfferActions'
 
 const URL = `${SITE}/hi/tools/quotation-maker`
 const EN_URL = `${SITE}/tools/quotation-maker`
@@ -76,7 +77,7 @@ export default function Page() {
             <h2 className="mt-3 max-w-xl text-3xl font-extrabold text-white md:text-4xl">कोटेशन से बिल, और रिमाइंडर, सब अपने-आप।</h2>
             <p className="mt-3 max-w-xl text-lg text-[#b9b5ad]">एक क्लिक में कोटेशन से इनवॉइस, WhatsApp पर फ़ॉलो-अप रिमाइंडर, और हर ग्राहक की जानकारी एक जगह।</p>
           </div>
-          <Link href="/services/business-automation" className="shrink-0 rounded-full bg-[#ff5a1f] px-7 py-3.5 font-semibold text-white hover:bg-white hover:text-[#111]">बिज़नेस ऑटोमेशन देखें</Link>
+          <ToolOfferActions tool="quotation" lang="hi" href="/services/business-automation" label="बिज़नेस ऑटोमेशन देखें" />
         </div>
       </section>
 

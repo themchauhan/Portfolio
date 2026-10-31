@@ -4,6 +4,7 @@ import FreeBadges from '@/components/tools/FreeBadges'
 import ShareTool from '@/components/tools/ShareTool'
 import QuotationMaker from '@/components/tools/QuotationMaker'
 import { SITE, pageMeta } from '@/lib/seo'
+import ToolOfferActions from '@/components/tools/ToolOfferActions'
 
 const URL = `${SITE}/tools/quotation-maker`
 
@@ -53,7 +54,7 @@ export default function Page() {
             <h2 className="mt-3 max-w-xl font-display text-3xl font-extrabold text-white md:text-4xl">Sending quotes and bills every day? Automate it.</h2>
             <p className="mt-3 max-w-xl text-lg text-[#b9b5ad]">Quotes that turn into invoices in one click, follow-up reminders on WhatsApp, and every customer in one place.</p>
           </div>
-          <Link href="/services/business-automation" className="shrink-0 rounded-full bg-[#ff5a1f] px-7 py-3.5 font-semibold text-white hover:bg-white hover:text-[#111]">See business automation</Link>
+          <ToolOfferActions tool="quotation" href="/services/business-automation" label="See business automation" />
         </div>
       </section>
 

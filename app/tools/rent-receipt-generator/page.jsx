@@ -4,6 +4,7 @@ import FreeBadges from '@/components/tools/FreeBadges'
 import ShareTool from '@/components/tools/ShareTool'
 import RentReceiptGenerator from '@/components/tools/RentReceiptGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
+import ToolOfferActions from '@/components/tools/ToolOfferActions'
 
 const URL = `${SITE}/tools/rent-receipt-generator`
 
@@ -54,7 +55,7 @@ export default function Page() {
             <h2 className="mt-3 max-w-xl font-display text-3xl font-extrabold text-white md:text-4xl">Collect rent from many tenants? Automate it.</h2>
             <p className="mt-3 max-w-xl text-lg text-[#b9b5ad]">RentCorp tracks every tenant, generates receipts, sends reminders and shows who is overdue.</p>
           </div>
-          <Link href="/rentcorp" className="shrink-0 rounded-full bg-[#ff5a1f] px-7 py-3.5 font-semibold text-white hover:bg-white hover:text-[#111]">See RentCorp</Link>
+          <ToolOfferActions tool="rent" href="/rentcorp" label="See RentCorp" />
         </div>
       </section>
 
