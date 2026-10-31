@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
+import FooterWordmark from "@/components/FooterWordmark";
 import { serviceList, cityList, pathFor } from "@/lib/seo";
 
 const cols = [
   ["Explore", [["About", "/about"], ["Work", "/projects"], ["For agencies", "/agencies"], ["AI classes for students", "/ai-courses"], ["Academics", "/academics"], ["Blog", "/blog"], ["Resources", "/resources"]]],
-  ["Products", [["ClinicOs", "/clinicos"], ["RentCorp", "/rentcorp"], ["CafeCorp", "/cafecorp"], ["Pricing", "/pricing"]]],
-  ["Free tools", [["All free tools", "/tools"], ["Rent Receipt Generator", "/tools/rent-receipt-generator"], ["GST Invoice Generator", "/tools/gst-invoice-generator"], ["Salary Slip Generator", "/tools/salary-slip-generator"], ["Quotation Maker", "/tools/quotation-maker"], ["Website Cost Calculator", "/tools/website-cost-calculator"]]],
+  ["Products", [["ClinicOs", "/clinicos"], ["RentCorp", "/rentcorp"], ["CafeCorp", "/cafecorp"], ["Pricing", "/pricing"], ["Website Cost Calculator", "/tools/website-cost-calculator"]]],
+  ["Free tools", [["All free tools", "/tools"], ["Rent Receipt Generator", "/tools/rent-receipt-generator"], ["GST Invoice Generator", "/tools/gst-invoice-generator"], ["Salary Slip Generator", "/tools/salary-slip-generator"], ["Quotation Maker", "/tools/quotation-maker"]]],
 ];
 
 const areas = ["rewari", "narnaul", "mahendergarh", "gurgaon", "pataudi", "bhiwani", "jaipur", "ambala", "chandigarh", "mohali"].map((slug) => cityList.find((c) => c.slug === slug));
@@ -49,6 +50,7 @@ const Footer = () => (
           </ul>
         </div>
       </div>
+      <FooterWordmark />
       <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-6 text-sm text-[#8d8982] sm:flex-row sm:items-center">
         <p>&copy; {new Date().getFullYear()} Manish Chauhan. All rights reserved.</p>
         <div className="flex gap-6">

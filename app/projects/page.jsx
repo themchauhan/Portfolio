@@ -22,8 +22,11 @@ export default function Page() {
           <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Featured</p>
           <ul className="mt-6 grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
             {featuredClients.map((c, n) => (
-              <li key={c.name} className={`flex min-h-[10rem] flex-col justify-between rounded-2xl border border-white/15 p-5 transition-colors hover:border-[#ff5a1f] md:min-h-[13rem] md:p-7 ${n === 0 ? 'col-span-2 bg-[#ff5a1f] border-[#ff5a1f] hover:border-white' : 'bg-white/[0.04]'}`}>
-                <span className={`font-display text-sm font-bold ${n === 0 ? 'text-white/80' : 'text-white/40'}`}>{String(n + 1).padStart(2, '0')}</span>
+              <li key={c.name} className={`group flex min-h-[10rem] flex-col justify-between rounded-2xl border border-white/15 p-5 transition-colors hover:border-[#ff5a1f] md:min-h-[13rem] md:p-7 ${n === 0 ? 'col-span-2 bg-[#ff5a1f] border-[#ff5a1f] hover:border-white' : 'bg-white/[0.04]'}`}>
+                <span className={`inline-flex w-fit max-w-full items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold md:gap-2 md:px-3 md:text-[13px] md:tracking-wide ${n === 0 ? 'bg-black/15 text-white' : 'bg-white/[0.07] text-white/70 group-hover:text-white'}`}>
+                  <span className={`h-1.5 w-1.5 rounded-full ${n === 0 ? 'bg-white' : 'bg-[#ff5a1f]'}`} />
+                  {c.site}
+                </span>
                 <div>
                   <p className="font-display text-2xl font-extrabold leading-tight tracking-tight md:text-4xl">{c.name}</p>
                   <p className={`mt-2 text-sm md:text-base ${n === 0 ? 'text-white/90' : 'text-white/55'}`}>{c.industry}</p>

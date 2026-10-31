@@ -56,7 +56,6 @@ const freeTools = [
   ['/tools/rent-receipt-generator', 'Rent Receipt Generator', 'Monthly rent receipts for your HRA claim.'],
   ['/tools/gst-invoice-generator', 'GST Invoice Generator', 'GST invoices with CGST/SGST or IGST worked out.'],
   ['/tools/quotation-maker', 'Quotation Maker', 'Professional quotations with GST and terms.'],
-  ['/tools/website-cost-calculator', 'Website Cost Calculator', 'An instant estimate for your website.'],
 ]
 
 const skills = ['Next.js', 'React', 'Node.js', 'JavaScript', 'Tailwind CSS', 'SCSS', 'WordPress', 'Drupal', 'PHP', 'HubSpot', 'Marketo', 'Firebase', 'PostgreSQL', 'Supabase', 'Docker', 'Git']
@@ -147,9 +146,8 @@ export default function Home() {
       <section className="!py-16 md:!py-28 bg-[#111]">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">New · My own products</p>
-          <div className="mt-4 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div className="mt-4">
             <Heading light>Software that replaces paperwork.</Heading>
-            <Link href="/products" className="shrink-0 font-semibold text-white underline decoration-[#ff5a1f] decoration-2 underline-offset-8 hover:text-[#ff5a1f]">All products →</Link>
           </div>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {productList.map((p) => (
@@ -169,10 +167,7 @@ export default function Home() {
       {/* Local services */}
       <section className="!py-16 md:!py-24 bg-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <Heading>Automation for local businesses.</Heading>
-            <Link href="/services" className="shrink-0 font-semibold underline decoration-[#ff5a1f] decoration-2 underline-offset-8 hover:text-[#ff5a1f]">All services →</Link>
-          </div>
+          <Heading>Automation for local businesses.</Heading>
           <p className="mt-5 max-w-2xl text-xl text-[#444]">Cafés, clinics, rentals, hostels, hotels and offices in Rewari, Narnaul, Mahendergarh, Gurgaon, Pataudi, Bhiwani, Jaipur, Ambala, Chandigarh, Mohali and nearby towns.</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {serviceList.map((sv) => (
@@ -264,7 +259,7 @@ export default function Home() {
             </div>
             <Link href="/tools" className="font-semibold text-[#ff5a1f] hover:underline">All free tools →</Link>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {freeTools.map(([href, name, desc]) => (
               <Link key={href} href={href} className="group flex flex-col border-t-4 border-[#111] bg-[#f4f1ec] p-6 hover:border-[#ff5a1f]">
                 <h3 className="font-display text-xl font-extrabold group-hover:text-[#ff5a1f]">{name}</h3>

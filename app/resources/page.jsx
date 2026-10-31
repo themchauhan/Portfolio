@@ -78,7 +78,7 @@ export default async function ResourcesPage({ searchParams }) {
 									{item.publishedAt ? ` · ${timeAgo(item.publishedAt)}` : ''}
 								</p>
 								<h2 className="mt-2 font-display text-2xl font-extrabold leading-snug">{item.title}</h2>
-								<div className="mt-3 whitespace-pre-wrap text-lg leading-relaxed text-[#444]">{item.summary}</div>
+								<div className="mt-3 whitespace-pre-wrap break-words [overflow-wrap:anywhere] text-lg leading-relaxed text-[#444]">{item.summary}</div>
 								<p className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
 									<a href={item.link} target="_blank" rel="noopener noreferrer" className="font-semibold text-[#ff5a1f] hover:underline">Read the full story on {item.source} →</a>
 									<span className="text-[#777]">{item.summarizedBy ? `AI summary (${item.summarizedBy})` : 'Excerpt from the publisher'}</span>

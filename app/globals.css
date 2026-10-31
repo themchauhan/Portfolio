@@ -211,3 +211,13 @@ p{
   width: auto;
   display: revert;
 }
+
+/* Footer wordmark: words rise in when the phrase changes */
+@keyframes wordmark-in {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.wordmark-in { animation: wordmark-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .wordmark-in { animation: none; }
+}
