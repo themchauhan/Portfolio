@@ -6,6 +6,7 @@ import { serviceList, cityList, pathFor } from '@/lib/seo'
 import { getExperienceText } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
 import { starterPriceText } from '@/lib/pricing'
+import Testimonial from '@/components/Testimonial'
 
 export const metadata = pageMeta({
   title: { absolute: 'Manish Chauhan - Full Stack Web Developer & Freelancer' },
@@ -201,6 +202,13 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Testimonial */}
+      <section className="!py-16 md:!py-24 bg-[#111] text-white">
+        <div className="px-5 sm:px-8">
+          <Testimonial who="connor" quote="home" />
         </div>
       </section>
 

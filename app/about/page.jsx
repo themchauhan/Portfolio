@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getExperienceText } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
+import Testimonial from '@/components/Testimonial'
 
 export const metadata = pageMeta({
   title: 'About',
@@ -165,6 +166,13 @@ export default function Page() {
           <ul className="mt-10 flex flex-wrap gap-3">
             {skills.map((s) => <li key={s} className="rounded-full border border-black/20 px-5 py-2 font-medium">{s}</li>)}
           </ul>
+        </div>
+      </section>
+
+      {/* Testimonial */}
+      <section className="!py-16 md:!py-24 bg-[#111] text-white">
+        <div className="px-5 sm:px-8">
+          <Testimonial who="ajay" quote="about" />
         </div>
       </section>
 
