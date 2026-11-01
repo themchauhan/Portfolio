@@ -3,14 +3,14 @@ import Link from 'next/link'
 import ContactForm from '@/components/products/ContactForm'
 import { productList } from '@/lib/products'
 import { serviceList, cityList, pathFor } from '@/lib/seo'
-import { getExperienceText } from '@/utils/experience'
+import { getExperienceText, getExperienceDuration } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
 import { starterPriceText } from '@/lib/pricing'
 import Testimonial from '@/components/Testimonial'
 
 export const metadata = pageMeta({
   title: { absolute: 'Manish Chauhan - Full Stack Web Developer & Freelancer' },
-  description: 'Full stack developer with 8+ years building websites and web apps for Splunk, Cohesity and Socure. Now building ClinicOs, RentCorp and CafeCorp.',
+  description: `Full stack developer with ${getExperienceText()} building websites and web apps for Splunk, Cohesity and Socure. Now building ClinicOs, RentCorp and CafeCorp.`,
   alternates: { canonical: 'https://themanishchauhan.in' },
 })
 
@@ -229,7 +229,7 @@ export default function Home() {
               <Image src="/manish-full.jpg" alt="Manish Chauhan outdoors" fill sizes="(min-width:1024px) 560px, 90vw" className="object-cover object-[50%_25%]" />
             </div>
             <dl className="grid grid-cols-2 gap-px bg-black/15">
-              <div className="bg-white p-6"><dt className="font-display text-4xl font-extrabold text-[#ff5a1f]">{getExperienceText().split(' ')[0]}+</dt><dd className="mt-1 text-[#555]">years of experience</dd></div>
+              <div className="bg-white p-6"><dt className="font-display text-4xl font-extrabold text-[#ff5a1f]">{getExperienceDuration().years}+</dt><dd className="mt-1 text-[#555]">years of experience</dd></div>
               <div className="bg-white p-6"><dt className="font-display text-4xl font-extrabold text-[#ff5a1f]">MCA</dt><dd className="mt-1 text-[#555]">Punjab Technical University</dd></div>
             </dl>
             <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-[#777]">Tools I use</p>

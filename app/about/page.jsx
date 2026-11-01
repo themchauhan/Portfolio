@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { getExperienceText } from '@/utils/experience'
+import { getExperienceText, getExperienceDuration } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
 import Testimonial from '@/components/Testimonial'
 
@@ -32,7 +32,7 @@ const Heading = ({ children, light = false }) => (
 
 export default function Page() {
   const experience = getExperienceText()
-  const years = experience.split(' ')[0]
+  const { years } = getExperienceDuration()
 
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">

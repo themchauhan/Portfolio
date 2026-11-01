@@ -1,18 +1,5 @@
 import React from 'react';
-
-const startYear = 2018;
-const startMonthIndex = 2; // March is month index 2.
-
-const getExperienceText = () => {
-  const now = new Date();
-  const yearDiff = now.getFullYear() - startYear;
-  const monthDiff = now.getMonth() - startMonthIndex;
-  const totalMonths = yearDiff * 12 + monthDiff;
-  const years = Math.floor(totalMonths / 12);
-  const months = totalMonths % 12;
-
-  return `${years} years ${months} months`;
-};
+import { getExperienceText } from '@/utils/experience';
 
 const Email_temp = () => {
   return (

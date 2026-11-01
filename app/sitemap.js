@@ -22,6 +22,7 @@ export default function sitemap() {
     entry('/hi/ai-courses', 'weekly', 0.8),
     entry('/products', 'monthly', 0.9),
     ...['clinicos', 'rentcorp', 'cafecorp'].map((p) => entry(`/${p}`, 'monthly', 0.9)),
+    entry('/appointmentos', 'monthly', 0.8),
     entry('/pricing', 'monthly', 0.9),
     entry('/services', 'monthly', 0.9),
     ...serviceList.map((s) => entry(`/services/${s.slug}`, 'monthly', 0.8)),

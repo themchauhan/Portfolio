@@ -14,7 +14,8 @@ export const getExperienceDuration = (from = EXPERIENCE_START, now = new Date())
   return { years, months };
 };
 
+// Whole years only, e.g. "8+ years". Moves to "9+ years" on the anniversary.
 export const getExperienceText = (from = EXPERIENCE_START, now = new Date()) => {
-  const { years, months } = getExperienceDuration(from, now);
-  return `${years} years ${months} months`;
+  const { years } = getExperienceDuration(from, now);
+  return `${years}+ years`;
 };

@@ -4,7 +4,7 @@ import TrackedLink from "@/components/TrackedLink";
 import PlanCards from "@/components/PlanCards";
 import IncludedStrip from "@/components/IncludedStrip";
 import ComparisonTable from "@/components/ComparisonTable";
-import { productPlans, PRICING_NOTE, setupFees, priceUnit } from "@/lib/pricing";
+import { productPlans, PRICING_NOTE, setupFees, priceUnit, pilot, inr, waLink } from "@/lib/pricing";
 import { getExperienceText } from "@/utils/experience";
 import { serviceList, cityList, pathFor } from "@/lib/seo";
 
@@ -128,6 +128,39 @@ export default function ProductPage({ product }) {
         </div>
       </Blade>
 
+      {/* Pilot plan (e.g. ClinicOs Queue): a module a business can start with on its own */}
+      {product.pilot && (
+        <Blade id={product.pilot.id} bg="bg-slate-50" title={product.pilot.title} sub={product.pilot.sub}>
+          <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {product.pilot.points.map(([icon, t, d]) => (
+                <div key={t} className="border border-slate-200 bg-white p-6">
+                  <div className="text-3xl">{icon}</div>
+                  <h3 className="mt-4 text-lg font-bold text-slate-900">{t}</h3>
+                  <p className="mt-2 text-slate-600">{d}</p>
+                </div>
+              ))}
+            </div>
+            <div className="relative flex flex-col rounded-2xl border-2 border-[#ff5a1f] bg-white p-7">
+              <span className="absolute -top-3 left-7 rounded-full bg-[#ff5a1f] px-3 py-0.5 text-xs font-bold uppercase tracking-wide text-white">Pilot offer</span>
+              <h3 className="font-display text-2xl font-extrabold">{product.pilot.plan}</h3>
+              <p className="mt-1 text-sm text-[#666]">{product.pilot.planFor}</p>
+              <p className="mt-5">
+                <span className="font-display text-4xl font-extrabold">Free</span>
+                <span className="text-sm text-[#666]"> for {pilot.freeLabel}</span>
+              </p>
+              <p className="mt-1 text-sm text-[#666]">then {inr(pilot.priceAfter)}/month, fixed for the first year</p>
+              <ul className="mt-6 space-y-2.5 text-[15px]">
+                {product.pilot.features.map((f) => <li key={f} className="flex gap-2.5"><span className="text-[#ff5a1f]">✓</span>{f}</li>)}
+              </ul>
+              <p className="mt-6 border-t border-black/10 pt-4 text-sm text-[#555]">Optional WhatsApp/SMS alerts are paid by the clinic (Meta / SMS provider charges). {product.pilot.upgrade}</p>
+              <TrackedLink href={waLink(product.pilot.wa)} target="_blank" rel="noopener noreferrer" event="pilot_join_click" params={{ product: product.pilot.plan, position: "plan_card" }} className="mt-5 block rounded-full bg-[#25D366] px-5 py-3 text-center font-semibold text-white hover:bg-[#1ebe5b]">Join the free pilot</TrackedLink>
+              <Link href="/appointmentos#pilot" className="mt-4 text-center text-sm font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900">Full pilot terms →</Link>
+            </div>
+          </div>
+        </Blade>
+      )}
+
       {/* Built from experience */}
       <div className={`${a.band}`}>
         <div className="mx-auto max-w-6xl px-5 py-14 md:py-16">
@@ -149,6 +182,12 @@ export default function ProductPage({ product }) {
       {productPlans[product.slug] && (
         <Blade id="pricing" bg="bg-slate-50" title={`${product.name} pricing`} sub={PRICING_NOTE}>
           <PlanCards plans={productPlans[product.slug]} productName={product.name} setupFee={setupFees[product.slug]} unitNote={priceUnit[product.slug]} />
+          {product.pilot && (
+            <p className="mt-6 text-slate-700">
+              Only need the walk-in queue?{" "}
+              <a href={`#${product.pilot.id}`} className="font-semibold text-slate-900 underline decoration-[#ff5a1f] decoration-2 underline-offset-4">Start with {product.pilot.plan}</a>, free for {pilot.freeLabel} in the pilot.
+            </p>
+          )}
           <IncludedStrip className="mt-8" />
           <Link href="/pricing" className="mt-8 inline-block font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900">Compare all plans →</Link>
         </Blade>
