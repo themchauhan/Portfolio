@@ -4,7 +4,7 @@ import JsonLd from '@/components/JsonLd'
 import ContactForm from '@/components/products/ContactForm'
 import { SITE, pageMeta } from '@/lib/seo'
 import { getExperienceDuration } from '../../utils/experience'
-import Testimonial from '@/components/Testimonial'
+import TestimonialSlider from '@/components/TestimonialSlider'
 
 const url = `${SITE}/agencies`
 
@@ -175,7 +175,7 @@ export default function Page() {
 
       <section className="!py-16 md:!py-24 bg-[#111] text-white">
         <div className="px-5 sm:px-8">
-          <Testimonial who="connor" quote="agencies" />
+          <TestimonialSlider items={[{ who: 'connor', quote: 'agencies' }, { who: 'roman', quote: 'work' }, { who: 'ajay', quote: 'about' }]} />
         </div>
       </section>
 

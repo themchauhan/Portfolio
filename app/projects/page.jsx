@@ -1,5 +1,6 @@
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
+import TestimonialSlider from '@/components/TestimonialSlider'
 import { pageMeta } from '@/lib/seo'
 import { featuredClients, clientGroups, clientCount } from '@/lib/clients'
 
@@ -56,6 +57,9 @@ export default function Page() {
             ))}
           </div>
           <p className="mt-8 text-sm text-white/40">Company names are shown to describe past work. All trademarks belong to their owners.</p>
+
+          {/* Recommendations from colleagues */}
+          <TestimonialSlider items={[{ who: 'roman', quote: 'work' }, { who: 'connor', quote: 'home' }, { who: 'ajay', quote: 'about' }]} className="mt-20 border-t border-white/15 pt-16" />
         </div>
       </section>
 
