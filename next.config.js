@@ -60,6 +60,22 @@ const nextConfig = {
         destination: '/about',
         permanent: true,
       },
+      // Old pages that were removed
+      {
+        source: '/srijanx',
+        destination: '/services/business-automation',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/contacts',
+        permanent: true,
+      },
+      {
+        source: '/blogposts/:slug*',
+        destination: '/blog',
+        permanent: true,
+      },
       // AI classes moved to their own site
       {
         source: '/ai-courses',
