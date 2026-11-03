@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import Testimonial from "@/components/Testimonial";
 
 // Rotating recommendations for a dark section. `items` is a list of { who, quote } (see lib/testimonials).
+// `title` adds a heading above the quotes.
 // All slides share one grid cell, so the height stays at the tallest quote and nothing jumps.
-export default function TestimonialSlider({ items, interval = 7000, className = "" }) {
+export default function TestimonialSlider({ items, title, interval = 7000, className = "" }) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -28,6 +29,12 @@ export default function TestimonialSlider({ items, interval = 7000, className = 
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
+      {title && (
+        <div className="mx-auto mb-10 max-w-5xl">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Recommendations</p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h2>
+        </div>
+      )}
       <div className="grid">
         {items.map((t, n) => (
           <div

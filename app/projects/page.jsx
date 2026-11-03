@@ -59,7 +59,7 @@ export default function Page() {
           <p className="mt-8 text-sm text-white/40">Company names are shown to describe past work. All trademarks belong to their owners.</p>
 
           {/* Recommendations from colleagues */}
-          <TestimonialSlider items={[{ who: 'roman', quote: 'work' }, { who: 'connor', quote: 'home' }, { who: 'ajay', quote: 'about' }]} className="mt-20 border-t border-white/15 pt-16" />
+          <TestimonialSlider title="From the teams I built these with." items={[{ who: 'roman', quote: 'work' }, { who: 'rachel', quote: 'main' }, { who: 'connor', quote: 'home' }, { who: 'ajay', quote: 'about' }]} className="mt-20 border-t border-white/15 pt-16" />
         </div>
       </section>
 

@@ -175,7 +175,7 @@ export default function Page() {
 
       <section className="!py-16 md:!py-24 bg-[#111] text-white">
         <div className="px-5 sm:px-8">
-          <TestimonialSlider items={[{ who: 'connor', quote: 'agencies' }, { who: 'roman', quote: 'work' }, { who: 'ajay', quote: 'about' }]} />
+          <TestimonialSlider title="What project managers and teammates say." items={[{ who: 'rachel', quote: 'main' }, { who: 'connor', quote: 'agencies' }, { who: 'roman', quote: 'work' }, { who: 'ajay', quote: 'about' }]} />
         </div>
       </section>
 

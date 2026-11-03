@@ -203,7 +203,7 @@ export default function Home() {
       {/* Testimonial */}
       <section className="!py-16 md:!py-24 bg-[#111] text-white">
         <div className="px-5 sm:px-8">
-          <TestimonialSlider items={[{ who: 'connor', quote: 'home' }, { who: 'roman', quote: 'work' }, { who: 'ajay', quote: 'about' }]} />
+          <TestimonialSlider title="What people say about working with me." items={[{ who: 'rachel', quote: 'main' }, { who: 'connor', quote: 'home' }, { who: 'roman', quote: 'work' }, { who: 'ajay', quote: 'about' }]} />
         </div>
       </section>
 
