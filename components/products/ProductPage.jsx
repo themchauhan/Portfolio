@@ -6,7 +6,6 @@ import IncludedStrip from "@/components/IncludedStrip";
 import ComparisonTable from "@/components/ComparisonTable";
 import { productPlans, PRICING_NOTE, setupFees, priceUnit, pilot, inr, waLink } from "@/lib/pricing";
 import { getExperienceText } from "@/utils/experience";
-import { serviceList, cityList, pathFor } from "@/lib/seo";
 
 const Blade = ({ id, bg = "bg-white", title, sub, children }) => (
   <section id={id} className={`${bg} !py-14 md:!py-20`}>
@@ -197,19 +196,6 @@ export default function ProductPage({ product }) {
       <Blade title={`Why ${product.name}?`} sub="Simple, fast and easy to manage. Built for busy owners, not IT teams.">
         <ComparisonTable name={product.name} />
       </Blade>
-
-      {/* Local availability */}
-      {serviceList.filter((sv) => sv.product === product.slug).map((sv) => (
-        <Blade key={sv.slug} bg="bg-white" title={`${sv.name} near you`} sub="Set up and supported for businesses across Haryana, Rajasthan, Chandigarh and Mohali.">
-          <ul className="flex flex-wrap gap-3">
-            {cityList.map((c) => (
-              <li key={c.slug}>
-                <Link href={pathFor(sv.slug, c.slug)} className="inline-block rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:border-orange-500 hover:text-orange-600">{c.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </Blade>
-      ))}
 
       {/* FAQ */}
       <Blade id="faq" title="Frequently asked questions">

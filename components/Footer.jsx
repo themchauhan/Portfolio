@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import FooterWordmark from "@/components/FooterWordmark";
-import { serviceList, cityList, pathFor } from "@/lib/seo";
+import { serviceList } from "@/lib/seo";
 
 const cols = [
   ["Explore", [["About", "/about"], ["Work", "/projects"], ["For agencies", "/agencies"], ["AI classes for students", "https://learn.themanishchauhan.in"], ["Academics", "/academics"], ["Blog", "/blog"], ["Resources", "/resources"]]],
@@ -9,7 +9,6 @@ const cols = [
   ["Free tools", [["All free tools", "/tools"], ["Rent Receipt Generator", "/tools/rent-receipt-generator"], ["GST Invoice Generator", "/tools/gst-invoice-generator"], ["Salary Slip Generator", "/tools/salary-slip-generator"], ["Quotation Maker", "/tools/quotation-maker"]]],
 ];
 
-const areas = ["rewari", "narnaul", "mahendergarh", "gurgaon", "pataudi", "bhiwani", "jaipur", "ambala", "chandigarh", "mohali"].map((slug) => cityList.find((c) => c.slug === slug));
 
 const Footer = () => (
   <footer className="prod bg-[#111] text-white print:hidden">
@@ -35,18 +34,11 @@ const Footer = () => (
           </div>
         ))}
       </div>
-      <div className="mt-14 grid gap-10 border-t border-white/10 pt-10 md:grid-cols-2">
+      <div className="mt-14 border-t border-white/10 pt-10">
         <div>
           <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Services</p>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
             {serviceList.map((s) => <li key={s.slug}><Link href={`/services/${s.slug}`} className="text-[#d8d4cc] hover:text-white">{s.name}</Link></li>)}
-          </ul>
-        </div>
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Areas</p>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-3">
-            {areas.map((c) => <li key={c.slug}><Link href={`/locations/${c.slug}`} className="text-[#d8d4cc] hover:text-white">{c.name}</Link></li>)}
-            <li><Link href="/services" className="font-semibold text-white underline decoration-[#ff5a1f] underline-offset-4">All areas →</Link></li>
           </ul>
         </div>
       </div>

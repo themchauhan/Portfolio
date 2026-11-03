@@ -98,7 +98,7 @@ function ReminderMock() {
         <div><p className="text-sm font-semibold">Style Studio Salon</p><p className="text-[10px] text-white/70">Business account</p></div>
       </div>
       <div className="flex-1 space-y-3 p-3">
-        <Bubble time="11:45">✅ Booked! Haircut on Thu, 12 Nov at 12:30 PM.<br />Address: Main Market, Rewari</Bubble>
+        <Bubble time="11:45">✅ Booked! Haircut on Thu, 12 Nov at 12:30 PM.<br />Address: Main Market</Bubble>
         <p className="mx-auto w-fit rounded bg-white/70 px-2 py-0.5 text-[10px] text-[#555]">Thursday</p>
         <Bubble time="10:30">⏰ Reminder: your Haircut is today at 12:30 PM.<br /><br />Reply 1 to confirm, 2 to reschedule.</Bubble>
         <div className="ml-auto w-fit rounded-lg rounded-tr-none bg-[#d9fdd3] px-3 py-2 text-[13px] shadow-sm">1<p className="text-right text-[10px] text-[#888]">10:31</p></div>

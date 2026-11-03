@@ -1,4 +1,4 @@
-import { SITE, serviceList, cityList, pathFor } from '@/lib/seo'
+import { SITE, serviceList } from '@/lib/seo'
 import { newBlogPosts } from '@/lib/blogPosts'
 
 const blogSlugs = [
@@ -24,8 +24,6 @@ export default function sitemap() {
     entry('/pricing', 'monthly', 0.9),
     entry('/services', 'monthly', 0.9),
     ...serviceList.map((s) => entry(`/services/${s.slug}`, 'monthly', 0.8)),
-    ...serviceList.flatMap((s) => cityList.map((c) => entry(pathFor(s.slug, c.slug), 'monthly', 0.7))),
-    ...cityList.map((c) => entry(`/locations/${c.slug}`, 'monthly', 0.7)),
     entry('/tools', 'monthly', 0.8),
     entry('/tools/rent-receipt-generator', 'monthly', 0.9),
     entry('/tools/gst-invoice-generator', 'monthly', 0.9),

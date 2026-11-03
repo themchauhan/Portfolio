@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
-import { SITE, serviceList, cityList, pageMeta } from '@/lib/seo'
+import { SITE, serviceList, pageMeta } from '@/lib/seo'
 
 export const metadata = pageMeta({
-  title: 'Automation & Software Services in Haryana, Jaipur, Chandigarh & Mohali',
-  description: 'Cafe POS, clinic management, rent, hostel and PG, hotel software and business automation for Rewari, Narnaul, Mahendergarh, Gurgaon, Pataudi, Bhiwani, Jaipur, Neemrana, Bhiwadi, Ambala, Chandigarh, Mohali and nearby towns.',
+  title: 'Software & Automation Services for Small Businesses',
+  description: 'Website design, cafe POS, clinic management, rent, hostel and PG, hotel software and business automation for small businesses anywhere in India. Set up and supported online.',
   alternates: { canonical: `${SITE}/services` },
 })
 
@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
       <PageHero eyebrow="Services" title="Software and automation for local businesses.">
-        Cafés, clinics, rentals, hostels, hotels and offices across Haryana, Rajasthan, Chandigarh and Mohali: replace paperwork with software that is set up and supported for you.
+        Cafés, clinics, rentals, hostels, hotels and offices anywhere in India: replace paperwork with software that is set up and supported for you.
       </PageHero>
 
       <section className="!pt-0 !pb-16">
@@ -27,17 +27,6 @@ export default function Page() {
               <p className="mt-6 font-semibold text-[#ff5a1f]">View service →</p>
             </Link>
           ))}
-        </div>
-      </section>
-
-      <section className="!py-14 md:!py-20 bg-white">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Areas I serve</h2>
-          <ul className="mt-8 flex flex-wrap gap-3">
-            {cityList.map((c) => (
-              <li key={c.slug}><Link href={`/locations/${c.slug}`} className="inline-block rounded-full border border-black/25 px-5 py-2 font-semibold hover:border-[#ff5a1f] hover:text-[#ff5a1f]">{c.name}</Link></li>
-            ))}
-          </ul>
         </div>
       </section>
 

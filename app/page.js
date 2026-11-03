@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ContactForm from '@/components/products/ContactForm'
 import { productList } from '@/lib/products'
-import { serviceList, cityList, pathFor } from '@/lib/seo'
+import { serviceList } from '@/lib/seo'
 import { getExperienceText, getExperienceDuration } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
 import { starterPriceText } from '@/lib/pricing'
@@ -169,7 +169,7 @@ export default function Home() {
       <section className="!py-16 md:!py-24 bg-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Heading>Automation for local businesses.</Heading>
-          <p className="mt-5 max-w-2xl text-xl text-[#444]">Cafés, clinics, rentals, hostels, hotels and offices in Rewari, Narnaul, Mahendergarh, Gurgaon, Pataudi, Bhiwani, Jaipur, Ambala, Chandigarh, Mohali and nearby towns.</p>
+          <p className="mt-5 max-w-2xl text-xl text-[#444]">Cafés, clinics, rentals, hostels, hotels and offices anywhere in India. Set up and supported online.</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {serviceList.map((sv) => (
               <Link key={sv.slug} href={`/services/${sv.slug}`} className="border-l-4 border-[#ff5a1f] bg-[#f4f1ec] p-5 hover:bg-[#ebe7df]">
@@ -178,11 +178,6 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <ul className="mt-8 flex flex-wrap gap-2.5">
-            {cityList.map((c) => (
-              <li key={c.slug}><Link href={`/locations/${c.slug}`} className="inline-block rounded-full border border-black/20 px-4 py-1.5 text-sm font-medium hover:border-[#ff5a1f] hover:text-[#ff5a1f]">{c.name}</Link></li>
-            ))}
-          </ul>
         </div>
       </section>
 
