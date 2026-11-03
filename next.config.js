@@ -60,6 +60,17 @@ const nextConfig = {
         destination: '/about',
         permanent: true,
       },
+      // AI classes moved to their own site
+      {
+        source: '/ai-courses',
+        destination: 'https://learn.themanishchauhan.in/',
+        permanent: true,
+      },
+      {
+        source: '/hi/ai-courses',
+        destination: 'https://learn.themanishchauhan.in/hi',
+        permanent: true,
+      },
     ]
   },
 }

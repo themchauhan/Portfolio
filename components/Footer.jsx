@@ -4,7 +4,7 @@ import FooterWordmark from "@/components/FooterWordmark";
 import { serviceList, cityList, pathFor } from "@/lib/seo";
 
 const cols = [
-  ["Explore", [["About", "/about"], ["Work", "/projects"], ["For agencies", "/agencies"], ["AI classes for students", "/ai-courses"], ["Academics", "/academics"], ["Blog", "/blog"], ["Resources", "/resources"]]],
+  ["Explore", [["About", "/about"], ["Work", "/projects"], ["For agencies", "/agencies"], ["AI classes for students", "https://learn.themanishchauhan.in"], ["Academics", "/academics"], ["Blog", "/blog"], ["Resources", "/resources"]]],
   ["Products", [["ClinicOs", "/clinicos"], ["RentCorp", "/rentcorp"], ["CafeCorp", "/cafecorp"], ["AppointmentOS (pilot)", "/appointmentos"], ["Pricing", "/pricing"], ["Website Cost Calculator", "/tools/website-cost-calculator"]]],
   ["Free tools", [["All free tools", "/tools"], ["Rent Receipt Generator", "/tools/rent-receipt-generator"], ["GST Invoice Generator", "/tools/gst-invoice-generator"], ["Salary Slip Generator", "/tools/salary-slip-generator"], ["Quotation Maker", "/tools/quotation-maker"]]],
 ];

@@ -8,7 +8,6 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import { OG_IMAGE, SITE, serviceList } from '@/lib/seo'
 import { productList } from '@/lib/products'
 import { productPlans, starterPack, quoteRates } from '@/lib/pricing'
-import { aiFees } from '@/lib/aiCourses'
 
 // Google Analytics 4 (property: themanishchauhan.in, stream: portfolio-web)
 const GA_ID = 'G-C73CLLFRK8'
@@ -96,9 +95,8 @@ const makesOffer = [
     "itemOffered": { "@type": "Service", "name": "Freelance development for agencies", "description": "White-label Next.js, React and custom WordPress development for design and marketing agencies.", "areaServed": ["United States", "United Kingdom", "Europe"] },
   },
   {
-    "@type": "Offer", "url": `${SITE}/ai-courses`,
-    "priceSpecification": { "@type": "PriceSpecification", "minPrice": String(Math.min(...aiFees.junior)), "maxPrice": String(Math.max(...aiFees.senior)), "priceCurrency": "INR" },
-    "itemOffered": { "@type": "Service", "name": "AI classes for school students (Classes 6–12)", "description": "Weekend AI classes from basics to advanced, offline in Rewari and online.", "areaServed": "IN" },
+    "@type": "Offer", "url": "https://learn.themanishchauhan.in",
+    "itemOffered": { "@type": "Service", "name": "AI classes for school students (Classes 6–12)", "description": "Weekend AI classes from basics to advanced, live online.", "areaServed": "IN" },
   },
   ...serviceList.map((sv) => ({
     "@type": "Offer", "url": `${SITE}/services/${sv.slug}`,
