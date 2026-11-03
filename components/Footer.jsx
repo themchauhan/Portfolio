@@ -36,7 +36,7 @@ const Footer = () => (
       </div>
       <div className="mt-14 border-t border-white/10 pt-10">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Services</p>
+          <Link href="/services" className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f] hover:text-white">Services</Link>
           <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
             {serviceList.map((s) => <li key={s.slug}><Link href={`/services/${s.slug}`} className="text-[#d8d4cc] hover:text-white">{s.name}</Link></li>)}
           </ul>

@@ -6,6 +6,7 @@ import Logo from "@/components/Logo";
 
 // Main sections. Work, Pricing, Blog and Academics live in the footer.
 const links = [
+  { href: "/services", label: "Services" },
   { href: "/products", label: "Products" },
   { href: "/tools", label: "Free Tools" },
   { href: "/agencies", label: "For Agencies" },
