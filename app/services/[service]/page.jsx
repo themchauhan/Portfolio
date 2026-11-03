@@ -68,7 +68,7 @@ export default function Page({ params }) {
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
       <JsonLd data={jsonLd} />
 
-      <PageHero eyebrow="Services" title={s.name}>
+      <PageHero eyebrow={<Link href="/services" className="hover:underline">← All services</Link>} title={s.name}>
         {s.heroText || <>For {s.businesses}. Replace {s.pain} with simple software, set up and supported by me.</>}
       </PageHero>
 

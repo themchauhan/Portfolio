@@ -384,8 +384,8 @@ export function generateMetadata({ params }) {
   const post = blogPosts[params.slug];
   if (!post) return {};
   return pageMeta({
-    title: post.title,
-    description: post.excerpt,
+    title: post.seoTitle ? { absolute: post.seoTitle } : post.title,
+    description: post.seoDescription || post.excerpt,
     alternates: { canonical: `https://themanishchauhan.in/blog/${params.slug}` },
     openGraph: { type: 'article', publishedTime: post.date },
   });
