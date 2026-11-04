@@ -28,7 +28,7 @@ const clients = [
 const audiences = [
   ['/agencies', 'Agencies', 'Design and marketing agencies that need a reliable developer for their website projects, white-label.', 'For agencies'],
   ['/pricing', 'Shops & small businesses', `A professional website with WhatsApp and Google listing. Starter Pack at ${starterPriceText()}.`, 'See the Starter Pack'],
-  ['https://learn.themanishchauhan.in', 'Students & schools', 'Weekend AI classes for Classes 6–12, and free AI workshops for schools.', 'AI classes'],
+  ['https://learn.themanishchauhan.in', 'Students & schools', 'Weekend AI classes for Classes 6–12, first taught in California, now live online in India.', 'AI classes'],
   ['/products', 'Clinics, landlords & cafés', 'Ready-made software that replaces registers and paperwork: ClinicOs, RentCorp and CafeCorp.', 'See products'],
 ]
 

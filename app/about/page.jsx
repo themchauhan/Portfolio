@@ -94,6 +94,10 @@ export default function Page() {
               <Link href="/cafecorp" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">CafeCorp</Link>
               , tools that replace paperwork for clinics, landlords and cafés.
             </p>
+            <p>
+              I also teach. Since 2024 I&apos;ve taught coding and AI to 6th–8th graders in Livermore, California, over Zoom, and now I run the same classes live online for students in India.{' '}
+              <a href="https://learn.themanishchauhan.in" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">Learn more about the classes</a>.
+            </p>
           </div>
         </div>
       </section>
