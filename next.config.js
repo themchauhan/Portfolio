@@ -62,6 +62,12 @@ const nextConfig = {
       },
       // Per-town pages were merged into one page per service (Nov 2026). The few that ranked are back
       // (lib/townPages.js); the town page route redirects every other /services/<service>/<town> itself.
+      // Towns that still have a page: send the old location URL to it, so its ranking carries over
+      { source: '/locations/chandigarh', destination: '/services/rent-management-software/chandigarh', permanent: true },
+      { source: '/locations/mohali', destination: '/services/rent-management-software/mohali', permanent: true },
+      { source: '/locations/manesar', destination: '/services/website-design/manesar', permanent: true },
+      { source: '/locations/rewari', destination: '/services/business-automation/rewari', permanent: true },
+      { source: '/locations/jaipur', destination: '/services/business-automation/jaipur', permanent: true },
       {
         source: '/locations/:town',
         destination: '/services',
