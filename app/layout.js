@@ -107,7 +107,8 @@ const makesOffer = [
     return {
       "@type": "Offer", "url": `${SITE}/${pr.slug}`,
       "priceSpecification": { "@type": "UnitPriceSpecification", "price": String(Math.min(...prices)), "priceCurrency": "INR", "unitText": "MONTH" },
-      "itemOffered": { "@type": "SoftwareApplication", "name": pr.name, "applicationCategory": "BusinessApplication", "operatingSystem": "Web browser", "description": pr.tag, "url": `${SITE}/${pr.slug}` },
+      "itemOffered": { "@type": "SoftwareApplication", "name": pr.name, "applicationCategory": "BusinessApplication", "operatingSystem": "Web browser", "description": pr.tag, "url": `${SITE}/${pr.slug}`,
+        "offers": { "@type": "Offer", "price": String(Math.min(...prices)), "priceCurrency": "INR", "url": `${SITE}/${pr.slug}` } },
     }
   }),
 ]
