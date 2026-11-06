@@ -5,6 +5,30 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
 import { newBlogPosts } from '@/lib/blogPosts';
+import PageSeo from '@/components/PageSeo'
+import BlogCard from '@/components/BlogCard'
+import { waLink } from '@/lib/pricing'
+import FaqList from '@/components/FaqList'
+
+const slugify = (t) => t.replace(/<[^>]+>/g, '').toLowerCase().replace(/&[a-z]+;/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60)
+// Adds id="..." to every <h2> in the article HTML and returns the list for "On this page".
+function withSectionIds(html) {
+  const toc = []
+  const out = html.replace(/<h2>(.*?)<\/h2>/g, (_, inner) => {
+    const id = slugify(inner)
+    toc.push([id, inner.replace(/<[^>]+>/g, '')])
+    return `<h2 id="${id}">${inner}</h2>`
+  })
+  return { html: out, toc }
+}
+
+const SIDEBAR_TOOLS = [
+  ['/tools/salary-slip-generator', 'Salary Slip Generator'],
+  ['/tools/rent-receipt-generator', 'Rent Receipt Generator'],
+  ['/tools/gst-invoice-generator', 'GST Invoice Generator'],
+  ['/tools/quotation-maker', 'Quotation Maker'],
+  ['/tools/website-cost-calculator', 'Website Cost Calculator'],
+]
 
 // Blog data
 const blogPosts = {
@@ -397,6 +421,8 @@ export default function BlogPost({ params }) {
   if (!post) {
     notFound();
   }
+  const { html: articleHtml, toc } = withSectionIds(post.content);
+  if (post.faqs?.length) toc.push(['faq', 'Frequently asked questions']);
 
   return (
     <main className="bg-[#f4f1ec] text-[#111] antialiased">
@@ -406,16 +432,23 @@ export default function BlogPost({ params }) {
         author: { '@type': 'Person', name: 'Manish Chauhan', url: 'https://themanishchauhan.in' },
         mainEntityOfPage: `https://themanishchauhan.in/blog/${post.id}`, image: 'https://themanishchauhan.in/og-image.png',
       }} />
+      <PageSeo type="WebPage" name={post.title} path={`/blog/${post.id}`} crumbs={[['Blog', '/blog'], [post.title, `/blog/${post.id}`]]} />
+      {post.faqs?.length > 0 && (
+        <JsonLd data={{
+          '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: 'en-IN',
+          mainEntity: post.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+        }} />
+      )}
 
       {/* Header */}
       <article className={`prod py-14 md:py-20 ${styles.blogArticle}`}>
-        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Link href="/blog" className="text-sm font-semibold text-[#ff5a1f] hover:underline">← Back to blog</Link>
           <p className="mt-8 text-sm font-medium text-[#777]">
             <span className="font-semibold text-[#ff5a1f]">{post.category}</span> · {post.date} · {post.readTime}
           </p>
-          <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">{post.title}</h1>
-          <p className="mt-6 text-xl leading-relaxed text-[#444]">{post.excerpt}</p>
+          <h1 className="mt-4 max-w-5xl font-display text-3xl font-extrabold leading-[1.12] tracking-tight md:text-5xl">{post.title}</h1>
+          <p className="mt-5 max-w-4xl text-lg leading-relaxed text-[#555]">{post.excerpt}</p>
           <ul className="mt-6 flex flex-wrap gap-2">
             {post.tags.map((tag) => <li key={tag} className="rounded-full border border-black/20 px-3 py-1 text-sm font-medium">{tag}</li>)}
           </ul>
@@ -424,29 +457,72 @@ export default function BlogPost({ params }) {
 
       {/* Content */}
       <section className="bg-white py-14">
-        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-16">
+          <div className="min-w-0">
+          {/* Answer first: the short answer search engines and AI overviews can quote */}
+          {post.quickAnswer && (
+            <div className="mb-10 max-w-3xl rounded-r-2xl border-l-4 border-[#ff5a1f] bg-[#fff6f2] p-5 md:p-6">
+              <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Quick answer</p>
+              <p className="mt-2 text-[1.0625rem] leading-relaxed text-[#222]">{post.quickAnswer}</p>
+            </div>
+          )}
           <div
             className={`max-w-none text-[#333] ${styles.blogContent}`}
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: articleHtml }}
           />
+          {post.faqs?.length > 0 && (
+            <div id="faq" className="mt-14 scroll-mt-24">
+              <h2 className="font-display text-2xl font-extrabold tracking-tight md:text-[1.625rem]">Frequently asked questions</h2>
+              <FaqList items={post.faqs} className="mt-5" />
+            </div>
+          )}
+          </div>
+
+          {/* Sidebar: section links, free tools and help */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-24 space-y-6">
+              {toc.length > 1 && (
+                <nav aria-label="On this page" className="rounded-2xl border border-black/10 bg-[#f4f1ec] p-5">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-[#777]">On this page</p>
+                  <ol className="mt-3 space-y-2 text-sm">
+                    {toc.map(([id, label]) => (
+                      <li key={id}><a href={`#${id}`} className="block leading-snug text-[#333] hover:text-[#ff5a1f]">{label}</a></li>
+                    ))}
+                  </ol>
+                </nav>
+              )}
+              <div className="rounded-2xl bg-[#111] p-5 text-white">
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#ff5a1f]">Free tools</p>
+                <ul className="mt-3 space-y-2 text-sm">
+                  {SIDEBAR_TOOLS.map(([href, label]) => (
+                    <li key={href}><Link href={href} className="flex items-center justify-between gap-2 text-white/85 hover:text-white">{label}<span aria-hidden="true" className="text-[#ff5a1f]">→</span></Link></li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-black/10 p-5">
+                <p className="font-display text-lg font-extrabold leading-snug">Need a website or software for your business?</p>
+                <p className="mt-2 text-sm text-[#555]">Free 20-minute call and a fixed-price quote.</p>
+                <a href={waLink('Hi Manish, I read your guide and would like to discuss my business.')} target="_blank" rel="noopener noreferrer" className="mt-4 block rounded-full bg-[#25D366] px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-[#1ebe5b]">Chat on WhatsApp</a>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
       {/* Related */}
       <section className="prod py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <h2 className="font-display text-3xl font-extrabold md:text-4xl">Keep reading</h2>
-          <div className="mt-10 grid gap-px overflow-hidden border border-black/15 bg-black/15 md:grid-cols-3">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Keep reading</h2>
+            <Link href="/blog" className="font-semibold underline decoration-[#ff5a1f] decoration-2 underline-offset-4 hover:text-[#ff5a1f]">All guides →</Link>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
             {Object.values(blogPosts)
-              .filter(p => p.id !== post.id)
+              .filter((p) => p.id !== post.id)
+              // Practical guides first (they have a quick answer), same topic first, then newest
+              .sort((a, b) => (!!b.quickAnswer - !!a.quickAnswer) || ((b.category === post.category) - (a.category === post.category)) || (a.date < b.date ? 1 : -1))
               .slice(0, 3)
-              .map((r) => (
-                <Link key={r.id} href={`/blog/${r.id}`} className="group bg-[#f4f1ec] p-6 hover:bg-white">
-                  <p className="text-sm font-semibold text-[#ff5a1f]">{r.category}</p>
-                  <h3 className="mt-2 font-display text-xl font-extrabold leading-snug group-hover:text-[#ff5a1f]">{r.title}</h3>
-                  <p className="mt-2 line-clamp-2 text-[#555]">{r.excerpt}</p>
-                </Link>
-              ))}
+              .map((r, n) => <BlogCard key={r.id} post={r} n={n + 1} />)}
           </div>
         </div>
       </section>

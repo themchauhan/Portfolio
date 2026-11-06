@@ -2,7 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getExperienceText, getExperienceDuration } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
-import Testimonial from '@/components/Testimonial'
+import TestimonialSlider from '@/components/TestimonialSlider'
+import PageSeo from '@/components/PageSeo'
+import { pageFaqs } from '@/lib/pageFaqs'
 
 export const metadata = pageMeta({
   title: 'About',
@@ -24,7 +26,12 @@ const education = [
   ['2010 – 2011', 'Secondary (10th)', 'Kendriya Vidyalaya'],
 ]
 
-const skills = ['Next.js', 'React', 'Node.js', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'SCSS', 'WordPress', 'Drupal', 'PHP', 'HubSpot', 'Marketo', 'Firebase', 'PostgreSQL', 'Supabase', 'Docker', 'REST APIs', 'Git']
+const skillGroups = [
+  ['Frontend', ['Next.js', 'React', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'MUI', 'Bootstrap', 'SCSS']],
+  ['Backend & data', ['Node.js', 'PHP', 'REST APIs', 'GraphQL', 'PostgreSQL', 'Supabase', 'Firebase']],
+  ['CMS & marketing', ['WordPress', 'Drupal', 'Contentful', 'HubSpot', 'Marketo']],
+  ['Workflow', ['Git', 'Docker']],
+]
 
 const Heading = ({ children, light = false }) => (
   <h2 className={`font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl ${light ? 'text-white' : 'text-[#111]'}`}>{children}</h2>
@@ -75,10 +82,21 @@ export default function Page() {
         </dl>
       </section>
 
+      {/* Recommendations */}
+      <section className="!py-16 md:!py-24 bg-[#111] text-white">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <TestimonialSlider title="What people I've worked with say." items={[{ who: 'rachel', quote: 'main' }, { who: 'connor', quote: 'home' }, { who: 'roman', quote: 'work' }, { who: 'ajay', quote: 'about' }]} />
+        </div>
+      </section>
+
+
       {/* Story */}
       <section className="!py-16 md:!py-28">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.4fr]">
-          <Heading>My story</Heading>
+          <div>
+            <Heading>My story</Heading>
+            <p className="mt-5 max-w-sm text-lg leading-relaxed text-[#666]">From a computer science degree to websites for US tech companies, and now my own software and classes.</p>
+          </div>
           <div className="space-y-6 text-xl leading-relaxed text-[#444]">
             <p>
               I started my professional career in March 2018 and have been building for the web ever since: marketing sites, CMS platforms and web apps for software companies and small businesses.
@@ -94,22 +112,45 @@ export default function Page() {
               <Link href="/cafecorp" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">CafeCorp</Link>
               , tools that replace paperwork for clinics, landlords and cafés.
             </p>
-            <p>
-              I also teach. Since 2024 I&apos;ve taught coding and AI to 6th–8th graders in Livermore, California, over Zoom, and now I run the same classes live online for students in India.{' '}
-              <a href="https://learn.themanishchauhan.in" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">Learn more about the classes</a>.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Desk photo */}
-      <section className="!pt-0 !pb-16 md:!pb-28">
-        <figure className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="relative aspect-[3/2] overflow-hidden rounded-3xl">
-            <Image src="/manish-desk.jpg" alt="Manish's desk with an iMac, a MacBook Pro and books like Rich Dad Poor Dad and Atomic Habits" fill sizes="(min-width:1280px) 1216px, 92vw" className="object-cover" />
+      {/* AI classes (details live on learn.themanishchauhan.in; keep these facts in sync with it) */}
+      <section className="!py-16 md:!py-24 bg-white">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.2fr_1fr] lg:items-stretch">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">I also teach</p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight md:text-5xl">AI and coding classes for school students.</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#444]">
+              Since 2024 I&apos;ve taught coding and AI to 6th–8th graders in Livermore, California, over Zoom. Now the same approach (a strong foundation in programming basics first, then smart use of AI on top) runs live online for students in India.
+            </p>
+            <a href="https://learn.themanishchauhan.in" className="mt-7 inline-block rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">See the courses →</a>
+            <ul className="mt-10 grid max-w-2xl gap-3 sm:grid-cols-2">
+              {[
+                ['Classes 6–12', 'Junior (6–8) and Senior (9–12) courses'],
+                ['Live online', 'Two 1-hour classes every weekend on Google Meet'],
+                ['3 levels, 8 weeks each', 'Basics, Builder and Advanced, with a project every level'],
+                ['Free demo class', 'Small batches of 10–15 students'],
+              ].map(([h, d]) => (
+                <li key={h} className="rounded-2xl border border-black/10 bg-[#f4f1ec] p-5">
+                  <p className="font-display text-lg font-extrabold">{h}</p>
+                  <p className="mt-1 text-[15px] text-[#555]">{d}</p>
+                </li>
+              ))}
+            </ul>
           </div>
-          <figcaption className="mt-4 text-[#777]">My desk, where the websites, products and AI classes get built.</figcaption>
-        </figure>
+          <figure className="flex flex-col rounded-3xl bg-[#111] p-7 text-white md:p-9">
+            <span aria-hidden="true" className="block font-display text-6xl font-extrabold leading-none text-[#ff5a1f]">&ldquo;</span>
+            <blockquote className="-mt-2 mb-8 text-lg leading-relaxed md:text-xl">
+              Manish has worked with me for nearly 10 years. He began teaching 6th–8th grade kids in Livermore, CA over Zoom when local programming classes fell short. He focused on solid basics first, then showed students how to use AI effectively on top of that foundation. The results were excellent. He is now bringing the same proven approach to students in India.
+            </blockquote>
+            <figcaption className="mt-auto border-t border-white/20 pt-4">
+              <p className="font-semibold">DK</p>
+              <p className="text-sm text-white/60">Development Manager, Clear Digital</p>
+            </figcaption>
+          </figure>
+        </div>
       </section>
 
       {/* Values (black blade) */}
@@ -163,22 +204,24 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Skills */}
-      <section className="!py-14 md:!py-20 bg-white">
+      {/* Skills (dark blade) */}
+      <section className="!py-16 md:!py-24 bg-[#111] text-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <Heading>Tools I use</Heading>
-          <ul className="mt-10 flex flex-wrap gap-3">
-            {skills.map((s) => <li key={s} className="rounded-full border border-black/20 px-5 py-2 font-medium">{s}</li>)}
-          </ul>
+          <Heading light>Tools I use</Heading>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {skillGroups.map(([group, items]) => (
+              <div key={group} className="rounded-2xl border border-white/15 bg-white/[0.04] p-6">
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">{group}</p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {items.map((t) => <li key={t} className="rounded-full bg-white/10 px-3.5 py-1.5 text-sm font-medium text-white">{t}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="!py-16 md:!py-24 bg-[#111] text-white">
-        <div className="px-5 sm:px-8">
-          <Testimonial who="ajay" quote="about" />
-        </div>
-      </section>
+      <PageSeo type="AboutPage" name="About Manish Chauhan" path="/about" crumbs={[['About', '/about']]} faqs={pageFaqs.about()} bg="bg-[#f4f1ec]" />
 
       {/* CTA */}
       <section className="!py-16 md:!py-24 bg-[#ff5a1f]">

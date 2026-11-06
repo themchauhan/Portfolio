@@ -6,6 +6,8 @@ import TrackedLink from '@/components/TrackedLink'
 import ContactForm from '@/components/products/ContactForm'
 import { products } from '@/lib/products'
 import { SITE, services, serviceList, serviceAreas, pageMeta } from '@/lib/seo'
+import { townPageFor } from '@/lib/townPages'
+import FaqList from '@/components/FaqList'
 
 export const dynamicParams = false
 
@@ -133,7 +135,12 @@ export default function Page({ params }) {
               <div key={state}>
                 <h3 className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">{state}</h3>
                 <ul className="mt-4 flex flex-wrap gap-2">
-                  {list.map((t) => <li key={t} className="rounded-full border border-black/20 px-4 py-1.5 text-sm font-medium">{t}</li>)}
+                  {list.map((t) => {
+                    const slug = t.split(' (')[0].toLowerCase().replace(/ /g, '-')
+                    return townPageFor(s.slug, slug)
+                      ? <li key={t}><Link href={`/services/${s.slug}/${slug}`} className="inline-block rounded-full border border-[#ff5a1f] bg-[#fff6f2] px-4 py-1.5 text-sm font-semibold hover:bg-[#ff5a1f] hover:text-white">{t} →</Link></li>
+                      : <li key={t} className="rounded-full border border-black/20 px-4 py-1.5 text-sm font-medium">{t}</li>
+                  })}
                 </ul>
               </div>
             ))}
@@ -145,14 +152,7 @@ export default function Page({ params }) {
       <section className="!py-16 md:!py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-5xl">Questions</h2>
-          <div className="mt-10 max-w-3xl divide-y divide-black/15 border-y border-black/15">
-            {faqs.map(([q, a]) => (
-              <details key={q} name="faq" className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">{q}<span className="text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
-                <p className="mt-3 text-[#555]">{a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={faqs} className="mt-10" />
           <h2 className="mt-16 font-display text-2xl font-extrabold">Other services</h2>
           <ul className="mt-5 flex flex-wrap gap-3">
             {otherServices.map((x) => (

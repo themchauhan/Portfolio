@@ -1,6 +1,8 @@
 import PageHero from '@/components/PageHero'
 import ContactForm from '@/components/products/ContactForm'
 import { pageMeta } from '@/lib/seo'
+import PageSeo from '@/components/PageSeo'
+import { pageFaqs } from '@/lib/pageFaqs'
 
 export const metadata = pageMeta({
   title: 'Contact',
@@ -35,6 +37,7 @@ export default function Page() {
           <div className="rounded-2xl bg-white p-6 shadow-xl md:p-8"><ContactForm product="Website" /></div>
         </div>
       </section>
+      <PageSeo type="ContactPage" name="Contact Manish Chauhan" path="/contacts" crumbs={[['Contact', '/contacts']]} faqs={pageFaqs.contacts()} />
     </main>
   )
 }

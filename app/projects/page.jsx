@@ -3,6 +3,8 @@ import CtaBand from '@/components/CtaBand'
 import TestimonialSlider from '@/components/TestimonialSlider'
 import { pageMeta } from '@/lib/seo'
 import { featuredClients, clientGroups, clientCount } from '@/lib/clients'
+import PageSeo from '@/components/PageSeo'
+import { pageFaqs } from '@/lib/pageFaqs'
 
 export const metadata = pageMeta({
   title: 'Work',
@@ -63,6 +65,7 @@ export default function Page() {
         </div>
       </section>
 
+      <PageSeo type="CollectionPage" name="Work: sites and platforms Manish Chauhan has built" path="/projects" crumbs={[['Work', '/projects']]} faqs={pageFaqs.projects()} />
       <CtaBand title="Have a project in mind? Let's talk." />
     </main>
   )

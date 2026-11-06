@@ -3,6 +3,8 @@ import TrackedLink from '@/components/TrackedLink'
 import PilotTerms from '@/components/products/PilotTerms'
 import { pageMeta } from '@/lib/seo'
 import { pilot, waLink } from '@/lib/pricing'
+import PageSeo from '@/components/PageSeo'
+import FaqList from '@/components/FaqList'
 
 export const metadata = pageMeta({
   title: 'AppointmentOS - Missed-call WhatsApp booking (pilot)',
@@ -184,20 +186,13 @@ export default function Page() {
 
       {/* FAQ */}
       <section className="!py-14 md:!py-20 bg-white">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Questions</h2>
-          <div className="mt-8 divide-y divide-black/15 border-y border-black/15">
-            {faqs.map(([q, a]) => (
-              <details key={q} name="faq" className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">
-                  {q}<span className="text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-3 text-[#555]">{a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={faqs} className="mt-8" />
         </div>
       </section>
+
+      <PageSeo type="WebPage" name="AppointmentOS: missed-call WhatsApp booking (pilot)" path="/appointmentos" crumbs={[['Products', '/products'], ['AppointmentOS', '/appointmentos']]} faqs={faqs} hideFaq />
 
       {/* CTA */}
       <section className="!py-16 md:!py-24 bg-[#ff5a1f] text-[#111]">

@@ -5,6 +5,8 @@ import ShareTool from '@/components/tools/ShareTool'
 import QuotationMaker from '@/components/tools/QuotationMaker'
 import { SITE, pageMeta } from '@/lib/seo'
 import ToolOfferActions from '@/components/tools/ToolOfferActions'
+import PageSeo from '@/components/PageSeo'
+import FaqList from '@/components/FaqList'
 
 const URL = `${SITE}/hi/tools/quotation-maker`
 const EN_URL = `${SITE}/tools/quotation-maker`
@@ -82,18 +84,12 @@ export default function Page() {
       </section>
 
       <section className="!py-14 md:!py-20 print:hidden">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="text-3xl font-extrabold md:text-4xl">अक्सर पूछे जाने वाले सवाल</h2>
-          <div className="mt-8 divide-y divide-black/15 border-y border-black/15">
-            {faqs.map(([q, a]) => (
-              <details key={q} name="faq" className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">{q}<span className="text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
-                <p className="mt-3 text-[#555]">{a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={faqs} className="mt-8" />
         </div>
       </section>
+      <PageSeo type="WebPage" name="कोटेशन मेकर" path="/hi/tools/quotation-maker" crumbs={[['Free tools', '/tools'], ['कोटेशन मेकर', '/hi/tools/quotation-maker']]} />
     </main>
   )
 }

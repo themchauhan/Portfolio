@@ -7,6 +7,8 @@ import { getExperienceText, getExperienceDuration } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
 import { starterPriceText } from '@/lib/pricing'
 import TestimonialSlider from '@/components/TestimonialSlider'
+import PageSeo from '@/components/PageSeo'
+import { pageFaqs } from '@/lib/pageFaqs'
 
 export const metadata = pageMeta({
   title: { absolute: 'Manish Chauhan - Full Stack Web Developer & Freelancer' },
@@ -33,7 +35,7 @@ const audiences = [
 ]
 
 const services = [
-  ['01', 'Websites', 'Fast, clean marketing sites and CMS builds in Next.js, WordPress and Drupal, with the HubSpot or Marketo setup your team needs.'],
+  ['01', 'Websites', 'Fast, clean marketing sites and CMS builds in Next.js, WordPress, Drupal and Contentful, with the HubSpot or Marketo setup your team needs.'],
   ['02', 'Web apps', 'Dashboards, portals and SaaS products in React and Node. Built to be used every day, not just demoed.'],
   ['03', 'Automation', 'Replacing paperwork and manual data entry with simple software your team will actually adopt.'],
 ]
@@ -59,7 +61,7 @@ const freeTools = [
   ['/tools/quotation-maker', 'Quotation Maker', 'Professional quotations with GST and terms.'],
 ]
 
-const skills = ['Next.js', 'React', 'Node.js', 'JavaScript', 'Tailwind CSS', 'SCSS', 'WordPress', 'Drupal', 'PHP', 'HubSpot', 'Marketo', 'Firebase', 'PostgreSQL', 'Supabase', 'Docker', 'Git']
+const skills = ['Next.js', 'React', 'Node.js', 'JavaScript', 'Tailwind CSS', 'MUI', 'Bootstrap', 'SCSS', 'WordPress', 'Drupal', 'Contentful', 'PHP', 'HubSpot', 'Marketo', 'Firebase', 'PostgreSQL', 'Supabase', 'Docker', 'Git']
 
 const Heading = ({ children, light = false }) => (
   <h2 className={`font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl ${light ? 'text-white' : 'text-[#111]'}`}>
@@ -202,7 +204,7 @@ export default function Home() {
 
       {/* Testimonial */}
       <section className="!py-16 md:!py-24 bg-[#111] text-white">
-        <div className="px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <TestimonialSlider title="What people say about working with me." items={[{ who: 'rachel', quote: 'main' }, { who: 'connor', quote: 'home' }, { who: 'roman', quote: 'work' }, { who: 'ajay', quote: 'about' }]} />
         </div>
       </section>
@@ -273,6 +275,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <PageSeo type="WebPage" name="Manish Chauhan – Full Stack Web Developer & Freelancer" path="" faqs={pageFaqs.home()} bg="bg-[#f4f1ec]" />
 
       {/* Contact */}
       <section id="contact" className="!py-16 md:!py-28 bg-[#ff5a1f]">

@@ -1,0 +1,189 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><title>कक्षा 9–12 · Build and Study with AI syllabus</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Mukta:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>:root{--body:"Mukta"} body{font-family:var(--body),Arial,sans-serif} 
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --ink:#111; --muted:#555; --bg:#f4f1ec; --line:rgba(0,0,0,.14); --accent:#ff5a1f; }
+html, body { color: var(--ink); font-size: 10pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; padding: 15mm 15mm 12mm; background: var(--bg); display: flex; flex-direction: column; page-break-after: always; overflow: hidden; position: relative; }
+.page:last-child { page-break-after: auto; }
+.d { font-family: "Bricolage Grotesque", var(--body), sans-serif; font-weight: 800; letter-spacing: -0.015em; line-height: 1.08; }
+.hi .d { font-family: var(--body), sans-serif; letter-spacing: 0; line-height: 1.25; }
+.eyebrow { color: var(--accent); font-weight: 600; font-size: 9.5pt; }
+.top { display:flex; justify-content:space-between; align-items:center; font-size:8.5pt; color:var(--muted); }
+.logo { display:flex; align-items:center; gap:7px; font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:13pt; color:var(--ink); }
+.logo b { width:22px; height:22px; border-radius:6px; background:var(--ink); color:#fff; display:grid; place-items:center; font-size:11pt; position:relative; }
+.logo b::after { content:""; position:absolute; right:3px; bottom:3px; width:5px; height:5px; border-radius:50%; background:var(--accent); }
+.logo span::after { content:"."; color:var(--accent); }
+.foot { margin-top:auto; padding-top:5mm; border-top:1px solid var(--line); display:flex; justify-content:space-between; font-size:8pt; color:#888; }
+h2.d { font-size: 22pt; margin-top: 2mm; }
+.card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:4.5mm 5mm; }
+.offer { display:inline-block; background:var(--accent); color:#fff; font-weight:600; border-radius:99px; padding:2mm 5mm; font-size:10pt; }
+/* cover */
+.cover h1 { font-size: 40pt; margin-top: 4mm; }
+.cover .intro { font-size: 12.5pt; color:#444; margin-top: 6mm; max-width: 150mm; }
+.tracks { display:grid; grid-template-columns:1fr 1fr; gap:5mm; margin-top:9mm; }
+.tracks .card { border-top:4px solid var(--ink); border-radius:0; padding:6mm; }
+.tracks .card:last-child { background:var(--ink); color:#fff; border-color:var(--ink); }
+.tracks .lvl { color:var(--accent); font-weight:600; font-size:9pt; text-transform:uppercase; letter-spacing:.06em; }
+.hi .tracks .lvl { text-transform:none; letter-spacing:0; }
+.tracks h3 { font-size:18pt; margin:2mm 0; }
+.tracks p { color:var(--muted); }
+.tracks .card:last-child p { color:#cfcac2; }
+.levelsRow { display:flex; gap:3mm; margin-top:7mm; }
+.levelsRow div { flex:1; text-align:center; padding:4mm 2mm; border-radius:10px; background:#fff; border:1px solid var(--line); }
+.levelsRow div:nth-child(2) { background:#ffe6dc; }
+.levelsRow div:nth-child(3) { background:var(--accent); color:#fff; border-color:var(--accent); }
+.levelsRow strong { display:block; font-size:12pt; }
+.levelsRow span { font-size:8.5pt; }
+.qrbox { display:flex; align-items:center; gap:6mm; margin-top:auto; background:#fff; border-radius:14px; padding:6mm; border:1px solid var(--line); }
+.qrbox img { width:30mm; height:30mm; }
+.qrbox strong { font-size:13pt; display:block; }
+/* how + fees */
+.how { display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin-top:5mm; }
+.how h3 { font-size:11.5pt; }
+.how p { color:var(--muted); font-size:9pt; margin-top:1mm; }
+table { width:100%; border-collapse:collapse; margin-top:4mm; background:#fff; border-radius:10px; overflow:hidden; }
+th { background:var(--ink); color:#fff; text-align:left; font-size:9pt; padding:3mm 4mm; white-space:nowrap; }
+td { padding:3.2mm 4mm; border-top:1px solid var(--line); font-size:9.5pt; vertical-align:top; }
+td.fee { font-weight:800; font-size:12.5pt; white-space:nowrap; }
+td.lv { font-weight:700; white-space:nowrap; }
+.note { font-size:8.8pt; color:var(--muted); margin-top:3mm; }
+.two { display:grid; grid-template-columns:1.3fr 1fr; gap:4mm; margin-top:6mm; }
+.two h3 { font-size:12pt; }
+.two p { color:var(--muted); font-size:9pt; margin-top:1.5mm; }
+/* syllabus */
+.levels { display:grid; gap:4mm; margin-top:5mm; }
+.lvlcard { background:#fff; border:1px solid var(--line); border-radius:12px; padding:4.5mm 5mm; }
+.lvlhead { display:flex; justify-content:space-between; align-items:baseline; gap:4mm; border-bottom:1px solid var(--line); padding-bottom:2mm; margin-bottom:2mm; }
+.lvlhead .t { font-size:13pt; }
+.lvlhead .t small { color:var(--accent); font-size:9pt; font-weight:700; margin-right:2mm; font-family: var(--body), sans-serif; letter-spacing:0; }
+.lvlhead .p { font-weight:800; font-size:12pt; white-space:nowrap; }
+.lvlhead .p span { font-weight:400; font-size:8pt; color:var(--muted); }
+ol.weeks { list-style:none; display:grid; grid-template-columns:1fr 1fr; column-gap:6mm; row-gap:1.2mm; }
+ol.weeks li { display:flex; gap:2.5mm; font-size:8.8pt; color:#333; line-height:1.4; }
+ol.weeks b { color:var(--accent); min-width:13mm; white-space:nowrap; font-size:8pt; padding-top:.3mm; }
+.hi ol.weeks b { min-width:15mm; }
+.lvlcard:nth-child(3) { border:2px solid var(--accent); }
+/* schools */
+.schools { display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin-top:5mm; }
+.schools .card { border-top:4px solid var(--accent); border-radius:0; }
+.schools h3 { font-size:12pt; }
+.schools p { color:var(--muted); font-size:9pt; margin-top:1.5mm; }
+ul.safety { list-style:none; margin-top:3mm; display:grid; gap:2mm; }
+ul.safety li { display:flex; gap:3mm; font-size:9.5pt; color:#333; }
+ul.safety li::before { content:"✓"; color:var(--accent); font-weight:800; }
+.contact { margin-top:auto; background:var(--ink); color:#fff; border-radius:14px; padding:7mm 8mm; display:grid; grid-template-columns:1.2fr 1fr auto; gap:6mm; align-items:center; }
+.contact h3 { font-size:18pt; }
+.contact p { color:#cfcac2; font-size:9pt; margin-top:2mm; }
+.contact dt { color:var(--accent); font-weight:600; font-size:7.5pt; text-transform:uppercase; letter-spacing:.08em; margin-top:2.5mm; }
+.hi .contact dt { text-transform:none; letter-spacing:0; font-size:8.5pt; }
+.contact dt:first-child { margin-top:0; }
+.contact dd { font-size:9.5pt; }
+.contact img { width:26mm; height:26mm; background:#fff; padding:2mm; border-radius:6px; }
+ 
+.page { padding: 11mm 14mm 9mm; }
+.cover h1.d { font-size:31pt; margin-top:1.5mm; }
+.hi .cover h1.d { font-size:29pt; }
+.cover .intro { font-size:11pt; color:#444; margin-top:3mm; max-width:160mm; }
+.hi .cover .intro { font-size:12pt; }
+.sec { font-size:14pt; margin-top:5.5mm; }
+.lv3 { display:grid; grid-template-columns:repeat(3,1fr); gap:3mm; margin-top:3mm; }
+.lv3 .card { border-top:4px solid var(--ink); border-radius:0 0 10px 10px; display:flex; flex-direction:column; }
+.lv3 .card:nth-child(2) { border-top-color:#ffb08f; }
+.lv3 .card:nth-child(3) { border-top-color:var(--accent); }
+.lv3 small { color:var(--accent); font-weight:700; font-size:8.5pt; }
+.lv3 h3 { font-size:13pt; margin:1mm 0 1.5mm; }
+.lv3 p { font-size:8.8pt; color:#444; line-height:1.4; }
+.hi .lv3 p { font-size:9.8pt; }
+.lv3 .fee { margin-top:auto; padding-top:2.5mm; font-weight:800; font-size:14pt; }
+.lv3 .fee span { font-weight:400; font-size:8pt; color:var(--muted); }
+.fmt { display:grid; grid-template-columns:1fr 1fr; gap:2mm 6mm; margin-top:2.5mm; }
+.fmt h4 { font-size:10pt; }
+.fmt p { font-size:9pt; color:#444; }
+.hi .fmt p { font-size:9.8pt; line-height:1.4; }
+.pair { display:grid; grid-template-columns:1fr 1.25fr; gap:3mm; margin-top:5mm; }
+.pair h3 { font-size:12pt; margin-bottom:1.5mm; }
+.pair p, .pair li { font-size:9pt; color:#333; line-height:1.45; }
+.hi .pair p, .hi .pair li { font-size:9.8pt; }
+.pair ul { list-style:none; display:grid; gap:1.2mm; }
+.pair li { display:flex; gap:2mm; }
+.pair li::before { content:"✓"; color:var(--accent); font-weight:800; }
+.takes { margin-top:2.5mm; padding-top:2.5mm; border-top:1px solid var(--line); }
+.takes b { color:var(--accent); }
+.cta { margin-top:auto; background:var(--ink); color:#fff; border-radius:12px; padding:3.5mm 6mm; display:grid; grid-template-columns:1fr auto auto; gap:6mm; align-items:center; }
+.cta h3 { font-size:15pt; }
+.cta dt { color:var(--accent); font-weight:600; font-size:7.5pt; text-transform:uppercase; letter-spacing:.08em; margin-top:1.5mm; }
+.hi .cta dt { text-transform:none; letter-spacing:0; font-size:8.5pt; }
+.cta dt:first-child { margin-top:0; }
+.cta dd { font-size:9.5pt; font-weight:600; }
+.cta img { width:21mm; height:21mm; background:#fff; padding:1.5mm; border-radius:6px; }
+/* level pages */
+.lhead { display:flex; justify-content:space-between; align-items:flex-end; gap:6mm; margin-top:7mm; }
+.lhead h2.d { font-size:26pt; margin-top:1mm; }
+.lhead .price { text-align:right; white-space:nowrap; }
+.lhead .price strong { display:block; font-size:22pt; font-weight:800; line-height:1; }
+.lhead .price span { font-size:8.5pt; color:var(--muted); }
+.info { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; margin-top:4mm; }
+.info .card { padding:3mm 4mm; }
+.info h4 { color:var(--accent); font-size:8pt; text-transform:uppercase; letter-spacing:.06em; }
+.hi .info h4 { text-transform:none; letter-spacing:0; font-size:9pt; }
+.info p { font-size:10pt; margin-top:1mm; line-height:1.4; }
+.hi .info p { font-size:10.8pt; }
+table.wk { margin-top:4.5mm; }
+table.wk th { font-size:9pt; padding:3mm 4mm; }
+table.wk td { font-size:10pt; padding:2.7mm 4mm; line-height:1.45; }
+.hi table.wk td { font-size:10.8pt; padding:3mm 4mm; line-height:1.45; }
+table.wk td.n { font-weight:800; color:var(--accent); white-space:nowrap; width:13mm; }
+table.wk td.t b { display:block; font-size:11pt; color:var(--ink); margin-bottom:.6mm; }
+.hi table.wk td.t b { font-size:11.8pt; }
+table.wk td.t span { color:#555; }
+table.wk td.h { width:48mm; color:#333; }
+table.wk tr:last-child td { background:#fff1ea; }
+</style></head>
+<body class="hi"><section class="page cover"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>learn.themanishchauhan.in/hi</div></div>
+  <p class="eyebrow" style="margin-top:6mm">सिलेबस · कक्षा 9–12</p>
+  <h1 class="d">Build and Study with AI</h1>
+  <p class="intro">वीकेंड AI क्लास, जहाँ बच्चे बोर्ड, JEE और NEET के लिए स्मार्ट पढ़ाई सीखते हैं, फिर असली वेबसाइट, ऐप और Python AI प्रोजेक्ट बनाकर पब्लिश करते हैं।</p>
+  <p style="margin-top:4mm"><span class="offer">शुरुआती ऑफ़र: पहले 51 बच्चों की कोई एडमिशन फ़ीस नहीं, साथ में फ़्री डेमो क्लास।</span></p>
+  <h2 class="d sec">तीन लेवल, बेसिक से एडवांस तक</h2>
+  <div class="lv3"><div class="card"><small>लेवल 1 · बेसिक</small><h3 class="d">पढ़ाई और ज़िंदगी में AI</h3><p>AI से बेहतर और ईमानदारी से पढ़ाई करना, और समझना कि ये कहाँ गलत होता है।</p><div class="fee">₹4,000 <span>/ 8 हफ़्ते</span></div></div><div class="card"><small>लेवल 2 · बिल्डर</small><h3 class="d">AI से बनाएँ</h3><p>असली वेबसाइट और वेब ऐप बनाकर ऑनलाइन पब्लिश करना।</p><div class="fee">₹4,500 <span>/ 8 हफ़्ते</span></div></div><div class="card"><small>लेवल 3 · एडवांस</small><h3 class="d">Python और AI प्रोजेक्ट</h3><p>प्रोजेक्ट के ज़रिए Python, डेटा और मशीन लर्निंग की बेसिक्स सीखना।</p><div class="fee">₹5,000 <span>/ 8 हफ़्ते</span></div></div></div>
+  <p class="note">फ़ीस हर बच्चे के लिए पूरे 8 हफ़्ते के लेवल की है।</p>
+  <h2 class="d sec">क्लास कैसे चलती हैं</h2>
+  <div class="fmt"><div><h4>हर वीकेंड</h4><p>शनिवार: नई चीज़ सीखना और साथ में बनाना। रविवार: अपना वर्ज़न बनाना, फिर सबको दिखाना। दो वीकेंड के बीच एक छोटा टास्क।</p></div><div><h4>हर लेवल</h4><p>8 हफ़्ते, 1-1 घंटे की 16 क्लास। आख़िर में पेरेंट्स के लिए ऑनलाइन शोकेस।</p></div><div><h4>छोटे बैच</h4><p>10–15 बच्चे, Google Meet पर लाइव ऑनलाइन।</p></div><div><h4>कहाँ से शुरू करें</h4><p>हर बच्चा लेवल 1 से शुरू करता है। जिन्हें पहले से अनुभव है, वो फ़्री डेमो के बाद आगे के लेवल से शुरू कर सकते हैं।</p></div></div>
+  <div class="pair">
+    <div class="card"><h3 class="d">बच्चों को क्या चाहिए</h3><p>क्लास Google Meet पर लाइव ऑनलाइन होती हैं। लेवल 1 फ़ोन या कंप्यूटर पर हो जाता है; लेवल 2 और 3 के लिए लैपटॉप या कंप्यूटर ज़रूरी है। शुरू करने के लिए कोडिंग आना ज़रूरी नहीं।</p>
+      <p class="takes"><b>बच्चा साथ ले जाता है:</b> एक लाइव वेबसाइट या ऐप, और एक प्रोजेक्ट जो कॉलेज को दिखा सकें।</p></div>
+    <div class="card"><h3 class="d">सुरक्षा और ईमानदार इस्तेमाल</h3><ul><li>बच्चे AI चैटबॉट सिर्फ़ पेरेंट्स की इजाज़त से इस्तेमाल करते हैं और कोई निजी जानकारी शेयर नहीं करते।</li><li>AI का हर जवाब NCERT, टीचर या भरोसेमंद सोर्स से चेक किया जाता है।</li><li>AI समझने और प्रैक्टिस के लिए है, होमवर्क कॉपी करने या एग्ज़ाम में चीटिंग के लिए कभी नहीं।</li><li>हर लेवल में प्राइवेसी, डीपफ़ेक और स्कैम के बारे में सिखाया जाता है।</li></ul></div>
+  </div>
+  <div class="cta" style="margin-top:5mm"><div><h3 class="d">फ़्री डेमो क्लास बुक करें</h3></div>
+    <dl><dt>WhatsApp / कॉल</dt><dd>+91 70150 66237</dd><dt>ईमेल</dt><dd>manish@themanishchauhan.in</dd></dl>
+    <img src="../qr-hi.svg" alt="QR"></div>
+  <div class="foot"><span>Manish Chauhan · learn.themanishchauhan.in/hi</span><span>कक्षा 9–12 · Build and Study with AI · पेज 1 / 4</span></div></section><section class="page"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>कक्षा 9–12 · Build and Study with AI</div></div>
+  <div class="lhead"><div><p class="eyebrow">लेवल 1 · बेसिक · 8 हफ़्ते · 16 क्लास</p><h2 class="d">पढ़ाई और ज़िंदगी में AI</h2></div>
+    <div class="price"><strong>₹4,000</strong><span>फ़ीस हर बच्चे के लिए पूरे 8 हफ़्ते के लेवल की है।</span></div></div>
+  <div class="info">
+    <div class="card"><h4>लक्ष्य</h4><p>AI से बेहतर और ईमानदारी से पढ़ाई करना, और समझना कि ये कहाँ गलत होता है।</p></div>
+    <div class="card"><h4>बच्चे क्या बनाएँगे</h4><p>अपना AI स्टडी सिस्टम: रिवीज़न प्लान, क्वेश्चन बैंक और फ़्लैशकार्ड।</p></div>
+    <div class="card"><h4>टूल्स और डिवाइस</h4><p>एक फ़्री AI चैटबॉट (पेरेंट्स की इजाज़त से), NCERT किताबें, Google Docs और Sheets। फ़ोन या कंप्यूटर।</p></div>
+  </div>
+  <table class="wk"><tr><th>हफ़्ता</th><th>क्लास में क्या होगा</th><th>घर का टास्क</th></tr><tr><td class="n">1</td><td class="t"><b>AI और चैटबॉट असल में कैसे काम करते हैं, और गलती क्यों करते हैं</b><span>अगला शब्द अंदाज़ा लगाने वाला गेम, फिर AI की गलतियाँ पकड़ना</span></td><td class="h">AI का एक गलत जवाब और उसका सही सोर्स ढूँढें</td></tr><tr><td class="n">2</td><td class="t"><b>AI से अच्छे सवाल पूछना: काम के जवाब पाने वाले साफ़ प्रॉम्प्ट</b><span>रोल, टास्क और फ़ॉर्मैट: कमज़ोर प्रॉम्प्ट को अच्छा बनाना</span></td><td class="h">पढ़ाई के 5 प्रॉम्प्ट की अपनी लिस्ट बनाएँ</td></tr><tr><td class="n">3</td><td class="t"><b>बोर्ड एग्ज़ाम के लिए AI: रिवीज़न प्लान और प्रैक्टिस सवाल</b><span>एग्ज़ाम तक का रिवीज़न टाइमटेबल और सिलेबस से प्रैक्टिस सवाल बनाना</span></td><td class="h">एक हफ़्ते प्लान फ़ॉलो करें</td></tr><tr><td class="n">4</td><td class="t"><b>JEE और NEET के कॉन्सेप्ट: AI से समझें, फिर NCERT से चेक करें</b><span>मुश्किल कॉन्सेप्ट स्टेप बाय स्टेप समझना, फिर हर स्टेप NCERT से चेक करना</span></td><td class="h">बिना AI के एक दोस्त को एक कॉन्सेप्ट समझाएँ</td></tr><tr><td class="n">5</td><td class="t"><b>रिसर्च और फ़ैक्ट चेक: सोर्स और पढ़ाई में ईमानदारी</b><span>सोर्स की तुलना और उनका नाम देना, कॉपी और प्लेजरिज़्म के नियम</span></td><td class="h">एक वायरल मैसेज का फ़ैक्ट चेक करें</td></tr><tr><td class="n">6</td><td class="t"><b>नोट्स, समरी और फ़्लैशकार्ड जो याद रखने में मदद करें</b><span>एक चैप्टर से छोटे नोट्स और फ़्लैशकार्ड बनाना, और बार-बार रिवीज़न का प्लान</span></td><td class="h">एक चैप्टर के फ़्लैशकार्ड बनाएँ</td></tr><tr><td class="n">7</td><td class="t"><b>सेफ़्टी: प्राइवेसी, डीपफ़ेक और स्कैम</b><span>प्राइवेसी सेटिंग, डीपफ़ेक पहचानना, OTP और फ़ेक जॉब ऑफ़र जैसे स्कैम</span></td><td class="h">परिवार को एक स्कैम पहचानना सिखाएँ</td></tr><tr><td class="n">8</td><td class="t"><b>प्रोजेक्ट: अपना AI स्टडी सिस्टम, और शोकेस</b><span>अपना स्टडी सिस्टम दिखाना, और बताना कि उसे कैसे इस्तेमाल करेंगे</span></td><td class="h">जश्न मनाएँ!</td></tr></table>
+  <div class="foot"><span>Manish Chauhan · learn.themanishchauhan.in/hi</span><span>कक्षा 9–12 · Build and Study with AI · पेज 2 / 4</span></div></section><section class="page"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>कक्षा 9–12 · Build and Study with AI</div></div>
+  <div class="lhead"><div><p class="eyebrow">लेवल 2 · बिल्डर · 8 हफ़्ते · 16 क्लास</p><h2 class="d">AI से बनाएँ</h2></div>
+    <div class="price"><strong>₹4,500</strong><span>फ़ीस हर बच्चे के लिए पूरे 8 हफ़्ते के लेवल की है।</span></div></div>
+  <div class="info">
+    <div class="card"><h4>लक्ष्य</h4><p>असली वेबसाइट और वेब ऐप बनाकर ऑनलाइन पब्लिश करना।</p></div>
+    <div class="card"><h4>बच्चे क्या बनाएँगे</h4><p>अपनी पोर्टफ़ोलियो वेबसाइट और एक छोटा वेब ऐप, दोनों ऑनलाइन लाइव।</p></div>
+    <div class="card"><h4>टूल्स और डिवाइस</h4><p>VS Code, HTML, CSS, JavaScript, AI कोडिंग असिस्टेंट, GitHub और फ़्री होस्टिंग। लैपटॉप या कंप्यूटर।</p></div>
+  </div>
+  <table class="wk"><tr><th>हफ़्ता</th><th>क्लास में क्या होगा</th><th>घर का टास्क</th></tr><tr><td class="n">1</td><td class="t"><b>वेबसाइट कैसे काम करती है: HTML और CSS की बेसिक्स</b><span>ब्राउज़र, सर्वर और कोड: एक असली साइट को अंदर से देखना और पहला पेज बनाना</span></td><td class="h">पोर्टफ़ोलियो में क्या होगा, प्लान करें</td></tr><tr><td class="n">2</td><td class="t"><b>अपनी पर्सनल पोर्टफ़ोलियो वेबसाइट बनाना</b><span>About, Skills, Projects और Contact सेक्शन बनाना</span></td><td class="h">अपना About टेक्स्ट लिखें</td></tr><tr><td class="n">3</td><td class="t"><b>AI को कोडिंग असिस्टेंट की तरह इस्तेमाल करना, और उसका कोड चेक करना</b><span>AI से कोड लेना, पढ़ना, टेस्ट करना और उसकी गलतियाँ ठीक करना</span></td><td class="h">एक bug ढूँढकर ठीक करें</td></tr><tr><td class="n">4</td><td class="t"><b>JavaScript की बेसिक्स: पेज को इंटरैक्टिव बनाना</b><span>बटन, इवेंट और कोड से पेज बदलना</span></td><td class="h">डार्क मोड बटन जोड़ें</td></tr><tr><td class="n">5</td><td class="t"><b>वेब ऐप बनाना: क्विज़, प्लानर या टू-डू ऐप</b><span>क्विज़, प्लानर या टू-डू ऐप बनाना जो ब्राउज़र में डेटा सेव करे</span></td><td class="h">अपना एक फ़ीचर जोड़ें</td></tr><tr><td class="n">6</td><td class="t"><b>अपनी वेबसाइट फ़्री में ऑनलाइन पब्लिश करना</b><span>साइट को GitHub पर डालना और फ़्री होस्टिंग पर पब्लिश करना</span></td><td class="h">अपना लिंक परिवार के साथ शेयर करें</td></tr><tr><td class="n">7</td><td class="t"><b>टीचर रिव्यू के साथ प्रोजेक्ट वीक</b><span>टीचर आपका कोड रिव्यू करते हैं; आप डिज़ाइन सुधारते हैं और गलतियाँ ठीक करते हैं</span></td><td class="h">रिव्यू के पॉइंट ठीक करें</td></tr><tr><td class="n">8</td><td class="t"><b>शोकेस: एक लाइव वेबसाइट जो आप शेयर कर सकें</b><span>अपनी लाइव वेबसाइट और ऐप दिखाना</span></td><td class="h">जश्न मनाएँ!</td></tr></table>
+  <div class="foot"><span>Manish Chauhan · learn.themanishchauhan.in/hi</span><span>कक्षा 9–12 · Build and Study with AI · पेज 3 / 4</span></div></section><section class="page"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>कक्षा 9–12 · Build and Study with AI</div></div>
+  <div class="lhead"><div><p class="eyebrow">लेवल 3 · एडवांस · 8 हफ़्ते · 16 क्लास</p><h2 class="d">Python और AI प्रोजेक्ट</h2></div>
+    <div class="price"><strong>₹5,000</strong><span>फ़ीस हर बच्चे के लिए पूरे 8 हफ़्ते के लेवल की है।</span></div></div>
+  <div class="info">
+    <div class="card"><h4>लक्ष्य</h4><p>प्रोजेक्ट के ज़रिए Python, डेटा और मशीन लर्निंग की बेसिक्स सीखना।</p></div>
+    <div class="card"><h4>बच्चे क्या बनाएँगे</h4><p>डेटा एनालिसिस नोटबुक, ट्रेन किया हुआ मॉडल और GitHub पर फ़ाइनल AI प्रोजेक्ट।</p></div>
+    <div class="card"><h4>टूल्स और डिवाइस</h4><p>Python, Google Colab, pandas, matplotlib, scikit-learn, GitHub। लैपटॉप या कंप्यूटर।</p></div>
+  </div>
+  <table class="wk"><tr><th>हफ़्ता</th><th>क्लास में क्या होगा</th><th>घर का टास्क</th></tr><tr><td class="n">1</td><td class="t"><b>असली प्रोजेक्ट के लिए Python की बेसिक्स</b><span>छोटे प्रोग्राम से वेरिएबल, लिस्ट, लूप और फ़ंक्शन</span></td><td class="h">मार्क्स कैलकुलेटर बनाएँ</td></tr><tr><td class="n">2</td><td class="t"><b>डेटा के साथ काम: लिस्ट, फ़ाइल और स्प्रेडशीट</b><span>स्प्रेडशीट फ़ाइल पढ़ना, डेटा फ़िल्टर और सॉर्ट करना</span></td><td class="h">अपना छोटा डेटासेट इकट्ठा करें</td></tr><tr><td class="n">3</td><td class="t"><b>Python से चार्ट और एनालिसिस</b><span>pandas और matplotlib से चार्ट बनाना और पैटर्न ढूँढना</span></td><td class="h">अपने डेटासेट से 2 चार्ट बनाएँ</td></tr><tr><td class="n">4</td><td class="t"><b>मशीन लर्निंग कैसे काम करती है: अपना पहला मॉडल ट्रेन करना</b><span>आसान मॉडल ट्रेन करना, वो कितना सही है ये टेस्ट करना, bias पर बात</span></td><td class="h">अपने मॉडल को नए डेटा पर टेस्ट करें</td></tr><tr><td class="n">5</td><td class="t"><b>Python ऐप को AI मॉडल से जोड़ना</b><span>अपने ऐप में ट्रेन किया मॉडल या AI API इस्तेमाल करना (क्लास में टीचर का अकाउंट)</span></td><td class="h">अपना फ़ाइनल प्रोजेक्ट प्लान करें</td></tr><tr><td class="n">6</td><td class="t"><b>प्रोजेक्ट बनाना: स्टडी हेल्पर या इमेज पहचानने वाला ऐप</b><span>टीचर की मदद से स्टेप बाय स्टेप प्रोजेक्ट बनाना</span></td><td class="h">प्रोजेक्ट पर काम जारी रखें, सवाल लिखें</td></tr><tr><td class="n">7</td><td class="t"><b>कॉलेज एप्लिकेशन के लिए पोर्टफ़ोलियो और GitHub</b><span>README लिखना, कोड GitHub पर डालना और अपने प्रोजेक्ट के बारे में बताना सीखना</span></td><td class="h">अपना README पूरा करें</td></tr><tr><td class="n">8</td><td class="t"><b>शोकेस और AI में करियर</b><span>अपना प्रोजेक्ट दिखाना और AI व टेक में करियर पर बात</span></td><td class="h">जश्न मनाएँ!</td></tr></table>
+  <div class="foot"><span>Manish Chauhan · learn.themanishchauhan.in/hi</span><span>कक्षा 9–12 · Build and Study with AI · पेज 4 / 4</span></div></section></body></html>

@@ -1,0 +1,189 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Classes 6–8 · Make with AI syllabus</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>:root{--body:"Inter"} body{font-family:var(--body),Arial,sans-serif} 
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --ink:#111; --muted:#555; --bg:#f4f1ec; --line:rgba(0,0,0,.14); --accent:#ff5a1f; }
+html, body { color: var(--ink); font-size: 10pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; padding: 15mm 15mm 12mm; background: var(--bg); display: flex; flex-direction: column; page-break-after: always; overflow: hidden; position: relative; }
+.page:last-child { page-break-after: auto; }
+.d { font-family: "Bricolage Grotesque", var(--body), sans-serif; font-weight: 800; letter-spacing: -0.015em; line-height: 1.08; }
+.hi .d { font-family: var(--body), sans-serif; letter-spacing: 0; line-height: 1.25; }
+.eyebrow { color: var(--accent); font-weight: 600; font-size: 9.5pt; }
+.top { display:flex; justify-content:space-between; align-items:center; font-size:8.5pt; color:var(--muted); }
+.logo { display:flex; align-items:center; gap:7px; font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:13pt; color:var(--ink); }
+.logo b { width:22px; height:22px; border-radius:6px; background:var(--ink); color:#fff; display:grid; place-items:center; font-size:11pt; position:relative; }
+.logo b::after { content:""; position:absolute; right:3px; bottom:3px; width:5px; height:5px; border-radius:50%; background:var(--accent); }
+.logo span::after { content:"."; color:var(--accent); }
+.foot { margin-top:auto; padding-top:5mm; border-top:1px solid var(--line); display:flex; justify-content:space-between; font-size:8pt; color:#888; }
+h2.d { font-size: 22pt; margin-top: 2mm; }
+.card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:4.5mm 5mm; }
+.offer { display:inline-block; background:var(--accent); color:#fff; font-weight:600; border-radius:99px; padding:2mm 5mm; font-size:10pt; }
+/* cover */
+.cover h1 { font-size: 40pt; margin-top: 4mm; }
+.cover .intro { font-size: 12.5pt; color:#444; margin-top: 6mm; max-width: 150mm; }
+.tracks { display:grid; grid-template-columns:1fr 1fr; gap:5mm; margin-top:9mm; }
+.tracks .card { border-top:4px solid var(--ink); border-radius:0; padding:6mm; }
+.tracks .card:last-child { background:var(--ink); color:#fff; border-color:var(--ink); }
+.tracks .lvl { color:var(--accent); font-weight:600; font-size:9pt; text-transform:uppercase; letter-spacing:.06em; }
+.hi .tracks .lvl { text-transform:none; letter-spacing:0; }
+.tracks h3 { font-size:18pt; margin:2mm 0; }
+.tracks p { color:var(--muted); }
+.tracks .card:last-child p { color:#cfcac2; }
+.levelsRow { display:flex; gap:3mm; margin-top:7mm; }
+.levelsRow div { flex:1; text-align:center; padding:4mm 2mm; border-radius:10px; background:#fff; border:1px solid var(--line); }
+.levelsRow div:nth-child(2) { background:#ffe6dc; }
+.levelsRow div:nth-child(3) { background:var(--accent); color:#fff; border-color:var(--accent); }
+.levelsRow strong { display:block; font-size:12pt; }
+.levelsRow span { font-size:8.5pt; }
+.qrbox { display:flex; align-items:center; gap:6mm; margin-top:auto; background:#fff; border-radius:14px; padding:6mm; border:1px solid var(--line); }
+.qrbox img { width:30mm; height:30mm; }
+.qrbox strong { font-size:13pt; display:block; }
+/* how + fees */
+.how { display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin-top:5mm; }
+.how h3 { font-size:11.5pt; }
+.how p { color:var(--muted); font-size:9pt; margin-top:1mm; }
+table { width:100%; border-collapse:collapse; margin-top:4mm; background:#fff; border-radius:10px; overflow:hidden; }
+th { background:var(--ink); color:#fff; text-align:left; font-size:9pt; padding:3mm 4mm; white-space:nowrap; }
+td { padding:3.2mm 4mm; border-top:1px solid var(--line); font-size:9.5pt; vertical-align:top; }
+td.fee { font-weight:800; font-size:12.5pt; white-space:nowrap; }
+td.lv { font-weight:700; white-space:nowrap; }
+.note { font-size:8.8pt; color:var(--muted); margin-top:3mm; }
+.two { display:grid; grid-template-columns:1.3fr 1fr; gap:4mm; margin-top:6mm; }
+.two h3 { font-size:12pt; }
+.two p { color:var(--muted); font-size:9pt; margin-top:1.5mm; }
+/* syllabus */
+.levels { display:grid; gap:4mm; margin-top:5mm; }
+.lvlcard { background:#fff; border:1px solid var(--line); border-radius:12px; padding:4.5mm 5mm; }
+.lvlhead { display:flex; justify-content:space-between; align-items:baseline; gap:4mm; border-bottom:1px solid var(--line); padding-bottom:2mm; margin-bottom:2mm; }
+.lvlhead .t { font-size:13pt; }
+.lvlhead .t small { color:var(--accent); font-size:9pt; font-weight:700; margin-right:2mm; font-family: var(--body), sans-serif; letter-spacing:0; }
+.lvlhead .p { font-weight:800; font-size:12pt; white-space:nowrap; }
+.lvlhead .p span { font-weight:400; font-size:8pt; color:var(--muted); }
+ol.weeks { list-style:none; display:grid; grid-template-columns:1fr 1fr; column-gap:6mm; row-gap:1.2mm; }
+ol.weeks li { display:flex; gap:2.5mm; font-size:8.8pt; color:#333; line-height:1.4; }
+ol.weeks b { color:var(--accent); min-width:13mm; white-space:nowrap; font-size:8pt; padding-top:.3mm; }
+.hi ol.weeks b { min-width:15mm; }
+.lvlcard:nth-child(3) { border:2px solid var(--accent); }
+/* schools */
+.schools { display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin-top:5mm; }
+.schools .card { border-top:4px solid var(--accent); border-radius:0; }
+.schools h3 { font-size:12pt; }
+.schools p { color:var(--muted); font-size:9pt; margin-top:1.5mm; }
+ul.safety { list-style:none; margin-top:3mm; display:grid; gap:2mm; }
+ul.safety li { display:flex; gap:3mm; font-size:9.5pt; color:#333; }
+ul.safety li::before { content:"✓"; color:var(--accent); font-weight:800; }
+.contact { margin-top:auto; background:var(--ink); color:#fff; border-radius:14px; padding:7mm 8mm; display:grid; grid-template-columns:1.2fr 1fr auto; gap:6mm; align-items:center; }
+.contact h3 { font-size:18pt; }
+.contact p { color:#cfcac2; font-size:9pt; margin-top:2mm; }
+.contact dt { color:var(--accent); font-weight:600; font-size:7.5pt; text-transform:uppercase; letter-spacing:.08em; margin-top:2.5mm; }
+.hi .contact dt { text-transform:none; letter-spacing:0; font-size:8.5pt; }
+.contact dt:first-child { margin-top:0; }
+.contact dd { font-size:9.5pt; }
+.contact img { width:26mm; height:26mm; background:#fff; padding:2mm; border-radius:6px; }
+ 
+.page { padding: 11mm 14mm 9mm; }
+.cover h1.d { font-size:31pt; margin-top:1.5mm; }
+.hi .cover h1.d { font-size:29pt; }
+.cover .intro { font-size:11pt; color:#444; margin-top:3mm; max-width:160mm; }
+.hi .cover .intro { font-size:12pt; }
+.sec { font-size:14pt; margin-top:5.5mm; }
+.lv3 { display:grid; grid-template-columns:repeat(3,1fr); gap:3mm; margin-top:3mm; }
+.lv3 .card { border-top:4px solid var(--ink); border-radius:0 0 10px 10px; display:flex; flex-direction:column; }
+.lv3 .card:nth-child(2) { border-top-color:#ffb08f; }
+.lv3 .card:nth-child(3) { border-top-color:var(--accent); }
+.lv3 small { color:var(--accent); font-weight:700; font-size:8.5pt; }
+.lv3 h3 { font-size:13pt; margin:1mm 0 1.5mm; }
+.lv3 p { font-size:8.8pt; color:#444; line-height:1.4; }
+.hi .lv3 p { font-size:9.8pt; }
+.lv3 .fee { margin-top:auto; padding-top:2.5mm; font-weight:800; font-size:14pt; }
+.lv3 .fee span { font-weight:400; font-size:8pt; color:var(--muted); }
+.fmt { display:grid; grid-template-columns:1fr 1fr; gap:2mm 6mm; margin-top:2.5mm; }
+.fmt h4 { font-size:10pt; }
+.fmt p { font-size:9pt; color:#444; }
+.hi .fmt p { font-size:9.8pt; line-height:1.4; }
+.pair { display:grid; grid-template-columns:1fr 1.25fr; gap:3mm; margin-top:5mm; }
+.pair h3 { font-size:12pt; margin-bottom:1.5mm; }
+.pair p, .pair li { font-size:9pt; color:#333; line-height:1.45; }
+.hi .pair p, .hi .pair li { font-size:9.8pt; }
+.pair ul { list-style:none; display:grid; gap:1.2mm; }
+.pair li { display:flex; gap:2mm; }
+.pair li::before { content:"✓"; color:var(--accent); font-weight:800; }
+.takes { margin-top:2.5mm; padding-top:2.5mm; border-top:1px solid var(--line); }
+.takes b { color:var(--accent); }
+.cta { margin-top:auto; background:var(--ink); color:#fff; border-radius:12px; padding:3.5mm 6mm; display:grid; grid-template-columns:1fr auto auto; gap:6mm; align-items:center; }
+.cta h3 { font-size:15pt; }
+.cta dt { color:var(--accent); font-weight:600; font-size:7.5pt; text-transform:uppercase; letter-spacing:.08em; margin-top:1.5mm; }
+.hi .cta dt { text-transform:none; letter-spacing:0; font-size:8.5pt; }
+.cta dt:first-child { margin-top:0; }
+.cta dd { font-size:9.5pt; font-weight:600; }
+.cta img { width:21mm; height:21mm; background:#fff; padding:1.5mm; border-radius:6px; }
+/* level pages */
+.lhead { display:flex; justify-content:space-between; align-items:flex-end; gap:6mm; margin-top:7mm; }
+.lhead h2.d { font-size:26pt; margin-top:1mm; }
+.lhead .price { text-align:right; white-space:nowrap; }
+.lhead .price strong { display:block; font-size:22pt; font-weight:800; line-height:1; }
+.lhead .price span { font-size:8.5pt; color:var(--muted); }
+.info { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; margin-top:4mm; }
+.info .card { padding:3mm 4mm; }
+.info h4 { color:var(--accent); font-size:8pt; text-transform:uppercase; letter-spacing:.06em; }
+.hi .info h4 { text-transform:none; letter-spacing:0; font-size:9pt; }
+.info p { font-size:10pt; margin-top:1mm; line-height:1.4; }
+.hi .info p { font-size:10.8pt; }
+table.wk { margin-top:4.5mm; }
+table.wk th { font-size:9pt; padding:3mm 4mm; }
+table.wk td { font-size:10pt; padding:2.7mm 4mm; line-height:1.45; }
+.hi table.wk td { font-size:10.8pt; padding:3mm 4mm; line-height:1.45; }
+table.wk td.n { font-weight:800; color:var(--accent); white-space:nowrap; width:13mm; }
+table.wk td.t b { display:block; font-size:11pt; color:var(--ink); margin-bottom:.6mm; }
+.hi table.wk td.t b { font-size:11.8pt; }
+table.wk td.t span { color:#555; }
+table.wk td.h { width:48mm; color:#333; }
+table.wk tr:last-child td { background:#fff1ea; }
+</style></head>
+<body class="en"><section class="page cover"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>learn.themanishchauhan.in</div></div>
+  <p class="eyebrow" style="margin-top:6mm">Syllabus · Classes 6–8</p>
+  <h1 class="d">Make with AI</h1>
+  <p class="intro">Weekend AI classes where students go from “what is AI?” to building games, chatbots and their first real code, and learn to use AI safely and honestly.</p>
+  <p style="margin-top:4mm"><span class="offer">Launch offer: no admission fee for the first 51 students, plus a free demo class.</span></p>
+  <h2 class="d sec">Three levels, from basics to advanced</h2>
+  <div class="lv3"><div class="card"><small>Level 1 · Basics</small><h3 class="d">Discover AI</h3><p>Understand what AI is, how it learns and how to use it safely.</p><div class="fee">₹2,000 <span>/ 8 weeks</span></div></div><div class="card"><small>Level 2 · Builder</small><h3 class="d">Make with AI</h3><p>Make bigger projects that mix AI and coding.</p><div class="fee">₹2,500 <span>/ 8 weeks</span></div></div><div class="card"><small>Level 3 · Advanced</small><h3 class="d">Code with AI</h3><p>Move from blocks to real typed code.</p><div class="fee">₹3,000 <span>/ 8 weeks</span></div></div></div>
+  <p class="note">Fee per student for the full 8-week level.</p>
+  <h2 class="d sec">How the classes run</h2>
+  <div class="fmt"><div><h4>Every weekend</h4><p>Saturday: learn a new idea and build it together. Sunday: build your own version, then show and tell. A small task between weekends.</p></div><div><h4>Every level</h4><p>8 weeks, 16 one-hour classes. Ends with an online showcase for parents.</p></div><div><h4>Small batches</h4><p>10–15 students, live online on Google Meet.</p></div><div><h4>Where to start</h4><p>Everyone starts at Level 1. Students with prior experience can start higher after the free demo.</p></div></div>
+  <div class="pair">
+    <div class="card"><h3 class="d">What students need</h3><p>Classes are live online on Google Meet. Level 1 works on a phone or computer; a laptop or computer is needed for Levels 2 and 3. No coding knowledge is needed to start.</p>
+      <p class="takes"><b>Takes home:</b> A game and a chatbot they built themselves.</p></div>
+    <div class="card"><h3 class="d">Safety and honest use</h3><ul><li>Students under 13 never log in to AI chatbots. The teacher types and shares the screen, and the class decides together.</li><li>Every level covers privacy, fake pictures and checking facts.</li><li>AI is for learning and practice, never for copying homework.</li><li>No photos of students&#x27; faces are shared without permission.</li></ul></div>
+  </div>
+  <div class="cta" style="margin-top:5mm"><div><h3 class="d">Book a free demo class</h3></div>
+    <dl><dt>WhatsApp / Call</dt><dd>+91 70150 66237</dd><dt>Email</dt><dd>manish@themanishchauhan.in</dd></dl>
+    <img src="../qr-en.svg" alt="QR"></div>
+  <div class="foot"><span>Manish Chauhan · learn.themanishchauhan.in</span><span>Classes 6–8 · Make with AI · Page 1 / 4</span></div></section><section class="page"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>Classes 6–8 · Make with AI</div></div>
+  <div class="lhead"><div><p class="eyebrow">Level 1 · Basics · 8 weeks · 16 classes</p><h2 class="d">Discover AI</h2></div>
+    <div class="price"><strong>₹2,000</strong><span>Fee per student for the full 8-week level.</span></div></div>
+  <div class="info">
+    <div class="card"><h4>Goal</h4><p>Understand what AI is, how it learns and how to use it safely.</p></div>
+    <div class="card"><h4>What students build</h4><p>A picture-recognising AI model and a first Scratch game.</p></div>
+    <div class="card"><h4>Tools and device</h4><p>Quick Draw, Teachable Machine, Scratch. Phone or computer.</p></div>
+  </div>
+  <table class="wk"><tr><th>Week</th><th>What happens in class</th><th>Task at home</th></tr><tr><td class="n">1</td><td class="t"><b>What is AI? Spotting AI around us: maps, YouTube, voice assistants</b><span>“AI or not AI?” game, then Quick Draw on your own device</span></td><td class="h">Find 3 places AI is used at home and tell a parent</td></tr><tr><td class="n">2</td><td class="t"><b>How computers learn from examples: train a model to recognise pictures</b><span>Train Teachable Machine to recognise objects, and see what bad examples do</span></td><td class="h">Draw 5 things for a family member to guess</td></tr><tr><td class="n">3</td><td class="t"><b>Talking to AI: asking clear questions and checking the answers</b><span>Students write questions, the teacher types them and shares the screen; compare unclear and clear questions, catch a wrong answer</span></td><td class="h">Write 3 clear questions on a subject you are studying</td></tr><tr><td class="n">4</td><td class="t"><b>Scratch basics: characters, movement and loops</b><span>Move a character, add sounds, use loops</span></td><td class="h">Make a character dance to music</td></tr><tr><td class="n">5</td><td class="t"><b>Make your first game in Scratch</b><span>Build a “catch the falling object” game with a score</span></td><td class="h">Add one new idea to your game</td></tr><tr><td class="n">6</td><td class="t"><b>AI for studies: flashcards and quizzes the right way</b><span>Make flashcards and a quiz from a chapter (the teacher types), then check them against the textbook</span></td><td class="h">Quiz a parent with your flashcards</td></tr><tr><td class="n">7</td><td class="t"><b>Online safety: privacy, deepfakes and fake news</b><span>Real or fake picture game, privacy rules, checking fake news</span></td><td class="h">Teach your family the 5 golden rules</td></tr><tr><td class="n">8</td><td class="t"><b>Mini project and showcase for parents</b><span>Finish your game and present it to parents</span></td><td class="h">Celebrate!</td></tr></table>
+  <div class="foot"><span>Manish Chauhan · learn.themanishchauhan.in</span><span>Classes 6–8 · Make with AI · Page 2 / 4</span></div></section><section class="page"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>Classes 6–8 · Make with AI</div></div>
+  <div class="lhead"><div><p class="eyebrow">Level 2 · Builder · 8 weeks · 16 classes</p><h2 class="d">Make with AI</h2></div>
+    <div class="price"><strong>₹2,500</strong><span>Fee per student for the full 8-week level.</span></div></div>
+  <div class="info">
+    <div class="card"><h4>Goal</h4><p>Make bigger projects that mix AI and coding.</p></div>
+    <div class="card"><h4>What students build</h4><p>A multi-level game controlled by your own AI model, and a subject chatbot.</p></div>
+    <div class="card"><h4>Tools and device</h4><p>Scratch, Teachable Machine with a Scratch extension. Laptop or computer.</p></div>
+  </div>
+  <table class="wk"><tr><th>Week</th><th>What happens in class</th><th>Task at home</th></tr><tr><td class="n">1</td><td class="t"><b>Game design: plan a game with goals, scores and levels</b><span>Plan a game on paper: story, goal, score and levels</span></td><td class="h">Sketch one level of your game</td></tr><tr><td class="n">2</td><td class="t"><b>Build a bigger Scratch game with levels and a score</b><span>Add levels, score, lives and a timer using variables</span></td><td class="h">Let a family member play it and note one problem</td></tr><tr><td class="n">3</td><td class="t"><b>Train an AI model to recognise drawings or hand gestures</b><span>Collect examples in teams, train, test and improve the model</span></td><td class="h">Think of 3 hand signs your game could use</td></tr><tr><td class="n">4</td><td class="t"><b>Use your AI model inside your Scratch game</b><span>Connect the model so a hand sign moves your character</span></td><td class="h">Play-test and fix one bug</td></tr><tr><td class="n">5</td><td class="t"><b>Build a chatbot about a favourite school subject</b><span>Build it in Scratch with questions, answers and a quiz mode, then compare it with a real AI chatbot</span></td><td class="h">Add 5 more facts from your textbook</td></tr><tr><td class="n">6</td><td class="t"><b>AI images and stories: creativity, honesty and copyright</b><span>The teacher makes pictures and stories from students&#x27; ideas on a shared screen; talk about honesty, copyright and labelling AI work</span></td><td class="h">Write a short story idea for a comic</td></tr><tr><td class="n">7</td><td class="t"><b>Make a personal study planner with AI</b><span>Plan a weekly study timetable with AI on a shared screen, then turn it into your own poster</span></td><td class="h">Follow your planner for one week</td></tr><tr><td class="n">8</td><td class="t"><b>Project week and showcase</b><span>Finish your game or chatbot and present it</span></td><td class="h">Celebrate!</td></tr></table>
+  <div class="foot"><span>Manish Chauhan · learn.themanishchauhan.in</span><span>Classes 6–8 · Make with AI · Page 3 / 4</span></div></section><section class="page"><div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>Classes 6–8 · Make with AI</div></div>
+  <div class="lhead"><div><p class="eyebrow">Level 3 · Advanced · 8 weeks · 16 classes</p><h2 class="d">Code with AI</h2></div>
+    <div class="price"><strong>₹3,000</strong><span>Fee per student for the full 8-week level.</span></div></div>
+  <div class="info">
+    <div class="card"><h4>Goal</h4><p>Move from blocks to real typed code.</p></div>
+    <div class="card"><h4>What students build</h4><p>A Python quiz game, a simple chatbot and a web page about yourself.</p></div>
+    <div class="card"><h4>Tools and device</h4><p>Python (Thonny, free), HTML in a text editor. Laptop or computer.</p></div>
+  </div>
+  <table class="wk"><tr><th>Week</th><th>What happens in class</th><th>Task at home</th></tr><tr><td class="n">1</td><td class="t"><b>Start Python: drawing shapes and patterns with code</b><span>Draw shapes and patterns with Python turtle</span></td><td class="h">Draw your initials with code</td></tr><tr><td class="n">2</td><td class="t"><b>Variables, loops and conditions through mini games</b><span>Build a guess-the-number game</span></td><td class="h">Change the rules of the game</td></tr><tr><td class="n">3</td><td class="t"><b>Build a quiz game in Python</b><span>Questions, a score and a final result</span></td><td class="h">Add 5 questions on your favourite subject</td></tr><tr><td class="n">4</td><td class="t"><b>How chatbots work: build a simple chatbot in Python</b><span>Build a keyword chatbot and see how real AI chatbots are different</span></td><td class="h">Teach your chatbot 5 new replies</td></tr><tr><td class="n">5</td><td class="t"><b>Data and charts: run a class survey and chart the results</b><span>Enter class survey data and draw a bar chart with Python</span></td><td class="h">Ask your family one survey question</td></tr><tr><td class="n">6</td><td class="t"><b>Build a web page about yourself with HTML</b><span>Headings, pictures, lists and links in HTML (no address, phone or other personal details)</span></td><td class="h">Add a section about your hobby</td></tr><tr><td class="n">7</td><td class="t"><b>Final project build with teacher support</b><span>Pick a game, chatbot or web page and build it with teacher help</span></td><td class="h">Practise your presentation</td></tr><tr><td class="n">8</td><td class="t"><b>Showcase: present your project to parents</b><span>Present your project to parents</span></td><td class="h">Celebrate!</td></tr></table>
+  <div class="foot"><span>Manish Chauhan · learn.themanishchauhan.in</span><span>Classes 6–8 · Make with AI · Page 4 / 4</span></div></section></body></html>

@@ -7,6 +7,9 @@ import IncludedStrip from '@/components/IncludedStrip'
 import ComparisonTable from '@/components/ComparisonTable'
 import { productPlans, PRICING_NOTE, waLink, setupFees, priceUnit } from '@/lib/pricing'
 import { SITE, pageMeta } from '@/lib/seo'
+import JsonLd from '@/components/JsonLd'
+import PageSeo from '@/components/PageSeo'
+import FaqList from '@/components/FaqList'
 
 export const metadata = pageMeta({
   title: 'Pricing: ClinicOs, RentCorp, CafeCorp & Website Cost Estimator',
@@ -20,12 +23,13 @@ const faqs = [
   ['What is the one-time setup fee for?', 'It covers onboarding: setting up your account, importing your existing data (patients, tenants or menu) and training your staff, so you are ready to use the software from day one.'],
   ['Is there a discount for paying yearly?', 'Yes. Pay yearly and you get 2 months free, so you pay for 10 months instead of 12.'],
   ['Can I change plans later?', 'Yes. You can move up or down a plan as your business grows.'],
-  ['How do I pay?', 'UPI, bank transfer or card. You get a proper invoice for every payment.'],
+  ['How do I pay?', 'By UPI or bank transfer. You get a receipt for every payment.'],
 ]
 
 export default function Page() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }} />
       <PageHero eyebrow="Pricing" title="Simple prices. No surprises.">
         {PRICING_NOTE} Questions? Message me on WhatsApp and get an answer the same day.
       </PageHero>
@@ -83,19 +87,13 @@ export default function Page() {
       </section>
 
       <section className="!py-14 md:!py-20">
-        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Pricing questions</h2>
-          <div className="mt-8 divide-y divide-black/15 border-y border-black/15">
-            {faqs.map(([q, a]) => (
-              <details key={q} name="faq" className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">{q}<span className="text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
-                <p className="mt-3 text-[#555]">{a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={faqs} className="mt-8" />
           <a href={waLink('Hi Manish, I have a question about your pricing.')} target="_blank" rel="noopener noreferrer" className="mt-10 inline-block rounded-full bg-[#25D366] px-7 py-3.5 font-semibold text-white hover:bg-[#1ebe5b]">Ask on WhatsApp</a>
         </div>
       </section>
+      <PageSeo type="WebPage" name="Pricing: websites and software" path="/pricing" crumbs={[['Pricing', '/pricing']]} />
     </main>
   )
 }

@@ -1,6 +1,8 @@
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
 import { pageMeta } from '@/lib/seo'
+import PageSeo from '@/components/PageSeo'
+import { pageFaqs } from '@/lib/pageFaqs'
 
 export const metadata = pageMeta({
   title: 'Academics',
@@ -37,6 +39,7 @@ export default function Page() {
           </ul>
         </div>
       </section>
+      <PageSeo type="ProfilePage" name="Academics: Manish Chauhan" path="/academics" crumbs={[['Academics', '/academics']]} faqs={pageFaqs.academics()} />
       <CtaBand title="Want to work together?" />
     </main>
   )

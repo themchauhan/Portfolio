@@ -4,9 +4,9 @@ import { RECOMMENDATIONS_URL, testimonials } from "@/lib/testimonials";
 export default function Testimonial({ who, quote, className = "" }) {
   const t = testimonials[who];
   return (
-    <figure className={`mx-auto max-w-5xl ${className}`}>
+    <figure className={className}>
       <span aria-hidden="true" className="block font-display text-7xl font-extrabold leading-none text-[#ff5a1f] md:text-8xl">&ldquo;</span>
-      <blockquote className="-mt-4 font-display text-2xl font-bold leading-snug tracking-tight md:-mt-6 md:text-4xl">
+      <blockquote className="-mt-4 max-w-5xl font-display text-2xl font-bold leading-snug tracking-tight md:-mt-6 md:text-4xl">
         {t.quotes[quote]}
       </blockquote>
       <figcaption className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/20 pt-6">

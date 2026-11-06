@@ -5,6 +5,9 @@ import ShareTool from '@/components/tools/ShareTool'
 import QuotationMaker from '@/components/tools/QuotationMaker'
 import { SITE, pageMeta } from '@/lib/seo'
 import ToolOfferActions from '@/components/tools/ToolOfferActions'
+import PageSeo from '@/components/PageSeo'
+import ToolGuide from '@/components/ToolGuide'
+import FaqList from '@/components/FaqList'
 
 const URL = `${SITE}/tools/quotation-maker`
 
@@ -47,6 +50,14 @@ export default function Page() {
         </div>
       </section>
 
+      <div className="print:hidden">
+        <ToolGuide
+          title="Quotation format: what to include, with a sample"
+          intro="An online quotation maker for small businesses: a quotation should show your business details (and GSTIN if registered), the customer's details, a quotation number and date, a 'valid until' date, each item with quantity, unit and rate, any discount, GST (CGST + SGST or IGST) calculated after the discount, the total in figures and words, payment and delivery terms, and a signature. Most quotations are valid for 7 to 30 days."
+          table={{ head: ['#', 'Item / work', 'Qty', 'Rate (₹)', 'Amount (₹)'], rows: [['1', 'Modular kitchen, L-shape', '1 job', '1,45,000', '1,45,000'], ['2', 'Sliding wardrobe, laminate finish', '2 pcs', '38,000', '76,000'], ['3', 'Installation and transport', '1 job', '5,000', '5,000'], ['Total', 'Subtotal (before discount and GST)', '', '', '2,26,000']] }}
+          note="Below the subtotal, show the discount, then GST, then the final total. If you are not GST-registered, do not add GST or a GSTIN."
+        />
+      </div>
       <section className="!py-14 md:!py-20 bg-[#111] print:hidden">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 sm:px-8 md:flex-row md:items-center">
           <div>
@@ -59,18 +70,12 @@ export default function Page() {
       </section>
 
       <section className="!py-14 md:!py-20 print:hidden">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Quotations: common questions</h2>
-          <div className="mt-8 max-w-4xl divide-y divide-black/15 border-y border-black/15">
-            {faqs.map(([q, a]) => (
-              <details key={q} name="faq" className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">{q}<span className="text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
-                <p className="mt-3 text-[#555]">{a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={faqs} className="mt-8" />
         </div>
       </section>
+      <PageSeo type="WebPage" name="Quotation Maker" path="/tools/quotation-maker" crumbs={[['Free tools', '/tools'], ['Quotation Maker', '/tools/quotation-maker']]} />
     </main>
   )
 }

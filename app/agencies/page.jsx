@@ -5,6 +5,8 @@ import ContactForm from '@/components/products/ContactForm'
 import { SITE, pageMeta } from '@/lib/seo'
 import { getExperienceDuration } from '../../utils/experience'
 import TestimonialSlider from '@/components/TestimonialSlider'
+import PageSeo from '@/components/PageSeo'
+import FaqList from '@/components/FaqList'
 
 const url = `${SITE}/agencies`
 
@@ -20,7 +22,7 @@ const builds = [
   ['Headless WordPress', 'WordPress as the CMS with a Next.js front end, for teams that want editing comfort and front-end speed.'],
   ['Landing pages & campaigns', 'Launch, rebrand and campaign pages built quickly from your Figma files, with motion and responsive detail.'],
   ['Performance & technical SEO', 'Core Web Vitals, image and script optimisation, structured data and clean markup on new or existing sites.'],
-  ['Integrations & maintenance', 'HubSpot and Marketo forms, analytics, third-party APIs, plus updates on existing WordPress and Drupal sites.'],
+  ['Integrations & maintenance', 'HubSpot and Marketo forms, analytics, third-party APIs, plus updates on existing WordPress, Drupal and Contentful sites.'],
 ]
 
 // [title, who does it, description, what the agency gets]
@@ -174,22 +176,15 @@ export default function Page() {
       </section>
 
       <section className="!py-16 md:!py-24 bg-[#111] text-white">
-        <div className="px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <TestimonialSlider title="What project managers and teammates say." items={[{ who: 'rachel', quote: 'main' }, { who: 'connor', quote: 'agencies' }, { who: 'roman', quote: 'work' }, { who: 'ajay', quote: 'about' }]} />
         </div>
       </section>
 
       <section className="!py-14 md:!py-20 bg-white">
-        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Questions agencies ask</h2>
-          <div className="mt-8 divide-y divide-black/15 border-y border-black/15">
-            {faqs.map(([q, a]) => (
-              <details key={q} name="faq" className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-extrabold group-open:text-[#ff5a1f]">{q}<span className="shrink-0 text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
-                <p className="mt-3 text-[#555]">{a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={faqs} className="mt-8" />
         </div>
       </section>
 
@@ -212,6 +207,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <PageSeo type="WebPage" name="Freelance Next.js & WordPress developer for agencies" path="/agencies" crumbs={[['For agencies', '/agencies']]} />
     </main>
   )
 }

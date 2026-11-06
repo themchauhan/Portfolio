@@ -5,6 +5,9 @@ import ShareTool from '@/components/tools/ShareTool'
 import RentReceiptGenerator from '@/components/tools/RentReceiptGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
 import ToolOfferActions from '@/components/tools/ToolOfferActions'
+import PageSeo from '@/components/PageSeo'
+import ToolGuide from '@/components/ToolGuide'
+import FaqList from '@/components/FaqList'
 
 const URL = `${SITE}/tools/rent-receipt-generator`
 
@@ -48,6 +51,15 @@ export default function Page() {
         </div>
       </section>
 
+      <div className="print:hidden">
+        <ToolGuide
+          title="Rent receipt format for HRA"
+          intro="A rent receipt for HRA needs the tenant's and landlord's names, the rented property's full address, the rent amount in figures and words, the rent period, the date and mode of payment, and the landlord's signature. Add the landlord's PAN if yearly rent is more than ₹1,00,000, and a revenue stamp only for cash payments above ₹5,000. This free rent receipt generator fills all of it in and makes all 12 monthly receipts at once."
+          pointsTitle="Rules employers check"
+          points={[['Landlord PAN', 'Needed when rent is more than ₹1,00,000 a year (about ₹8,334 a month or more)'], ['Revenue stamp', 'Only for cash payments above ₹5,000; not needed for UPI, bank transfer or cheque'], ['Old tax regime only', 'The HRA exemption is not available under the new tax regime'], ['Monthly or yearly', 'One receipt per month, or one for the whole period: check what your employer prefers']]}
+          note="Sample wording: “Received a sum of Rs. 12,000 (Rupees Twelve Thousand only) from [tenant] towards the rent of [address] for the month of April 2026, paid by UPI.” Signed by the house owner, with PAN where needed."
+        />
+      </div>
       <section className="!py-14 md:!py-20 bg-[#111] print:hidden">
         <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 px-5 sm:px-8 md:flex-row md:items-center">
           <div>
@@ -60,20 +72,14 @@ export default function Page() {
       </section>
 
       <section className="!py-14 md:!py-20 print:hidden">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Rent receipts for HRA: common questions</h2>
-          <div className="mt-8 divide-y divide-black/15 border-y border-black/15">
-            {faqs.map(([q, a]) => (
-              <details key={q} name="faq" className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">{q}<span className="text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
-                <p className="mt-3 text-[#555]">{a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={faqs} className="mt-8" />
           <p className="mt-6 text-sm text-[#777]">This tool helps you prepare receipts. Check your employer&apos;s HRA rules for exact requirements.</p>
         </div>
       </section>
 
+      <PageSeo type="WebPage" name="Rent Receipt Generator" path="/tools/rent-receipt-generator" crumbs={[['Free tools', '/tools'], ['Rent Receipt Generator', '/tools/rent-receipt-generator']]} />
     </main>
   )
 }

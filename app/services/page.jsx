@@ -2,6 +2,8 @@ import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
 import { SITE, serviceList, pageMeta } from '@/lib/seo'
+import PageSeo from '@/components/PageSeo'
+import { pageFaqs } from '@/lib/pageFaqs'
 
 export const metadata = pageMeta({
   title: 'Software & Automation Services for Small Businesses',
@@ -30,6 +32,7 @@ export default function Page() {
         </div>
       </section>
 
+      <PageSeo type="CollectionPage" name="Software and automation services for small businesses" path="/services" crumbs={[['Services', '/services']]} faqs={pageFaqs.services()} />
       <CtaBand title="Not sure what you need? Let's talk." />
     </main>
   )

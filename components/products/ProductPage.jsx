@@ -1,4 +1,6 @@
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
+import PageSeo from "@/components/PageSeo";
 import ContactForm from "@/components/products/ContactForm";
 import TrackedLink from "@/components/TrackedLink";
 import PlanCards from "@/components/PlanCards";
@@ -6,6 +8,7 @@ import IncludedStrip from "@/components/IncludedStrip";
 import ComparisonTable from "@/components/ComparisonTable";
 import { productPlans, PRICING_NOTE, setupFees, priceUnit, pilot, inr, waLink } from "@/lib/pricing";
 import { getExperienceText } from "@/utils/experience";
+import FaqList from '@/components/FaqList'
 
 const Blade = ({ id, bg = "bg-white", title, sub, children }) => (
   <section id={id} className={`${bg} !py-14 md:!py-20`}>
@@ -69,6 +72,8 @@ export default function ProductPage({ product }) {
   const experience = getExperienceText();
   return (
     <main className="prod bg-white text-slate-800 antialiased">
+      <PageSeo type="WebPage" name={`${product.name}: ${product.tag}`} path={`/${product.slug}`} crumbs={[['Products', '/products'], [product.name, `/${product.slug}`]]} />
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: product.faqs.map(([q, ans]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: ans } })) }} />
 
       {/* Sub-header */}
       <div className="border-b border-slate-200 bg-white">
@@ -199,16 +204,7 @@ export default function ProductPage({ product }) {
 
       {/* FAQ */}
       <Blade id="faq" title="Frequently asked questions">
-        <div className="max-w-3xl divide-y divide-slate-200 border-y border-slate-200">
-          {product.faqs.map(([q, ans]) => (
-            <details key={q} name="faq" className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-slate-900">
-                {q}<span className="text-2xl text-orange-500 transition group-open:rotate-45">+</span>
-              </summary>
-              <p className="mt-3 text-slate-600">{ans}</p>
-            </details>
-          ))}
-        </div>
+        <FaqList items={product.faqs} />
       </Blade>
 
       {/* Contact */}

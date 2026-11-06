@@ -149,8 +149,12 @@ export default function RootLayout({ children }) {
       "Headless WordPress",
       "PHP",
       "Tailwind CSS",
+      "Material UI (MUI)",
+      "Bootstrap",
       "Technical SEO",
       "Core Web Vitals",
+      "Contentful",
+      "Drupal",
       "HubSpot",
       "Business Automation",
       "Artificial Intelligence in Education"

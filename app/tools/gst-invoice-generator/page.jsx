@@ -5,6 +5,8 @@ import ShareTool from '@/components/tools/ShareTool'
 import GstInvoiceGenerator from '@/components/tools/GstInvoiceGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
 import ToolOfferActions from '@/components/tools/ToolOfferActions'
+import PageSeo from '@/components/PageSeo'
+import FaqList from '@/components/FaqList'
 
 const URL = `${SITE}/tools/gst-invoice-generator`
 
@@ -56,20 +58,14 @@ export default function Page() {
       </section>
 
       <section className="!py-14 md:!py-20 print:hidden">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">GST invoices: common questions</h2>
-          <div className="mt-8 max-w-4xl divide-y divide-black/15 border-y border-black/15">
-            {faqs.map(([q, a]) => (
-              <details key={q} name="faq" className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">{q}<span className="text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
-                <p className="mt-3 text-[#555]">{a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={faqs} className="mt-8" />
           <p className="mt-6 text-sm text-[#777]">This tool helps you prepare invoices. Confirm GST rates and invoice rules with your accountant.</p>
         </div>
       </section>
 
+      <PageSeo type="WebPage" name="GST Invoice Generator" path="/tools/gst-invoice-generator" crumbs={[['Free tools', '/tools'], ['GST Invoice Generator', '/tools/gst-invoice-generator']]} />
     </main>
   )
 }

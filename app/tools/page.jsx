@@ -2,6 +2,8 @@ import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import FreeBadges from '@/components/tools/FreeBadges'
 import { SITE, pageMeta } from '@/lib/seo'
+import PageSeo from '@/components/PageSeo'
+import { pageFaqs } from '@/lib/pageFaqs'
 
 export const metadata = pageMeta({
   title: 'Free Business Tools: Rent Receipts, GST Invoices',
@@ -36,6 +38,7 @@ export default function Page() {
           ))}
         </div>
       </section>
+      <PageSeo type="CollectionPage" name="Free tools for small businesses" path="/tools" crumbs={[['Free tools', '/tools']]} faqs={pageFaqs.tools()} />
     </main>
   )
 }

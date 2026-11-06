@@ -1,4 +1,6 @@
 import { SITE, serviceList } from '@/lib/seo'
+import { townPageKeys } from '@/lib/townPages'
+import { pageCount } from '@/lib/blogList'
 import { newBlogPosts } from '@/lib/blogPosts'
 
 const blogSlugs = [
@@ -24,6 +26,7 @@ export default function sitemap() {
     entry('/pricing', 'monthly', 0.9),
     entry('/services', 'monthly', 0.9),
     ...serviceList.map((s) => entry(`/services/${s.slug}`, 'monthly', 0.8)),
+    ...townPageKeys.map((k) => entry(`/services/${k}`, 'monthly', 0.7)),
     entry('/tools', 'monthly', 0.8),
     entry('/tools/rent-receipt-generator', 'monthly', 0.9),
     entry('/tools/gst-invoice-generator', 'monthly', 0.9),
@@ -35,6 +38,7 @@ export default function sitemap() {
     entry('/tools/website-cost-calculator', 'monthly', 0.8),
     entry('/academics', 'yearly', 0.5),
     entry('/blog', 'weekly', 0.7),
+    ...Array.from({ length: Math.max(0, pageCount - 1) }, (_, i) => entry(`/blog/page/${i + 2}`, 'weekly', 0.5)),
     ...newBlogPosts.map((p) => entry(`/blog/${p.id}`, 'monthly', 0.8)),
     ...blogSlugs.map((s) => entry(`/blog/${s}`, 'monthly', 0.6)),
     entry('/contacts', 'monthly', 0.7),

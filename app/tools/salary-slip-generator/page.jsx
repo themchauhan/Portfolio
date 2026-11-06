@@ -5,6 +5,9 @@ import ShareTool from '@/components/tools/ShareTool'
 import SalarySlipGenerator from '@/components/tools/SalarySlipGenerator'
 import { SITE, pageMeta } from '@/lib/seo'
 import ToolOfferActions from '@/components/tools/ToolOfferActions'
+import PageSeo from '@/components/PageSeo'
+import ToolGuide from '@/components/ToolGuide'
+import FaqList from '@/components/FaqList'
 
 const URL = `${SITE}/tools/salary-slip-generator`
 
@@ -48,6 +51,16 @@ export default function Page() {
         </div>
       </section>
 
+      <div className="print:hidden">
+        <ToolGuide
+          title="Free payslip generator for India: salary slip format and sample"
+          intro="This free online payslip generator makes a salary slip in a minute: add company and employee details, earnings (Basic, HRA, allowances) and deductions (PF, ESI, professional tax, TDS), and it works out gross pay, net pay and the amount in words. PF is 12% of Basic, usually on the ₹15,000 wage ceiling (at most ₹1,800 a month), and ESI applies when gross pay is ₹21,000 or less. Download it as PDF with your logo, with no sign-up."
+          table={{ head: ['Salary slip sample', 'Amount (₹)'], rows: [['Basic', '15,000'], ['HRA', '6,000'], ['Conveyance', '1,600'], ['Special allowance', '2,400'], ['Gross earnings', '25,000'], ['PF (12% of Basic)', '1,800'], ['Professional tax', '200'], ['TDS', '0'], ['Total deductions', '2,000'], ['Net pay', '23,000']] }}
+          pointsTitle="What a salary slip must show"
+          points={[['Company details', 'Name, address and logo'], ['Employee details', 'Name, ID, designation, PAN, UAN and bank account'], ['Pay period', 'Month, working days, paid days and loss-of-pay days'], ['Earnings and deductions', 'Each component, with gross pay and net pay in figures and words']]}
+          note="ESI is not deducted in this sample because gross pay is above ₹21,000. Rules for professional tax differ by state."
+        />
+      </div>
       <section className="!py-14 md:!py-20 bg-[#111] print:hidden">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 sm:px-8 md:flex-row md:items-center">
           <div>
@@ -83,19 +96,13 @@ export default function Page() {
       </section>
 
       <section className="!py-14 md:!py-20 print:hidden">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Salary slips: common questions</h2>
-          <div className="mt-8 max-w-4xl divide-y divide-black/15 border-y border-black/15">
-            {faqs.map(([q, a]) => (
-              <details key={q} name="faq" className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">{q}<span className="text-2xl text-[#ff5a1f] transition group-open:rotate-45">+</span></summary>
-                <p className="mt-3 text-[#555]">{a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={faqs} className="mt-8" />
           <p className="mt-6 text-sm text-[#777]">This tool helps you prepare salary slips. Check PF, ESI, professional tax and TDS rules with your accountant.</p>
         </div>
       </section>
+      <PageSeo type="WebPage" name="Salary Slip Generator" path="/tools/salary-slip-generator" crumbs={[['Free tools', '/tools'], ['Salary Slip Generator', '/tools/salary-slip-generator']]} />
     </main>
   )
 }

@@ -30,7 +30,7 @@ export default function TestimonialSlider({ items, title, interval = 7000, class
       onBlur={() => setPaused(false)}
     >
       {title && (
-        <div className="mx-auto mb-10 max-w-5xl">
+        <div className="mb-10">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#ff5a1f]">Recommendations</p>
           <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h2>
         </div>
@@ -47,7 +47,7 @@ export default function TestimonialSlider({ items, title, interval = 7000, class
         ))}
       </div>
 
-      <div className="mx-auto mt-8 flex max-w-5xl items-center gap-4">
+      <div className="mt-8 flex items-center gap-4">
         <button type="button" onClick={() => go(i - 1)} aria-label="Previous recommendation" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 hover:border-[#ff5a1f] hover:text-[#ff5a1f]">←</button>
         <div className="flex gap-2">
           {items.map((t, n) => (
