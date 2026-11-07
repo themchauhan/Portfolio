@@ -31,6 +31,7 @@ export default function Page() {
               <p className="text-sm font-semibold uppercase tracking-widest text-[#777]">Elsewhere</p>
               <p className="mt-2 flex gap-6 text-lg font-medium">
                 <a href="https://www.linkedin.com/in/themchauhan" target="_blank" rel="noopener noreferrer" className="underline decoration-[#ff5a1f] decoration-2 underline-offset-4">LinkedIn</a>
+                <a href="https://www.instagram.com/themanishchauhan.learn/" target="_blank" rel="noopener noreferrer" className="underline decoration-[#ff5a1f] decoration-2 underline-offset-4">Instagram</a>
               </p>
             </div>
           </div>

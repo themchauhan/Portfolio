@@ -47,6 +47,7 @@ const Footer = () => (
         <p>&copy; {new Date().getFullYear()} Manish Chauhan. All rights reserved.</p>
         <div className="flex gap-6">
           <a href="https://www.linkedin.com/in/themchauhan" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a>
+          <a href="https://www.instagram.com/themanishchauhan.learn/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Instagram</a>
         </div>
       </div>
     </div>

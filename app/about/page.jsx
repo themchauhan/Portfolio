@@ -232,6 +232,8 @@ export default function Page() {
               <a href="mailto:manish@themanishchauhan.in" className="break-all font-semibold underline underline-offset-4">manish@themanishchauhan.in</a>
               {' · '}
               <a href="https://www.linkedin.com/in/themchauhan" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">LinkedIn</a>
+              {' · '}
+              <a href="https://www.instagram.com/themanishchauhan.learn/" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">Instagram</a>
             </p>
           </div>
           <Link href="/contacts" className="shrink-0 rounded-full bg-[#111] px-8 py-4 text-lg font-semibold text-white hover:bg-white hover:text-[#111]">Start a project</Link>

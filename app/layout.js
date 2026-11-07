@@ -123,7 +123,8 @@ export default function RootLayout({ children }) {
     "url": "https://themanishchauhan.in",
     "image": "https://themanishchauhan.in/manish-portrait.jpg",
     "sameAs": [
-      "https://www.linkedin.com/in/themchauhan"
+      "https://www.linkedin.com/in/themchauhan",
+      "https://www.instagram.com/themanishchauhan.learn/"
     ],
     "address": {
       "@type": "PostalAddress",
