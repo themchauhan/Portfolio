@@ -1,10 +1,11 @@
 import { mailOptions, transporter } from "../../config/nodemailer";
 import dotenv from 'dotenv';
+import { contactMethod } from "../../lib/contactMethod";
 dotenv.config({ path: '.env.staging' });
 
 const CONTACT_MESSAGE_FIELDS = {
   name: "Name",
-  email: "Email",
+  email: "Email or phone",
   subject: "Subject",
   message: "Message",
 };
@@ -42,6 +43,12 @@ const handler = async (req, res) => {
     if (!data.name || !data.email || !data.subject || !data.message) {
       return res.status(400).json({ message: "All fields are required" });
     }
+    // The "email" field may hold an email address or a phone number (older clients always send an email).
+    const method = contactMethod(data.email);
+    if (!method) {
+      return res.status(400).json({ message: "Enter a valid email address or phone number." });
+    }
+    data.email = String(data.email).trim();
 
     // Check if email configuration is available
     if (!process.env.EMAIL || !process.env.EMAIL_PASS) {
@@ -57,7 +64,8 @@ const handler = async (req, res) => {
         ...mailOptions,
         ...generateEmailContent(data),
         subject: data.subject,
-        replyTo: `${data.name} <${data.email}>`, // hit Reply to answer the visitor
+        // Hit Reply to answer the visitor; phone-only enquiries have no reply address, so call or WhatsApp them.
+        ...(method === "email" ? { replyTo: `${data.name} <${data.email}>` } : {}),
       });
 
       return res.status(200).json({ 

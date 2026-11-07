@@ -138,7 +138,29 @@ h1 { font-size: 52pt; margin-top: 2mm; }
 
 def e(s): return html.escape(s)
 
-def build(lang):
+# Black-and-white print version: white paper, no big solid fills, outlines instead of colour.
+BW_CSS = """
+:root { --accent: #111; --bg: #fff; --muted: #333; --line: #111; }
+.page { background: #fff; }
+.eyebrow, .tag, .qt, .course .cls { color: #111; }
+.tag { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.offer { background: #fff; color: #111; border: 3px solid #111; }
+.course, .course:last-child { background: #fff; color: #111; border: 2px solid #111; }
+.course:last-child p, .course p { color: #222; }
+.levels div, .levels div:nth-of-type(2) { background: #fff; border: 1.5px solid #111; }
+.levels div:nth-of-type(3) { background: #fff; color: #111; border: 3px solid #111; }
+.levels i { color: #111; }
+.q { border: 1.5px solid #111; }
+.q figcaption, .qnote { color: #333; }
+.cta { background: #fff; color: #111; border: 3px solid #111; }
+.cta .wa { color: #111; }
+.cta .url, .by, .cta figcaption { color: #333; }
+.cta img { border: 1.5px solid #111; }
+.logo b::after { background: #fff; }
+.top { color: #333; }
+"""
+
+def build(lang, bw=False):
     t, b = T[lang], B[lang]
     courses = "".join(f'<div class="course"><p class="cls">{e(c)}</p><h2 class="d">{e(n)}</h2><p>{e(d)}</p>'
                       '</div>' for c, n, d in t["courses"])
@@ -148,7 +170,7 @@ def build(lang):
     font = "Inter:wght@400;600;700;800" if lang == "en" else "Mukta:wght@400;600;700;800"
     doc = f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>AI classes flyer</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family={font}&display=swap" rel="stylesheet">
-<style>:root{{--body:"{t["font"]}"}} {CSS}</style></head><body class="{lang}"><section class="page">
+<style>:root{{--body:"{t["font"]}"}} {CSS} {BW_CSS if bw else ""}</style></head><body class="{lang}"><section class="page">
   <div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>{e(t["url"])}</div></div>
   <p class="eyebrow">{e(b["eyebrow"])}</p>
   <h1 class="d">{e(t["usa"])}</h1>
@@ -162,8 +184,9 @@ def build(lang):
   <div class="cta"><div><h3 class="d">{e(t["cta"])}</h3><p class="wa">{e(t["wa"])}</p><p class="phone">{PHONE}</p><p class="url">{e(t["url"])}</p><p class="by">{e(t["teacher"])}</p></div>
     <figure><img src="{t["qr"]}" alt="QR"><figcaption>{e(t["scan"])}</figcaption></figure></div>
 </section></body></html>'''
-    (OUT / f"flyer-{lang}.html").write_text(doc, encoding="utf-8")
+    (OUT / f"flyer-{lang}{'-bw' if bw else ''}.html").write_text(doc, encoding="utf-8")
 
 for lg in ("en", "hi"):
     build(lg)
+    build(lg, bw=True)
 print("built flyer")

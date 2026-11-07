@@ -9,6 +9,10 @@ import { starterPriceText } from '@/lib/pricing'
 import TestimonialSlider from '@/components/TestimonialSlider'
 import PageSeo from '@/components/PageSeo'
 import { pageFaqs } from '@/lib/pageFaqs'
+import TrackedLink from '@/components/TrackedLink'
+import { waLink } from '@/lib/pricing'
+
+const LEARN_URL = 'https://learn.themanishchauhan.in'
 
 export const metadata = pageMeta({
   title: { absolute: 'Manish Chauhan - Full Stack Web Developer & Freelancer' },
@@ -30,7 +34,7 @@ const clients = [
 const audiences = [
   ['/agencies', 'Agencies', 'Design and marketing agencies that need a reliable developer for their website projects, white-label.', 'For agencies'],
   ['/pricing', 'Shops & small businesses', `A professional website with WhatsApp and Google listing. Starter Pack at ${starterPriceText()}.`, 'See the Starter Pack'],
-  ['https://learn.themanishchauhan.in', 'Students & schools', 'Weekend AI classes for Classes 6–12, first taught in California, now live online in India.', 'AI classes'],
+  [LEARN_URL, 'Students & schools', 'Weekend AI classes for Classes 6–12, first taught in California, now live online in India.', 'AI classes'],
   ['/products', 'Clinics, landlords & cafés', 'Ready-made software that replaces registers and paperwork: ClinicOs, RentCorp and CafeCorp.', 'See products'],
 ]
 
@@ -88,8 +92,8 @@ export default function Home() {
               {experience} of building for companies like Splunk, Cohesity and Socure. Now building my own products for clinics, landlords and cafés.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <Link href="/contacts" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Start a project</Link>
-              <Link href="/products" className="rounded-full border-2 border-[#111] px-7 py-3 font-semibold hover:bg-[#111] hover:text-white">See my products</Link>
+              <TrackedLink href="/contacts" event="business_enquiry_click" params={{ position: 'hero', destination: '/contacts' }} className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Start a project</TrackedLink>
+              <TrackedLink href="/products" event="business_path_click" params={{ position: 'hero', destination: '/products' }} className="rounded-full border-2 border-[#111] px-7 py-3 font-semibold hover:bg-[#111] hover:text-white">See my products</TrackedLink>
             </div>
           </div>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm lg:max-w-none">
@@ -119,11 +123,11 @@ export default function Home() {
           <Heading>Who I help</Heading>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {audiences.map(([href, title, desc, cta]) => (
-              <Link key={href} href={href} className="group flex flex-col border-t-4 border-[#111] bg-white p-7 hover:border-[#ff5a1f]">
+              <TrackedLink key={href} href={href} event={href === LEARN_URL ? 'learning_path_click' : 'business_path_click'} params={{ position: 'who_i_help', destination: href, audience: title }} className="group flex flex-col border-t-4 border-[#111] bg-white p-7 hover:border-[#ff5a1f]">
                 <h3 className="font-display text-2xl font-extrabold group-hover:text-[#ff5a1f]">{title}</h3>
                 <p className="mt-3 text-[#555]">{desc}</p>
                 <p className="mt-auto pt-6 font-semibold text-[#ff5a1f]">{cta} →</p>
-              </Link>
+              </TrackedLink>
             ))}
           </div>
         </div>
@@ -154,14 +158,14 @@ export default function Home() {
           </div>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {productList.map((p) => (
-              <Link key={p.slug} href={`/${p.slug}`} className="group flex flex-col justify-between rounded-2xl border border-white/15 p-8 transition hover:border-[#ff5a1f] hover:bg-white/5">
+              <TrackedLink key={p.slug} href={`/${p.slug}`} event="business_path_click" params={{ position: 'products', destination: `/${p.slug}`, product: p.name }} className="group flex flex-col justify-between rounded-2xl border border-white/15 p-8 transition hover:border-[#ff5a1f] hover:bg-white/5">
                 <div>
                   <p className="text-sm text-[#b9b5ad]">{p.tag}</p>
                   <h3 className="mt-3 font-display text-3xl font-extrabold text-white">{p.name}</h3>
                   <p className="mt-4 leading-relaxed text-[#b9b5ad]">{p.summary}</p>
                 </div>
                 <p className="mt-8 font-semibold text-[#ff5a1f]">Learn more <span className="inline-block transition group-hover:translate-x-1">→</span></p>
-              </Link>
+              </TrackedLink>
             ))}
           </div>
         </div>
@@ -286,6 +290,15 @@ export default function Home() {
             <p className="mt-6 max-w-md text-xl text-[#111]/80">Tell me what you need. I&apos;ll reply within one working day.</p>
           </div>
           <div className="rounded-2xl bg-white p-6 shadow-xl md:p-8"><ContactForm product="Website" /></div>
+        </div>
+        {/* Learning enquiries: one quiet line, so parents have a way in without a second form */}
+        <div className="mx-auto mt-12 max-w-7xl px-5 sm:px-8">
+          <p className="border-t border-[#111]/20 pt-6 text-[#111]/80">
+            Looking for AI classes for your child (Classes 6–12)?{' '}
+            <TrackedLink href={LEARN_URL} event="learning_enquiry_click" params={{ position: 'contact_section', destination: LEARN_URL }} className="font-semibold text-[#111] underline decoration-2 underline-offset-4 hover:decoration-white">See the courses</TrackedLink>
+            {' '}or{' '}
+            <TrackedLink href={waLink('Hi Manish, I would like to know about the AI classes for my child.')} target="_blank" rel="noopener noreferrer" event="learning_enquiry_click" params={{ position: 'contact_section', destination: 'whatsapp' }} className="font-semibold text-[#111] underline decoration-2 underline-offset-4 hover:decoration-white">ask on WhatsApp</TrackedLink>.
+          </p>
         </div>
       </section>
 

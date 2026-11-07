@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import { track } from "@/lib/analytics";
+import { contactMethod } from "@/lib/contactMethod";
 
 const empty = { name: "", email: "", company: "", message: "" };
 
@@ -14,10 +15,21 @@ export default function ContactForm({
   const [form, setForm] = useState(empty);
   const [status, setStatus] = useState(null); // 'sending' | 'success' | 'error'
 
-  const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const onChange = (e) => {
+    if (e.target.name === "email") e.target.setCustomValidity("");
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   async function onSubmit(e) {
     e.preventDefault();
+    // One field takes an email or a phone number; the browser shows this message if it is neither.
+    const method = contactMethod(form.email);
+    if (!method) {
+      const input = e.currentTarget.elements.email;
+      input.setCustomValidity("Enter a valid email address or a 10-digit phone number.");
+      input.reportValidity();
+      return;
+    }
     setStatus("sending");
     try {
       const res = await fetch("/api/contact", {
@@ -25,7 +37,7 @@ export default function ContactForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: form.name,
-          email: form.email,
+          email: form.email.trim(),
           subject: `${product} enquiry${form.company ? ` - ${form.company}` : ""}`,
           message: `Company: ${form.company || "-"}\n\n${form.message}`,
         }),
@@ -33,7 +45,7 @@ export default function ContactForm({
       if (!res.ok) throw new Error("failed");
       setForm(empty);
       setStatus("success");
-      track("contact_submit", { form: product, page: window.location.pathname });
+      track("contact_submit", { form: product, page: window.location.pathname, contact_method: method });
     } catch {
       setStatus("error");
     }
@@ -50,8 +62,8 @@ export default function ContactForm({
           <input className={`${field} mt-1.5`} name="name" value={form.name} onChange={onChange} required placeholder="Full name" />
         </label>
         <label className="block text-sm text-slate-700">
-          Work email
-          <input className={`${field} mt-1.5`} type="email" name="email" value={form.email} onChange={onChange} required placeholder="you@company.com" />
+          Email or phone
+          <input className={`${field} mt-1.5`} type="text" name="email" value={form.email} onChange={onChange} required autoComplete="email" placeholder="you@email.com or mobile" />
         </label>
       </div>
       <label className="block text-sm text-slate-700">
