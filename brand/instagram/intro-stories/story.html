@@ -1,0 +1,96 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#ff5a1f;--ink:#111;--paper:#f4f1ec;--muted:#5c5650}
+*{margin:0;box-sizing:border-box}
+body{width:1080px;height:1920px;font-family:Inter,sans-serif;position:relative;overflow:hidden}
+.s{position:absolute;inset:0;padding:250px 96px 300px;display:flex;flex-direction:column}
+/* subtle dot grid */
+.grid{position:absolute;inset:0;background-image:radial-gradient(currentColor 2px,transparent 2.5px);background-size:48px 48px;opacity:.07;pointer-events:none}
+.top{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:18px;font-family:'Bricolage Grotesque';font-weight:800;font-size:40px}
+.brand .dot{color:var(--orange)}
+.step{font-family:'JetBrains Mono';font-size:28px;letter-spacing:.06em;opacity:.65}
+.bars{display:flex;gap:10px;margin-top:28px}
+.bars i{flex:1;height:6px;border-radius:6px;background:currentColor;opacity:.15}
+.bars i.on{opacity:1;background:var(--orange)}
+.label{font-family:'JetBrains Mono';font-size:30px;color:var(--orange);letter-spacing:.04em}
+h1{font-family:'Bricolage Grotesque';font-weight:800;letter-spacing:-.025em;line-height:.98}
+p.body{font-size:46px;line-height:1.38;font-weight:500}
+.u{text-decoration:underline;text-decoration-color:var(--orange);text-decoration-thickness:10px;text-underline-offset:12px}
+.handle{font-size:30px;font-weight:600;opacity:.7}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end}
+
+/* 1: paper */
+.s1{background:var(--paper);color:var(--ink)}
+.s1 .photo{position:relative;flex-shrink:0;width:500px;height:560px;margin-top:64px}
+.s1 .photo::before{content:"";position:absolute;inset:0;transform:translate(22px,22px);background:var(--orange);border-radius:40px}
+.s1 .photo img{position:relative;width:100%;height:100%;object-fit:cover;object-position:50% 18%;border-radius:40px}
+.s1 .tag{position:absolute;right:-180px;bottom:70px;background:var(--ink);color:#fff;border-radius:999px;padding:18px 28px;font-family:'JetBrains Mono';font-size:28px}
+.s1 h1{font-size:124px;margin-top:72px}
+.s1 p.body{margin-top:36px;color:#333}
+
+/* 2: ink */
+.s2{background:var(--ink);color:#fff}
+.s2 h1{font-size:104px;margin-top:110px}
+.s2 h1 em{font-style:normal;color:var(--orange)}
+.s2 p.body{margin-top:44px;color:#d8d3cc}
+.term{margin-top:70px;border:2px solid rgba(255,255,255,.14);border-radius:28px;background:rgba(255,255,255,.04);overflow:hidden}
+.term .bar{display:flex;gap:12px;padding:22px 26px;border-bottom:2px solid rgba(255,255,255,.1)}
+.term .bar b{width:18px;height:18px;border-radius:50%;background:#444}
+.term .bar b:first-child{background:var(--orange)}
+.term pre{font-family:'JetBrains Mono';font-size:31px;line-height:1.7;padding:26px 30px;color:#cfc9c1;white-space:pre-wrap}
+.term .k{color:var(--orange)}.term .c{color:#7d776f}
+
+/* 3: orange */
+.s3{background:var(--orange);color:var(--ink)}
+.s3 .grid{opacity:.12}
+.s3 h1{font-size:118px;margin-top:110px}
+.s3 p.body{margin-top:40px}
+.chips{display:flex;flex-wrap:wrap;gap:18px;margin-top:56px}
+.chips span{background:var(--ink);color:#fff;border-radius:999px;padding:20px 32px;font-size:36px;font-weight:600}
+.chips span.w{background:#fff;color:var(--ink)}
+.cta{margin-top:84px;font-family:'Bricolage Grotesque';font-weight:800;font-size:84px;line-height:1.02;letter-spacing:-.02em}
+.cta span{background:var(--ink);color:#fff;padding:0 20px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.s3 .handle{opacity:.85}
+</style></head><body>
+
+<section class="s s1" id="s1">
+  <div class="grid"></div>
+  <div class="top"><div class="brand"><svg width="56" height="56" viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#111"/><path d="M12 35V13l12 14 12-14v10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="35.5" r="3.6" fill="#ff5a1f"/></svg><span>manish<span class="dot">.</span></span></div><span class="step">01 / 03</span></div>
+  <div class="bars"><i class="on"></i><i></i><i></i></div>
+  <div class="photo"><img src="portrait.jpg"><span class="tag">8+ years building</span></div>
+  <h1>Hello,<br>I'm <span class="u">Manish.</span></h1>
+  <p class="body">A technology professional with 8+ years of experience building websites, applications and digital solutions.</p>
+  <div class="foot"><span class="handle">themanishchauhan.in</span></div>
+</section>
+
+<section class="s s2" id="s2">
+  <div class="grid" style="color:#fff"></div>
+  <div class="top"><div class="brand"><svg width="56" height="56" viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#fff"/><path d="M12 35V13l12 14 12-14v10" fill="none" stroke="#111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="35.5" r="3.6" fill="#ff5a1f"/></svg><span>manish<span class="dot">.</span></span></div><span class="step">02 / 03</span></div>
+  <div class="bars"><i class="on"></i><i class="on"></i><i></i></div>
+  <p class="label" style="margin-top:110px">// what I do</p>
+  <h1 style="margin-top:24px">Technology that solves <em>real problems.</em></h1>
+  <p class="body">Over the years, I've worked with different technologies, built digital products and helped solve real-world problems through technology.</p>
+  <div class="term"><div class="bar"><b></b><b></b><b></b></div>
+<pre><span class="c"># 8+ years, one toolbox</span>
+<span class="k">build</span>    websites  → Next.js · WordPress
+<span class="k">build</span>    web apps  → React · Node.js
+<span class="k">build</span>    products  → ClinicOs · RentCorp
+<span class="k">automate</span> busywork  → workflows · AI</pre></div>
+  <div class="foot"><span class="handle">themanishchauhan.in</span></div>
+</section>
+
+<section class="s s3" id="s3">
+  <div class="grid"></div>
+  <div class="top"><div class="brand"><svg width="56" height="56" viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#111"/><path d="M12 35V13l12 14 12-14v10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="35.5" r="3.6" fill="#fff"/></svg><span>manish<span class="dot" style="color:#fff">.</span></span></div><span class="step">03 / 03</span></div>
+  <div class="bars" style="color:#111"><i class="on" style="background:#111"></i><i class="on" style="background:#111"></i><i class="on" style="background:#111"></i></div>
+  <p class="label" style="margin-top:110px;color:#111">// why this page</p>
+  <h1 style="margin-top:24px">Now, I want to share what I learn and build.</h1>
+  <div class="chips"><span>AI</span><span>Technology</span><span class="w">Practical skills</span><span class="w">Ideas that make a difference</span></div>
+  <p class="cta"><span>Let's learn and</span><br><span>grow together.</span></p>
+  <div class="foot"><span class="handle">themanishchauhan.in</span></div>
+</section>
+
+<script>const id=location.hash.slice(1)||'s1';document.querySelectorAll('section').forEach(s=>{if(s.id!==id)s.remove()});</script>
+</body></html>
