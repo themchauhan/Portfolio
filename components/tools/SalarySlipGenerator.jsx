@@ -7,7 +7,8 @@ import LogoUpload from "@/components/tools/LogoUpload";
 const money = (n) => new Intl.NumberFormat("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n || 0);
 const r2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
 const uid = () => Math.random().toString(36).slice(2);
-const row = (label, amount = "") => ({ id: uid(), label, amount });
+// fixed: a one-time payment (bonus, incentive, arrears) that is paid in full and not cut for loss-of-pay days.
+const row = (label, amount = "", fixed = false) => ({ id: uid(), label, amount, fixed });
 
 const now = new Date();
 const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
@@ -21,7 +22,7 @@ const PF_RATE = 0.12, PF_CEILING = 15000, ESI_RATE = 0.0075, ESI_LIMIT = 21000;
 const TEXT = {
   en: {
     company: "Company", companyName: "Company name", logo: "Company logo", address: "Address", payMonth: "Pay month", payDate: "Pay date",
-    working: "Working days", paidDays: "Paid days", lop: (d) => `${d} day(s) loss of pay: earnings are reduced proportionally.`,
+    working: "Working days", paidDays: "Paid days", lop: (d) => `${d} day(s) loss of pay: earnings are reduced proportionally, except rows ticked "Full amount".`, fixed: "Full amount (not cut for leave)",
     employee: "Employee", empName: "Employee name", empId: "Employee ID", designation: "Designation", department: "Department", doj: "Date of joining",
     optional: "(optional)", bank: "Bank account", bankHint: "(optional, last 4 digits is enough)",
     earnings: "Earnings", deductions: "Deductions", monthly: "(monthly amounts)", addEarning: "Add earning", addDeduction: "Add deduction",
@@ -33,7 +34,7 @@ const TEXT = {
   },
   hi: {
     company: "कंपनी", companyName: "कंपनी का नाम", logo: "कंपनी का लोगो", address: "पता", payMonth: "सैलरी का महीना", payDate: "सैलरी की तारीख",
-    working: "कुल वर्किंग दिन", paidDays: "जितने दिन की सैलरी", lop: (d) => `${d} दिन की छुट्टी बिना सैलरी (LOP): सैलरी उसी हिसाब से कम होगी।`,
+    working: "कुल वर्किंग दिन", paidDays: "जितने दिन की सैलरी", lop: (d) => `${d} दिन की छुट्टी बिना सैलरी (LOP): सैलरी उसी हिसाब से कम होगी, सिवाय उन रकमों के जिन पर "पूरी रकम" टिक है।`, fixed: "पूरी रकम (छुट्टी पर नहीं कटेगी)",
     employee: "कर्मचारी", empName: "कर्मचारी का नाम", empId: "कर्मचारी ID", designation: "पद (Designation)", department: "विभाग (Department)", doj: "जॉइनिंग की तारीख",
     optional: "(अगर हो तो)", bank: "बैंक अकाउंट", bankHint: "(अगर चाहें, आख़िरी 4 अंक काफ़ी हैं)",
     earnings: "कमाई (Earnings)", deductions: "कटौती (Deductions)", monthly: "(महीने की रकम)", addEarning: "कमाई जोड़ें", addDeduction: "कटौती जोड़ें",
@@ -61,7 +62,7 @@ export default function SalarySlipGenerator({ lang = "en" }) {
   const factor = working > 0 ? paid / working : 0; // loss-of-pay proration
 
   const calc = useMemo(() => {
-    const e = earnings.map((x) => ({ ...x, earned: r2((Number(x.amount) || 0) * factor) }));
+    const e = earnings.map((x) => ({ ...x, earned: r2((Number(x.amount) || 0) * (x.fixed ? 1 : factor)) }));
     const d = deductions.map((x) => ({ ...x, value: r2(Number(x.amount) || 0) }));
     const gross = r2(e.reduce((s, x) => s + x.earned, 0));
     const totalDed = r2(d.reduce((s, x) => s + x.value, 0));
@@ -83,19 +84,28 @@ export default function SalarySlipGenerator({ lang = "en" }) {
   const field = "mt-1.5 w-full rounded-md border border-black/20 bg-white px-3 py-2.5 outline-none focus:border-[#ff5a1f] focus:ring-2 focus:ring-[#ff5a1f]/20";
   const label = "block text-sm font-medium";
 
-  const Rows = ({ title, list, setList, addLabel }) => (
+  const Rows = ({ title, list, setList, addLabel, fixedToggle = false }) => (
     <fieldset>
       <legend className="font-display text-lg font-extrabold">{title} <span className="font-sans text-sm font-normal text-[#777]">{t.monthly}</span></legend>
       <div className="mt-3 space-y-2">
         {list.map((x) => (
-          <div key={x.id} className="flex gap-2">
+          <div key={x.id}>
+          <div className="flex gap-2">
             <input aria-label={`${title} name`} value={x.label} onChange={(e) => setRow(list, setList, x.id, "label", e.target.value)} className={`${field} mt-0 flex-[2]`} />
             <input aria-label={`${x.label} amount`} type="number" min="0" step="any" value={x.amount} onChange={(e) => setRow(list, setList, x.id, "amount", e.target.value)} className={`${field} mt-0 flex-1`} placeholder="₹" />
             <button type="button" onClick={() => setList(list.filter((y) => y.id !== x.id))} className="px-2 text-sm text-[#999] hover:text-rose-600" aria-label={`Remove ${x.label}`}>✕</button>
           </div>
+          {/* Only matters when there is loss of pay, so only shown then */}
+          {fixedToggle && paid < working && (
+            <label className="mt-1 flex w-fit items-center gap-2 text-xs text-[#555]">
+              <input type="checkbox" checked={!!x.fixed} onChange={(e) => setRow(list, setList, x.id, "fixed", e.target.checked)} className="h-3.5 w-3.5 accent-[#ff5a1f]" />
+              {t.fixed}
+            </label>
+          )}
+          </div>
         ))}
       </div>
-      <button type="button" onClick={() => setList([...list, row("")])} className="mt-2 text-sm font-semibold text-[#ff5a1f] hover:underline">+ {addLabel}</button>
+      <button type="button" onClick={() => setList([...list, row("", "", fixedToggle)])} className="mt-2 text-sm font-semibold text-[#ff5a1f] hover:underline">+ {addLabel}</button>
     </fieldset>
   );
 
@@ -138,7 +148,7 @@ export default function SalarySlipGenerator({ lang = "en" }) {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
-          {Rows({ title: t.earnings, list: earnings, setList: setEarnings, addLabel: t.addEarning })}
+          {Rows({ title: t.earnings, list: earnings, setList: setEarnings, addLabel: t.addEarning, fixedToggle: true })}
           <div>
             {Rows({ title: t.deductions, list: deductions, setList: setDeductions, addLabel: t.addDeduction })}
             <div className="mt-4 flex flex-wrap gap-2">
