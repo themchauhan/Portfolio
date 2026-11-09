@@ -140,3 +140,14 @@
     margin-top: 1.8em;
   }
 }
+
+/* Copy-ready message or quote inside a post */
+.blogContent blockquote {
+  margin: 1.2em 0;
+  padding: 1em 1.25em;
+  border-left: 4px solid #ff5a1f;
+  background: #f4f1ec;
+  border-radius: 0 0.75rem 0.75rem 0;
+  color: #222;
+  line-height: 1.7;
+}
