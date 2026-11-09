@@ -151,3 +151,10 @@
   color: #222;
   line-height: 1.7;
 }
+
+/* Links to the free tools stand out from ordinary links */
+.blogContent a[href^="/tools/"],
+.blogContent a[href^="/hi/tools/"] {
+  font-weight: 700;
+  color: #c2410c;
+}

@@ -9,6 +9,7 @@ import PageSeo from '@/components/PageSeo'
 import BlogCard from '@/components/BlogCard'
 import { waLink } from '@/lib/pricing'
 import FaqList from '@/components/FaqList'
+import TrackedLink from '@/components/TrackedLink'
 
 const slugify = (t) => t.replace(/<[^>]+>/g, '').toLowerCase().replace(/&[a-z]+;/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60)
 // Adds id="..." to every <h2> in the article HTML and returns the list for "On this page".
@@ -23,12 +24,35 @@ function withSectionIds(html) {
 }
 
 const SIDEBAR_TOOLS = [
-  ['/tools/salary-slip-generator', 'Salary Slip Generator'],
-  ['/tools/rent-receipt-generator', 'Rent Receipt Generator'],
-  ['/tools/gst-invoice-generator', 'GST Invoice Generator'],
-  ['/tools/quotation-maker', 'Quotation Maker'],
-  ['/tools/website-cost-calculator', 'Website Cost Calculator'],
+  ['/tools/salary-slip-generator', 'Salary Slip Generator', 'Make a payslip with PF, ESI, TDS and your logo, as a PDF.'],
+  ['/tools/rent-receipt-generator', 'Rent Receipt Generator', 'Make monthly rent receipts for your HRA claim, as a PDF.'],
+  ['/tools/gst-invoice-generator', 'GST Invoice Generator', 'Make a GST invoice with CGST/SGST or IGST worked out, as a PDF.'],
+  ['/tools/quotation-maker', 'Quotation Maker', 'Make this quotation in a minute: your logo, items, GST and terms, as a PDF.'],
+  ['/tools/website-cost-calculator', 'Website Cost Calculator', 'Get an instant estimate for the website you have in mind.'],
 ]
+
+// The free tool this guide is about: the tool linked first in the article.
+function relatedToolFor(html) {
+  return SIDEBAR_TOOLS
+    .map((t) => [t, html.indexOf(`href="${t[0]}"`)])
+    .filter(([, i]) => i >= 0)
+    .sort((a, b) => a[1] - b[1])[0]?.[0] || null
+}
+
+// "Use the free tool" card, shown under the quick answer and again after the article.
+function ToolCta({ tool, slug, position }) {
+  const [href, label, pitch] = tool
+  return (
+    <div className="my-10 flex max-w-3xl flex-col gap-4 rounded-2xl bg-[#111] p-6 text-white sm:flex-row sm:items-center sm:justify-between md:p-7">
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-widest text-[#ff5a1f]">Free tool · No sign-up</p>
+        <p className="mt-1.5 font-display text-xl font-extrabold">{label}</p>
+        <p className="mt-1 text-sm text-white/75">{pitch}</p>
+      </div>
+      <TrackedLink href={href} event="blog_tool_click" params={{ post: slug, tool: href, position }} className="shrink-0 rounded-full bg-[#ff5a1f] px-6 py-3 text-center font-semibold text-[#111] hover:bg-white">Open {label} →</TrackedLink>
+    </div>
+  )
+}
 
 // Blog data
 const blogPosts = {
@@ -422,6 +446,8 @@ export default function BlogPost({ params }) {
     notFound();
   }
   const { html: articleHtml, toc } = withSectionIds(post.content);
+  const relatedTool = relatedToolFor(post.content);
+  const sidebarTools = relatedTool ? [relatedTool, ...SIDEBAR_TOOLS.filter((t) => t !== relatedTool)] : SIDEBAR_TOOLS;
   if (post.faqs?.length) toc.push(['faq', 'Frequently asked questions']);
 
   return (
@@ -466,10 +492,12 @@ export default function BlogPost({ params }) {
               <p className="mt-2 text-[1.0625rem] leading-relaxed text-[#222]">{post.quickAnswer}</p>
             </div>
           )}
+          {relatedTool && <ToolCta tool={relatedTool} slug={post.id} position="top" />}
           <div
             className={`max-w-none text-[#333] ${styles.blogContent}`}
             dangerouslySetInnerHTML={{ __html: articleHtml }}
           />
+          {relatedTool && <ToolCta tool={relatedTool} slug={post.id} position="bottom" />}
           {post.faqs?.length > 0 && (
             <div id="faq" className="mt-14 scroll-mt-24">
               <h2 className="font-display text-2xl font-extrabold tracking-tight md:text-[1.625rem]">Frequently asked questions</h2>
@@ -494,8 +522,10 @@ export default function BlogPost({ params }) {
               <div className="rounded-2xl bg-[#111] p-5 text-white">
                 <p className="text-xs font-semibold uppercase tracking-widest text-[#ff5a1f]">Free tools</p>
                 <ul className="mt-3 space-y-2 text-sm">
-                  {SIDEBAR_TOOLS.map(([href, label]) => (
-                    <li key={href}><Link href={href} className="flex items-center justify-between gap-2 text-white/85 hover:text-white">{label}<span aria-hidden="true" className="text-[#ff5a1f]">→</span></Link></li>
+                  {sidebarTools.map(([href, label]) => (
+                    href === relatedTool?.[0]
+                      ? <li key={href}><Link href={href} className="-mx-2 flex items-center justify-between gap-2 rounded-lg bg-[#ff5a1f] px-2 py-1.5 font-semibold text-[#111] hover:bg-white">{label}<span aria-hidden="true">→</span></Link></li>
+                      : <li key={href}><Link href={href} className="flex items-center justify-between gap-2 text-white/85 hover:text-white">{label}<span aria-hidden="true" className="text-[#ff5a1f]">→</span></Link></li>
                   ))}
                 </ul>
               </div>
