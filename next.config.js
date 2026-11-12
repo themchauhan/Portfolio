@@ -46,10 +46,30 @@ const nextConfig = {
       },
     ]
   },
-  
+
+  // Notice, the daily memory game: a static page in public/notice/, served at
+  // notice.themanishchauhan.in and at /notice on the main site.
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: '/', has: [{ type: 'host', value: 'notice.themanishchauhan.in' }], destination: '/notice/index.html' },
+      ],
+      afterFiles: [
+        { source: '/notice', destination: '/notice/index.html' },
+      ],
+    }
+  },
+
   // Redirects for SEO
   async redirects() {
     return [
+      // The game's subdomain only serves the game; any other path there goes to the main site
+      {
+        source: '/:path+',
+        has: [{ type: 'host', value: 'notice.themanishchauhan.in' }],
+        destination: 'https://themanishchauhan.in/:path+',
+        permanent: false,
+      },
       {
         source: '/home',
         destination: '/',
