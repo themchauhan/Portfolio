@@ -3,7 +3,7 @@ import PageHero from '@/components/PageHero'
 import JsonLd from '@/components/JsonLd'
 import ContactForm from '@/components/products/ContactForm'
 import { SITE, pageMeta } from '@/lib/seo'
-import { getExperienceDuration } from '../../utils/experience'
+import { getExperienceText, getExperienceYears } from '../../utils/experience'
 import TestimonialSlider from '@/components/TestimonialSlider'
 import PageSeo from '@/components/PageSeo'
 import FaqList from '@/components/FaqList'
@@ -61,7 +61,8 @@ const faqs = [
 ]
 
 export default function Page() {
-  const { years } = getExperienceDuration()
+  const years = getExperienceYears()
+  const experience = getExperienceText()
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
       <JsonLd data={{
@@ -81,7 +82,7 @@ export default function Page() {
       }} />
 
       <PageHero eyebrow="For agencies" title="Your development partner for website projects.">
-        You design and manage the client. I build your designs as fast, accessible, SEO-ready websites in Next.js, React or custom WordPress, under your brand and to your deadlines. {years}+ years building sites for B2B tech companies.
+        You design and manage the client. I build your designs as fast, accessible, SEO-ready websites in Next.js, React or custom WordPress, under your brand and to your deadlines. {experience[0].toUpperCase() + experience.slice(1)} building sites for B2B tech companies.
       </PageHero>
 
       <section className="!pt-0 !pb-16 md:!pb-24 -mt-4 md:-mt-10">
@@ -151,7 +152,7 @@ export default function Page() {
               <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl bg-white/15">
                 {[
                   ['1–2 days', 'to reply with an estimate'],
-                  [`${years}+ yrs`, 'building B2B websites'],
+                  [`${years} yrs`, 'building B2B websites'],
                   ['100%', 'white-label'],
                 ].map(([big, small]) => (
                   <div key={small} className="bg-[#1c1c1c] p-4 md:p-5">

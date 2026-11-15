@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { getExperienceText, getExperienceDuration } from '@/utils/experience'
+import { getExperienceText, getExperienceYears } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
 import TestimonialSlider from '@/components/TestimonialSlider'
 import PageSeo from '@/components/PageSeo'
@@ -9,7 +9,7 @@ import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 export const metadata = pageMeta({
   title: 'About',
-  description: 'Manish Chauhan is a full stack developer at Clear Digital, freelancing and building ClinicOs, RentCorp and CafeCorp: software for real businesses.',
+  description: 'Manish Chauhan is an AI integration and full stack developer with almost a decade of experience, connecting AI to the websites, WhatsApp and tools businesses already use.',
   alternates: { canonical: 'https://themanishchauhan.in/about' },
 })
 
@@ -28,10 +28,10 @@ const education = [
 ]
 
 const skillGroups = [
+  ['AI', ['Gemini API', 'LLM APIs', 'Prompt design', 'AI chatbots', 'Structured outputs']],
   ['Frontend', ['Next.js', 'React', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'MUI', 'Bootstrap', 'SCSS']],
   ['Backend & data', ['Node.js', 'PHP', 'REST APIs', 'GraphQL', 'PostgreSQL', 'Supabase', 'Firebase']],
-  ['CMS & marketing', ['WordPress', 'Drupal', 'Contentful', 'HubSpot', 'Marketo']],
-  ['Workflow', ['Git', 'Docker']],
+  ['CMS & workflow', ['WordPress', 'Drupal', 'Contentful', 'HubSpot', 'Marketo', 'Git', 'Docker']],
 ]
 
 const Heading = ({ children, light = false }) => (
@@ -40,7 +40,7 @@ const Heading = ({ children, light = false }) => (
 
 export default function Page() {
   const experience = getExperienceText()
-  const { years } = getExperienceDuration()
+  const years = getExperienceYears()
 
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
@@ -51,14 +51,14 @@ export default function Page() {
           <div>
             <p className="text-[15px] font-semibold text-[#ff5a1f]">About</p>
             <h1 className="mt-4 font-display text-5xl font-extrabold leading-[1.03] tracking-tight md:text-6xl">
-              A developer who{' '}
-              <span className="underline decoration-[#ff5a1f] decoration-[6px] underline-offset-[10px]">ships things</span> people use.
+              A developer who puts{' '}
+              <span className="underline decoration-[#ff5a1f] decoration-[6px] underline-offset-[10px]">AI to work.</span>
             </h1>
             <p className="mt-8 max-w-xl text-xl leading-relaxed text-[#444]">
-              I&apos;m Manish Chauhan, a full stack developer with {experience} of experience. I build websites, web apps and business software, and I enjoy turning messy manual work into something simple.
+              I&apos;m Manish Chauhan, an AI integration and full stack developer with {experience} of experience. I connect AI to the websites, WhatsApp and sheets businesses already use, so the repeated work gets done on its own.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <Link href="/contacts" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Let&apos;s talk</Link>
+              <Link href="/ai-integration" className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">What I build with AI</Link>
               <Link href="/projects" className="rounded-full border-2 border-[#111] px-7 py-3 font-semibold hover:bg-[#111] hover:text-white">See my work</Link>
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function Page() {
       {/* Numbers */}
       <section className="!py-0 border-y border-black/10 bg-white">
         <dl className="mx-auto grid max-w-7xl grid-cols-2 divide-black/10 px-5 sm:px-8 md:grid-cols-4 md:divide-x">
-          {[[`${years}+`, 'years of experience'], ['2018', 'professional since'], ['MCA', 'Punjab Technical University'], ['3', 'products in the works']].map(([a, b]) => (
+          {[[years, 'years of experience'], ['2018', 'professional since'], ['MCA', 'Punjab Technical University'], ['US + India', 'clients and students']].map(([a, b]) => (
             <div key={b} className="py-8 md:px-8 md:first:pl-0">
               <dt className="font-display text-4xl font-extrabold text-[#ff5a1f]">{a}</dt>
               <dd className="mt-1 text-[#555]">{b}</dd>
@@ -96,7 +96,7 @@ export default function Page() {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.4fr]">
           <div>
             <Heading>My story</Heading>
-            <p className="mt-5 max-w-sm text-lg leading-relaxed text-[#666]">From a computer science degree to websites for US tech companies, and now my own software and classes.</p>
+            <p className="mt-5 max-w-sm text-lg leading-relaxed text-[#666]">From a computer science degree to websites for US tech companies, and now AI for businesses in India.</p>
           </div>
           <div className="space-y-6 text-xl leading-relaxed text-[#444]">
             <p>
@@ -108,7 +108,10 @@ export default function Page() {
               , where I&apos;ve built sites for companies like Splunk, Cohesity, Socure and Digimarc. Alongside that, I take on freelance projects.
             </p>
             <p>
-              Recently I started building my own software: <Link href="/clinicos" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">ClinicOs</Link>,{' '}
+              Today my main focus is <Link href="/ai-integration" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">AI integration</Link>. Most businesses have already tried ChatGPT, but the AI isn&apos;t connected to their customers, their WhatsApp or their data. I build that connection: AI receptionists that answer customers at 11 pm, instant replies to new leads, and bills and forms read straight into Excel. You can <Link href="/demo/clinic-assistant" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">try a live demo</Link>.
+            </p>
+            <p>
+              I also built my own software: <Link href="/clinicos" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">ClinicOs</Link>,{' '}
               <Link href="/rentcorp" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">RentCorp</Link> and{' '}
               <Link href="/cafecorp" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">CafeCorp</Link>
               , tools that replace paperwork for clinics, landlords and cafés.
@@ -187,6 +190,7 @@ export default function Page() {
                 <li>Build responsive interfaces and reusable components for modern web apps.</li>
                 <li>Develop backend APIs and integrate third-party services reliably.</li>
                 <li>Work with clients to scope requirements and deliver maintainable solutions.</li>
+                <li>Add AI to business workflows: chat assistants, lead replies and document reading, built on the Gemini and other AI APIs.</li>
               </ul>
             </div>
           </div>
@@ -230,7 +234,7 @@ export default function Page() {
       <section className="!py-16 md:!py-24 bg-[#ff5a1f]">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-5 sm:px-8 md:flex-row md:items-center">
           <div>
-            <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#111] md:text-5xl">Let&apos;s build something.</h2>
+            <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#111] md:text-5xl">Let&apos;s put AI to work in your business.</h2>
             <p className="mt-4 text-xl text-[#111]/80">
               <a href="mailto:manish@themanishchauhan.in" className="break-all font-semibold underline underline-offset-4">manish@themanishchauhan.in</a>
               {' · '}
@@ -239,7 +243,7 @@ export default function Page() {
               <a href="https://www.instagram.com/themanishchauhan.learn/" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">Instagram</a>
             </p>
           </div>
-          <Link href="/contacts" className="shrink-0 rounded-full bg-[#111] px-8 py-4 text-lg font-semibold text-white hover:bg-white hover:text-[#111]">Start a project</Link>
+          <Link href="/ai-integration#contact" className="shrink-0 rounded-full bg-[#111] px-8 py-4 text-lg font-semibold text-white hover:bg-white hover:text-[#111]">Book a free AI call</Link>
         </div>
       </section>
 

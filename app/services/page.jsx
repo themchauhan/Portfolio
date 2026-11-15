@@ -19,6 +19,19 @@ export default function Page() {
         Cafés, clinics, rentals, hostels, hotels and offices anywhere in India: replace paperwork with software that is set up and supported for you.
       </PageHero>
 
+      <section className="!pt-0 !pb-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <Link href="/ai-integration" className="group flex flex-col justify-between gap-4 border-t-4 border-[#ff5a1f] bg-[#111] p-7 text-white md:flex-row md:items-center md:p-9">
+            <div>
+              <p className="text-sm font-semibold text-[#ff5a1f]">Main focus</p>
+              <h2 className="mt-2 font-display text-3xl font-extrabold">AI Integration</h2>
+              <p className="mt-2 max-w-2xl text-[#b9b5ad]">AI receptionists on your website and WhatsApp, instant lead replies, bills and forms read into Excel, and assistants trained on your own documents.</p>
+            </div>
+            <p className="shrink-0 font-semibold text-[#ff5a1f]">See AI integration →</p>
+          </Link>
+        </div>
+      </section>
+
       <section className="!pt-0 !pb-16">
         <div className="mx-auto grid max-w-7xl gap-6 px-5 sm:px-8 md:grid-cols-2 lg:grid-cols-3">
           {serviceList.map((s) => (

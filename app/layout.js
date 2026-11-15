@@ -19,12 +19,16 @@ const experience = getExperienceText()
 export const metadata = {
   metadataBase: new URL('https://themanishchauhan.in'),
   title: {
-    default: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
+    default: 'Manish Chauhan - AI Integration & Full Stack Developer',
     template: '%s | Manish Chauhan'
   },
-  description: `Full stack developer with ${experience} of experience building websites, web apps and business software. Now building ClinicOs, RentCorp and CafeCorp.`,
+  description: `AI integration for businesses: AI receptionists for your website and WhatsApp, instant lead replies and bills read into Excel. Full stack developer with ${experience} of experience.`,
   keywords: [
     'Manish Chauhan',
+    'AI integration services',
+    'AI chatbot for business',
+    'WhatsApp AI chatbot',
+    'AI receptionist',
     'web developer',
     'full stack developer',
     'freelance web developer',
@@ -64,14 +68,14 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://themanishchauhan.in',
     siteName: 'Manish Chauhan',
-    title: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
-    description: `Full stack developer with ${experience} of experience building websites, web apps and business software.`,
+    title: 'Manish Chauhan - AI Integration & Full Stack Developer',
+    description: `I put AI to work inside your business: AI receptionists, WhatsApp auto-replies and documents read into Excel. Full stack developer with ${experience} of experience.`,
     images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Manish Chauhan - Full Stack Web Developer & Freelancer',
-    description: `Full stack developer with ${experience} of experience building websites, web apps and business software.`,
+    title: 'Manish Chauhan - AI Integration & Full Stack Developer',
+    description: `I put AI to work inside your business: AI receptionists, WhatsApp auto-replies and documents read into Excel. Full stack developer with ${experience} of experience.`,
     images: [OG_IMAGE.url],
   },
   category: 'technology',

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import ContactForm from '@/components/products/ContactForm'
 import { productList } from '@/lib/products'
 import { serviceList } from '@/lib/seo'
-import { getExperienceText, getExperienceDuration } from '@/utils/experience'
+import { getExperienceText, getExperienceYears } from '@/utils/experience'
 import { pageMeta } from '@/lib/seo'
 import { starterPriceText } from '@/lib/pricing'
 import TestimonialSlider from '@/components/TestimonialSlider'
@@ -16,8 +16,8 @@ import { waLink } from '@/lib/pricing'
 const LEARN_URL = 'https://learn.themanishchauhan.in'
 
 export const metadata = pageMeta({
-  title: { absolute: 'Manish Chauhan - Full Stack Web Developer & Freelancer' },
-  description: `Full stack developer with ${getExperienceText()} building websites and web apps for Splunk, Cohesity and Socure. Now building ClinicOs, RentCorp and CafeCorp.`,
+  title: { absolute: 'Manish Chauhan - AI Integration & Full Stack Developer' },
+  description: `I put AI to work inside your business: AI receptionists for your website and WhatsApp, instant lead replies and bills read into Excel. ${(t => t[0].toUpperCase() + t.slice(1))(getExperienceText())} building for Splunk, Cohesity and Socure.`,
   alternates: { canonical: 'https://themanishchauhan.in' },
 })
 
@@ -40,9 +40,10 @@ const audiences = [
 ]
 
 const services = [
-  ['01', 'Websites', 'Fast, clean marketing sites and CMS builds in Next.js, WordPress, Drupal and Contentful, with the HubSpot or Marketo setup your team needs.'],
-  ['02', 'Web apps', 'Dashboards, portals and SaaS products in React and Node. Built to be used every day, not just demoed.'],
-  ['03', 'Automation', 'Replacing paperwork and manual data entry with simple software your team will actually adopt.'],
+  ['01', 'AI integration', 'AI receptionists on your website and WhatsApp, instant replies to new leads, bills and forms read into Excel, and assistants trained on your own documents.', '/ai-integration'],
+  ['02', 'Websites', 'Fast, clean marketing sites and CMS builds in Next.js, WordPress, Drupal and Contentful, with the HubSpot or Marketo setup your team needs.'],
+  ['03', 'Web apps', 'Dashboards, portals and SaaS products in React and Node. Built to be used every day, not just demoed.'],
+  ['04', 'Automation', 'Replacing paperwork and manual data entry with simple software your team will actually adopt.'],
 ]
 
 const work = [
@@ -84,17 +85,17 @@ export default function Home() {
       <section className="!py-14 md:!py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <p className="text-[15px] font-semibold text-[#ff5a1f]">Manish Chauhan · Full stack developer</p>
+            <p className="text-[15px] font-semibold text-[#ff5a1f]">Manish Chauhan · AI integration & full stack developer</p>
             <h1 className="mt-5 font-display text-5xl font-extrabold leading-[1.02] tracking-tight md:text-6xl xl:text-7xl">
-              I build software that businesses{' '}
-              <span className="underline decoration-[#ff5a1f] decoration-[6px] underline-offset-[10px]">actually use.</span>
+              I put AI to work{' '}
+              <span className="underline decoration-[#ff5a1f] decoration-[6px] underline-offset-[10px]">inside your business.</span>
             </h1>
             <p className="mt-8 max-w-xl text-xl leading-relaxed text-[#444]">
-              {experience} of building for companies like Splunk, Cohesity and Socure. Now building my own products for clinics, landlords and cafés.
+              Customers answered at 11 pm, leads replied to in a minute, bills read into Excel. {experience[0].toUpperCase() + experience.slice(1)} of building for companies like Splunk, Cohesity and Socure, now bringing AI to businesses in India.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <TrackedLink href="/contacts" event="business_enquiry_click" params={{ position: 'hero', destination: '/contacts' }} className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">Start a project</TrackedLink>
-              <TrackedLink href="/products" event="business_path_click" params={{ position: 'hero', destination: '/products' }} className="rounded-full border-2 border-[#111] px-7 py-3 font-semibold hover:bg-[#111] hover:text-white">See my products</TrackedLink>
+              <TrackedLink href="/ai-integration" event="business_path_click" params={{ position: 'hero', destination: '/ai-integration' }} className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">See what AI can do for you</TrackedLink>
+              <TrackedLink href="/demo/clinic-assistant" event="clinic_demo_open" params={{ page: 'home', position: 'hero' }} className="rounded-full border-2 border-[#111] px-7 py-3 font-semibold hover:bg-[#111] hover:text-white">Try the live AI demo</TrackedLink>
             </div>
           </div>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm lg:max-w-none">
@@ -138,12 +139,13 @@ export default function Home() {
       <section id="services" className="!py-16 md:!py-28 bg-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Heading>What I do</Heading>
-          <div className="mt-14 grid gap-px overflow-hidden bg-black/15 md:grid-cols-3">
-            {services.map(([n, t, d]) => (
-              <div key={t} className="bg-white p-8 md:p-10">
-                <p className="font-display text-sm font-bold text-[#ff5a1f]">{n}</p>
+          <div className="mt-14 grid gap-px overflow-hidden bg-black/15 md:grid-cols-2 lg:grid-cols-4">
+            {services.map(([n, t, d, href]) => (
+              <div key={t} className={`p-8 md:p-10 ${href ? 'bg-[#fff6f2]' : 'bg-white'}`}>
+                <p className="font-display text-sm font-bold text-[#ff5a1f]">{n}{href && ' · Main focus'}</p>
                 <h3 className="mt-6 font-display text-3xl font-extrabold">{t}</h3>
                 <p className="mt-4 text-lg leading-relaxed text-[#444]">{d}</p>
+                {href && <Link href={href} className="mt-6 inline-block font-semibold text-[#ff5a1f] underline decoration-2 underline-offset-4">See AI integration →</Link>}
               </div>
             ))}
           </div>
@@ -233,7 +235,7 @@ export default function Home() {
               <Image src="/manish-full.jpg" alt="Manish Chauhan outdoors" fill sizes="(min-width:1024px) 560px, 90vw" className="object-cover object-[50%_25%]" />
             </div>
             <dl className="grid grid-cols-2 gap-px bg-black/15">
-              <div className="bg-white p-6"><dt className="font-display text-4xl font-extrabold text-[#ff5a1f]">{getExperienceDuration().years}+</dt><dd className="mt-1 text-[#555]">years of experience</dd></div>
+              <div className="bg-white p-6"><dt className="font-display text-4xl font-extrabold text-[#ff5a1f]">{getExperienceYears()}</dt><dd className="mt-1 text-[#555]">years of experience</dd></div>
               <div className="bg-white p-6"><dt className="font-display text-4xl font-extrabold text-[#ff5a1f]">MCA</dt><dd className="mt-1 text-[#555]">Punjab Technical University</dd></div>
             </dl>
             <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-[#777]">Tools I use</p>

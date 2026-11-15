@@ -22,7 +22,7 @@ function messageFor(path) {
 export default function WhatsAppButton() {
   const path = usePathname() || "/";
   // Demo pages have a chat box in the corner and their own WhatsApp buttons
-  if (path.startsWith("/demo/")) return null;
+  if (path.startsWith("/demo/") || path === "/ai-integration") return null;
   return (
     <a
       href={waLink(messageFor(path))}
