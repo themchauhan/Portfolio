@@ -6,6 +6,10 @@ FEES_JR = ["₹2,000", "₹2,500", "₹3,000"]  # Classes 6–8: Basics, Builder
 FEES_SR = ["₹4,000", "₹4,500", "₹5,000"]  # Classes 9–12
 PHONE = "+91 70150 66237"
 EMAIL = "manish@themanishchauhan.in"
+# The real logo, exactly as public/logo.svg on the website. Size it with CSS on .logo .mark.
+LOGO = ('<svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#111111"/>'
+        '<path d="M12 35V13l12 14 12-14v10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'
+        '<circle cx="36" cy="35.5" r="3.6" fill="#ff5a1f"/></svg>')
 
 T = {
 "en": {
@@ -222,8 +226,7 @@ html, body { color: var(--ink); font-size: 10pt; line-height: 1.5; -webkit-print
 .eyebrow { color: var(--accent); font-weight: 600; font-size: 9.5pt; }
 .top { display:flex; justify-content:space-between; align-items:center; font-size:8.5pt; color:var(--muted); }
 .logo { display:flex; align-items:center; gap:7px; font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:13pt; color:var(--ink); }
-.logo b { width:22px; height:22px; border-radius:6px; background:var(--ink); color:#fff; display:grid; place-items:center; font-size:11pt; position:relative; }
-.logo b::after { content:""; position:absolute; right:3px; bottom:3px; width:5px; height:5px; border-radius:50%; background:var(--accent); }
+.logo .mark { width:24px; height:24px; flex:none; display:block; }
 .logo span::after { content:"."; color:var(--accent); }
 .foot { margin-top:auto; padding-top:5mm; border-top:1px solid var(--line); display:flex; justify-content:space-between; font-size:8pt; color:#888; }
 h2.d { font-size: 22pt; margin-top: 2mm; }
@@ -296,7 +299,7 @@ ul.safety li::before { content:"✓"; color:var(--accent); font-weight:800; }
 def e(s): return html.escape(s)
 
 def header(t, right):
-    return f'<div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>{e(right)}</div></div>'
+    return f'<div class="top"><div class="logo">{LOGO}<span>manish</span></div><div>{e(right)}</div></div>'
 
 def footer(t, n):
     return f'<div class="foot"><span>Manish Chauhan · {e(t["url"])}</span><span>{t["page"]} {n} / 5</span></div>'

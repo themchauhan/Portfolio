@@ -1,0 +1,59 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><title>AI classes carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;500;600;700&family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --o: #ff5a1f; --ink: #111; --paper: #f4f1ec; --mute: #5f5b55; }
+body { background: #777; font-family: Inter, sans-serif; color: var(--ink); }
+.slide { width: 1080px; height: 1350px; position: relative; overflow: hidden; padding: 110px 96px 0; display: flex; flex-direction: column; }
+.slide + .slide { margin-top: 40px; }
+.paper { background: var(--paper); }
+.cover .eb { margin-top: 200px; } .cover h1 { font-size: 132px; } .cover .lead.o { font-size: 64px; margin-top: 44px; } .white { background: #fff; } .orange { background: var(--o); } .ink { background: var(--ink); color: #fff; }
+.eb { font-weight: 700; font-size: 30px; letter-spacing: .14em; text-transform: uppercase; color: var(--o); }
+.orange .eb { color: var(--ink); }
+h1 { margin-top: 40px; font: 800 118px/0.98 "Bricolage Grotesque", sans-serif; letter-spacing: -.04em; }
+h2 { margin-top: 36px; font: 800 86px/1.0 "Bricolage Grotesque", sans-serif; letter-spacing: -.035em; }
+.lead { margin-top: 30px; font-size: 40px; line-height: 1.3; font-weight: 500; color: var(--mute); }
+.lead.o { color: var(--o); font: 800 58px/1.1 "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; }
+.swipe { margin-top: auto; margin-bottom: 190px; font-weight: 700; font-size: 34px; }
+.swipe span { color: var(--o); }
+.facts { margin-top: 110px; display: grid; grid-template-columns: 1fr 1fr; gap: 90px 56px; }
+.facts div { border-top: 7px solid var(--o); padding-top: 22px; }
+.facts b { display: block; font: 800 56px/1.05 "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; }
+.facts span { display: block; margin-top: 12px; font-size: 34px; color: var(--mute); line-height: 1.3; }
+ul { margin-top: 56px; list-style: none; border-top: 3px solid var(--ink); }
+li { font-size: 36px; line-height: 1.32; padding: 26px 0 26px 50px; border-bottom: 1.5px solid #d8d4cc; position: relative; }
+li::before { content: ""; position: absolute; left: 0; top: 40px; width: 20px; height: 20px; border-radius: 99px; background: var(--o); }
+.take { margin-top: 44px; font-size: 36px; line-height: 1.35; }
+.take b { color: var(--o); }
+.mark { margin-top: 40px; font: 800 220px/0.6 "Bricolage Grotesque", sans-serif; color: #fff; height: 120px; }
+.quote { font: 700 64px/1.18 "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; color: #fff; }
+.who { margin-top: 48px; font-size: 34px; color: var(--ink); }
+.cta { margin-top: 70px; align-self: flex-start; background: var(--o); color: #fff; font: 800 58px/1 "Bricolage Grotesque", sans-serif; padding: 34px 54px; border-radius: 99px; }
+.contact { margin-top: 40px; font-size: 38px; }
+.contact + .contact { margin-top: 14px; }
+.small { margin-top: auto; margin-bottom: 170px; font-size: 28px; line-height: 1.4; color: #b9b5ad; }
+.foot { position: absolute; left: 96px; right: 96px; bottom: 70px; display: flex; justify-content: space-between; align-items: center; font-size: 28px; }
+.foot .logo { display: flex; align-items: center; gap: 16px; font: 800 34px "Bricolage Grotesque", sans-serif; }
+.foot .mark2 { width: 56px; height: 56px; display: block; }
+.foot .mark2 rect { }
+.ink .foot .mark2 rect { fill: #fff; } .ink .foot .mark2 path { stroke: #111; }
+.foot .n { color: var(--mute); font-weight: 600; }
+.note { margin-top: 14px; font-size: 26px; color: var(--ink); opacity: .7; }
+/* Hindi: Mukta, no letter-spacing tricks, roomier line height. Course names stay in Bricolage. */
+body.hi { font-family: Mukta, Inter, sans-serif; }
+.hi .eb { font-family: Mukta, sans-serif; text-transform: none; letter-spacing: 0; font-size: 38px; font-weight: 700; }
+.hi h1 { font: 800 112px/1.12 Mukta, sans-serif; letter-spacing: -.01em; }
+.hi.cover h1, .hi .cover h1 { font-size: 112px; }
+.hi h2 { font: 800 84px/1.12 Mukta, sans-serif; letter-spacing: -.01em; }
+.hi h2.lat { font: 800 86px/1.0 "Bricolage Grotesque", sans-serif; letter-spacing: -.035em; }
+.hi .lead { font-size: 44px; }
+.hi .lead.o, .hi .cover .lead.o { font: 800 60px/1.25 Mukta, sans-serif; letter-spacing: 0; }
+.hi .facts b { font: 800 56px/1.15 Mukta, sans-serif; letter-spacing: 0; }
+.hi .facts span, .hi li, .hi .take, .hi .contact { font-size: 38px; }
+.hi li::before { top: 44px; }
+.hi .quote { font: 700 64px/1.3 Mukta, sans-serif; letter-spacing: 0; }
+.hi .cta { font: 800 58px/1.1 Mukta, sans-serif; }
+.hi .swipe { font-size: 38px; }
+.hi .small { font-size: 30px; }
+.ink .foot .n { color: #9a958e; } .orange .foot .n { color: var(--ink); }
+</style></head><body class="hi"><section class="slide paper cover"><p class="eb">माता-पिता के लिए · कक्षा 6–12</p><h1>अमेरिका के बच्चों को पढ़ा रहे हैं।</h1><p class="lead o">अब भारत के बच्चों के लिए प्रैक्टिकल AI की पढ़ाई।</p><p class="swipe">आगे देखें <span>→</span></p><div class="foot"><div class="logo"><svg class="mark2" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#111111"/><path d="M12 35V13l12 14 12-14v10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="35.5" r="3.6" fill="#ff5a1f"/></svg><span>Manish Chauhan</span></div><span class="n">1/6</span></div></section><section class="slide white"><p class="eb">क्लास कैसे होती है</p><h2>घर बैठे लाइव AI क्लास।</h2><div class="facts"><div><b>लाइव ऑनलाइन</b><span>Google Meet पर</span></div><div><b>हर वीकेंड</b><span>शनिवार और रविवार</span></div><div><b>छोटे बैच</b><span>10–15 बच्चे</span></div><div><b>कोडिंग ज़रूरी नहीं</b><span>शुरू करने के लिए</span></div></div><div class="foot"><div class="logo"><svg class="mark2" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#111111"/><path d="M12 35V13l12 14 12-14v10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="35.5" r="3.6" fill="#ff5a1f"/></svg><span>Manish Chauhan</span></div><span class="n">2/6</span></div></section><section class="slide paper"><p class="eb">कक्षा 6–8</p><h2 class="lat">Make with AI</h2><p class="lead">गेम, चैटबॉट और कोडिंग की शुरुआत।</p><ul><li>AI क्या है, कैसे सीखता है, और इसका सुरक्षित इस्तेमाल</li><li>अपने AI मॉडल से चलने वाले Scratch गेम</li><li>Python और HTML में पहला असली कोड</li></ul><p class="take"><b>आख़िर में बच्चे के पास:</b> अपना बनाया हुआ एक गेम और एक चैटबॉट।</p><div class="foot"><div class="logo"><svg class="mark2" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#111111"/><path d="M12 35V13l12 14 12-14v10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="35.5" r="3.6" fill="#ff5a1f"/></svg><span>Manish Chauhan</span></div><span class="n">3/6</span></div></section><section class="slide paper"><p class="eb">कक्षा 9–12</p><h2 class="lat">Build and Study<br>with AI</h2><p class="lead">AI की मदद से पढ़ाई, वेबसाइट और Python।</p><ul><li>बोर्ड, JEE और NEET के लिए AI से बेहतर और ईमानदारी से पढ़ाई</li><li>असली वेबसाइट और वेब ऐप बनाकर ऑनलाइन पब्लिश करना</li><li>प्रोजेक्ट के ज़रिए Python, डेटा और मशीन लर्निंग</li></ul><p class="take"><b>आख़िर में बच्चे के पास:</b> एक लाइव वेबसाइट या ऐप, और एक प्रोजेक्ट जो कॉलेज को दिखा सकें।</p><div class="foot"><div class="logo"><svg class="mark2" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#111111"/><path d="M12 35V13l12 14 12-14v10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="35.5" r="3.6" fill="#ff5a1f"/></svg><span>Manish Chauhan</span></div><span class="n">4/6</span></div></section><section class="slide orange"><p class="eb">USA के एक पेरेंट की राय</p><p class="mark">“</p><p class="quote">नतीजे लगातार शानदार रहे — बच्चों ने ऐसा काम बनाया जो आम शुरुआती क्लास से कहीं आगे था।</p><p class="who"><b>DK</b> · पेरेंट · लिवरमोर, कैलिफ़ोर्निया</p><p class="note">अंग्रेज़ी से हिंदी अनुवाद</p><div class="foot"><div class="logo"><svg class="mark2" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#111111"/><path d="M12 35V13l12 14 12-14v10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="35.5" r="3.6" fill="#ff5a1f"/></svg><span>Manish Chauhan</span></div><span class="n">5/6</span></div></section><section class="slide ink"><p class="eb">शुरुआती ऑफ़र</p><h2>पहले 51 बच्चों की कोई एडमिशन फ़ीस नहीं।</h2><div class="cta">फ़्री डेमो क्लास बुक करें</div><p class="contact">बायो में लिंक · learn.themanishchauhan.in/hi</p><p class="contact"><b>WhatsApp +91 70150 66237</b></p><p class="small">हर लेवल 8 हफ़्ते · हर शनिवार और रविवार 1 घंटे की क्लास · हर लेवल के आख़िर में प्रोजेक्ट शोकेस</p><div class="foot"><div class="logo"><svg class="mark2" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#111111"/><path d="M12 35V13l12 14 12-14v10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="35.5" r="3.6" fill="#ff5a1f"/></svg><span>Manish Chauhan</span></div><span class="n">6/6</span></div></section></body></html>

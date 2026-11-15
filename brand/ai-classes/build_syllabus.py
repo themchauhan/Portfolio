@@ -2,7 +2,7 @@
 Weekly topics, level names, fees, phone and CSS come from build.py so they stay in sync with the brochure.
 This file only adds the per-week "in class" activity and home task, and the per-level goal, project and tools."""
 import html, pathlib
-from build import T as B, FEES_JR, FEES_SR, PHONE, EMAIL, CSS
+from build import T as B, FEES_JR, FEES_SR, PHONE, EMAIL, CSS, LOGO
 
 HERE = pathlib.Path(__file__).parent
 OUT = HERE / "syllabus"
@@ -289,7 +289,7 @@ table.wk tr:last-child td { background:#fff1ea; }
 def e(s): return html.escape(s)
 
 def top(right):
-    return f'<div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>{e(right)}</div></div>'
+    return f'<div class="top"><div class="logo">{LOGO}<span>manish</span></div><div>{e(right)}</div></div>'
 
 def foot(l, n, label):
     return f'<div class="foot"><span>Manish Chauhan · {e(l["url"])}</span><span>{e(label)} · {l["page"]} {n} / 4</span></div>'

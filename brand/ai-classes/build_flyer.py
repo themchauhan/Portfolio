@@ -1,7 +1,7 @@
 """Builds the one-page A4 flyer / poster (English + Hindi) for handouts and pasting as ads.
 Fees, phone, levels, offer and QR codes come from build.py so they stay in sync. No fees on the flyer, on purpose with the brochure."""
 import html, pathlib
-from build import T as B, PHONE
+from build import T as B, PHONE, LOGO
 
 HERE = pathlib.Path(__file__).parent
 OUT = HERE / "flyer"
@@ -55,8 +55,7 @@ body { font-family: var(--body), Arial, sans-serif; }
 .hi .d { font-family: var(--body), sans-serif; letter-spacing: 0; line-height: 1.2; }
 .top { display:flex; justify-content:space-between; align-items:center; font-size:9.5pt; color:var(--muted); }
 .logo { display:flex; align-items:center; gap:8px; font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:16pt; color:var(--ink); }
-.logo b { width:28px; height:28px; border-radius:7px; background:var(--ink); color:#fff; display:grid; place-items:center; font-size:14pt; position:relative; }
-.logo b::after { content:""; position:absolute; right:4px; bottom:4px; width:6px; height:6px; border-radius:50%; background:var(--accent); }
+.logo .mark { width:30px; height:30px; flex:none; display:block; }
 .logo span::after { content:"."; color:var(--accent); }
 .tag { font-size: 20pt; color: var(--accent); margin-top: 3mm; }
 .hi .tag { font-size: 21pt; }
@@ -156,7 +155,6 @@ BW_CSS = """
 .cta .wa { color: #111; }
 .cta .url, .by, .cta figcaption { color: #333; }
 .cta img { border: 1.5px solid #111; }
-.logo b::after { background: #fff; }
 .top { color: #333; }
 """
 
@@ -171,7 +169,7 @@ def build(lang, bw=False):
     doc = f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>AI classes flyer</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family={font}&display=swap" rel="stylesheet">
 <style>:root{{--body:"{t["font"]}"}} {CSS} {BW_CSS if bw else ""}</style></head><body class="{lang}"><section class="page">
-  <div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>{e(t["url"])}</div></div>
+  <div class="top"><div class="logo">{LOGO}<span>manish</span></div><div>{e(t["url"])}</div></div>
   <p class="eyebrow">{e(b["eyebrow"])}</p>
   <h1 class="d">{e(t["usa"])}</h1>
   <p class="tag d">{e(b["title"])}</p>
@@ -186,7 +184,8 @@ def build(lang, bw=False):
 </section></body></html>'''
     (OUT / f"flyer-{lang}{'-bw' if bw else ''}.html").write_text(doc, encoding="utf-8")
 
-for lg in ("en", "hi"):
-    build(lg)
-    build(lg, bw=True)
-print("built flyer")
+if __name__ == "__main__":
+    for lg in ("en", "hi"):
+        build(lg)
+        build(lg, bw=True)
+    print("built flyer")

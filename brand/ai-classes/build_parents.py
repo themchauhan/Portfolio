@@ -1,7 +1,7 @@
 """Builds the one-page parents' take-home sheet (English + Hindi) given out after the free workshop.
 Fees, phone, CSS and QR codes come from build.py so they stay in sync with the brochure."""
 import html, pathlib
-from build import T as B, FEES_JR, FEES_SR, PHONE, CSS
+from build import T as B, FEES_JR, FEES_SR, PHONE, CSS, LOGO
 
 HERE = pathlib.Path(__file__).parent
 OUT = HERE / "parents"
@@ -142,7 +142,7 @@ def build(lang):
                    for i, (n, d) in enumerate(t["levels"]))
     lab = t["labels"]
     body = f'''<section class="page">
-  <div class="top"><div class="logo"><b>M</b><span>manish</span></div><div>{e(t["top"])}</div></div>
+  <div class="top"><div class="logo">{LOGO}<span>manish</span></div><div>{e(t["top"])}</div></div>
   <div class="fields">{fields}</div>
   <p class="eyebrow" style="margin-top:4mm">{e(t["eyebrow"])}</p>
   <h1 class="d">{e(t["title"])}</h1>

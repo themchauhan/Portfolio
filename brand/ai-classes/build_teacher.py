@@ -1,7 +1,7 @@
 """Builds the teacher prep guide (English, for Manish only): every level of both courses, week by week,
 with topic, class activity and home task (from build.py / build_syllabus.py) plus prep checklist and watch-outs."""
 import html, pathlib
-from build import T as B
+from build import T as B, LOGO
 from build_syllabus import C
 
 HERE = pathlib.Path(__file__).parent
@@ -188,8 +188,7 @@ body { font-family: Inter, Arial, sans-serif; color: var(--ink); font-size: 9pt;
 .d { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; letter-spacing: -0.015em; line-height: 1.1; }
 .eyebrow { color: var(--accent); font-weight: 600; font-size: 9pt; }
 .logo { display:flex; align-items:center; gap:7px; font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:13pt; }
-.logo b { width:22px; height:22px; border-radius:6px; background:var(--ink); color:#fff; display:grid; place-items:center; font-size:11pt; position:relative; }
-.logo b::after { content:""; position:absolute; right:3px; bottom:3px; width:5px; height:5px; border-radius:50%; background:var(--accent); }
+.logo .mark { width:24px; height:24px; flex:none; display:block; }
 .logo span::after { content:"."; color:var(--accent); }
 section { break-before: page; }
 section:first-child { break-before: auto; }
@@ -262,7 +261,7 @@ def build():
 
     flow = "".join(f"<tr><td>{a}</td><td>{e(b)}</td></tr>" for a, b in CLASS_FLOW)
     intro = f'''<section>
-<div class="logo"><b>M</b><span>manish</span></div>
+<div class="logo">{LOGO}<span>manish</span></div>
 <p class="eyebrow" style="margin-top:4mm">For Manish only · not for parents or schools</p>
 <h1 class="d">AI classes: teacher prep guide</h1>
 <p class="lead">Both courses, all three levels, week by week. For each week: the topic, what happens in class, the home task, what to prepare and what to watch out for. Tick the boxes as you prepare and use the notes lines after each class.</p>

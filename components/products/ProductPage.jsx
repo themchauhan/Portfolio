@@ -102,6 +102,11 @@ export default function ProductPage({ product }) {
               <TrackedLink event="product_demo_click" params={{ product: product.name, position: "hero" }} href="#contact" className={`rounded-md ${a.bg} ${a.hover} px-7 py-3 font-semibold text-white`}>Request a demo</TrackedLink>
               <TrackedLink event="product_login_click" params={{ product: product.name, position: "hero" }} href={product.appUrl} className="rounded-md border border-slate-300 bg-white px-7 py-3 font-semibold text-slate-800 hover:bg-slate-50">Login to {product.name}</TrackedLink>
             </div>
+            {product.aiDemo && (
+              <TrackedLink event="clinic_demo_open" params={{ product: product.name, position: "hero" }} href={product.aiDemo.href} className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm ring-1 ring-slate-200 hover:ring-slate-400">
+                <span className="rounded-full bg-[#ff5a1f] px-2 py-0.5 text-xs text-white">New</span>{product.aiDemo.label} →
+              </TrackedLink>
+            )}
           </div>
           <AppMockup product={product} />
         </div>
