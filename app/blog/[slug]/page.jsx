@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
 import { newBlogPosts } from '@/lib/blogPosts';
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 import PageSeo from '@/components/PageSeo'
 import BlogCard from '@/components/BlogCard'
 import { waLink } from '@/lib/pricing'
@@ -503,6 +504,9 @@ export default function BlogPost({ params }) {
               <h2 className="font-display text-2xl font-extrabold tracking-tight md:text-[1.625rem]">Frequently asked questions</h2>
               <FaqList items={post.faqs} className="mt-5" />
             </div>
+          )}
+          {post.id !== 'ai-receptionist-for-small-business' && (
+            <AiReceptionistBand compact page="blog" kind={/pg|hostel|rent/.test(post.id) ? 'rent' : 'hotel'} />
           )}
           </div>
 

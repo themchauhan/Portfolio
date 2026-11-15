@@ -7,6 +7,7 @@ import { products } from '@/lib/products'
 import { SITE, services, pageMeta } from '@/lib/seo'
 import { townPageFor, townPageKeys } from '@/lib/townPages'
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 // Only the town pages listed in lib/townPages.js exist; any other town URL redirects to the service page.
 export const dynamicParams = true
@@ -114,6 +115,8 @@ export default function Page({ params }) {
           </ol>
         </div>
       </section>
+
+      <AiReceptionistBand kind={s.slug.startsWith('rent') || s.slug.startsWith('hostel') ? 'rent' : 'coaching'} page={`town:${s.slug}/${params.city}`} bg="bg-[#f0fdfa]" />
 
       <section className="!py-14 md:!py-20 bg-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">

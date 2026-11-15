@@ -7,6 +7,7 @@ import { SITE, pageMeta } from '@/lib/seo'
 import ToolOfferActions from '@/components/tools/ToolOfferActions'
 import PageSeo from '@/components/PageSeo'
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 const URL = `${SITE}/hi/tools/salary-slip-generator`
 const EN_URL = `${SITE}/tools/salary-slip-generator`
@@ -80,6 +81,8 @@ export default function Page() {
           <ToolOfferActions tool="salary" lang="hi" href="/services/business-automation" label="ऑटोमेशन के बारे में जानें" />
         </div>
       </section>
+
+      <AiReceptionistBand kind="coaching" lang="hi" page="hi-salary-slip" bg="bg-[#f0fdfa]" />
 
       <section className="!py-14 md:!py-20 print:hidden">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">

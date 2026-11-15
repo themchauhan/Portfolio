@@ -9,6 +9,7 @@ import ComparisonTable from "@/components/ComparisonTable";
 import { productPlans, PRICING_NOTE, setupFees, priceUnit, pilot, inr, waLink } from "@/lib/pricing";
 import { getExperienceText } from "@/utils/experience";
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 const Blade = ({ id, bg = "bg-white", title, sub, children }) => (
   <section id={id} className={`${bg} !py-14 md:!py-20`}>
@@ -169,6 +170,8 @@ export default function ProductPage({ product }) {
           </div>
         </Blade>
       )}
+
+      <AiReceptionistBand page={`product:${product.slug}`} kind={{ clinicos: 'clinic', rentcorp: 'rent', cafecorp: 'cafe' }[product.slug] || 'clinic'} bg="bg-[#f0fdfa]" />
 
       {/* Built from experience */}
       <div className={`${a.band}`}>

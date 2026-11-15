@@ -7,6 +7,7 @@ import { SITE, pageMeta } from '@/lib/seo'
 import ToolOfferActions from '@/components/tools/ToolOfferActions'
 import PageSeo from '@/components/PageSeo'
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 const URL = `${SITE}/hi/tools/quotation-maker`
 const EN_URL = `${SITE}/tools/quotation-maker`
@@ -82,6 +83,8 @@ export default function Page() {
           <ToolOfferActions tool="quotation" lang="hi" href="/services/business-automation" label="बिज़नेस ऑटोमेशन देखें" />
         </div>
       </section>
+
+      <AiReceptionistBand kind="hotel" lang="hi" page="hi-quotation-maker" bg="bg-[#f0fdfa]" />
 
       <section className="!py-14 md:!py-20 print:hidden">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">

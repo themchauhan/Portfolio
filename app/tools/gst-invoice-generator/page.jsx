@@ -7,6 +7,7 @@ import { SITE, pageMeta } from '@/lib/seo'
 import ToolOfferActions from '@/components/tools/ToolOfferActions'
 import PageSeo from '@/components/PageSeo'
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 const URL = `${SITE}/tools/gst-invoice-generator`
 
@@ -56,6 +57,8 @@ export default function Page() {
           <ToolOfferActions tool="gst" href="/cafecorp" label="See CafeCorp" />
         </div>
       </section>
+
+      <AiReceptionistBand kind="cafe" page="gst-invoice" bg="bg-[#f0fdfa]" />
 
       <section className="!py-14 md:!py-20 print:hidden">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">

@@ -8,6 +8,7 @@ import ToolOfferActions from '@/components/tools/ToolOfferActions'
 import PageSeo from '@/components/PageSeo'
 import ToolGuide from '@/components/ToolGuide'
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 const URL = `${SITE}/tools/quotation-maker`
 
@@ -68,6 +69,8 @@ export default function Page() {
           <ToolOfferActions tool="quotation" href="/services/business-automation" label="See business automation" />
         </div>
       </section>
+
+      <AiReceptionistBand kind="hotel" page="quotation-maker" bg="bg-[#f0fdfa]" />
 
       <section className="!py-14 md:!py-20 print:hidden">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">

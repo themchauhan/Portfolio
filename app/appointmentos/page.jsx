@@ -5,6 +5,7 @@ import { pageMeta } from '@/lib/seo'
 import { pilot, waLink } from '@/lib/pricing'
 import PageSeo from '@/components/PageSeo'
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 export const metadata = pageMeta({
   title: 'AppointmentOS - Missed-call WhatsApp booking (pilot)',
@@ -185,6 +186,8 @@ export default function Page() {
       </section>
 
       {/* FAQ */}
+      <AiReceptionistBand kind="clinic" page="appointmentos" bg="bg-[#f0fdfa]" />
+
       <section className="!py-14 md:!py-20 bg-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Questions</h2>

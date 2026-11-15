@@ -8,6 +8,7 @@ import ToolOfferActions from '@/components/tools/ToolOfferActions'
 import PageSeo from '@/components/PageSeo'
 import ToolGuide from '@/components/ToolGuide'
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 const URL = `${SITE}/tools/salary-slip-generator`
 
@@ -94,6 +95,8 @@ export default function Page() {
           <p className="mt-4 max-w-3xl text-[#555]">A salary slip, also called a payslip or pay stub, is a monthly document an employer gives to each employee. It shows gross earnings, every deduction and the final net pay, and employees often need it for loans, credit cards, visas and job changes.</p>
         </div>
       </section>
+
+      <AiReceptionistBand kind="coaching" page="salary-slip" bg="bg-[#f0fdfa]" />
 
       <section className="!py-14 md:!py-20 print:hidden">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">

@@ -8,6 +8,7 @@ import ToolOfferActions from '@/components/tools/ToolOfferActions'
 import PageSeo from '@/components/PageSeo'
 import ToolGuide from '@/components/ToolGuide'
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 const URL = `${SITE}/tools/rent-receipt-generator`
 
@@ -70,6 +71,8 @@ export default function Page() {
           <ToolOfferActions tool="rent" href="/rentcorp" label="See RentCorp" />
         </div>
       </section>
+
+      <AiReceptionistBand kind="rent" page="rent-receipt" bg="bg-[#f0fdfa]" />
 
       <section className="!py-14 md:!py-20 print:hidden">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">

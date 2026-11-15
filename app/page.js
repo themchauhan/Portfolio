@@ -10,6 +10,7 @@ import TestimonialSlider from '@/components/TestimonialSlider'
 import PageSeo from '@/components/PageSeo'
 import { pageFaqs } from '@/lib/pageFaqs'
 import TrackedLink from '@/components/TrackedLink'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 import { waLink } from '@/lib/pricing'
 
 const LEARN_URL = 'https://learn.themanishchauhan.in'
@@ -170,6 +171,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <AiReceptionistBand page="home" bg="bg-[#f0fdfa]" />
 
       {/* Local services */}
       <section className="!py-16 md:!py-24 bg-white">

@@ -8,6 +8,7 @@ import { products } from '@/lib/products'
 import { SITE, services, serviceList, serviceAreas, pageMeta } from '@/lib/seo'
 import { townPageFor } from '@/lib/townPages'
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 export const dynamicParams = false
 
@@ -28,6 +29,9 @@ const steps = [
   ['Setup and training', 'I configure everything and train your team on a video call or in person on request.'],
   ['Go live and support', 'Ongoing support whenever you need a change.'],
 ]
+
+// Sample chat for the AI receptionist band, by service
+const bandKind = { 'cafe-pos-software': 'cafe', 'clinic-management-software': 'clinic', 'rent-management-software': 'rent', 'hostel-pg-management-software': 'rent', 'hotel-management-software': 'hotel', 'business-automation': 'coaching' }
 
 // One page per service, for businesses anywhere in India; towns are listed as examples (old per-town pages redirect here).
 export default function Page({ params }) {
@@ -147,6 +151,8 @@ export default function Page({ params }) {
           </div>
         </div>
       </section>
+
+      <AiReceptionistBand kind={bandKind[s.slug]} page={`service:${s.slug}`} bg="bg-[#f0fdfa]" />
 
       {/* FAQ */}
       <section className="!py-16 md:!py-24">

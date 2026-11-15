@@ -8,6 +8,7 @@ import { starterPriceText, quoteRates, inr, starterPack, STARTER_OFFER_ENDS_LABE
 import ToolGuide from '@/components/ToolGuide'
 import PageSeo from '@/components/PageSeo'
 import FaqList from '@/components/FaqList'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 const URL = `${SITE}/tools/website-cost-calculator`
 
@@ -71,6 +72,7 @@ export default function Page() {
         points={addOns.map(([n, p]) => [`${n}: ${p}`])}
         note="Prices are starting prices for small and medium businesses. Agencies and freelancers price differently; you get a fixed quote after a short call."
       />
+      <AiReceptionistBand page="website-cost-calculator" bg="bg-[#f0fdfa]" />
       <section className="!py-14 md:!py-20 bg-[#f4f1ec]">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">Website cost: common questions</h2>

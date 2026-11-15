@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import CtaBand from '@/components/CtaBand'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 import { SITE, serviceList, pageMeta } from '@/lib/seo'
 import PageSeo from '@/components/PageSeo'
 import { pageFaqs } from '@/lib/pageFaqs'
@@ -31,6 +32,8 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      <AiReceptionistBand page="services" bg="bg-white" />
 
       <PageSeo type="CollectionPage" name="Software and automation services for small businesses" path="/services" crumbs={[['Services', '/services']]} faqs={pageFaqs.services()} />
       <CtaBand title="Not sure what you need? Let's talk." />

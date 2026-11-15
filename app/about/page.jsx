@@ -5,6 +5,7 @@ import { pageMeta } from '@/lib/seo'
 import TestimonialSlider from '@/components/TestimonialSlider'
 import PageSeo from '@/components/PageSeo'
 import { pageFaqs } from '@/lib/pageFaqs'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 export const metadata = pageMeta({
   title: 'About',
@@ -152,6 +153,8 @@ export default function Page() {
           </figure>
         </div>
       </section>
+
+      <AiReceptionistBand page="about" kind="coaching" bg="bg-[#f0fdfa]" />
 
       {/* Values (black blade) */}
       <section className="!py-16 md:!py-28 bg-[#111]">

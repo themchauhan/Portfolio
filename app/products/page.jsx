@@ -4,6 +4,7 @@ import { getExperienceText } from "@/utils/experience";
 import { pageMeta } from "@/lib/seo";
 import PageSeo from '@/components/PageSeo'
 import { pageFaqs } from '@/lib/pageFaqs'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 
 export const metadata = pageMeta({
   title: "Products - ClinicOs, RentCorp, CafeCorp",
@@ -41,6 +42,7 @@ export default function Page() {
           ))}
         </div>
       </section>
+      <AiReceptionistBand page="products" kind="clinic" bg="bg-white" />
       <PageSeo type="CollectionPage" name="Software products: ClinicOs, RentCorp, CafeCorp" path="/products" crumbs={[['Products', '/products']]} faqs={pageFaqs.products()} />
     </main>
   );

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import FreeBadges from '@/components/tools/FreeBadges'
+import AiReceptionistBand from '@/components/AiReceptionistBand'
 import { SITE, pageMeta } from '@/lib/seo'
 import PageSeo from '@/components/PageSeo'
 import { pageFaqs } from '@/lib/pageFaqs'
@@ -38,6 +39,7 @@ export default function Page() {
           ))}
         </div>
       </section>
+      <AiReceptionistBand page="tools" bg="bg-white" />
       <PageSeo type="CollectionPage" name="Free tools for small businesses" path="/tools" crumbs={[['Free tools', '/tools']]} faqs={pageFaqs.tools()} />
     </main>
   )
