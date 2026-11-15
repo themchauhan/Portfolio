@@ -1,6 +1,7 @@
 import { GoogleGenAI, ApiError } from '@google/genai'
 import { NextResponse } from 'next/server'
 import { clinic } from '@/lib/clinicDemo'
+import { limited, clientIp, validMessages, todayLine } from '@/lib/aiLimit'
 
 // The clinic AI receptionist demo, on Google's Gemini API free tier.
 // Needs GEMINI_API_KEY (from Google AI Studio, no card needed); set it on Vercel.
@@ -10,27 +11,6 @@ export const dynamic = 'force-dynamic'
 export const maxDuration = 60
 
 const MODEL = process.env.GEMINI_MODEL || 'gemini-3.6-flash'
-const MAX_TURNS = 16 // messages kept per conversation
-const MAX_CHARS = 600 // per message
-
-// Best-effort abuse limits (per server instance), so one visitor can't use up the free daily quota.
-const PER_IP = { limit: 20, windowMs: 10 * 60 * 1000 }
-const DAILY_LIMIT = 400
-const hits = new Map()
-let day = { date: '', count: 0 }
-
-function limited(ip) {
-  const now = Date.now()
-  const today = new Date().toISOString().slice(0, 10)
-  if (day.date !== today) day = { date: today, count: 0 }
-  if (day.count >= DAILY_LIMIT) return true
-  const recent = (hits.get(ip) || []).filter((t) => now - t < PER_IP.windowMs)
-  if (recent.length >= PER_IP.limit) return true
-  recent.push(now)
-  hits.set(ip, recent)
-  day.count++
-  return false
-}
 
 const doctorLines = clinic.doctors
   .map((d) => `- ${d.name}, ${d.role}. ${d.days}, ${d.times}. Consultation fee ₹${d.fee}.`)
@@ -82,33 +62,12 @@ const SCHEMA = {
   additionalProperties: false,
 }
 
-function validMessages(messages) {
-  if (!Array.isArray(messages) || messages.length === 0 || messages.length > MAX_TURNS) return null
-  const clean = []
-  for (let i = 0; i < messages.length; i++) {
-    const m = messages[i]
-    const role = i % 2 === 0 ? 'user' : 'assistant'
-    if (!m || m.role !== role || typeof m.content !== 'string') return null
-    const content = m.content.trim().slice(0, MAX_CHARS)
-    if (!content) return null
-    clean.push({ role, content })
-  }
-  return clean.at(-1).role === 'user' ? clean : null
-}
-
-function todayLine() {
-  const now = new Date()
-  const fmt = (opts) => now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', ...opts })
-  return `Today is ${fmt({ weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}, and the time is ${fmt({ hour: 'numeric', minute: '2-digit' })} (India).`
-}
-
 export async function POST(req) {
   if (!process.env.GEMINI_API_KEY) {
     return NextResponse.json({ error: 'offline' }, { status: 503 })
   }
 
-  const ip = (req.headers.get('x-forwarded-for') || '').split(',')[0].trim() || 'unknown'
-  if (limited(ip)) {
+  if (limited(clientIp(req))) {
     return NextResponse.json({ error: 'busy' }, { status: 429 })
   }
 

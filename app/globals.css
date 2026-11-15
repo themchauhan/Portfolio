@@ -235,3 +235,8 @@ select:not([multiple]) {
   line-height: 1.5;
   font-weight: 400;
 }
+
+/* Two touching sections with the same background (set by components/SectionSeams.jsx) */
+.seam { position: relative; z-index: 1; box-shadow: 0 14px 28px -18px rgba(17, 17, 17, 0.28); }
+.seam-dark { position: relative; z-index: 1; box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1); }
+@media print { .seam, .seam-dark { box-shadow: none; } }

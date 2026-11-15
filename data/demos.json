@@ -1,0 +1,12 @@
+{
+  "aravali-residency": {
+    "slug": "aravali-residency",
+    "name": "Aravali Residency",
+    "type": "hotel",
+    "area": "Highway Road (fictional example)",
+    "owner": "",
+    "details": "Fictional example hotel for the demo.\nRooms:\n- Standard Room (double bed, AC, TV): ₹1,800 per night\n- Deluxe Room (king bed, AC, TV, mini fridge): ₹2,800 per night\n- Family Suite (2 rooms, sleeps 4): ₹4,500 per night\nAll rooms include breakfast (7:30 – 10:30 am). Extra bed ₹500. Children under 6 stay free.\nCheck-in 12 noon, check-out 11 am. Early check-in depends on availability.\nFree Wi-Fi and free parking. Restaurant open 7 am – 11 pm, veg and non-veg.\nCouples welcome with valid ID. Pets not allowed.\nPayment: cash, UPI or card. 25% advance to confirm a booking.\nFree cancellation up to 48 hours before check-in.\n3 km from the bus stand, 6 km from the railway station. Taxi pickup ₹300.",
+    "suggestions": [],
+    "created": "2026-11-15"
+  }
+}

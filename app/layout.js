@@ -5,6 +5,7 @@ import Script from 'next/script'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import SectionSeams from '@/components/SectionSeams'
 import { OG_IMAGE, SITE, serviceList } from '@/lib/seo'
 import { productList } from '@/lib/products'
 import { productPlans, starterPack, quoteRates } from '@/lib/pricing'
@@ -195,6 +196,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <WhatsAppButton />
+        <SectionSeams />
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
