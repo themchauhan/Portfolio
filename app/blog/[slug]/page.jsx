@@ -505,7 +505,7 @@ export default function BlogPost({ params }) {
               <FaqList items={post.faqs} className="mt-5" />
             </div>
           )}
-          {post.id !== 'ai-receptionist-for-small-business' && (
+          {post.id !== 'ai-receptionist-for-small-business' && !post.forParents && (
             <AiReceptionistBand compact page="blog" kind={/pg|hostel|rent/.test(post.id) ? 'rent' : 'hotel'} />
           )}
           </div>

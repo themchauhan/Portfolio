@@ -81,29 +81,72 @@ export default function Home() {
   return (
     <main className="prod bg-[#f4f1ec] text-[#111] antialiased">
 
-      {/* Hero */}
-      <section className="!py-14 md:!py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.4fr_1fr]">
-          <div>
-            <p className="text-[15px] font-semibold text-[#ff5a1f]">Manish Chauhan · AI integration & full stack developer</p>
-            <h1 className="mt-5 font-display text-5xl font-extrabold leading-[1.02] tracking-tight md:text-6xl xl:text-7xl">
-              I put AI to work{' '}
-              <span className="underline decoration-[#ff5a1f] decoration-[6px] underline-offset-[10px]">inside your business.</span>
-            </h1>
-            <p className="mt-8 max-w-xl text-xl leading-relaxed text-[#444]">
-              Customers answered at 11 pm, leads replied to in a minute, bills read into Excel. {experience[0].toUpperCase() + experience.slice(1)} of building for companies like Splunk, Cohesity and Socure, now bringing AI to businesses in India.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <TrackedLink href="/ai-integration" event="business_path_click" params={{ position: 'hero', destination: '/ai-integration' }} className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white hover:bg-[#ff5a1f]">See what AI can do for you</TrackedLink>
-              <TrackedLink href="/demo/clinic-assistant" event="clinic_demo_open" params={{ page: 'home', position: 'hero' }} className="rounded-full border-2 border-[#111] px-7 py-3 font-semibold hover:bg-[#111] hover:text-white">Try the live AI demo</TrackedLink>
-            </div>
+      {/* Hero: beige, on a fine grid. Headline and intro on the left, a portrait with corner marks on the right.
+          Below it, an index strip of five facts that link into the page. Nothing overlaps. */}
+      <section className="hero-grid !pb-0 !pt-8 md:!pt-12" aria-labelledby="hero-title">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="flex items-center justify-between gap-4 border-b border-black/20 pb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#555] sm:text-xs">
+            <p>Manish Chauhan <span className="text-[#ff5a1f]">/</span> Full-stack engineer &amp; product builder</p>
+            <p className="hidden sm:block">Based in India · Working worldwide</p>
           </div>
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-sm lg:max-w-none">
-            <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[28px] bg-[#ff5a1f]" />
-            <div className="relative h-full w-full overflow-hidden rounded-[28px]">
-              <Image src="/manish-portrait.jpg" alt="Manish Chauhan" fill priority sizes="(min-width:1024px) 420px, 90vw" className="object-cover object-[50%_20%]" />
+
+          <div className="grid items-center gap-10 py-10 md:py-16 lg:grid-cols-[1fr_320px] lg:gap-16 xl:grid-cols-[1fr_360px]">
+            <div>
+              <p className="inline-flex items-center gap-2.5 rounded-full border border-black/20 bg-white px-4 py-1.5 text-sm font-semibold text-[#111]"><span className="hero-pulse h-2 w-2 rounded-full bg-[#ff5a1f]" />AI integration · Apps · Automation · Websites</p>
+              <h1 id="hero-title" className="mt-7 font-display text-[44px] font-extrabold leading-[1] tracking-[-0.03em] sm:text-6xl md:text-7xl xl:text-[88px]">
+                I build the systems that{' '}
+                <span className="text-[#ff5a1f]">run your business.</span>
+              </h1>
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#333] md:text-xl">
+                Anyone can make a website now. I connect AI, WhatsApp and Excel to the way your business already works, build the apps around them, and keep improving what&apos;s running. Engineering for teams at Splunk, Cohesity and Socure since 2018.
+              </p>
+              <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
+                <TrackedLink href="#featured" event="business_path_click" params={{ position: 'hero', destination: '#featured' }} className="rounded-full bg-[#111] px-7 py-3.5 font-semibold text-white transition-colors hover:bg-[#ff5a1f]">Explore my work</TrackedLink>
+                <TrackedLink href="#contact" event="business_path_click" params={{ position: 'hero', destination: '#contact' }} className="group font-semibold underline decoration-[#ff5a1f] decoration-2 underline-offset-8 hover:text-[#ff5a1f]">Let&apos;s discuss a project <span aria-hidden="true" className="inline-block transition-transform group-hover:translate-x-1">→</span></TrackedLink>
+              </div>
             </div>
+
+            <figure className="mx-auto w-full max-w-[260px] sm:max-w-[300px] lg:max-w-none">
+              <div className="hero-corners relative aspect-[4/5] p-3">
+                <div className="relative h-full w-full overflow-hidden rounded-sm bg-[#e9e4dc]">
+                  <Image src="/manish-portrait.jpg" alt="Manish Chauhan" fill priority sizes="(min-width:1024px) 360px, 70vw" className="object-cover object-[50%_20%]" />
+                </div>
+              </div>
+              <figcaption className="mt-3 flex items-baseline justify-between gap-3 border-t border-black/20 pt-3 text-xs text-[#555]">
+                <span className="font-semibold text-[#111]">Manish Chauhan</span>
+                <span>Building since 2018</span>
+              </figcaption>
+            </figure>
           </div>
+        </div>
+
+        {/* Index strip: five facts, each leading into the page */}
+        <div className="border-t border-black/20 bg-[#f4f1ec]">
+          <ol className="mx-auto grid max-w-7xl grid-cols-2 px-5 sm:px-8 lg:grid-cols-5">
+            {[
+              ['01', 'Since 2018', `${getExperienceYears()} years building software`, null],
+              ['02', 'AI & automation', 'WhatsApp, Excel and AI assistants. Try the live demo', '/demo/clinic-assistant'],
+              ['03', 'Apps & products', 'ClinicOs, RentCorp and CafeCorp, built and run by me', '/products'],
+              ['04', 'Full-stack engineering', 'React, Next.js, Node, PostgreSQL', '#featured'],
+              ['05', 'Freelance & consulting', 'For businesses, founders and agencies', '#contact'],
+            ].map(([n, title, text, href], i) => {
+              const inner = (
+                <>
+                  <span className="font-display text-xs font-bold text-[#ff5a1f]">{n}</span>
+                  <span className="mt-2 block font-display text-lg font-extrabold leading-tight">{title}</span>
+                  <span className="mt-1 block text-sm leading-snug text-[#555]">{text}{href && <span aria-hidden="true"> →</span>}</span>
+                </>
+              )
+              const cls = `block h-full py-5 pr-4 ${i % 2 ? 'pl-4 lg:pl-5' : 'lg:pl-5'} ${i === 0 ? 'lg:!pl-0' : ''}`
+              return (
+                <li key={n} className={`border-black/20 ${i % 2 ? 'border-l' : ''} ${i > 1 ? 'border-t lg:border-t-0' : ''} ${i > 0 ? 'lg:border-l' : ''} ${i === 4 ? 'col-span-2 lg:col-span-1 !border-l-0 lg:!border-l' : ''}`}>
+                  {href ? (
+                    <TrackedLink href={href} event={href.startsWith('/demo') ? 'clinic_demo_open' : 'business_path_click'} params={{ page: 'home', position: 'hero_index', destination: href }} className={`${cls} transition-colors hover:bg-white`}>{inner}</TrackedLink>
+                  ) : <div className={cls}>{inner}</div>}
+                </li>
+              )
+            })}
+          </ol>
         </div>
       </section>
 
