@@ -5,8 +5,8 @@ import { pageMeta } from "@/lib/seo";
 const product = products.clinicos;
 
 export const metadata = pageMeta({
-  title: `${product.name} - ${product.tag}`,
-  description: product.summary,
+  title: { absolute: "ClinicOs: Clinic Management Software for Indian Clinics" },
+  description: "Appointments, patient records, e-prescriptions, billing and WhatsApp reminders in one simple system for small clinics in India. Set up for you, in Hindi or English.",
   alternates: { canonical: "https://themanishchauhan.in/clinicos" },
 });
 

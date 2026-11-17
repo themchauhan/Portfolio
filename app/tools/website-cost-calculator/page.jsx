@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import JsonLd from '@/components/JsonLd'
 import FreeBadges from '@/components/tools/FreeBadges'
 import ShareTool from '@/components/tools/ShareTool'
@@ -62,6 +63,7 @@ export default function Page() {
           <div className="mt-10"><StarterPack page="website-cost-calculator" /></div>
           <h2 className="mt-14 font-display text-2xl font-extrabold tracking-tight md:text-3xl">Need something else? Build your own estimate</h2>
           <div className="mt-6"><QuoteEstimator /></div>
+          <p className="mt-8 text-[#555]">Want the full picture? Read <Link href="/blog/website-cost-in-india" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">how much a website costs in India</Link>, with what changes the price and what to avoid.</p>
         </div>
       </section>
       <ToolGuide

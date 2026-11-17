@@ -49,6 +49,7 @@ export default function Page() {
           <div className="mt-10 print:mt-0">
             <RentReceiptGenerator />
           </div>
+          <p className="mt-8 text-[#555] print:hidden">Check what a valid receipt needs, including when the landlord&apos;s PAN is required, in the <Link href="/blog/rent-receipt-format-for-hra" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">rent receipt format for HRA</Link> guide. Paying a team? Make payslips with the free <Link href="/tools/salary-slip-generator" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">Salary Slip Generator</Link>.</p>
         </div>
       </section>
 

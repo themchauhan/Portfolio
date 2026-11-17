@@ -49,6 +49,7 @@ export default function Page() {
             <ShareTool className="mt-5" url={URL} title="Free Salary Slip Generator" message="Free salary slip / payslip generator with PF, ESI and your logo, no sign-up." />
           </div>
           <div className="mt-10 print:mt-0"><SalarySlipGenerator /></div>
+          <p className="mt-8 text-[#555] print:hidden">Not sure what each line means? Read the <Link href="/blog/salary-slip-format-india" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">salary slip format in India</Link>, with Basic, HRA, PF, ESI and TDS explained. Need a rent receipt for HRA? Use the free <Link href="/tools/rent-receipt-generator" className="font-semibold text-[#111] underline decoration-[#ff5a1f] decoration-2 underline-offset-4">Rent Receipt Generator</Link>.</p>
         </div>
       </section>
 
